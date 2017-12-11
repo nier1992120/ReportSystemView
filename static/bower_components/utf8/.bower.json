@@ -1,0 +1,13 @@
+{
+  "name": "utf8",
+  "homepage": "https://github.com/arahaya/utf8.js",
+  "_release": "1b109d359f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1b109d359f161263c781ab9182f4646cc9856bca"
+  },
+  "_source": "https://github.com/arahaya/utf8.js.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/arahaya/utf8.js.git"
+}

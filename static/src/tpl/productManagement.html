@@ -1,0 +1,25 @@
+    <h2>productManagement</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+            <tr>
+                <td>项目编号</td>
+                <td>产品名称</td>
+                <td>包名</td>
+                <td>平台</td>
+                <td>CP名称</td>
+                <td>归属项目组</td>
+                <td>操作</td>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{index+1}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.pkgName}}</td>
+                <td>{{product.platform}}</td>
+                <td>{{product.CPName}}</td>
+                <td>{{product.groupName}}</td>
+                <td><a>添加</a>&nbsp;<a>修改</a>&nbsp;<a>删除</a></td>
+            </tr>
+        </table>
+    </div>
+

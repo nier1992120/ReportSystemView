@@ -1,0 +1,20 @@
+<h2>accountManagement</h2>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>序号</td>
+            <td>账号ID</td>
+            <td>姓名</td>
+            <td>项目列表</td>
+            <td>操作</td>
+        </tr>
+        <tr ng-repeat="account in accounts">
+            <td>{{index+1}}</td>
+            <td>{{account.id}}</td>
+            <td>{{account.name}}</td>
+            <td>{{account.projectList}}</td>
+            <td><a>重置密码</a></td>
+        </tr>
+
+    </table>
+</div>

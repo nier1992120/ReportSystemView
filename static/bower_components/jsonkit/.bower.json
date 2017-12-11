@@ -1,0 +1,35 @@
+{
+  "name": "jsonkit",
+  "description": "Tool set for JSON object",
+  "main": "jsonkit.js",
+  "version": "0.3.3",
+  "homepage": "https://github.com/teambition/jsonkit",
+  "authors": [
+    "Yan Qing <admin@zensh.com>"
+  ],
+  "keywords": [
+    "json",
+    "jsonit",
+    "union",
+    "intersect"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "docs",
+    "benchmark",
+    "test",
+    "tests"
+  ],
+  "_release": "0.3.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.3",
+    "commit": "1a2e882139522b1e737f5d6720d1e81a9bce8c9e"
+  },
+  "_source": "git://github.com/teambition/jsonkit.git",
+  "_target": ">=0.3.0",
+  "_originalSource": "jsonkit"
+}
