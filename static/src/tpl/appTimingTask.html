@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+    <div class="panel-heading panel-title">
+        <div class="row clearfix" style="margin-top:5px;">
+            <label class="control-label col-sm-1 text-right">任务名称：</label>
+            <input class="modalInput col-sm-5" ng-model="timingTask.name">&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-info glyphicon glyphicon-plus" ng-click="addStartTask()">新增起始任务节点</button>
+        </div>
+    </div>
+
+    <!--循环添加内容模块-->
+    <div class="panel-body panel" ng-repeat="strategy in timingTask.strategies">
+        <div>
+            <div class="row form-group">
+                <label class="control-label text-right col-sm-1">起始时间：</label>
+                <input class="modalInput col-sm-5" ng-model="strategy.sdate" placeholder="2017-03-15 16:30">
+            </div>
+            <div class="row form-group">
+                <label class="control-label text-right col-sm-1">结束时间：</label>
+                <input class="modalInput col-sm-5" ng-model="strategy.edate" placeholder="2017-03-15 16:30">
+            </div>
+            <div class="row form-group">
+                <label class="control-label text-right col-sm-1">广告策略：</label>
+                <select type="text" class="modalInput col-sm-5 cursor_p" ng-model="strategy.adStrategyId" ng-options="ad._id.$oid as ad.name for ad in adStrategys">
+                    <option value="">请选择广告策略</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="bottomBorder">
+            <span class="glyphicon glyphicon-trash cursor_p" ng-click="delTask($index)"></span>&nbsp;&nbsp;
+            <span class="" ng-if="strategy.state === '0'" >未执行</span>
+            <span class="" ng-if="strategy.state === '1'" >等待执行</span>
+            <span class="" ng-if="strategy.state === '2'" >执行完成</span>
+            <span class="" ng-if="strategy.state === '4'" >已过期</span>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-info glyphicon glyphicon-plus" ng-click="addEndTask()">新增末尾任务节点</button>
+        <button class="btn btn-info" ng-click="addTimingTask()">开始任务</button>
+    </div>
+
+    <div class="bg-danger clearfix panel-body" ng-if="errors.length != 0">
+        <p style="text-indent: 10px;" class="text-danger" ng-repeat="error in errors">error : {{error.error}}</p>
+    </div>
+</div>

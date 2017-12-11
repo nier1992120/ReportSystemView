@@ -1,0 +1,181 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <p class="panel-title">
+            <button class="btn btn-default" ng-click="showAddSubAccountModal()" data-toggle="modal" data-target="#addSubAccountPanel"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增子账户</button>
+        </p>
+
+    </div>
+
+    <table class="table table-bordered table-hover" ng-if="subAccounts.length !== 0">
+        <tr class="tableTitle">
+            <td>编号</td>
+            <td>用户名称</td>
+            <td>用户邮箱</td>
+            <td>用户电话</td>
+            <td>团队名称</td>
+            <td>开发者id</td>
+            <td>操作</td>
+        </tr>
+        <tr ng-repeat="account in subAccounts">
+            <td>{{$index +1}}</td>
+            <td>{{account.contacts}}</td>
+            <td>{{account.login_id}}</td>
+            <td>{{account.telephone}}</td>
+            <td class="td_width120">{{account.company_name}}</td>
+            <td>{{account.pubid}}</td>
+            <td class="td_width200">
+                <a href="" ng-click="resetPassword(account.subpubid, account.login_id)">重置密码</a>&nbsp;&nbsp;
+                <a class="glyphicon glyphicon-edit cursor_p" ng-click="showEditSubAccountModal(account)"  data-toggle="modal" data-target="#editSubAccountPanel">编辑</a>&nbsp;&nbsp;
+                <a class="glyphicon glyphicon-edit cursor_p" ng-click="delSubAccount($index)">删除</a>&nbsp;&nbsp;
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p class="nothing" ng-if="subAccounts.length === 0">
+    暂无数据信息
+</p>
+
+<div class="modal fade" id="editSubAccountPanel">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>子账户权限设置
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group clearfix">
+                <label class="col-sm-2 control-label text-right" style="padding:0;">账号：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" disabled ng-model="subAccount.login_id">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>功能模块权限设置</p>
+                    <span style="font-size: 20px">应用管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_application" disabled>查看应用</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.managed_application">管理应用</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.new_application">新增应用</input><br>
+                    <span style="font-size: 20px">任务管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_task">查看任务组</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.new_task">新增任务组</input><br>
+                    <span style="font-size: 20px">发布管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.publish_application">发布应用</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.status_log">发布查询</input><br>
+                    <span style="font-size: 20px">广告管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.managed_ad">广告管理</input><br>
+                    <span style="font-size: 20px">策略管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_strategy">查看策略</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.new_strategy">新增策略</input><br>
+                    <span style="font-size: 20px">资源管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_resource">查看资源</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.upload_resource">上传资源</input><br>
+                    <span style="font-size: 20px">测试管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.testid">测试id</input><br>
+                    <!--<span style="font-size: 20px">定时任务管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.timingTask">定时任务</input><br>-->
+                </div>
+
+                <p></p>
+                <div>
+                    <p>应用组权限设置</p>
+                    <span ng-repeat="linkid in linkids">
+                        <input type="checkbox" ng-checked="linkid.checked" ng-click="selectLinkid($index)">{{linkid.linkid}}</input>&nbsp;
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="updateSubAccountJurisdiction()">保&nbsp;&nbsp;存</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="addSubAccountPanel">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>子账户权限设置
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group row">
+                <label class="col-sm-2 text-right">用户邮箱:</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="email" placeholder="邮箱ID" name="loginId"  ng-model="subAccount.login_id" data-valid-name="邮箱" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 text-right">用户密码:</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="password" placeholder="输入6-15位密码" data-valid-name="密码" ng-model="subAccount.password" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 text-right">确认密码:</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="password" placeholder="确认密码"  data-valid-name="密码" ng-model="subAccount.password2" ui-validate="{repasswd:'$value==subAccount.password'}" ui-validate-watch="'subAccount.password'" gen-tooltip="validateTooltip">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 text-right">用户昵称:</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="用户昵称" data-valid-name="联系人" ng-model="subAccount.contacts" gen-tooltip="validateTooltip" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 text-right">团队名称:</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="团队名称" data-valid-name="团队名称" ng-model="subAccount.company_name" gen-tooltip="validateTooltip" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 text-right">电话号码:</label>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" placeholder="输入有效电话" data-valid-name="电话"  ui-validate="{pattern:checkTel}" ng-model="subAccount.telephone" gen-tooltip="validateTooltip">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <p>功能模块权限设置</p>
+                    <span style="font-size: 20px">应用管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_application" disabled>查看应用</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.managed_application">管理应用</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.new_application">新增应用</input><br>
+                    <span style="font-size: 20px">任务管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_task">查看任务组</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.new_task">新增任务组</input><br>
+                    <span style="font-size: 20px">发布管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.publish_application">发布应用</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.status_log">发布查询</input><br>
+                    <span style="font-size: 20px">广告管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.managed_ad">广告管理</input><br>
+                    <span style="font-size: 20px">策略管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_strategy">查看策略</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.new_strategy">新增策略</input><br>
+                    <span style="font-size: 20px">资源管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.view_resource">查看资源</input>
+                    <input type="checkbox" ng-model="accountJurisdiction.upload_resource">上传资源</input><br>
+                    <span style="font-size: 20px">测试管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.testid">测试id</input><br>
+                    <!--<span style="font-size: 20px">定时任务管理：</span>
+                    <input type="checkbox" ng-model="accountJurisdiction.timingTask">定时任务</input><br>-->
+                </div>
+
+                <p></p>
+                <div>
+                    <p>应用组权限设置</p>
+                    <span ng-repeat="linkid in linkids">
+                        <input type="checkbox" ng-checked="linkid.checked" ng-click="selectLinkid($index)">{{linkid.linkid}}</input>&nbsp;
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="addSubAccount()">保&nbsp;&nbsp;存</button>
+        </div>
+    </div>
+
+</div>

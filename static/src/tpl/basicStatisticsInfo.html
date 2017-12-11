@@ -1,0 +1,242 @@
+<div class="panel panel-default form-group statistics-panel">
+    <div class="panel-heading">
+        <p class="panel-title">
+            概况-过去三天数据汇总
+        </p>
+    </div>
+    <div class="panel-body table-container">
+        <div class="clearfix" style="margin:-4px 0 8px 0;">
+            <div class="app-select-container">
+                <select name="user-select" id="user-select" class="form-control" ng-model="company_name" ng-options="user.pubid as user.company_name for user in usersData">
+                </select>
+            </div>
+        </div>
+        <table class="table table-hover table-bordered">
+            <tr class="tableTitle">
+               <th colspan="10">开发者id:&nbsp;{{userInfo.pubid}}&nbsp;&nbsp;&nbsp;团队名称:&nbsp;{{userInfo.company_name}}</th>
+            </tr>
+            <tr><th colspan="10">时间:&nbsp;{{userInfo.reps[2].date}}</th></tr>
+            <!--广告类型0 unknown,1 icon,2 banner,3 interstitial,4 native ,5 video,6 offer,7 more,8 push-->
+            <!--1 show, 2 click, 3 install-->
+            <tr style="background:#eaeaea;">
+                <td></td>
+                <td><b>banner</b></td>
+                <td><b>icon</b></td>
+                <td><b>native</b></td>
+                <td><b>interstitial</b></td>
+                <td><b>push</b></td>
+                <td><b>video</b></td>
+                <td><b>more</b></td>
+                <td><b>offer</b></td>
+                <td><b>未知</b></td>
+            </tr>
+            <tr>
+                <td>show</td>
+                <td>{{userInfo.reps[2][2][1]}}</td>
+                <td>{{userInfo.reps[2][1][1]}}</td>
+                <td>{{userInfo.reps[2][4][1]}}</td>
+                <td>{{userInfo.reps[2][3][1]}}</td>
+                <td>{{userInfo.reps[2][8][1]}}</td>
+                <td>{{userInfo.reps[2][5][1]}}</td>
+                <td>{{userInfo.reps[2][7][1]}}</td>
+                <td>{{userInfo.reps[2][6][1]}}</td>
+                <td>{{userInfo.reps[2][0][1]}}</td>
+            </tr>
+            <tr>
+                <td>click</td>
+                <td>{{userInfo.reps[2][2][2]}}</td>
+                <td>{{userInfo.reps[2][1][2]}}</td>
+                <td>{{userInfo.reps[2][4][2]}}</td>
+                <td>{{userInfo.reps[2][3][2]}}</td>
+                <td>{{userInfo.reps[2][8][2]}}</td>
+                <td>{{userInfo.reps[2][5][2]}}</td>
+                <td>{{userInfo.reps[2][7][2]}}</td>
+                <td>{{userInfo.reps[2][6][2]}}</td>
+                <td>{{userInfo.reps[2][0][2]}}</td>
+            </tr>
+            <tr>
+                <td>install</td>
+                <td>{{userInfo.reps[2][2][3]}}</td>
+                <td>{{userInfo.reps[2][1][3]}}</td>
+                <td>{{userInfo.reps[2][4][3]}}</td>
+                <td>{{userInfo.reps[2][3][3]}}</td>
+                <td>{{userInfo.reps[2][8][3]}}</td>
+                <td>{{userInfo.reps[2][5][3]}}</td>
+                <td>{{userInfo.reps[2][7][3]}}</td>
+                <td>{{userInfo.reps[2][6][3]}}</td>
+                <td>{{userInfo.reps[2][0][3]}}</td>
+            </tr>
+            <tr>
+                <td>CTR&nbsp;<span class="glyphicon glyphicon-question-sign" title="点击总数/展示总数"></span></td>
+                <td>{{userInfo.reps[2][2].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][2].upclick}}" title="{{userInfo.reps[2][2].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][2].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][1].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][1].upclick}}" title="{{userInfo.reps[2][1].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][1].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][4].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][4].upclick}}" title="{{userInfo.reps[2][4].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][4].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][3].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][3].upclick}}" title="{{userInfo.reps[2][3].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][3].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][8].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][8].upclick}}" title="{{userInfo.reps[2][8].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][8].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][5].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][5].upclick}}" title="{{userInfo.reps[2][5].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][5].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][7].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][7].upclick}}" title="{{userInfo.reps[2][7].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][7].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][6].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][6].upclick}}" title="{{userInfo.reps[2][6].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][6].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][0].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][0].upclick}}" title="{{userInfo.reps[2][0].upclick === 'up' ? '相比前一天上升' : userInfo.reps[2][0].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+            </tr>
+            <tr>
+                <td>CVR&nbsp;<span class="glyphicon glyphicon-question-sign" title="安装总数/点击总数"></span></td>
+                <td>{{userInfo.reps[2][2].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][2].upinstall}}" title="{{userInfo.reps[2][2].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][2].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][1].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][1].upinstall}}" title="{{userInfo.reps[2][1].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][1].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][4].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][4].upinstall}}" title="{{userInfo.reps[2][4].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][4].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][3].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][3].upinstall}}" title="{{userInfo.reps[2][3].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][3].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][8].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][8].upinstall}}" title="{{userInfo.reps[2][8].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][8].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][5].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][5].upinstall}}" title="{{userInfo.reps[2][5].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][5].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][7].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][7].upinstall}}" title="{{userInfo.reps[2][7].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][7].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][6].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][6].upinstall}}" title="{{userInfo.reps[2][6].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][6].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[2][0].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[2][0].upinstall}}" title="{{userInfo.reps[2][0].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[2][0].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+            </tr>
+            <tr><th colspan="10">时间:&nbsp;{{userInfo.reps[1].date}}</th></tr>
+            <tr style="background:#eaeaea;">
+                <td></td>
+                <td><b>banner</b></td>
+                <td><b>icon</b></td>
+                <td><b>native</b></td>
+                <td><b>interstitial</b></td>
+                <td><b>push</b></td>
+                <td><b>video</b></td>
+                <td><b>more</b></td>
+                <td><b>offer</b></td>
+                <td><b>未知</b></td>
+            </tr>
+            <tr>
+                <td>show</td>
+                <td>{{userInfo.reps[1][2][1]}}</td>
+                <td>{{userInfo.reps[1][1][1]}}</td>
+                <td>{{userInfo.reps[1][4][1]}}</td>
+                <td>{{userInfo.reps[1][3][1]}}</td>
+                <td>{{userInfo.reps[1][8][1]}}</td>
+                <td>{{userInfo.reps[1][5][1]}}</td>
+                <td>{{userInfo.reps[1][7][1]}}</td>
+                <td>{{userInfo.reps[1][6][1]}}</td>
+                <td>{{userInfo.reps[1][0][1]}}</td>
+            </tr>
+            <tr>
+                <td>click</td>
+                <td>{{userInfo.reps[1][2][2]}}</td>
+                <td>{{userInfo.reps[1][1][2]}}</td>
+                <td>{{userInfo.reps[1][4][2]}}</td>
+                <td>{{userInfo.reps[1][3][2]}}</td>
+                <td>{{userInfo.reps[1][8][2]}}</td>
+                <td>{{userInfo.reps[1][5][2]}}</td>
+                <td>{{userInfo.reps[1][7][2]}}</td>
+                <td>{{userInfo.reps[1][6][2]}}</td>
+                <td>{{userInfo.reps[1][0][2]}}</td>
+            </tr>
+            <tr>
+                <td>install</td>
+                <td>{{userInfo.reps[1][2][3]}}</td>
+                <td>{{userInfo.reps[1][1][3]}}</td>
+                <td>{{userInfo.reps[1][4][3]}}</td>
+                <td>{{userInfo.reps[1][3][3]}}</td>
+                <td>{{userInfo.reps[1][8][3]}}</td>
+                <td>{{userInfo.reps[1][5][3]}}</td>
+                <td>{{userInfo.reps[1][7][3]}}</td>
+                <td>{{userInfo.reps[1][6][3]}}</td>
+                <td>{{userInfo.reps[1][0][3]}}</td>
+            </tr>
+            <tr>
+                <td>CTR&nbsp;<span class="glyphicon glyphicon-question-sign" title="点击总数/展示总数"></span></td>
+                <td>{{userInfo.reps[1][2].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][2].upclick}}" title="{{userInfo.reps[1][2].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][2].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][1].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][1].upclick}}" title="{{userInfo.reps[1][1].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][1].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][4].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][4].upclick}}" title="{{userInfo.reps[1][4].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][4].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][3].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][3].upclick}}" title="{{userInfo.reps[1][3].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][3].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][8].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][8].upclick}}" title="{{userInfo.reps[1][8].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][8].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][5].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][5].upclick}}" title="{{userInfo.reps[1][5].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][5].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][7].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][7].upclick}}" title="{{userInfo.reps[1][7].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][7].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][6].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][6].upclick}}" title="{{userInfo.reps[1][6].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][6].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][0].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][0].upclick}}" title="{{userInfo.reps[1][0].upclick === 'up' ? '相比前一天上升' : userInfo.reps[1][0].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+            </tr>
+            <tr>
+                <td>CVR&nbsp;<span class="glyphicon glyphicon-question-sign" title="安装总数/点击总数"></span></td>
+                <td>{{userInfo.reps[1][2].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][2].upinstall}}" title="{{userInfo.reps[1][2].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][2].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][1].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][1].upinstall}}" title="{{userInfo.reps[1][1].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][1].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][4].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][4].upinstall}}" title="{{userInfo.reps[1][4].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][4].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][3].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][3].upinstall}}" title="{{userInfo.reps[1][3].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][3].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][8].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][8].upinstall}}" title="{{userInfo.reps[1][8].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][8].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][5].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][5].upinstall}}" title="{{userInfo.reps[1][5].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][5].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][7].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][7].upinstall}}" title="{{userInfo.reps[1][7].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][7].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][6].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][6].upinstall}}" title="{{userInfo.reps[1][6].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][6].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[1][0].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[1][0].upinstall}}" title="{{userInfo.reps[1][0].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[1][0].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+            </tr>
+            <tr><th colspan="10">时间:&nbsp;{{userInfo.reps[0].date}}</th></tr>
+            <tr style="background:#eaeaea;">
+                <td></td>
+                <td><b>banner</b></td>
+                <td><b>icon</b></td>
+                <td><b>native</b></td>
+                <td><b>interstitial</b></td>
+                <td><b>push</b></td>
+                <td><b>video</b></td>
+                <td><b>more</b></td>
+                <td><b>offer</b></td>
+                <td><b>未知</b></td>
+            </tr>
+            <tr>
+                <td>show</td>
+                <td>{{userInfo.reps[0][2][1]}}</td>
+                <td>{{userInfo.reps[0][1][1]}}</td>
+                <td>{{userInfo.reps[0][4][1]}}</td>
+                <td>{{userInfo.reps[0][3][1]}}</td>
+                <td>{{userInfo.reps[0][8][1]}}</td>
+                <td>{{userInfo.reps[0][5][1]}}</td>
+                <td>{{userInfo.reps[0][7][1]}}</td>
+                <td>{{userInfo.reps[0][6][1]}}</td>
+                <td>{{userInfo.reps[0][0][1]}}</td>
+            </tr>
+            <tr>
+                <td>click</td>
+                <td>{{userInfo.reps[0][2][2]}}</td>
+                <td>{{userInfo.reps[0][1][2]}}</td>
+                <td>{{userInfo.reps[0][4][2]}}</td>
+                <td>{{userInfo.reps[0][3][2]}}</td>
+                <td>{{userInfo.reps[0][8][2]}}</td>
+                <td>{{userInfo.reps[0][5][2]}}</td>
+                <td>{{userInfo.reps[0][7][2]}}</td>
+                <td>{{userInfo.reps[0][6][2]}}</td>
+                <td>{{userInfo.reps[0][0][2]}}</td>
+            </tr>
+            <tr>
+                <td>install</td>
+                <td>{{userInfo.reps[0][2][3]}}</td>
+                <td>{{userInfo.reps[0][1][3]}}</td>
+                <td>{{userInfo.reps[0][4][3]}}</td>
+                <td>{{userInfo.reps[0][3][3]}}</td>
+                <td>{{userInfo.reps[0][8][3]}}</td>
+                <td>{{userInfo.reps[0][5][3]}}</td>
+                <td>{{userInfo.reps[0][7][3]}}</td>
+                <td>{{userInfo.reps[0][6][3]}}</td>
+                <td>{{userInfo.reps[0][0][3]}}</td>
+            </tr>
+            <tr>
+                <td>CTR&nbsp;<span class="glyphicon glyphicon-question-sign" title="点击总数/展示总数"></span></td>
+                <td>{{userInfo.reps[0][2].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][2].upclick}}" title="{{userInfo.reps[0][2].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][2].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][1].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][1].upclick}}" title="{{userInfo.reps[0][1].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][1].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][4].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][4].upclick}}" title="{{userInfo.reps[0][4].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][4].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][3].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][3].upclick}}" title="{{userInfo.reps[0][3].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][3].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][8].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][8].upclick}}" title="{{userInfo.reps[0][8].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][8].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][5].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][5].upclick}}" title="{{userInfo.reps[0][5].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][5].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][7].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][7].upclick}}" title="{{userInfo.reps[0][7].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][7].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][6].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][6].upclick}}" title="{{userInfo.reps[0][6].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][6].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][0].clickpercent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][0].upclick}}" title="{{userInfo.reps[0][0].upclick === 'up' ? '相比前一天上升' : userInfo.reps[0][0].upclick === 'down' ? '相比前一天下降' : ''}}"></span></td>
+            </tr>
+            <tr>
+                <td>CVR&nbsp;<span class="glyphicon glyphicon-question-sign" title="安装总数/点击总数"></span></td>
+                <td>{{userInfo.reps[0][2].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][2].upinstall}}" title="{{userInfo.reps[0][2].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][2].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][1].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][1].upinstall}}" title="{{userInfo.reps[0][1].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][1].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][4].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][4].upinstall}}" title="{{userInfo.reps[0][4].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][4].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][3].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][3].upinstall}}" title="{{userInfo.reps[0][3].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][3].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][8].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][8].upinstall}}" title="{{userInfo.reps[0][8].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][8].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][5].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][5].upinstall}}" title="{{userInfo.reps[0][5].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][5].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][7].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][7].upinstall}}" title="{{userInfo.reps[0][7].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][7].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][6].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][6].upinstall}}" title="{{userInfo.reps[0][6].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][6].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+                <td>{{userInfo.reps[0][0].percent}}&nbsp;<span class="glyphicon glyphicon-arrow-{{userInfo.reps[0][0].upinstall}}" title="{{userInfo.reps[0][0].upinstall === 'up' ? '相比前一天上升' : userInfo.reps[0][0].upinstall === 'down' ? '相比前一天下降' : ''}}"></span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,252 @@
+<nav role="sidebar" class="col-sm-12">
+    <div class="panel-group sidebar" id="accordion">
+        <!--dashboard-->
+        <div class="panel panel-default" ng-if="!isSubAccount">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dashboard">
+                <p class="panel-title"><span class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;主页面板</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('dashboard')}" id="dashboard">
+                <div class="panel-body">
+                    <p ui-sref="dashboard.index" ng-if="!isSubAccount || jurisdiction.dashboard"
+                       ng-class="{sidebarBcg : $state.includes('dashboard.index')}"><span
+                            class="glyphicon glyphicon-home"></span>&nbsp;&nbsp;DashBoard</p>
+                </div>
+            </div>
+        </div>
+        <!--notice-->
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#notice">
+                <p class="panel-title"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;系统消息
+                    <span class="badge" style="float:right;background: #E35850;font-size: 12px;font-weight: normal;" ng-if="messagecount !== 0">
+                    {{messagecount}}</span></p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('notice')}" id="notice">
+                <div class="panel-body">
+                    <p ui-sref="notice.info" ng-class="{sidebarBcg : $state.includes('notice.info')}"><span
+                            class="glyphicon glyphicon-record" ng-click="cleanmessagecount()"></span>&nbsp;&nbsp;查看消息</p>
+                </div>
+            </div>
+        </div>
+
+        <!--all of the app items-->
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#appCentrl">
+                <p class="panel-title"><span class="glyphicon glyphicon-align-center"></span>&nbsp;&nbsp;应用管理</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('index')}" id="appCentrl">
+                <div class="panel-body">
+                    <p ui-sref="index.showAppBascInfo" ng-if="isSubAccount && jurisdiction.view_application"
+                       ng-class="{sidebarBcg : $state.includes('index.showAppBascInfo')}"><span
+                            class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;查看应用</p>
+                    <p ui-sref="index.appBascInfo" ng-if="!isSubAccount|| jurisdiction.managed_application"
+                       ng-class="{sidebarBcg : $state.includes('index.appBascInfo')}"><span
+                            class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;管理应用</p>
+                    <p ui-sref="index.appInsert" ng-if="!isSubAccount|| jurisdiction.new_application"
+                       ng-class="{sidebarBcg : $state.includes('index.appInsert')}"><span
+                            class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增应用</p>
+                    <p ui-sref="index.appAdStrategy" ng-if="!isSubAccount|| jurisdiction.managed_ad"
+                       ng-class="{sidebarBcg : $state.includes('index.appAdStrategy')}"><span
+                            class="glyphicon glyphicon-paperclip"></span>&nbsp;&nbsp;广告管理</p>
+                    <p ui-sref="index.appLink" ng-if="!isSubAccount"
+                       ng-class="{sidebarBcg : $state.includes('index.appLink')}"><span
+                            class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;应用分组</p>
+                </div>
+            </div>
+        </div>
+
+        <!--strategy details-->
+        <div class="panel panel-default" ng-if="!isSubAccount || jurisdiction.view_strategy ||jurisdiction.new_strategy">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#strategyCentrl">
+                <p class="panel-title"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;投放管理</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('strategy')}" id="strategyCentrl">
+                <div class="panel-body">
+                    <p ui-sref="strategy.strategyInfo" ng-if="!isSubAccount || jurisdiction.view_strategy"
+                       ng-class="{sidebarBcg : $state.includes('strategy.strategyInfo')}"><span
+                            class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;查看策略</p>
+                    <p ui-sref="strategy.strategyInsert" ng-if="!isSubAccount || jurisdiction.new_strategy"
+                       ng-class="{sidebarBcg : $state.includes('strategy.strategyInsert')}"><span
+                            class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增策略</p>
+
+                </div>
+            </div>
+        </div>
+
+        <!--task details-->
+        <div class="panel panel-default" ng-if="!isSubAccount || jurisdiction.view_task|| jurisdiction.new_task">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#taskCentrl">
+                <p class="panel-title"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;任务管理</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('task')}" id="taskCentrl">
+                <div class="panel-body">
+                    <p ui-sref="task.taskInfo" ng-if="!isSubAccount || jurisdiction.view_task"
+                       ng-class="{sidebarBcg : $state.includes('task.taskInfo')}"><span
+                            class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;查看任务组</p>
+                    <p ui-sref="task.taskInsert" ng-if="!isSubAccount || jurisdiction.new_task"
+                       ng-class="{sidebarBcg : $state.includes('task.taskInsert')}"><span
+                            class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;新增任务组</p>
+                </div>
+            </div>
+        </div>
+
+        <!--publish details-->
+        <div class="panel panel-default" ng-if="!isSubAccount || jurisdiction.publish_application || jurisdiction.status_log">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#publishCentrl">
+                <p class="panel-title"><span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;发布管理</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('appAndCampaignSyn')}" id="publishCentrl">
+                <div class="panel-body">
+                    <p ui-sref="appAndCampaignSyn.syn" ng-if="!isSubAccount || jurisdiction.publish_application"
+                       ng-class="{sidebarBcg : $state.includes('appAndCampaignSyn.syn')}"><span
+                            class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;发布应用</p>
+                    <p ui-sref="appAndCampaignSyn.synStatusLog" ng-if="!isSubAccount || jurisdiction.status_log"
+                       ng-class="{sidebarBcg : $state.includes('appAndCampaignSyn.synStatusLog')}"><span
+                            class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;发布查询</p>
+                </div>
+            </div>
+        </div>
+
+        <!--docment central-->
+        <div class="panel panel-default" ng-if="!isSubAccount || jurisdiction.view_resource||jurisdiction.upload_resource">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#resource">
+                <p class="panel-title"><span class="glyphicon glyphicon-bishop"></span>&nbsp;&nbsp;资源管理</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('resource')}" id="resource">
+                <div class="panel-body">
+                    <p ui-sref="resource.resourceList" ng-if="!isSubAccount || jurisdiction.view_resource"
+                       ng-class="{sidebarBcg : $state.includes('resource.resourceList')}"><span
+                            class="glyphicon glyphicon-eye-open"></span>&nbsp;&nbsp;查看资源</p>
+                    <p ui-sref="resource.resourceUpload" ng-if="!isSubAccount || jurisdiction.upload_resource"
+                       ng-class="{sidebarBcg : $state.includes('resource.resourceUpload')}"><span
+                            class="glyphicon glyphicon-upload"></span>&nbsp;&nbsp;上传资源</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!--&lt;!&ndash; data statistics from project-->
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dataCentrl">
+                <p class="panel-title"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;统计分析</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('data')}" id="dataCentrl">
+                <div class="panel-body">
+                    <p ui-sref="data.basicStatisticsInfo"
+                       ng-class="{sidebarBcg:$state.includes('data.basicStatisticsInfo')}"><span
+                            class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;概况</p>
+                    <p ui-sref="data.statistics({adtype: '0'})"
+                       ng-class="{sidebarBcg : $state.includes('data.statistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;整体趋势</p>
+                    <p ui-sref="data.bannerStatistics({adtype: 'banner'})"
+                       ng-class="{sidebarBcg : $state.includes('data.bannerStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;Banner</p>
+                    <p ui-sref="data.nativeStatistics({adtype: 'native'})"
+                       ng-class="{sidebarBcg : $state.includes('data.nativeStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;Native</p>
+                    <p ui-sref="data.iconStatistics({adtype: 'icon'})"
+                       ng-class="{sidebarBcg : $state.includes('data.iconStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;Icon</p>
+                    <p ui-sref="data.pushStatistics({adtype: 'push'})"
+                       ng-class="{sidebarBcg : $state.includes('data.pushStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;Push</p>
+                    <p ui-sref="data.interstitialStatistics({adtype: 'interstitial'})"
+                       ng-class="{sidebarBcg : $state.includes('data.interstitialStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;Interstitial</p>
+                    <p ui-sref="data.moreStatistics({adtype: 'more'})"
+                       ng-class="{sidebarBcg : $state.includes('data.moreStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;More</p>
+                    <p ui-sref="data.offerStatistics({adtype: 'offer'})"
+                       ng-class="{sidebarBcg : $state.includes('data.offerStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;Offer</p>
+                    <p ui-sref="data.picStatistics({adtype: 'pic'})"
+                       ng-class="{sidebarBcg : $state.includes('data.picStatistics')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;图片点击</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!--docment central-->
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dcCentrl">
+                <p class="panel-title"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;文档中心</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('document')}" id="dcCentrl">
+                <div class="panel-body">
+                    <p ui-sref="document.geoCode" ng-class="{sidebarBcg : $state.includes('document.geoCode')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;地区代码</p>
+                    <p ui-sref="document.geoextCode" ng-class="{sidebarBcg : $state.includes('document.geoextCode')}">
+                        <span class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;区域代码</p>
+                    <p ui-sref="document.marketInfo" ng-class="{sidebarBcg : $state.includes('document.marketInfo')}">
+                        <span class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;市场信息</p>
+                    <p ui-sref="document.language" ng-class="{sidebarBcg : $state.includes('document.language')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;语言代码</p>
+                    <p ui-sref="document.syscode" ng-class="{sidebarBcg : $state.includes('document.syscode')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;系统编码</p>
+                    <p ui-sref="document.testid" ng-class="{sidebarBcg : $state.includes('document.testid')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;TESTID</p>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--log about syn-->
+        <div class="panel panel-default">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#log">
+                <p class="panel-title"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;操作日志</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('log')}" id="log">
+                <div class="panel-body">
+                    <p ui-sref="log.logSyn" ng-class="{sidebarBcg : $state.includes('log.logSyn')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;发布日志</p>
+                </div>
+            </div>
+        </div>
+
+        <!--testid-->
+        <div class="panel panel-default" ng-if="!isSubAccount||jurisdiction.testid">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#test">
+                <p class="panel-title"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;应用测试</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('test')}" id="test">
+                <div class="panel-body">
+                    <p ui-sref="test.testApp" ng-class="{sidebarBcg : $state.includes('test.testApp')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;测试id</p>
+                </div>
+                <div class="panel-body">
+                    <p ui-sref="test.testAppPub" ng-class="{sidebarBcg : $state.includes('test.testAppPub')}"><span
+                            class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;测试id发布</p>
+                </div>
+            </div>
+        </div>
+
+        <!--subaccount-->
+        <div class="panel panel-default" ng-if="!isSubAccount">
+            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#account">
+                <p class="panel-title"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;权限管理</p>
+            </div>
+            <div class="secondMenu collapse" ng-class="{in:$state.includes('account')}" id="account">
+                <div class="panel-body">
+                    <p ui-sref="account.subAccount" ng-class="{sidebarBcg : $state.includes('account.subAccount')}">
+                        <span class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;子账户</p>
+                </div>
+            </div>
+        </div>
+
+        <!--timingTask-->
+        <!--<div class="panel panel-default" ng-if="user.adAuth && (!isSubAccount || jurisdiction.timingTask)">-->
+        <!--<div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#timingTask">-->
+        <!--<p class="panel-title"><span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;定时任务</p>-->
+        <!--</div>-->
+        <!--<div class="secondMenu collapse" ng-class="{in:$state.includes('timingTask')}" id="timingTask">-->
+        <!--<div class="panel-body">-->
+        <!--<p ui-sref="timingTask.taskAdStrategyInfo"  ng-class="{sidebarBcg : $state.includes('timingTask.taskAdStrategyInfo')}"><span class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;任务策略</p>-->
+        <!--<p ui-sref="timingTask.taskAdStrategyInsert"  ng-class="{sidebarBcg : $state.includes('timingTask.taskAdStrategyInsert')}"><span class="glyphicon glyphicon-record"></span>&nbsp;新增策略</p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</nav>
+

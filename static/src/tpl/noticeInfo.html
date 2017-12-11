@@ -1,0 +1,56 @@
+<div class="panel panel-default form-group">
+    <div class="panel-body" ng-if="infos.length !== 0">
+        <table class="table table-bordered table-hover">
+
+            <tr class="tableTitle">
+                <td>序号</td>
+                <td class="td_width200">创建时间</td>
+                <td>主题</td>
+                <td class="td_width200">操作</td>
+            </tr>
+
+            <tr ng-repeat="info in infos">
+                <td>{{$index+1}}</td>
+                <td class="td_width200">{{info.ctime}}</td>
+                <td>{{info.title}}</td>
+                <td class="td_width200">
+                    <a href="" class="glyphicon glyphicon-eye-open" data-target="#noticeInfoModal" data-toggle="modal" ng-click="showNoticeInfo($index)">查看内容</a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<p class="nothing" ng-if="infos.length == 0">
+    暂无数据信息
+</p>
+
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+<!--the modal 系统通知-->
+<div class="modal fade modalPosition" id="noticeInfoModal">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body clearfix" >
+            <div class="form-group">
+                <span class="modalSpan">主题：</span>
+                <input class="modalInput" ng-model="showInfo.title" disabled>
+            </div>
+
+            <div class="form-group">
+                <span class="modalSpan">内容：</span>
+                <textarea ng-model="showInfo.content" class="paramTextarea" disabled></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

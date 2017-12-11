@@ -1,0 +1,116 @@
+<div class="panel panel-default form-group">
+    <div class="panel-heading">
+        <span class="panel-title">
+            广告策略列表
+        </span>
+        <input type="search" placeholder="按策略名称搜索" ng-model="condition.query" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered">
+            <tr class="tableTitle">
+                <td class="text-center">策略名称</td>
+                <td class="td_width120">策略级别</td>
+                <td class="text-center">操作</td>
+            </tr>
+            <tr ng-repeat="adStrategy in adStrategys">
+                <td class="text-center">{{adStrategy.name}}</td>
+                <td class="td_width120">{{adStrategy.default}}</td>
+                <td class="text-center" >
+                    <a href="" data-toggle="modal" ng-click="showUpdateModal(adStrategy, 'all')" data-target="#showUpdateModal" style="width:80px;">编&nbsp;辑</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="" data-toggle="modal" ng-click="copyStrategyModal(adStrategy)" data-target="#copyStrategyModal" style="width:80px;">复&nbsp;制</a>&nbsp;&nbsp;&nbsp;
+
+                    <a href="" data-toggle="modal" ng-click="showUpdateModal(adStrategy, 'native')" data-target="#adStrategyNodeModel">native</a>&nbsp;&nbsp;&nbsp;
+                    <a href="" data-toggle="modal" ng-click="showUpdateModal(adStrategy, 'interstitial')" data-target="#adStrategyNodeModel">interstitial</a>&nbsp;&nbsp;&nbsp;
+                    <a href="" data-toggle="modal" ng-click="showUpdateModal(adStrategy, 'banner')" data-target="#adStrategyNodeModel">banner</a>&nbsp;&nbsp;&nbsp;
+                    <a href="" data-toggle="modal" ng-click="showUpdateModal(adStrategy, 'video')" data-target="#adStrategyNodeModel">video</a>&nbsp;&nbsp;&nbsp;
+                    <a href="" data-toggle="modal" ng-click="showUpdateModal(adStrategy, 'idext')" data-target="#adStrategyNodeModel">idext</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!--分页-->
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+<p class="nothing" ng-if="adStrategys.length == 0">
+    暂无数据信息
+</p>
+
+<!--编辑广告策略-->
+<div class="modal fade height100" id="showUpdateModal">
+    <div class="modal-content height100">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body height100">
+            <p>广告策略名称:&nbsp;<input type="text" class="searchInput" ng-model="newName"></p>
+            <div ng-jsoneditor ng-model="mystrategy.value" ng-if="default === '0'" options="options" style="height: 50%;"></div>
+            <div ng-jsoneditor ng-model="mystrategy.value" ng-if="default === '1'" options="options" style="height: 85%!important;"></div>
+            <div style="margin-top:20px;" ng-if="default === '0'">
+                <p>已添加的用户:</p>
+                <div class="form-group overflow_y" ng-class="{wraps:myusers.length !== 0}">
+                    <label ng-repeat="user in myusers" class="btn btn-default label142" ng-click="delUser($index)">
+                        {{user.showName}}
+                    </label>
+                </div>
+                <p>未添加的用户:</p>
+                <div class="form-group overflow_y" ng-class="{wraps:users.length !== 0}">
+                    <label ng-repeat="user in users" class="btn btn-default label142" ng-click="addUser($index)">
+                        {{user.showName}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-info returnJson" ng-click="updateAdStrategy()">保&nbsp;&nbsp;存</button>
+
+    </div>
+</div>
+
+<!--复制广告策略-->
+<div class="modal fade" id="copyStrategyModal">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix">
+                <span>策略名称：</span>
+                <input ng-model="copystrategy.name" class="searchInput" style="width:480px;">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="copyAdStrategy()">确&nbsp;&nbsp;定</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="adStrategyNodeModel">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body clearfix" >
+            <div class="clearfix">
+                <p ng-if="adStrategyNodeType === 'native'">{{newName}}>{{adStrategyNodeType}}</p>
+                <div>
+                    <div ng-if="adStrategyNodeType === 'native'" ng-jsoneditor ng-model="mystrategy.value.native" options="options" class="height300"></div>
+                    <div ng-if="adStrategyNodeType === 'interstitial'" ng-jsoneditor ng-model="mystrategy.value.interstitial" options="options" class="height300"></div>
+                    <div ng-if="adStrategyNodeType === 'banner'" ng-jsoneditor ng-model="mystrategy.value.banner" options="options" class="height300"></div>
+                    <div ng-if="adStrategyNodeType === 'video'" ng-jsoneditor ng-model="mystrategy.value.video" options="options" class="height300"></div>
+                    <div ng-if="adStrategyNodeType === 'idext'" ng-jsoneditor ng-model="mystrategy.value.idext" options="options" class="height300"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="updateAdStrategy()">保&nbsp;&nbsp;存</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p ng-if="platform == '1'" >Android 唯一APPKEY为： </p>
+                <p ng-if="platform == '2'">iOS 唯一APPKEY为： </p>
+                <p ng-if="platform == '3'">windowsPhone 唯一APPKEY为： </p>
+            </div>
+            <div class="panel-body" ng-repeat="appkey in appkeys">
+                <div class="popover-content text-center">
+                    {{appkey.appkey}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

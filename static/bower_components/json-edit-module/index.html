@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link href="jsoneditor.css" rel="stylesheet" />
+		<script src="angular.min.js"></script>
+		<script src="angular-file-input.js"></script>
+		<script src="jsoneditor.js"></script>
+		<script src="ng-jsoneditor.js"></script>
+		<script>
+			angular
+			.module('app', ['angularFileInput', 'ng.jsoneditor'])
+			.controller('DemoCtrl', ['$scope', function ($scope) {
+				var jsonData = {},
+					options = {
+						mode: 'tree',
+    					modes: ['code', 'form', 'text', 'tree', 'view']
+					};
+				$scope.data = jsonData;
+				$scope.options = options;
+
+				$scope.callback = function (file) {
+					jsonData = JSON.parse(file.content);
+					$scope.jsonfile = file; 
+					$scope.data = jsonData;
+					$scope.isJson = ($scope.jsonfile.name.split('.')[1] == 'json'); 
+				};	
+
+				$scope.showJson = function() {
+					window.alert(angular.toJson($scope.data, true));
+				};
+
+
+			}]);
+		</script>
+	</head>
+	<body ng-app="app">
+		<div ng-controller="DemoCtrl">
+			<ng-file-input mode="text" callback="callback(file)"></ng-file-input>
+			<div ng-jsoneditor ng-model="data" ng-show="isJson" options="options"
+				style="height:400px"></div>
+			<button ng-click="showJson()" style="width:80px;height:30px">show</button>
+		</div>
+	</body>
+</html>

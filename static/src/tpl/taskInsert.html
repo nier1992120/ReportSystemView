@@ -1,0 +1,28 @@
+<div ng-jsoneditor ng-model="data"  options="options" class="jsontxt"></div>
+<!--<div>输入任务组描述(必填):
+<input type="text" ng-model="describe" required style="width:250px;height:40px">
+<br></div>-->
+<!--<br>注：请将任务权重weight设置在-1和10000之间！<br>
+<br><br>-->
+
+<div class="form-group" style="position: relative">
+    <ng-file-input mode="text" callback="callback(file)"  class="ng-file-input"></ng-file-input>
+    <button class="btn btn-info btn-s" style="position: absolute; top: -4px;" ng-click="submit()">保&nbsp;&nbsp;存</button>
+    <button class="btn btn-info btn-s" style="position: absolute; top: -4px; left: 220px;" data-toggle="modal" data-target="#fullpage">全&nbsp;&nbsp;屏</button>
+</div>
+<br>JSON文件格式参考：{"describe" : "描述" , "switch" : "开关" , "condition" : "条件" , "tasks" : [ { 任务节点1 } , { 任务节点2 }...] }
+
+<div class="bg-danger clearfix panel-body" ng-if="errors.length != 0">
+    <p style="text-indent: 10px;" class="text-danger"  ng-repeat="error in errors">error : {{error.error}}</p>
+</div>
+
+
+<div class="modal fade height100" id="fullpage">
+    <div class="modal-content height100">
+        <div class="modal-body height100">
+            <div ng-jsoneditor ng-model="data"  options="options" class="jsontxt height100"></div>
+        </div>
+        <button class="btn btn-info returnJson" data-dismiss="modal">返&nbsp;&nbsp;回</button>
+
+    </div>
+</div>

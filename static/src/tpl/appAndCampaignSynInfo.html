@@ -1,0 +1,24 @@
+<button class="btn btn-info" ng-if="upload" ng-click="newSynInfo()">刷新发布信息</button>
+<p ng-if="showDelaytime">预计发布所需时间:<strong>{{second}}</strong>秒,请耐心等待!</p>
+
+<div class="panel-body" ng-if="list.length !== 0">
+    <table class="table table-bordered table-hover">
+        <tr class="tableTitle">
+            <td>icon</td>
+            <td class="td_width120">name</td>
+            <td class="td_width120">状态</td>
+            <td>信息</td>
+        </tr>
+        <tr ng-repeat="info in list" class="listCont">
+            <td><img ngf-src="info.icon||'img/100991_icon_01.png'"></td>
+            <td class="td_width120">{{info.name}}</td>
+            <td class="td_width120" ng-if="info.status === '0'">等待发布</td>
+            <td class="td_width180" ng-if="info.status === '1'">发布完成!</td>
+            <td class="td_width180" ng-if="info.status === '2'">正在发布...</td>
+            <td>{{info.info}}</td>
+        </tr>
+    </table>
+</div>
+
+<!--分页-->
+<nav class="text-right" gen-pagination="pagination"></nav>
