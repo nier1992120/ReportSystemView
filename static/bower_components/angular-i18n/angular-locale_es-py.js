@@ -4,8 +4,13 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "a.\u00a0m.",
       "p.\u00a0m."
+=======
+      "a. m.",
+      "p. m."
+>>>>>>> develop
     ],
     "DAY": [
       "domingo",
@@ -34,7 +39,11 @@ $provide.value("$locale", {
       "junio",
       "julio",
       "agosto",
+<<<<<<< HEAD
       "setiembre",
+=======
+      "septiembre",
+>>>>>>> develop
       "octubre",
       "noviembre",
       "diciembre"
@@ -57,17 +66,39 @@ $provide.value("$locale", {
       "jun.",
       "jul.",
       "ago.",
+<<<<<<< HEAD
       "set.",
+=======
+      "sept.",
+>>>>>>> develop
       "oct.",
       "nov.",
       "dic."
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d 'de' MMMM 'de' y",
     "longDate": "d 'de' MMMM 'de' y",
+<<<<<<< HEAD
     "medium": "d 'de' MMM 'de' y h:mm:ss a",
     "mediumDate": "d 'de' MMM 'de' y",
     "mediumTime": "h:mm:ss a",
@@ -77,6 +108,17 @@ $provide.value("$locale", {
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "Gs",
+=======
+    "medium": "d MMM y HH:mm:ss",
+    "mediumDate": "d MMM y",
+    "mediumTime": "HH:mm:ss",
+    "short": "d/M/yy HH:mm",
+    "shortDate": "d/M/yy",
+    "shortTime": "HH:mm"
+  },
+  "NUMBER_FORMATS": {
+    "CURRENCY_SYM": "Gs.",
+>>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": ".",
     "PATTERNS": [
@@ -94,8 +136,13 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+>>>>>>> develop
         "minInt": 1,
         "negPre": "\u00a4\u00a0-",
         "negSuf": "",
@@ -105,6 +152,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "es-py",
+<<<<<<< HEAD
+=======
+  "localeID": "es_PY",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

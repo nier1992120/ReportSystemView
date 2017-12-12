@@ -197,11 +197,19 @@ require.relative = function(parent) {
   return localRequire;
 };
 require.register("store/dist/store2.js", function(exports, require, module){
+<<<<<<< HEAD
 /*! store2 - v2.3.0 - 2015-05-22
 * Copyright (c) 2015 Nathan Bubna; Licensed MIT, GPL */
 ;(function(window, define) {
     var _ = {
         version: "2.3.0",
+=======
+/*! store2 - v2.5.9 - 2017-10-26
+* Copyright (c) 2017 Nathan Bubna; Licensed (MIT OR GPL-3.0) */
+;(function(window, define) {
+    var _ = {
+        version: "2.5.9",
+>>>>>>> develop
         areas: {},
         apis: {},
 
@@ -240,8 +248,14 @@ require.register("store/dist/store2.js", function(exports, require, module){
         Store: function(id, area, namespace) {
             var store = _.inherit(_.storeAPI, function(key, data, overwrite) {
                 if (arguments.length === 0){ return store.getAll(); }
+<<<<<<< HEAD
                 if (data !== undefined){ return store.set(key, data, overwrite); }
                 if (typeof key === "string"){ return store.get(key); }
+=======
+                if (typeof data === "function"){ return store.transact(key, data, overwrite); }// fn=data, alt=overwrite
+                if (data !== undefined){ return store.set(key, data, overwrite); }
+                if (typeof key === "string" || typeof key === "number"){ return store.get(key); }
+>>>>>>> develop
                 if (!key){ return store.clear(); }
                 return store.setAll(key, data);// overwrite=data, data=key
             });
@@ -299,17 +313,29 @@ require.register("store/dist/store2.js", function(exports, require, module){
                 return !!(this._in(key) in this._area);
             },
             size: function(){ return this.keys().length; },
+<<<<<<< HEAD
             each: function(fn, and) {
                 for (var i=0, m=_.length(this._area); i<m; i++) {
                     var key = this._out(_.key(this._area, i));
                     if (key !== undefined) {
                         if (fn.call(this, key, and || this.get(key)) === false) {
+=======
+            each: function(fn, _and) {// _and is purely for internal use (see keys())
+                for (var i=0, m=_.length(this._area); i<m; i++) {
+                    var key = this._out(_.key(this._area, i));
+                    if (key !== undefined) {
+                        if (fn.call(this, key, _and || this.get(key)) === false) {
+>>>>>>> develop
                             break;
                         }
                     }
                     if (m > _.length(this._area)) { m--; i--; }// in case of removeItem
                 }
+<<<<<<< HEAD
                 return and || this;
+=======
+                return _and || this;
+>>>>>>> develop
             },
             keys: function() {
                 return this.each(function(k, list){ list.push(k); }, []);
@@ -321,6 +347,15 @@ require.register("store/dist/store2.js", function(exports, require, module){
             getAll: function() {
                 return this.each(function(k, all){ all[k] = this.get(k); }, {});
             },
+<<<<<<< HEAD
+=======
+            transact: function(key, fn, alt) {
+                var val = this.get(key, alt),
+                    ret = fn(val);
+                this.set(key, ret === undefined ? val : ret);
+                return this;
+            },
+>>>>>>> develop
             set: function(key, data, overwrite) {
                 var d = this.get(key);
                 if (d != null && overwrite === false) {
@@ -400,13 +435,20 @@ require.register("store/dist/store2.js", function(exports, require, module){
                 }
             },
             getItem: function(k){ return this.has(k) ? this.items[k] : null; },
+<<<<<<< HEAD
             clear: function(){ for (var k in this.list){ this.removeItem(k); } },
+=======
+            clear: function(){ for (var k in this.items){ this.removeItem(k); } },
+>>>>>>> develop
             toString: function(){ return this.length+' items in '+this.name+'Storage'; }
         }// end _.storageAPI
     };
 
+<<<<<<< HEAD
     // setup the primary store fn
     if (window.store){ _.conflict = window.store; }
+=======
+>>>>>>> develop
     var store =
         // safely set this up (throws error in IE10/32bit mode for local files)
         _.Store("local", (function(){try{ return localStorage; }catch(e){}})());
@@ -415,15 +457,27 @@ require.register("store/dist/store2.js", function(exports, require, module){
     // safely setup store.session (throws exception in FF for file:/// urls)
     store.area("session", (function(){try{ return sessionStorage; }catch(e){}})());
 
+<<<<<<< HEAD
     //Expose store to the global object
     window.store = store;
 
     if (typeof define === 'function' && define.amd !== undefined) {
         define(function () {
+=======
+    if (typeof define === 'function' && define.amd !== undefined) {
+        define('store2', [], function () {
+>>>>>>> develop
             return store;
         });
     } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = store;
+<<<<<<< HEAD
+=======
+    } else {
+        // expose the primary store fn to the global object and save conflicts
+        if (window.store){ _.conflict = window.store; }
+        window.store = store;
+>>>>>>> develop
     }
 
 })(this, this.define);
@@ -597,6 +651,16 @@ require.register("store/src/store.measure.js", function(exports, require, module
  */
 ;(function(store, _) {
 
+<<<<<<< HEAD
+=======
+    function put(area, s) {
+        try {
+            area.setItem("__test__", s);
+            return true;
+        } catch (e) {}
+    }
+
+>>>>>>> develop
     _.fn('remainingSpace', function() {
         return this._area.remainingSpace;
     });
@@ -633,6 +697,7 @@ require.register("store/src/store.measure.js", function(exports, require, module
         return store.charsUsed() + store.charsLeft(test);
     });
 
+<<<<<<< HEAD
     function put(area, s) {
         try {
             area.setItem("__test__", s);
@@ -640,6 +705,8 @@ require.register("store/src/store.measure.js", function(exports, require, module
         } catch (e) {}
     }
 
+=======
+>>>>>>> develop
 })(window.store, window.store._);
 });
 require.register("store/src/store.old.js", function(exports, require, module){
@@ -658,6 +725,17 @@ require.register("store/src/store.old.js", function(exports, require, module){
  */
 ;(function(window, document, store, _) {
 
+<<<<<<< HEAD
+=======
+    function addUpdateFn(area, name, update) {
+        var old = area[name];
+        area[name] = function() {
+            var ret = old.apply(this, arguments);
+            update.apply(this, arguments);
+            return ret;
+        };
+    }
+>>>>>>> develop
     function create(name, items, update) {
         var length = 0;
         for (var k in items) {
@@ -672,6 +750,7 @@ require.register("store/src/store.old.js", function(exports, require, module){
         }
         return area;
     }
+<<<<<<< HEAD
     function addUpdateFn(area, name, update) {
         var old = area[name];
         area[name] = function() {
@@ -680,6 +759,8 @@ require.register("store/src/store.old.js", function(exports, require, module){
             return ret;
         };
     }
+=======
+>>>>>>> develop
 
     if (store.isFake()) {
         var area;

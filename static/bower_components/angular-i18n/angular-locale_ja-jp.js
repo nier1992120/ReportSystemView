@@ -62,6 +62,23 @@ $provide.value("$locale", {
       "11\u6708",
       "12\u6708"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "1\u6708",
+      "2\u6708",
+      "3\u6708",
+      "4\u6708",
+      "5\u6708",
+      "6\u6708",
+      "7\u6708",
+      "8\u6708",
+      "9\u6708",
+      "10\u6708",
+      "11\u6708",
+      "12\u6708"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -94,10 +111,17 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
         "negPre": "\u00a4-",
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+        "minInt": 1,
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -105,6 +129,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "ja-jp",
+<<<<<<< HEAD
+=======
+  "localeID": "ja_JP",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

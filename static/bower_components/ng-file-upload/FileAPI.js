@@ -275,7 +275,10 @@
 			return attr in input;
 		},
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 		/**
 		 * FileAPI (core object)
 		 */
@@ -340,8 +343,14 @@
 			},
 
 			log: function (){
+<<<<<<< HEAD
 				if( api.debug && window.console && console.log ){
 					if( console.log.apply ){
+=======
+				// ngf fix for IE8 #1071
+				if( api.debug && api._supportConsoleLog ){
+					if( api._supportConsoleLogApply ){
+>>>>>>> develop
 						console.log.apply(console, arguments);
 					}
 					else {
@@ -1530,7 +1539,11 @@
 			}
 		}
 		else {
+<<<<<<< HEAD
 			_emit(file, fn, 'error', undef, { error: 'filreader_not_support_'+as });
+=======
+			_emit(file, fn, 'error', undef, { error: 'FileReader_not_support_'+as });
+>>>>>>> develop
 		}
 	}
 
@@ -1791,7 +1804,16 @@
 	});
 
 
+<<<<<<< HEAD
 	// @configuration
+=======
+	// configuration
+	try {
+		api._supportConsoleLog = !!console.log;
+		api._supportConsoleLogApply = !!console.log.apply;
+	} catch (err) {}
+
+>>>>>>> develop
 	if( !api.flashUrl ){ api.flashUrl = api.staticPath + 'FileAPI.flash.swf'; }
 	if( !api.flashImageUrl ){ api.flashImageUrl = api.staticPath + 'FileAPI.flash.image.swf'; }
 	if( !api.flashWebcamUrl ){ api.flashWebcamUrl = api.staticPath + 'FileAPI.flash.camera.swf'; }

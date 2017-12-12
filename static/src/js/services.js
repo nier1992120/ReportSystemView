@@ -243,37 +243,38 @@ adBoost
 .factory('JSONKit', function () {
     return window.JSONKit;
 })
-.factory('confirmDialog', ['ModalService',
-    function(ModalService) {
-        return function(modalcontent,true_callback, false_callback) {
-            ModalService.showModal({
-                templateUrl:'confirmDialog.html',
-                controller:'confirmController'
-            }).then(function(modal) {
-                modal.element.modal({backdrop: 'static'});
-                modal.scope.modalTitle = modalcontent.message;
-                modal.scope.name = modalcontent.name;
-                modal.scope.icon = modalcontent.icon;
-                console.log(modalcontent.icon);
-                modal.scope.isConfirmDialog = true;
-                modal.close.then(function(result) {
-                    (result ? true_callback : false_callback)();
-                });
-            });
-        };
-}]).factory('alertDialog', ['ModalService', function(ModalService) {
-        return function(modalTitle) {
-            ModalService.showModal({
-                templateUrl:'confirmDialog.html',
-                controller:'confirmController'
-            }).then(function(modal) {
-                modal.element.modal();
-                modal.scope.modalTitle = modalTitle;
-                modal.scope.isAlertDialog = true;
-                modal.close.then();
-            });
-        };
-}]).factory('GetDateStr', function() {
+// .factory('confirmDialog', ['ModalService',
+//     function(ModalService) {
+//         return function(modalcontent,true_callback, false_callback) {
+//             ModalService.showModal({
+//                 templateUrl:'confirmDialog.html',
+//                 controller:'confirmController'
+//             }).then(function(modal) {
+//                 modal.element.modal({backdrop: 'static'});
+//                 modal.scope.modalTitle = modalcontent.message;
+//                 modal.scope.name = modalcontent.name;
+//                 modal.scope.icon = modalcontent.icon;
+//                 console.log(modalcontent.icon);
+//                 modal.scope.isConfirmDialog = true;
+//                 modal.close.then(function(result) {
+//                     (result ? true_callback : false_callback)();
+//                 });
+//             });
+//         };
+// }]).factory('alertDialog', ['ModalService', function(ModalService) {
+//         return function(modalTitle) {
+//             ModalService.showModal({
+//                 templateUrl:'confirmDialog.html',
+//                 controller:'confirmController'
+//             }).then(function(modal) {
+//                 modal.element.modal();
+//                 modal.scope.modalTitle = modalTitle;
+//                 modal.scope.isAlertDialog = true;
+//                 modal.close.then();
+//             });
+//         };
+// }])
+    .factory('GetDateStr', function() {
     return function(AddDayCount) {
         var dd = new Date();
         if(AddDayCount !== "-1") {

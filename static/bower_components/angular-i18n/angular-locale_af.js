@@ -40,6 +40,7 @@ $provide.value("$locale", {
       "Desember"
     ],
     "SHORTDAY": [
+<<<<<<< HEAD
       "So",
       "Ma",
       "Di",
@@ -47,11 +48,21 @@ $provide.value("$locale", {
       "Do",
       "Vr",
       "Sa"
+=======
+      "So.",
+      "Ma.",
+      "Di.",
+      "Wo.",
+      "Do.",
+      "Vr.",
+      "Sa."
+>>>>>>> develop
     ],
     "SHORTMONTH": [
       "Jan.",
       "Feb.",
       "Mrt.",
+<<<<<<< HEAD
       "Apr",
       "Mei",
       "Jun",
@@ -61,6 +72,31 @@ $provide.value("$locale", {
       "Okt",
       "Nov",
       "Des"
+=======
+      "Apr.",
+      "Mei",
+      "Jun.",
+      "Jul.",
+      "Aug.",
+      "Sep.",
+      "Okt.",
+      "Nov.",
+      "Des."
+    ],
+    "STANDALONEMONTH": [
+      "Januarie",
+      "Februarie",
+      "Maart",
+      "April",
+      "Mei",
+      "Junie",
+      "Julie",
+      "Augustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+>>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -68,12 +104,21 @@ $provide.value("$locale", {
     ],
     "fullDate": "EEEE, dd MMMM y",
     "longDate": "dd MMMM y",
+<<<<<<< HEAD
     "medium": "dd MMM y h:mm:ss a",
     "mediumDate": "dd MMM y",
     "mediumTime": "h:mm:ss a",
     "short": "y-MM-dd h:mm a",
     "shortDate": "y-MM-dd",
     "shortTime": "h:mm a"
+=======
+    "medium": "dd MMM y HH:mm:ss",
+    "mediumDate": "dd MMM y",
+    "mediumTime": "HH:mm:ss",
+    "short": "y-MM-dd HH:mm",
+    "shortDate": "y-MM-dd",
+    "shortTime": "HH:mm"
+>>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "R",
@@ -97,7 +142,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -105,6 +154,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "af",
+<<<<<<< HEAD
+=======
+  "localeID": "af",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

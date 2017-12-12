@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ;(function (root, factory) {
 	if (typeof exports === "object") {
 		// CommonJS
@@ -6,6 +7,16 @@
 	else if (typeof define === "function" && define.amd) {
 		// AMD
 		define(["./core"], factory);
+=======
+;(function (root, factory, undef) {
+	if (typeof exports === "object") {
+		// CommonJS
+		module.exports = exports = factory(require("./core"), require("./evpkdf"));
+	}
+	else if (typeof define === "function" && define.amd) {
+		// AMD
+		define(["./core", "./evpkdf"], factory);
+>>>>>>> develop
 	}
 	else {
 		// Global (browser)
@@ -466,11 +477,24 @@
 	                var modeCreator = mode.createEncryptor;
 	            } else /* if (this._xformMode == this._DEC_XFORM_MODE) */ {
 	                var modeCreator = mode.createDecryptor;
+<<<<<<< HEAD
 
 	                // Keep at least one block in the buffer for unpadding
 	                this._minBufferSize = 1;
 	            }
 	            this._mode = modeCreator.call(mode, this, iv && iv.words);
+=======
+	                // Keep at least one block in the buffer for unpadding
+	                this._minBufferSize = 1;
+	            }
+
+	            if (this._mode && this._mode.__creator == modeCreator) {
+	                this._mode.init(this, iv && iv.words);
+	            } else {
+	                this._mode = modeCreator.call(mode, this, iv && iv.words);
+	                this._mode.__creator = modeCreator;
+	            }
+>>>>>>> develop
 	        },
 
 	        _doProcessBlock: function (words, offset) {

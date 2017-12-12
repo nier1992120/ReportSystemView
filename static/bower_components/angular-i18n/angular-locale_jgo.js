@@ -39,8 +39,13 @@ $provide.value("$locale", {
       "ts\u025btts\u025bt m\u025b\u014bgu\ua78c mi \u025b\u0301 f\u00fan\u025b K\u025bl\u00eds\u025bt\u0254 t\u0254\u0301 m\u0254\u0301"
     ],
     "ERAS": [
+<<<<<<< HEAD
       "ts\u025btts\u025bt m\u025b\u014bgu\ua78c mi \u025b\u0301 l\u025b\u025bn\u025b K\u025bl\u00eds\u025bt\u0254 g\u0254 \u0144\u0254\u0301",
       "ts\u025btts\u025bt m\u025b\u014bgu\ua78c mi \u025b\u0301 f\u00fan\u025b K\u025bl\u00eds\u025bt\u0254 t\u0254\u0301 m\u0254\u0301"
+=======
+      "BCE",
+      "CE"
+>>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -80,6 +85,23 @@ $provide.value("$locale", {
       "P\u025bsa\u014b Nts\u0254\u030cpm\u0254\u0301",
       "P\u025bsa\u014b Nts\u0254\u030cpp\u00e1"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Ndu\u014bmbi Sa\u014b",
+      "P\u025bsa\u014b P\u025b\u0301p\u00e1",
+      "P\u025bsa\u014b P\u025b\u0301t\u00e1t",
+      "P\u025bsa\u014b P\u025b\u0301n\u025b\u0301kwa",
+      "P\u025bsa\u014b Pataa",
+      "P\u025bsa\u014b P\u025b\u0301n\u025b\u0301nt\u00fak\u00fa",
+      "P\u025bsa\u014b Saamb\u00e1",
+      "P\u025bsa\u014b P\u025b\u0301n\u025b\u0301f\u0254m",
+      "P\u025bsa\u014b P\u025b\u0301n\u025b\u0301pf\u00fa\ua78b\u00fa",
+      "P\u025bsa\u014b N\u025bg\u025b\u0301m",
+      "P\u025bsa\u014b Nts\u0254\u030cpm\u0254\u0301",
+      "P\u025bsa\u014b Nts\u0254\u030cpp\u00e1"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -115,7 +137,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4\u00a0-",
+=======
+        "negPre": "-\u00a4\u00a0",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -123,6 +149,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "jgo",
+<<<<<<< HEAD
+=======
+  "localeID": "jgo",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

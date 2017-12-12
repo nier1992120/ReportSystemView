@@ -29,7 +29,11 @@
     "tag": "v0.3.3",
     "commit": "1a2e882139522b1e737f5d6720d1e81a9bce8c9e"
   },
+<<<<<<< HEAD
   "_source": "git://github.com/teambition/jsonkit.git",
+=======
+  "_source": "https://github.com/teambition/jsonkit.git",
+>>>>>>> develop
   "_target": ">=0.3.0",
   "_originalSource": "jsonkit"
 }

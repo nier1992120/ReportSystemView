@@ -80,18 +80,44 @@ $provide.value("$locale", {
       "Nov",
       "Des"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Januari",
+      "Februari",
+      "Machi",
+      "Aprilyi",
+      "Mei",
+      "Junyi",
+      "Julyai",
+      "Agusti",
+      "Septemba",
+      "Oktoba",
+      "Novemba",
+      "Desemba"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
+<<<<<<< HEAD
     "medium": "d MMM y h:mm:ss a",
     "mediumDate": "d MMM y",
     "mediumTime": "h:mm:ss a",
     "short": "dd/MM/y h:mm a",
     "shortDate": "dd/MM/y",
     "shortTime": "h:mm a"
+=======
+    "medium": "d MMM y HH:mm:ss",
+    "mediumDate": "d MMM y",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd/MM/y HH:mm",
+    "shortDate": "dd/MM/y",
+    "shortTime": "HH:mm"
+>>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "TSh",
@@ -112,8 +138,13 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+>>>>>>> develop
         "minInt": 1,
         "negPre": "-",
         "negSuf": "\u00a4",
@@ -123,6 +154,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "rwk-tz",
+<<<<<<< HEAD
+=======
+  "localeID": "rwk_TZ",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -5,8 +5,11 @@ define( [
 	"../selector"
 ], function( jQuery, access, support ) {
 
+<<<<<<< HEAD
 "use strict";
 
+=======
+>>>>>>> develop
 var rfocusable = /^(?:input|select|textarea|button)$/i,
 	rclickable = /^(?:a|area)$/i;
 
@@ -59,6 +62,7 @@ jQuery.extend( {
 		tabIndex: {
 			get: function( elem ) {
 
+<<<<<<< HEAD
 				// Support: IE <=9 - 11 only
 				// elem.tabIndex doesn't always return the
 				// correct value when it hasn't been explicitly set
@@ -79,6 +83,20 @@ jQuery.extend( {
 				}
 
 				return -1;
+=======
+				// elem.tabIndex doesn't always return the
+				// correct value when it hasn't been explicitly set
+				// http://fluidproject.org/blog/2008/01/09/getting-setting-and-removing-tabindex-values-with-javascript/
+				// Use proper attribute retrieval(#12072)
+				var tabindex = jQuery.find.attr( elem, "tabindex" );
+
+				return tabindex ?
+					parseInt( tabindex, 10 ) :
+					rfocusable.test( elem.nodeName ) ||
+						rclickable.test( elem.nodeName ) && elem.href ?
+							0 :
+							-1;
+>>>>>>> develop
 			}
 		}
 	},
@@ -95,6 +113,7 @@ jQuery.extend( {
 // on the option
 // The getter ensures a default option is selected
 // when in an optgroup
+<<<<<<< HEAD
 // eslint rule "no-unused-expressions" is disabled for this code
 // since it considers such accessions noop
 if ( !support.optSelected ) {
@@ -103,6 +122,11 @@ if ( !support.optSelected ) {
 
 			/* eslint no-unused-expressions: "off" */
 
+=======
+if ( !support.optSelected ) {
+	jQuery.propHooks.selected = {
+		get: function( elem ) {
+>>>>>>> develop
 			var parent = elem.parentNode;
 			if ( parent && parent.parentNode ) {
 				parent.parentNode.selectedIndex;
@@ -110,9 +134,12 @@ if ( !support.optSelected ) {
 			return null;
 		},
 		set: function( elem ) {
+<<<<<<< HEAD
 
 			/* eslint no-unused-expressions: "off" */
 
+=======
+>>>>>>> develop
 			var parent = elem.parentNode;
 			if ( parent ) {
 				parent.selectedIndex;

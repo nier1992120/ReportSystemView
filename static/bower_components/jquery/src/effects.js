@@ -2,6 +2,7 @@ define( [
 	"./core",
 	"./var/document",
 	"./var/rcssNum",
+<<<<<<< HEAD
 	"./var/rnothtmlwhite",
 	"./css/var/cssExpand",
 	"./css/var/isHiddenWithinTree",
@@ -21,12 +22,30 @@ define( [
 	adjustCSS, dataPriv, showHide ) {
 
 "use strict";
+=======
+	"./css/var/cssExpand",
+	"./var/rnotwhite",
+	"./css/var/isHidden",
+	"./css/adjustCSS",
+	"./css/defaultDisplay",
+	"./data/var/dataPriv",
+
+	"./core/init",
+	"./effects/Tween",
+	"./queue",
+	"./css",
+	"./deferred",
+	"./traversing"
+], function( jQuery, document, rcssNum, cssExpand, rnotwhite,
+	isHidden, adjustCSS, defaultDisplay, dataPriv ) {
+>>>>>>> develop
 
 var
 	fxNow, timerId,
 	rfxtypes = /^(?:toggle|show|hide)$/,
 	rrun = /queueHooks$/;
 
+<<<<<<< HEAD
 function raf() {
 	if ( timerId ) {
 		window.requestAnimationFrame( raf );
@@ -34,6 +53,8 @@ function raf() {
 	}
 }
 
+=======
+>>>>>>> develop
 // Animations created synchronously will run synchronously
 function createFxNow() {
 	window.setTimeout( function() {
@@ -51,7 +72,11 @@ function genFx( type, includeWidth ) {
 	// If we include width, step value is 1 to do all cssExpand values,
 	// otherwise step value is 2 to skip over Left and Right
 	includeWidth = includeWidth ? 1 : 0;
+<<<<<<< HEAD
 	for ( ; i < 4; i += 2 - includeWidth ) {
+=======
+	for ( ; i < 4 ; i += 2 - includeWidth ) {
+>>>>>>> develop
 		which = cssExpand[ i ];
 		attrs[ "margin" + which ] = attrs[ "padding" + which ] = type;
 	}
@@ -78,6 +103,7 @@ function createTween( value, prop, animation ) {
 }
 
 function defaultPrefilter( elem, props, opts ) {
+<<<<<<< HEAD
 	var prop, value, toggle, hooks, oldfire, propTween, restoreDisplay, display,
 		isBox = "width" in props || "height" in props,
 		anim = this,
@@ -87,6 +113,17 @@ function defaultPrefilter( elem, props, opts ) {
 		dataShow = dataPriv.get( elem, "fxshow" );
 
 	// Queue-skipping animations hijack the fx hooks
+=======
+	/* jshint validthis: true */
+	var prop, value, toggle, tween, hooks, oldfire, display, checkDisplay,
+		anim = this,
+		orig = {},
+		style = elem.style,
+		hidden = elem.nodeType && isHidden( elem ),
+		dataShow = dataPriv.get( elem, "fxshow" );
+
+	// Handle queue: false promises
+>>>>>>> develop
 	if ( !opts.queue ) {
 		hooks = jQuery._queueHooks( elem, "fx" );
 		if ( hooks.unqueued == null ) {
@@ -112,6 +149,7 @@ function defaultPrefilter( elem, props, opts ) {
 		} );
 	}
 
+<<<<<<< HEAD
 	// Detect show/hide animations
 	for ( prop in props ) {
 		value = props[ prop ];
@@ -183,6 +221,27 @@ function defaultPrefilter( elem, props, opts ) {
 				}
 				style.display = "inline-block";
 			}
+=======
+	// Height/width overflow pass
+	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
+
+		// Make sure that nothing sneaks out
+		// Record all 3 overflow attributes because IE9-10 do not
+		// change the overflow attribute when overflowX and
+		// overflowY are set to the same value
+		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
+
+		// Set display property to inline-block for height/width
+		// animations on inline elements that are having width/height animated
+		display = jQuery.css( elem, "display" );
+
+		// Test default display if display is currently "none"
+		checkDisplay = display === "none" ?
+			dataPriv.get( elem, "olddisplay" ) || defaultDisplay( elem.nodeName ) : display;
+
+		if ( checkDisplay === "inline" && jQuery.css( elem, "float" ) === "none" ) {
+			style.display = "inline-block";
+>>>>>>> develop
 		}
 	}
 
@@ -195,6 +254,7 @@ function defaultPrefilter( elem, props, opts ) {
 		} );
 	}
 
+<<<<<<< HEAD
 	// Implement show/hide animations
 	propTween = false;
 	for ( prop in orig ) {
@@ -245,6 +305,75 @@ function defaultPrefilter( elem, props, opts ) {
 				propTween.start = 0;
 			}
 		}
+=======
+	// show/hide pass
+	for ( prop in props ) {
+		value = props[ prop ];
+		if ( rfxtypes.exec( value ) ) {
+			delete props[ prop ];
+			toggle = toggle || value === "toggle";
+			if ( value === ( hidden ? "hide" : "show" ) ) {
+
+				// If there is dataShow left over from a stopped hide or show
+				// and we are going to proceed with show, we should pretend to be hidden
+				if ( value === "show" && dataShow && dataShow[ prop ] !== undefined ) {
+					hidden = true;
+				} else {
+					continue;
+				}
+			}
+			orig[ prop ] = dataShow && dataShow[ prop ] || jQuery.style( elem, prop );
+
+		// Any non-fx value stops us from restoring the original display value
+		} else {
+			display = undefined;
+		}
+	}
+
+	if ( !jQuery.isEmptyObject( orig ) ) {
+		if ( dataShow ) {
+			if ( "hidden" in dataShow ) {
+				hidden = dataShow.hidden;
+			}
+		} else {
+			dataShow = dataPriv.access( elem, "fxshow", {} );
+		}
+
+		// Store state if its toggle - enables .stop().toggle() to "reverse"
+		if ( toggle ) {
+			dataShow.hidden = !hidden;
+		}
+		if ( hidden ) {
+			jQuery( elem ).show();
+		} else {
+			anim.done( function() {
+				jQuery( elem ).hide();
+			} );
+		}
+		anim.done( function() {
+			var prop;
+
+			dataPriv.remove( elem, "fxshow" );
+			for ( prop in orig ) {
+				jQuery.style( elem, prop, orig[ prop ] );
+			}
+		} );
+		for ( prop in orig ) {
+			tween = createTween( hidden ? dataShow[ prop ] : 0, prop, anim );
+
+			if ( !( prop in dataShow ) ) {
+				dataShow[ prop ] = tween.start;
+				if ( hidden ) {
+					tween.end = tween.start;
+					tween.start = prop === "width" || prop === "height" ? 1 : 0;
+				}
+			}
+		}
+
+	// If this is a noop like .hide().hide(), restore an overwritten display value
+	} else if ( ( display === "none" ? defaultDisplay( elem.nodeName ) : display ) === "inline" ) {
+		style.display = display;
+>>>>>>> develop
 	}
 }
 
@@ -302,14 +431,22 @@ function Animation( elem, properties, options ) {
 			var currentTime = fxNow || createFxNow(),
 				remaining = Math.max( 0, animation.startTime + animation.duration - currentTime ),
 
+<<<<<<< HEAD
 				// Support: Android 2.3 only
+=======
+				// Support: Android 2.3
+>>>>>>> develop
 				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
 				temp = remaining / animation.duration || 0,
 				percent = 1 - temp,
 				index = 0,
 				length = animation.tweens.length;
 
+<<<<<<< HEAD
 			for ( ; index < length; index++ ) {
+=======
+			for ( ; index < length ; index++ ) {
+>>>>>>> develop
 				animation.tweens[ index ].run( percent );
 			}
 
@@ -350,7 +487,11 @@ function Animation( elem, properties, options ) {
 					return this;
 				}
 				stopped = true;
+<<<<<<< HEAD
 				for ( ; index < length; index++ ) {
+=======
+				for ( ; index < length ; index++ ) {
+>>>>>>> develop
 					animation.tweens[ index ].run( 1 );
 				}
 
@@ -368,7 +509,11 @@ function Animation( elem, properties, options ) {
 
 	propFilter( props, animation.opts.specialEasing );
 
+<<<<<<< HEAD
 	for ( ; index < length; index++ ) {
+=======
+	for ( ; index < length ; index++ ) {
+>>>>>>> develop
 		result = Animation.prefilters[ index ].call( animation, elem, props, animation.opts );
 		if ( result ) {
 			if ( jQuery.isFunction( result.stop ) ) {
@@ -401,7 +546,10 @@ function Animation( elem, properties, options ) {
 }
 
 jQuery.Animation = jQuery.extend( Animation, {
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 	tweeners: {
 		"*": [ function( prop, value ) {
 			var tween = this.createTween( prop, value );
@@ -415,14 +563,22 @@ jQuery.Animation = jQuery.extend( Animation, {
 			callback = props;
 			props = [ "*" ];
 		} else {
+<<<<<<< HEAD
 			props = props.match( rnothtmlwhite );
+=======
+			props = props.match( rnotwhite );
+>>>>>>> develop
 		}
 
 		var prop,
 			index = 0,
 			length = props.length;
 
+<<<<<<< HEAD
 		for ( ; index < length; index++ ) {
+=======
+		for ( ; index < length ; index++ ) {
+>>>>>>> develop
 			prop = props[ index ];
 			Animation.tweeners[ prop ] = Animation.tweeners[ prop ] || [];
 			Animation.tweeners[ prop ].unshift( callback );
@@ -448,6 +604,7 @@ jQuery.speed = function( speed, easing, fn ) {
 		easing: fn && easing || easing && !jQuery.isFunction( easing ) && easing
 	};
 
+<<<<<<< HEAD
 	// Go to the end state if fx are off or if document is hidden
 	if ( jQuery.fx.off || document.hidden ) {
 		opt.duration = 0;
@@ -462,6 +619,11 @@ jQuery.speed = function( speed, easing, fn ) {
 			}
 		}
 	}
+=======
+	opt.duration = jQuery.fx.off ? 0 : typeof opt.duration === "number" ?
+		opt.duration : opt.duration in jQuery.fx.speeds ?
+			jQuery.fx.speeds[ opt.duration ] : jQuery.fx.speeds._default;
+>>>>>>> develop
 
 	// Normalize opt.queue - true/undefined/null -> "fx"
 	if ( opt.queue == null || opt.queue === true ) {
@@ -488,7 +650,11 @@ jQuery.fn.extend( {
 	fadeTo: function( speed, to, easing, callback ) {
 
 		// Show any hidden elements after setting opacity to 0
+<<<<<<< HEAD
 		return this.filter( isHiddenWithinTree ).css( "opacity", 0 ).show()
+=======
+		return this.filter( isHidden ).css( "opacity", 0 ).show()
+>>>>>>> develop
 
 			// Animate to the value specified
 			.end().animate( { opacity: to }, speed, easing, callback );
@@ -665,18 +831,26 @@ jQuery.fx.timer = function( timer ) {
 jQuery.fx.interval = 13;
 jQuery.fx.start = function() {
 	if ( !timerId ) {
+<<<<<<< HEAD
 		timerId = window.requestAnimationFrame ?
 			window.requestAnimationFrame( raf ) :
 			window.setInterval( jQuery.fx.tick, jQuery.fx.interval );
+=======
+		timerId = window.setInterval( jQuery.fx.tick, jQuery.fx.interval );
+>>>>>>> develop
 	}
 };
 
 jQuery.fx.stop = function() {
+<<<<<<< HEAD
 	if ( window.cancelAnimationFrame ) {
 		window.cancelAnimationFrame( timerId );
 	} else {
 		window.clearInterval( timerId );
 	}
+=======
+	window.clearInterval( timerId );
+>>>>>>> develop
 
 	timerId = null;
 };

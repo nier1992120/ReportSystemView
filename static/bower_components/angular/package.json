@@ -1,6 +1,10 @@
 {
   "name": "angular",
+<<<<<<< HEAD
   "version": "1.4.3",
+=======
+  "version": "1.6.7",
+>>>>>>> develop
   "description": "HTML enhanced for web apps",
   "main": "index.js",
   "scripts": {

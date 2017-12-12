@@ -50,6 +50,7 @@ $provide.value("$locale", {
     ],
     "SHORTMONTH": [
       "\u062c\u0646\u0648",
+<<<<<<< HEAD
       "\u0641\u0648\u0631\u06cc\u0647\u0654",
       "\u0645\u0627\u0631\u0633",
       "\u0622\u0648\u0631\u06cc\u0644",
@@ -62,6 +63,34 @@ $provide.value("$locale", {
       "\u0646\u0648\u0627\u0645\u0628\u0631",
       "\u062f\u0633\u0645"
     ],
+=======
+      "\u0641\u0628\u0631\u0648\u0631\u06cc",
+      "\u0645\u0627\u0631\u0686",
+      "\u0627\u067e\u0631\u06cc\u0644",
+      "\u0645\u06cc",
+      "\u062c\u0648\u0646",
+      "\u062c\u0648\u0644",
+      "\u0627\u06af\u0633\u062a",
+      "\u0633\u067e\u062a\u0645\u0628\u0631",
+      "\u0627\u06a9\u062a\u0648\u0628\u0631",
+      "\u0646\u0648\u0645\u0628\u0631",
+      "\u062f\u0633\u0645"
+    ],
+    "STANDALONEMONTH": [
+      "\u062c\u0646\u0648\u0631\u06cc",
+      "\u0641\u0628\u0631\u0648\u0631\u06cc",
+      "\u0645\u0627\u0631\u0686",
+      "\u0627\u067e\u0631\u06cc\u0644",
+      "\u0645\u06cc",
+      "\u062c\u0648\u0646",
+      "\u062c\u0648\u0644\u0627\u06cc",
+      "\u0627\u06af\u0633\u062a",
+      "\u0633\u067e\u062a\u0645\u0628\u0631",
+      "\u0627\u06a9\u062a\u0648\u0628\u0631",
+      "\u0646\u0648\u0645\u0628\u0631",
+      "\u062f\u0633\u0645\u0628\u0631"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       3,
       4
@@ -94,17 +123,30 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
         "negPre": "\u200e\u00a4-",
         "negSuf": "",
         "posPre": "\u200e\u00a4",
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+        "minInt": 1,
+        "negPre": "-\u00a4\u00a0",
+        "negSuf": "",
+        "posPre": "\u00a4\u00a0",
+>>>>>>> develop
         "posSuf": ""
       }
     ]
   },
   "id": "fa-af",
+<<<<<<< HEAD
+=======
+  "localeID": "fa_AF",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

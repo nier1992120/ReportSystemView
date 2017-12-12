@@ -4,8 +4,13 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "a.\u00a0m.",
       "p.\u00a0m."
+=======
+      "a. m.",
+      "p. m."
+>>>>>>> develop
     ],
     "DAY": [
       "domingo",
@@ -34,7 +39,11 @@ $provide.value("$locale", {
       "junio",
       "julio",
       "agosto",
+<<<<<<< HEAD
       "setiembre",
+=======
+      "septiembre",
+>>>>>>> develop
       "octubre",
       "noviembre",
       "diciembre"
@@ -57,26 +66,56 @@ $provide.value("$locale", {
       "jun.",
       "jul.",
       "ago.",
+<<<<<<< HEAD
       "set.",
+=======
+      "sep.",
+>>>>>>> develop
       "oct.",
       "nov.",
       "dic."
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d 'de' MMMM 'de' y",
     "longDate": "d 'de' MMMM 'de' y",
+<<<<<<< HEAD
     "medium": "d 'de' MMM 'de' y h:mm:ss a",
     "mediumDate": "d 'de' MMM 'de' y",
+=======
+    "medium": "d MMM y h:mm:ss a",
+    "mediumDate": "d MMM y",
+>>>>>>> develop
     "mediumTime": "h:mm:ss a",
     "short": "d/M/yy h:mm a",
     "shortDate": "d/M/yy",
     "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
+<<<<<<< HEAD
     "CURRENCY_SYM": "$",
+=======
+    "CURRENCY_SYM": "RD$",
+>>>>>>> develop
     "DECIMAL_SEP": ".",
     "GROUP_SEP": ",",
     "PATTERNS": [
@@ -97,7 +136,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -105,6 +148,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "es-do",
+<<<<<<< HEAD
+=======
+  "localeID": "es_DO",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

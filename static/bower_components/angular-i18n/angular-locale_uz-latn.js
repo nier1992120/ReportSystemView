@@ -17,6 +17,7 @@ $provide.value("$locale", {
       "shanba"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "M.A.",
       "E"
     ],
@@ -41,6 +42,32 @@ $provide.value("$locale", {
     ],
     "SHORTDAY": [
       "Yaksh",
+=======
+      "miloddan avvalgi",
+      "milodiy"
+    ],
+    "ERAS": [
+      "m.a.",
+      "milodiy"
+    ],
+    "FIRSTDAYOFWEEK": 0,
+    "MONTH": [
+      "yanvar",
+      "fevral",
+      "mart",
+      "aprel",
+      "may",
+      "iyun",
+      "iyul",
+      "avgust",
+      "sentabr",
+      "oktabr",
+      "noyabr",
+      "dekabr"
+    ],
+    "SHORTDAY": [
+      "Yak",
+>>>>>>> develop
       "Dush",
       "Sesh",
       "Chor",
@@ -49,6 +76,7 @@ $provide.value("$locale", {
       "Shan"
     ],
     "SHORTMONTH": [
+<<<<<<< HEAD
       "Yanv",
       "Fev",
       "Mar",
@@ -61,11 +89,40 @@ $provide.value("$locale", {
       "Okt",
       "Noya",
       "Dek"
+=======
+      "yan",
+      "fev",
+      "mar",
+      "apr",
+      "may",
+      "iyn",
+      "iyl",
+      "avg",
+      "sen",
+      "okt",
+      "noy",
+      "dek"
+    ],
+    "STANDALONEMONTH": [
+      "Yanvar",
+      "Fevral",
+      "Mart",
+      "Aprel",
+      "May",
+      "Iyun",
+      "Iyul",
+      "Avgust",
+      "Sentabr",
+      "Oktabr",
+      "Noyabr",
+      "Dekabr"
+>>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "EEEE, y MMMM dd",
     "longDate": "y MMMM d",
     "medium": "y MMM d HH:mm:ss",
@@ -77,6 +134,19 @@ $provide.value("$locale", {
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20ac",
+=======
+    "fullDate": "EEEE, d-MMMM, y",
+    "longDate": "d-MMMM, y",
+    "medium": "d-MMM, y HH:mm:ss",
+    "mediumDate": "d-MMM, y",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd/MM/yy HH:mm",
+    "shortDate": "dd/MM/yy",
+    "shortTime": "HH:mm"
+  },
+  "NUMBER_FORMATS": {
+    "CURRENCY_SYM": "so\u02bcm",
+>>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": "\u00a0",
     "PATTERNS": [
@@ -97,14 +167,25 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4\u00a0-",
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
+=======
+        "negPre": "-",
+        "negSuf": "\u00a0\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a0\u00a4"
+>>>>>>> develop
       }
     ]
   },
   "id": "uz-latn",
+<<<<<<< HEAD
+=======
+  "localeID": "uz_Latn",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

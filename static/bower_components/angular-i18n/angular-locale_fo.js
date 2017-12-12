@@ -22,8 +22,13 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "um fyrrapartur",
       "um seinnapartur"
+=======
+      "AM",
+      "PM"
+>>>>>>> develop
     ],
     "DAY": [
       "sunnudagur",
@@ -35,7 +40,11 @@ $provide.value("$locale", {
       "leygardagur"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "fyrir Krist",
+=======
+      "fyri Krist",
+>>>>>>> develop
       "eftir Krist"
     ],
     "ERAS": [
@@ -58,6 +67,7 @@ $provide.value("$locale", {
       "desember"
     ],
     "SHORTDAY": [
+<<<<<<< HEAD
       "sun",
       "m\u00e1n",
       "t\u00fds",
@@ -79,11 +89,49 @@ $provide.value("$locale", {
       "okt",
       "nov",
       "des"
+=======
+      "sun.",
+      "m\u00e1n.",
+      "t\u00fds.",
+      "mik.",
+      "h\u00f3s.",
+      "fr\u00ed.",
+      "ley."
+    ],
+    "SHORTMONTH": [
+      "jan.",
+      "feb.",
+      "mar.",
+      "apr.",
+      "mai",
+      "jun.",
+      "jul.",
+      "aug.",
+      "sep.",
+      "okt.",
+      "nov.",
+      "des."
+    ],
+    "STANDALONEMONTH": [
+      "januar",
+      "februar",
+      "mars",
+      "apr\u00edl",
+      "mai",
+      "juni",
+      "juli",
+      "august",
+      "september",
+      "oktober",
+      "november",
+      "desember"
+>>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "EEEE dd MMMM y",
     "longDate": "d. MMM y",
     "medium": "dd-MM-y HH:mm:ss",
@@ -95,6 +143,19 @@ $provide.value("$locale", {
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "kr",
+=======
+    "fullDate": "EEEE, d. MMMM y",
+    "longDate": "d. MMMM y",
+    "medium": "dd.MM.y HH:mm:ss",
+    "mediumDate": "dd.MM.y",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd.MM.yy HH:mm",
+    "shortDate": "dd.MM.yy",
+    "shortTime": "HH:mm"
+  },
+  "NUMBER_FORMATS": {
+    "CURRENCY_SYM": "kr.",
+>>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": ".",
     "PATTERNS": [
@@ -115,14 +176,25 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
+=======
+        "negPre": "-",
+        "negSuf": "\u00a0\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a0\u00a4"
+>>>>>>> develop
       }
     ]
   },
   "id": "fo",
+<<<<<<< HEAD
+=======
+  "localeID": "fo",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

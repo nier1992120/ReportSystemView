@@ -22,8 +22,13 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "AM",
       "PM"
+=======
+      "Asubuhi",
+      "Mchana"
+>>>>>>> develop
     ],
     "DAY": [
       "Jumapili",
@@ -39,8 +44,13 @@ $provide.value("$locale", {
       "Baada ya Kristo"
     ],
     "ERAS": [
+<<<<<<< HEAD
       "BC",
       "AD"
+=======
+      "KK",
+      "BK"
+>>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -80,18 +90,44 @@ $provide.value("$locale", {
       "Nov",
       "Des"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Januari",
+      "Februari",
+      "Machi",
+      "Aprili",
+      "Mei",
+      "Juni",
+      "Julai",
+      "Agosti",
+      "Septemba",
+      "Oktoba",
+      "Novemba",
+      "Desemba"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
+<<<<<<< HEAD
     "medium": "d MMM y h:mm:ss a",
     "mediumDate": "d MMM y",
     "mediumTime": "h:mm:ss a",
     "short": "dd/MM/y h:mm a",
     "shortDate": "dd/MM/y",
     "shortTime": "h:mm a"
+=======
+    "medium": "d MMM y HH:mm:ss",
+    "mediumDate": "d MMM y",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd/MM/y HH:mm",
+    "shortDate": "dd/MM/y",
+    "shortTime": "HH:mm"
+>>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "TSh",
@@ -115,7 +151,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -123,6 +163,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "sw",
+<<<<<<< HEAD
+=======
+  "localeID": "sw",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -17,6 +17,28 @@
 	 * CryptoJS core components.
 	 */
 	var CryptoJS = CryptoJS || (function (Math, undefined) {
+<<<<<<< HEAD
+=======
+	    /*
+	     * Local polyfil of Object.create
+	     */
+	    var create = Object.create || (function () {
+	        function F() {};
+
+	        return function (obj) {
+	            var subtype;
+
+	            F.prototype = obj;
+
+	            subtype = new F();
+
+	            F.prototype = null;
+
+	            return subtype;
+	        };
+	    }())
+
+>>>>>>> develop
 	    /**
 	     * CryptoJS namespace.
 	     */
@@ -31,7 +53,11 @@
 	     * Base object for prototypal inheritance.
 	     */
 	    var Base = C_lib.Base = (function () {
+<<<<<<< HEAD
 	        function F() {}
+=======
+
+>>>>>>> develop
 
 	        return {
 	            /**
@@ -54,8 +80,12 @@
 	             */
 	            extend: function (overrides) {
 	                // Spawn
+<<<<<<< HEAD
 	                F.prototype = this;
 	                var subtype = new F();
+=======
+	                var subtype = create(this);
+>>>>>>> develop
 
 	                // Augment
 	                if (overrides) {
@@ -63,7 +93,11 @@
 	                }
 
 	                // Create default initializer
+<<<<<<< HEAD
 	                if (!subtype.hasOwnProperty('init')) {
+=======
+	                if (!subtype.hasOwnProperty('init') || this.init === subtype.init) {
+>>>>>>> develop
 	                    subtype.init = function () {
 	                        subtype.$super.init.apply(this, arguments);
 	                    };
@@ -225,14 +259,21 @@
 	                    var thatByte = (thatWords[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
 	                    thisWords[(thisSigBytes + i) >>> 2] |= thatByte << (24 - ((thisSigBytes + i) % 4) * 8);
 	                }
+<<<<<<< HEAD
 	            } else if (thatWords.length > 0xffff) {
+=======
+	            } else {
+>>>>>>> develop
 	                // Copy one word at a time
 	                for (var i = 0; i < thatSigBytes; i += 4) {
 	                    thisWords[(thisSigBytes + i) >>> 2] = thatWords[i >>> 2];
 	                }
+<<<<<<< HEAD
 	            } else {
 	                // Copy all words at once
 	                thisWords.push.apply(thisWords, thatWords);
+=======
+>>>>>>> develop
 	            }
 	            this.sigBytes += thatSigBytes;
 
@@ -815,17 +856,33 @@
 	            // Shortcuts
 	            var base64StrLength = base64Str.length;
 	            var map = this._map;
+<<<<<<< HEAD
+=======
+	            var reverseMap = this._reverseMap;
+
+	            if (!reverseMap) {
+	                    reverseMap = this._reverseMap = [];
+	                    for (var j = 0; j < map.length; j++) {
+	                        reverseMap[map.charCodeAt(j)] = j;
+	                    }
+	            }
+>>>>>>> develop
 
 	            // Ignore padding
 	            var paddingChar = map.charAt(64);
 	            if (paddingChar) {
 	                var paddingIndex = base64Str.indexOf(paddingChar);
+<<<<<<< HEAD
 	                if (paddingIndex != -1) {
+=======
+	                if (paddingIndex !== -1) {
+>>>>>>> develop
 	                    base64StrLength = paddingIndex;
 	                }
 	            }
 
 	            // Convert
+<<<<<<< HEAD
 	            var words = [];
 	            var nBytes = 0;
 	            for (var i = 0; i < base64StrLength; i++) {
@@ -838,10 +895,31 @@
 	            }
 
 	            return WordArray.create(words, nBytes);
+=======
+	            return parseLoop(base64Str, base64StrLength, reverseMap);
+
+>>>>>>> develop
 	        },
 
 	        _map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
 	    };
+<<<<<<< HEAD
+=======
+
+	    function parseLoop(base64Str, base64StrLength, reverseMap) {
+	      var words = [];
+	      var nBytes = 0;
+	      for (var i = 0; i < base64StrLength; i++) {
+	          if (i % 4) {
+	              var bits1 = reverseMap[base64Str.charCodeAt(i - 1)] << ((i % 4) * 2);
+	              var bits2 = reverseMap[base64Str.charCodeAt(i)] >>> (6 - (i % 4) * 2);
+	              words[nBytes >>> 2] |= (bits1 | bits2) << (24 - (nBytes % 4) * 8);
+	              nBytes++;
+	          }
+	      }
+	      return WordArray.create(words, nBytes);
+	    }
+>>>>>>> develop
 	}());
 
 
@@ -3690,11 +3768,24 @@
 	                var modeCreator = mode.createEncryptor;
 	            } else /* if (this._xformMode == this._DEC_XFORM_MODE) */ {
 	                var modeCreator = mode.createDecryptor;
+<<<<<<< HEAD
 
 	                // Keep at least one block in the buffer for unpadding
 	                this._minBufferSize = 1;
 	            }
 	            this._mode = modeCreator.call(mode, this, iv && iv.words);
+=======
+	                // Keep at least one block in the buffer for unpadding
+	                this._minBufferSize = 1;
+	            }
+
+	            if (this._mode && this._mode.__creator == modeCreator) {
+	                this._mode.init(this, iv && iv.words);
+	            } else {
+	                this._mode = modeCreator.call(mode, this, iv && iv.words);
+	                this._mode.__creator = modeCreator;
+	            }
+>>>>>>> develop
 	        },
 
 	        _doProcessBlock: function (words, offset) {
@@ -4431,13 +4522,27 @@
 	     */
 	    var AES = C_algo.AES = BlockCipher.extend({
 	        _doReset: function () {
+<<<<<<< HEAD
 	            // Shortcuts
 	            var key = this._key;
+=======
+	            // Skip reset of nRounds has been set before and key did not change
+	            if (this._nRounds && this._keyPriorReset === this._key) {
+	                return;
+	            }
+
+	            // Shortcuts
+	            var key = this._keyPriorReset = this._key;
+>>>>>>> develop
 	            var keyWords = key.words;
 	            var keySize = key.sigBytes / 4;
 
 	            // Compute number of rounds
+<<<<<<< HEAD
 	            var nRounds = this._nRounds = keySize + 6
+=======
+	            var nRounds = this._nRounds = keySize + 6;
+>>>>>>> develop
 
 	            // Compute number of key schedule rows
 	            var ksRows = (nRounds + 1) * 4;

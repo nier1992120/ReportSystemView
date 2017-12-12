@@ -2,8 +2,11 @@ define( [
 	"../core"
 ], function( jQuery ) {
 
+<<<<<<< HEAD
 "use strict";
 
+=======
+>>>>>>> develop
 // Multifunctional method to get and set values of a collection
 // The value/s can optionally be executed if it's a function
 var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
@@ -53,6 +56,7 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 		}
 	}
 
+<<<<<<< HEAD
 	if ( chainable ) {
 		return elems;
 	}
@@ -63,6 +67,15 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 	}
 
 	return len ? fn( elems[ 0 ], key ) : emptyGet;
+=======
+	return chainable ?
+		elems :
+
+		// Gets
+		bulk ?
+			fn.call( elems ) :
+			len ? fn( elems[ 0 ], key ) : emptyGet;
+>>>>>>> develop
 };
 
 return access;

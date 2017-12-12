@@ -15,7 +15,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+<<<<<<< HEAD
       'bower_components/jquery/dist/jquery.js',
+=======
+      'bower_components/jquery/jquery.js',
+>>>>>>> develop
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/bootstrap-switch/dist/js/bootstrap-switch.js',
@@ -27,14 +31,22 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> develop
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> develop
     },
 
 
@@ -63,7 +75,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+<<<<<<< HEAD
     browsers: ['Chrome', 'Firefox', 'IE', 'PhantomJS'],
+=======
+    browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+>>>>>>> develop
 
 
     // Continuous Integration mode

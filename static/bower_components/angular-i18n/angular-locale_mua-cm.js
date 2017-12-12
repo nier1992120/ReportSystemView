@@ -80,6 +80,23 @@ $provide.value("$locale", {
       "FGW",
       "FYU"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "F\u0129i Loo",
+      "Cokcwakla\u014bne",
+      "Cokcwaklii",
+      "F\u0129i Marfoo",
+      "Mad\u01dd\u01dduut\u01ddbija\u014b",
+      "Mam\u01dd\u014bgw\u00e3afahbii",
+      "Mam\u01dd\u014bgw\u00e3alii",
+      "Mad\u01ddmbii",
+      "F\u0129i D\u01dd\u0253lii",
+      "F\u0129i Munda\u014b",
+      "F\u0129i Gwahlle",
+      "F\u0129i Yuru"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -112,10 +129,17 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
         "negPre": "\u00a4-",
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+        "minInt": 1,
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -123,6 +147,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "mua-cm",
+<<<<<<< HEAD
+=======
+  "localeID": "mua_CM",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

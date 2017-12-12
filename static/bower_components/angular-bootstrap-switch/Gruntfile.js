@@ -79,7 +79,11 @@ module.exports = function (grunt) {
         src: ['<%= yeoman.dist %>/<%= yeoman.temp %>']
       }
     },
+<<<<<<< HEAD
     ngmin: {
+=======
+    ngAnnotate: {
+>>>>>>> develop
       dist: {
         expand: true,
         cwd: '<%= yeoman.src %>',
@@ -122,11 +126,19 @@ module.exports = function (grunt) {
 
   // Build the directive
   //  - clean, cleans the output directory
+<<<<<<< HEAD
   //  - ngmin, prepares the angular files
   //  - concat, concatenates and adds a banner to the debug file
   //  - uglify, minifies and adds a banner to the minified file
   //  - clean:temp, cleans the ngmin-ified directory
   grunt.registerTask('build', ['clean', 'ngmin', 'concat', 'uglify', 'clean:temp']);
+=======
+  //  - ngAnnotate, prepares the angular files
+  //  - concat, concatenates and adds a banner to the debug file
+  //  - uglify, minifies and adds a banner to the minified file
+  //  - clean:temp, cleans the ngAnnotate-ified directory
+  grunt.registerTask('build', ['clean', 'ngAnnotate', 'concat', 'uglify', 'clean:temp']);
+>>>>>>> develop
 
   // Default task, do everything
   grunt.registerTask('default', ['test-travis', 'build']);

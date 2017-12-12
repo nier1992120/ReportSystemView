@@ -1,14 +1,23 @@
 define( [
 	"./core",
+<<<<<<< HEAD
 	"./var/rnothtmlwhite"
 ], function( jQuery, rnothtmlwhite ) {
 
 "use strict";
+=======
+	"./var/rnotwhite"
+], function( jQuery, rnotwhite ) {
+>>>>>>> develop
 
 // Convert String-formatted options into Object-formatted ones
 function createOptions( options ) {
 	var object = {};
+<<<<<<< HEAD
 	jQuery.each( options.match( rnothtmlwhite ) || [], function( _, flag ) {
+=======
+	jQuery.each( options.match( rnotwhite ) || [], function( _, flag ) {
+>>>>>>> develop
 		object[ flag ] = true;
 	} );
 	return object;
@@ -193,7 +202,11 @@ jQuery.Callbacks = function( options ) {
 			// Abort any pending executions
 			lock: function() {
 				locked = queue = [];
+<<<<<<< HEAD
 				if ( !memory && !firing ) {
+=======
+				if ( !memory ) {
+>>>>>>> develop
 					list = memory = "";
 				}
 				return this;

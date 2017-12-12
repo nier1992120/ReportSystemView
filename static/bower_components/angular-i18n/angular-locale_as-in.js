@@ -80,10 +80,28 @@ $provide.value("$locale", {
       "\u09a8\u09ad\u09c7",
       "\u09a1\u09bf\u09b8\u09c7"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u099c\u09be\u09a8\u09c1\u09f1\u09be\u09f0\u09c0",
+      "\u09ab\u09c7\u09ac\u09cd\u09f0\u09c1\u09f1\u09be\u09f0\u09c0",
+      "\u09ae\u09be\u09f0\u09cd\u099a",
+      "\u098f\u09aa\u09cd\u09f0\u09bf\u09b2",
+      "\u09ae\u09c7",
+      "\u099c\u09c1\u09a8",
+      "\u099c\u09c1\u09b2\u09be\u0987",
+      "\u0986\u0997\u09b7\u09cd\u099f",
+      "\u099b\u09c7\u09aa\u09cd\u09a4\u09c7\u09ae\u09cd\u09ac\u09f0",
+      "\u0985\u0995\u09cd\u099f\u09cb\u09ac\u09f0",
+      "\u09a8\u09f1\u09c7\u09ae\u09cd\u09ac\u09f0",
+      "\u09a1\u09bf\u099a\u09c7\u09ae\u09cd\u09ac\u09f0"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "EEEE, d MMMM, y",
     "longDate": "d MMMM, y",
     "medium": "dd-MM-y h.mm.ss a",
@@ -92,6 +110,16 @@ $provide.value("$locale", {
     "short": "d-M-y h.mm. a",
     "shortDate": "d-M-y",
     "shortTime": "h.mm. a"
+=======
+    "fullDate": "y MMMM d, EEEE",
+    "longDate": "y MMMM d",
+    "medium": "y MMM d HH:mm:ss",
+    "mediumDate": "y MMM d",
+    "mediumTime": "HH:mm:ss",
+    "short": "y-MM-dd HH:mm",
+    "shortDate": "y-MM-dd",
+    "shortTime": "HH:mm"
+>>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20b9",
@@ -115,7 +143,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4\u00a0-",
+=======
+        "negPre": "-\u00a4\u00a0",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -123,6 +155,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "as-in",
+<<<<<<< HEAD
+=======
+  "localeID": "as_IN",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

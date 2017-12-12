@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 define( [
 	"../core"
 ], function( jQuery, noGlobal ) {
 
 "use strict";
 
+=======
+>>>>>>> develop
 var
 
 	// Map over jQuery in case of overwrite
@@ -30,5 +33,8 @@ jQuery.noConflict = function( deep ) {
 if ( !noGlobal ) {
 	window.jQuery = window.$ = jQuery;
 }
+<<<<<<< HEAD
 
 } );
+=======
+>>>>>>> develop

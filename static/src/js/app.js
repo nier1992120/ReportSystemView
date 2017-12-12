@@ -2,18 +2,16 @@
 /*global angular*/
 var adBoost = angular.module('adBoost', [
     'ngLocale',
-    // 'ui.router',
     'ngAnimate',
     'ngResource',
     'ngCookies',
     'ui.validate',
     'genTemplates',
-    'angularFileInput',
     'ng.jsoneditor',
     'ngFileUpload',
-    'adBoost.app',
-    'angularModalService',
-    'highcharts-ng'
+    'adBoost.app'
+    // 'angularModalService'
+    // 'highcharts-ng'
 ]);
 
 adBoost.config(['$httpProvider', 'app',
@@ -105,20 +103,20 @@ adBoost.config(['$httpProvider', 'app',
             };
         });
     }
-])
+]);
     // .config(['ngClipProvider', function (ngClipProvider) {
     // ngClipProvider.setPath('static/bower_components/zeroclipboard/dist/ZeroClipboard.swf');
     // }])
-.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFile', 'JSONKit', 'toast', 'timing', 'cache', 'restAPI', 'sanitize',
-     'CryptoJS', 'promiseGet', 'myConf', 'anchorScroll', 'isVisible', 'applyFn', 'param', 'store', 'i18n-zh', 'confirmDialog',
+adBoost.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFile', 'JSONKit', 'toast', 'timing', 'cache', 'restAPI', 'sanitize',
+     'CryptoJS', 'promiseGet', 'myConf', 'anchorScroll', 'isVisible', 'applyFn', 'param', 'store', 'i18n-zh',
     function (app, $q, $rootScope, $state, $timeout, $filter, getFile, JSONKit, toast, timing, cache, restAPI, sanitize,
-              CryptoJS, promiseGet, myConf, anchorScroll, isVisible, applyFn, param, store, $locale, confirmDialog) {
+              CryptoJS, promiseGet, myConf, anchorScroll, isVisible, applyFn, param, store, $locale) {
         var unSave = {
                 stopUnload: false,
                 nextUrl: ''
             },
             global = $rootScope.global = {
-                isLogin: false,
+                isLogin: true,
                 info: {}
             },
             jqWin = $(window);
@@ -133,13 +131,13 @@ adBoost.config(['$httpProvider', 'app',
         }
 
         function init() {
-            restAPI.heartbeat.get({}, function (data) {
-                app.timeOffset = Date.now() - data.timestamp;
-                data = data.data;
-                app.union(global, data);
-                app.version = global.info.version || '';
-                //app.checkUser();
-            });
+            // restAPI.heartbeat.get({}, function (data) {
+            //     app.timeOffset = Date.now() - data.timestamp;
+            //     data = data.data;
+            //     app.union(global, data);
+            //     app.version = global.info.version || '';
+            //     //app.checkUser();
+            // });
         }
 
         app.q = $q;
@@ -164,12 +162,13 @@ adBoost.config(['$httpProvider', 'app',
         app.myConf = myConf;
         app.rootScope = $rootScope;
         angular.extend(app, JSONKit); //添加 JSONKit 系列工具函数
-        app.confirmDialog = confirmDialog;
+        // app.confirmDialog = confirmDialog;
 
         app.loading = function (value, status) {
             $rootScope.loading.show = value;
             applyFn();
         };
+
         app.validate = function (scope, turnoff) {
             var collect = [],
                 error = [];
@@ -206,7 +205,8 @@ adBoost.config(['$httpProvider', 'app',
         };
         //校验用户是否登录
         app.checkUser = function () {
-            global.isLogin = !! global.user && !! global.user.pubid;
+            return true;
+            // global.isLogin = !! global.user && !! global.user.pubid;
         };
         //校验用户账号是否被冻结
         app.checkUserState = function () {

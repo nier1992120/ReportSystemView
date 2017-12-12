@@ -80,6 +80,23 @@ $provide.value("$locale", {
       "nov.",
       "dec."
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "januari",
+      "februari",
+      "mars",
+      "april",
+      "maj",
+      "juni",
+      "juli",
+      "augusti",
+      "september",
+      "oktober",
+      "november",
+      "december"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -123,6 +140,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "sv",
+<<<<<<< HEAD
+=======
+  "localeID": "sv",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

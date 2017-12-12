@@ -22,7 +22,11 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "prije podne",
+=======
+      "prijepodne",
+>>>>>>> develop
       "popodne"
     ],
     "DAY": [
@@ -35,8 +39,13 @@ $provide.value("$locale", {
       "subota"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "Prije nove ere",
       "Nove ere"
+=======
+      "prije nove ere",
+      "nove ere"
+>>>>>>> develop
     ],
     "ERAS": [
       "p. n. e.",
@@ -51,7 +60,11 @@ $provide.value("$locale", {
       "maj",
       "juni",
       "juli",
+<<<<<<< HEAD
       "august",
+=======
+      "avgust",
+>>>>>>> develop
       "septembar",
       "oktobar",
       "novembar",
@@ -74,16 +87,38 @@ $provide.value("$locale", {
       "maj",
       "jun",
       "jul",
+<<<<<<< HEAD
       "aug",
+=======
+      "avg",
+>>>>>>> develop
       "sep",
       "okt",
       "nov",
       "dec"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "januar",
+      "februar",
+      "mart",
+      "april",
+      "maj",
+      "juni",
+      "juli",
+      "avgust",
+      "septembar",
+      "oktobar",
+      "novembar",
+      "decembar"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "EEEE, dd. MMMM y.",
     "longDate": "dd. MMMM y.",
     "medium": "dd. MMM. y. HH:mm:ss",
@@ -95,6 +130,19 @@ $provide.value("$locale", {
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20ac",
+=======
+    "fullDate": "EEEE, d. MMMM y.",
+    "longDate": "d. MMMM y.",
+    "medium": "d. MMM. y. HH:mm:ss",
+    "mediumDate": "d. MMM. y.",
+    "mediumTime": "HH:mm:ss",
+    "short": "d.M.yy. HH:mm",
+    "shortDate": "d.M.yy.",
+    "shortTime": "HH:mm"
+  },
+  "NUMBER_FORMATS": {
+    "CURRENCY_SYM": "KM",
+>>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": ".",
     "PATTERNS": [
@@ -123,6 +171,11 @@ $provide.value("$locale", {
     ]
   },
   "id": "bs-latn",
+<<<<<<< HEAD
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
+=======
+  "localeID": "bs_Latn",
+  "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (vf.v == 0 && i % 10 == 1 && i % 100 != 11 || vf.f % 10 == 1 && vf.f % 100 != 11) {    return PLURAL_CATEGORY.ONE;  }  if (vf.v == 0 && i % 10 >= 2 && i % 10 <= 4 && (i % 100 < 12 || i % 100 > 14) || vf.f % 10 >= 2 && vf.f % 10 <= 4 && (vf.f % 100 < 12 || vf.f % 100 > 14)) {    return PLURAL_CATEGORY.FEW;  }  return PLURAL_CATEGORY.OTHER;}
+>>>>>>> develop
 });
 }]);

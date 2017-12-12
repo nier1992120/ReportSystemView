@@ -1,11 +1,21 @@
 {
   "name": "crypto-js",
+<<<<<<< HEAD
   "version": "3.1.4",
   "description": "Modularized port of googlecode project crypto-js.",
   "homepage": "http://github.com/evanvosberg/crypto-js",
   "repository": {
     "type": "git",
     "url": "http://github.com/evanvosberg/crypto-js.git"
+=======
+  "version": "3.1.9",
+  "description": "JavaScript library of crypto standards.",
+  "license": "MIT",
+  "homepage": "http://github.com/brix/crypto-js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/brix/crypto-js.git"
+>>>>>>> develop
   },
   "keywords": [
     "security",
@@ -31,11 +41,19 @@
   "main": "index.js",
   "dependencies": {},
   "ignore": [],
+<<<<<<< HEAD
   "_release": "3.1.4",
   "_resolution": {
     "type": "version",
     "tag": "3.1.4",
     "commit": "9cc7f829741eddabe693a704f10f972fb9c0d5a6"
+=======
+  "_release": "3.1.9",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.1.9",
+    "commit": "c8ac779bb0f5b8c7947422e09e96c75d768b019e"
+>>>>>>> develop
   },
   "_source": "https://github.com/evanvosberg/crypto-js.git",
   "_target": "*",

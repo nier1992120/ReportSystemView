@@ -62,14 +62,36 @@ $provide.value("$locale", {
       "\u062a\u0634\u0631\u064a\u0646 \u0627\u0644\u062b\u0627\u0646\u064a",
       "\u0643\u0627\u0646\u0648\u0646 \u0627\u0644\u0623\u0648\u0644"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u0643\u0627\u0646\u0648\u0646 \u0627\u0644\u062b\u0627\u0646\u064a",
+      "\u0634\u0628\u0627\u0637",
+      "\u0622\u0630\u0627\u0631",
+      "\u0646\u064a\u0633\u0627\u0646",
+      "\u0623\u064a\u0627\u0631",
+      "\u062d\u0632\u064a\u0631\u0627\u0646",
+      "\u062a\u0645\u0648\u0632",
+      "\u0622\u0628",
+      "\u0623\u064a\u0644\u0648\u0644",
+      "\u062a\u0634\u0631\u064a\u0646 \u0627\u0644\u0623\u0648\u0644",
+      "\u062a\u0634\u0631\u064a\u0646 \u0627\u0644\u062b\u0627\u0646\u064a",
+      "\u0643\u0627\u0646\u0648\u0646 \u0627\u0644\u0623\u0648\u0644"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE\u060c d MMMM\u060c y",
     "longDate": "d MMMM\u060c y",
+<<<<<<< HEAD
     "medium": "MMM d, y h:mm:ss a",
     "mediumDate": "MMM d, y",
+=======
+    "medium": "dd\u200f/MM\u200f/y h:mm:ss a",
+    "mediumDate": "dd\u200f/MM\u200f/y",
+>>>>>>> develop
     "mediumTime": "h:mm:ss a",
     "short": "d\u200f/M\u200f/y h:mm a",
     "shortDate": "d\u200f/M\u200f/y",
@@ -94,6 +116,7 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
@@ -101,10 +124,23 @@ $provide.value("$locale", {
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+        "minInt": 1,
+        "negPre": "-",
+        "negSuf": "\u00a0\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a0\u00a4"
+>>>>>>> develop
       }
     ]
   },
   "id": "ar-lb",
+<<<<<<< HEAD
+=======
+  "localeID": "ar_LB",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 0) {    return PLURAL_CATEGORY.ZERO;  }  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  if (n == 2) {    return PLURAL_CATEGORY.TWO;  }  if (n % 100 >= 3 && n % 100 <= 10) {    return PLURAL_CATEGORY.FEW;  }  if (n % 100 >= 11 && n % 100 <= 99) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

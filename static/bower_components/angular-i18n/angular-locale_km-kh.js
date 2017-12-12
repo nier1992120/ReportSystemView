@@ -4,12 +4,21 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "\u1796\u17d2\u179a\u17b9\u1780",
       "\u179b\u17d2\u1784\u17b6\u1785"
     ],
     "DAY": [
       "\u17a2\u17b6\u1791\u17b7\u178f\u17d2\u1799",
       "\u1785\u1793\u17d2\u1791",
+=======
+      "AM",
+      "PM"
+    ],
+    "DAY": [
+      "\u17a2\u17b6\u1791\u17b7\u178f\u17d2\u1799",
+      "\u1785\u17d0\u1793\u17d2\u1791",
+>>>>>>> develop
       "\u17a2\u1784\u17d2\u1782\u17b6\u179a",
       "\u1796\u17bb\u1792",
       "\u1796\u17d2\u179a\u17a0\u179f\u17d2\u1794\u178f\u17b7\u17cd",
@@ -41,7 +50,11 @@ $provide.value("$locale", {
     ],
     "SHORTDAY": [
       "\u17a2\u17b6\u1791\u17b7\u178f\u17d2\u1799",
+<<<<<<< HEAD
       "\u1785\u1793\u17d2\u1791",
+=======
+      "\u1785\u17d0\u1793\u17d2\u1791",
+>>>>>>> develop
       "\u17a2\u1784\u17d2\u1782\u17b6\u179a",
       "\u1796\u17bb\u1792",
       "\u1796\u17d2\u179a\u17a0\u179f\u17d2\u1794\u178f\u17b7\u17cd",
@@ -62,6 +75,23 @@ $provide.value("$locale", {
       "\u179c\u17b7\u1785\u17d2\u1786\u17b7\u1780\u17b6",
       "\u1792\u17d2\u1793\u17bc"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u1798\u1780\u179a\u17b6",
+      "\u1780\u17bb\u1798\u17d2\u1797\u17c8",
+      "\u1798\u17b8\u1793\u17b6",
+      "\u1798\u17c1\u179f\u17b6",
+      "\u17a7\u179f\u1797\u17b6",
+      "\u1798\u17b7\u1790\u17bb\u1793\u17b6",
+      "\u1780\u1780\u17d2\u1780\u178a\u17b6",
+      "\u179f\u17b8\u17a0\u17b6",
+      "\u1780\u1789\u17d2\u1789\u17b6",
+      "\u178f\u17bb\u179b\u17b6",
+      "\u179c\u17b7\u1785\u17d2\u1786\u17b7\u1780\u17b6",
+      "\u1792\u17d2\u1793\u17bc"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -97,14 +127,25 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
+=======
+        "negPre": "-",
+        "negSuf": "\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a4"
+>>>>>>> develop
       }
     ]
   },
   "id": "km-kh",
+<<<<<<< HEAD
+=======
+  "localeID": "km_KH",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

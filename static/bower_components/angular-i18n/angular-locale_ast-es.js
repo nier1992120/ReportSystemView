@@ -22,8 +22,13 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "AM",
       "PM"
+=======
+      "de la ma\u00f1ana",
+      "de la tarde"
+>>>>>>> develop
     ],
     "DAY": [
       "domingu",
@@ -35,11 +40,19 @@ $provide.value("$locale", {
       "s\u00e1badu"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "a.C.",
       "d.C."
     ],
     "ERAS": [
       "a.C.",
+=======
+      "enantes de Cristu",
+      "despu\u00e9s de Cristu"
+    ],
+    "ERAS": [
+      "e.C.",
+>>>>>>> develop
       "d.C."
     ],
     "FIRSTDAYOFWEEK": 0,
@@ -61,10 +74,17 @@ $provide.value("$locale", {
       "dom",
       "llu",
       "mar",
+<<<<<<< HEAD
       "mie",
       "xue",
       "vie",
       "sab"
+=======
+      "mi\u00e9",
+      "xue",
+      "vie",
+      "s\u00e1b"
+>>>>>>> develop
     ],
     "SHORTMONTH": [
       "xin",
@@ -80,6 +100,23 @@ $provide.value("$locale", {
       "pay",
       "avi"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "xineru",
+      "febreru",
+      "marzu",
+      "abril",
+      "mayu",
+      "xunu",
+      "xunetu",
+      "agostu",
+      "setiembre",
+      "ochobre",
+      "payares",
+      "avientu"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -123,6 +160,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "ast-es",
+<<<<<<< HEAD
+=======
+  "localeID": "ast_ES",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

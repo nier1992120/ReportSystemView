@@ -80,10 +80,28 @@ $provide.value("$locale", {
       "Nov",
       "Dec"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "EEEE, MMMM d, y",
     "longDate": "MMMM d, y",
     "medium": "MMM d, y h:mm:ss a",
@@ -91,6 +109,15 @@ $provide.value("$locale", {
     "mediumTime": "h:mm:ss a",
     "short": "M/d/yy h:mm a",
     "shortDate": "M/d/yy",
+=======
+    "fullDate": "EEEE, d MMMM y",
+    "longDate": "d MMMM y",
+    "medium": "d MMM y h:mm:ss a",
+    "mediumDate": "d MMM y",
+    "mediumTime": "h:mm:ss a",
+    "short": "dd/MM/y h:mm a",
+    "shortDate": "dd/MM/y",
+>>>>>>> develop
     "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
@@ -115,7 +142,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -123,6 +154,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "en-fm",
+<<<<<<< HEAD
+=======
+  "localeID": "en_FM",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

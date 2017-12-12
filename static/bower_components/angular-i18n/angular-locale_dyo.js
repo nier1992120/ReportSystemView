@@ -80,6 +80,23 @@ $provide.value("$locale", {
       "No",
       "De"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Sanvie",
+      "F\u00e9birie",
+      "Mars",
+      "Aburil",
+      "Mee",
+      "Sue\u014b",
+      "S\u00fauyee",
+      "Ut",
+      "Settembar",
+      "Oktobar",
+      "Novembar",
+      "Disambar"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -123,6 +140,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "dyo",
+<<<<<<< HEAD
+=======
+  "localeID": "dyo",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

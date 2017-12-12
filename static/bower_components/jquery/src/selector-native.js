@@ -6,8 +6,11 @@ define( [
 	"./var/indexOf"
 ], function( jQuery, document, documentElement, hasOwn, indexOf ) {
 
+<<<<<<< HEAD
 "use strict";
 
+=======
+>>>>>>> develop
 /*
  * Optional (non-Sizzle) selector module for custom builds.
  *
@@ -39,6 +42,7 @@ var hasDuplicate, sortInput,
 		documentElement.webkitMatchesSelector ||
 		documentElement.mozMatchesSelector ||
 		documentElement.oMatchesSelector ||
+<<<<<<< HEAD
 		documentElement.msMatchesSelector,
 
 	// CSS string/identifier serialization
@@ -59,6 +63,9 @@ var hasDuplicate, sortInput,
 		// Other potentially-special ASCII characters get backslash-escaped
 		return "\\" + ch;
 	};
+=======
+		documentElement.msMatchesSelector;
+>>>>>>> develop
 
 function sortOrder( a, b ) {
 
@@ -131,6 +138,7 @@ function uniqueSort( results ) {
 	return results;
 }
 
+<<<<<<< HEAD
 function escape( sel ) {
 	return ( sel + "" ).replace( rcssescape, fcssescape );
 }
@@ -139,6 +147,9 @@ jQuery.extend( {
 	uniqueSort: uniqueSort,
 	unique: uniqueSort,
 	escapeSelector: escape,
+=======
+jQuery.extend( {
+>>>>>>> develop
 	find: function( selector, context, results, seed ) {
 		var elem, nodeType,
 			i = 0;
@@ -168,6 +179,11 @@ jQuery.extend( {
 
 		return results;
 	},
+<<<<<<< HEAD
+=======
+	uniqueSort: uniqueSort,
+	unique: uniqueSort,
+>>>>>>> develop
 	text: function( elem ) {
 		var node,
 			ret = "",

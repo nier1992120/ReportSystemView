@@ -36,12 +36,17 @@ $provide.value("$locale", {
     ],
     "ERANAMES": [
       "\u12d3/\u12d3",
+<<<<<<< HEAD
       "\u12d3/\u121d"
+=======
+      "\u12d3\u1218\u1270 \u121d\u1205\u1228\u1275"
+>>>>>>> develop
     ],
     "ERAS": [
       "\u12d3/\u12d3",
       "\u12d3/\u121d"
     ],
+<<<<<<< HEAD
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
       "\u1303\u1295\u12e9\u12c8\u122a",
@@ -79,6 +84,59 @@ $provide.value("$locale", {
       "\u12a6\u12ad\u1270",
       "\u1296\u126c\u121d",
       "\u12f2\u1234\u121d"
+=======
+    "FIRSTDAYOFWEEK": 6,
+    "MONTH": [
+      "\u1325\u122a",
+      "\u1208\u12ab\u1272\u1275",
+      "\u1218\u130b\u1262\u1275",
+      "\u121a\u12eb\u12dd\u12eb",
+      "\u130d\u1295\u1266\u1275",
+      "\u1230\u1290",
+      "\u1213\u121d\u1208",
+      "\u1290\u1213\u1230",
+      "\u1218\u1235\u12a8\u1228\u121d",
+      "\u1325\u1245\u121d\u1272",
+      "\u1215\u12f3\u122d",
+      "\u1273\u1215\u1233\u1235"
+    ],
+    "SHORTDAY": [
+      "\u1230\u1295",
+      "\u1230\u1291",
+      "\u1230\u1209",
+      "\u1228\u1261",
+      "\u1213\u1219",
+      "\u12d3\u122d",
+      "\u1240\u12f3"
+    ],
+    "SHORTMONTH": [
+      "\u1325\u122a",
+      "\u1208\u12ab",
+      "\u1218\u130b",
+      "\u121a\u12eb",
+      "\u130d\u1295",
+      "\u1230\u1290",
+      "\u1213\u121d",
+      "\u1290\u1213",
+      "\u1218\u1235",
+      "\u1325\u1245",
+      "\u1215\u12f3",
+      "\u1273\u1215"
+    ],
+    "STANDALONEMONTH": [
+      "\u1325\u122a",
+      "\u1208\u12ab\u1272\u1275",
+      "\u1218\u130b\u1262\u1275",
+      "\u121a\u12eb\u12dd\u12eb",
+      "\u130d\u1295\u1266\u1275",
+      "\u1230\u1290",
+      "\u1213\u121d\u1208",
+      "\u1290\u1213\u1230",
+      "\u1218\u1235\u12a8\u1228\u121d",
+      "\u1325\u1245\u121d\u1272",
+      "\u1215\u12f3\u122d",
+      "\u1273\u1215\u1233\u1235"
+>>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -115,7 +173,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -123,6 +185,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "ti-et",
+<<<<<<< HEAD
+=======
+  "localeID": "ti_ET",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

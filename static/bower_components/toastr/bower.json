@@ -1,8 +1,17 @@
 {
   "name": "toastr",
+<<<<<<< HEAD
   "version": "2.1.1",
   "main": ["toastr.js", "toastr.css"],
   "dependencies": {
 		"jquery": ">=1.6.3"
   }
+=======
+  "version": "2.1.3",
+  "main": ["toastr.js", "toastr.css"],
+  "dependencies": {
+		"jquery": ">=1.6.3 <3"
+  },
+  "license": "MIT"
+>>>>>>> develop
 }

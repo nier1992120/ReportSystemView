@@ -7,8 +7,11 @@ define( [
 	"./setGlobalEval"
 ], function( jQuery, rtagName, rscriptType, wrapMap, getAll, setGlobalEval ) {
 
+<<<<<<< HEAD
 "use strict";
 
+=======
+>>>>>>> develop
 var rhtml = /<|&#?\w+;/;
 
 function buildFragment( elems, context, scripts, selection, ignored ) {
@@ -26,7 +29,11 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 			// Add nodes directly
 			if ( jQuery.type( elem ) === "object" ) {
 
+<<<<<<< HEAD
 				// Support: Android <=4.0 only, PhantomJS 1 only
+=======
+				// Support: Android<4.1, PhantomJS<2
+>>>>>>> develop
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
@@ -49,7 +56,11 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 					tmp = tmp.lastChild;
 				}
 
+<<<<<<< HEAD
 				// Support: Android <=4.0 only, PhantomJS 1 only
+=======
+				// Support: Android<4.1, PhantomJS<2
+>>>>>>> develop
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, tmp.childNodes );
 

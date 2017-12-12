@@ -6,9 +6,13 @@ define( [
 	"./attributes/prop"
 ], function( jQuery, rcheckableType ) {
 
+<<<<<<< HEAD
 "use strict";
 
 var
+=======
+var r20 = /%20/g,
+>>>>>>> develop
 	rbracket = /\[\]$/,
 	rCRLF = /\r?\n/g,
 	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
@@ -57,6 +61,7 @@ function buildParams( prefix, obj, traditional, add ) {
 jQuery.param = function( a, traditional ) {
 	var prefix,
 		s = [],
+<<<<<<< HEAD
 		add = function( key, valueOrFunction ) {
 
 			// If value is a function, invoke it and use its return value
@@ -68,6 +73,20 @@ jQuery.param = function( a, traditional ) {
 				encodeURIComponent( value == null ? "" : value );
 		};
 
+=======
+		add = function( key, value ) {
+
+			// If value is a function, invoke it and return its value
+			value = jQuery.isFunction( value ) ? value() : ( value == null ? "" : value );
+			s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
+		};
+
+	// Set traditional to true for jQuery <= 1.3.2 behavior.
+	if ( traditional === undefined ) {
+		traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;
+	}
+
+>>>>>>> develop
 	// If an array was passed in, assume that it is an array of form elements.
 	if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 
@@ -86,7 +105,11 @@ jQuery.param = function( a, traditional ) {
 	}
 
 	// Return the resulting serialization
+<<<<<<< HEAD
 	return s.join( "&" );
+=======
+	return s.join( "&" ).replace( r20, "+" );
+>>>>>>> develop
 };
 
 jQuery.fn.extend( {
@@ -111,6 +134,7 @@ jQuery.fn.extend( {
 		.map( function( i, elem ) {
 			var val = jQuery( this ).val();
 
+<<<<<<< HEAD
 			if ( val == null ) {
 				return null;
 			}
@@ -122,6 +146,15 @@ jQuery.fn.extend( {
 			}
 
 			return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+=======
+			return val == null ?
+				null :
+				jQuery.isArray( val ) ?
+					jQuery.map( val, function( val ) {
+						return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+					} ) :
+					{ name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
+>>>>>>> develop
 		} ).get();
 	}
 } );

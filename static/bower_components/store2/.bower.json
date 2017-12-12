@@ -1,6 +1,10 @@
 {
   "name": "store2",
+<<<<<<< HEAD
   "version": "2.3.0",
+=======
+  "version": "2.5.9",
+>>>>>>> develop
   "main": "dist/store2.js",
   "ignore": [
     "**/.*",
@@ -12,6 +16,7 @@
     "test"
   ],
   "homepage": "https://github.com/nbubna/store",
+<<<<<<< HEAD
   "_release": "2.3.0",
   "_resolution": {
     "type": "version",
@@ -19,6 +24,15 @@
     "commit": "fa7623504d9b963964a82ffe9b1a48e19366317b"
   },
   "_source": "git://github.com/nbubna/store.git",
+=======
+  "_release": "2.5.9",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.5.9",
+    "commit": "ca7504419d27eadd4e75dfecab94939a5ff0d0cf"
+  },
+  "_source": "https://github.com/nbubna/store.git",
+>>>>>>> develop
   "_target": ">=2.1.6",
   "_originalSource": "store2"
 }

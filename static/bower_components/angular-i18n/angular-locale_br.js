@@ -17,12 +17,21 @@ $provide.value("$locale", {
       "Sadorn"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "BCE",
       "CE"
     ],
     "ERAS": [
       "BCE",
       "CE"
+=======
+      "a-raok Jezuz-Krist",
+      "goude Jezuz-Krist"
+    ],
+    "ERAS": [
+      "a-raok J.K.",
+      "goude J.K."
+>>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -49,6 +58,7 @@ $provide.value("$locale", {
       "Sad."
     ],
     "SHORTMONTH": [
+<<<<<<< HEAD
       "Gen",
       "C\u02bchwe",
       "Meur",
@@ -61,6 +71,34 @@ $provide.value("$locale", {
       "Here",
       "Du",
       "Ker"
+=======
+      "Gen.",
+      "C\u02bchwe.",
+      "Meur.",
+      "Ebr.",
+      "Mae",
+      "Mezh.",
+      "Goue.",
+      "Eost",
+      "Gwen.",
+      "Here",
+      "Du",
+      "Kzu."
+    ],
+    "STANDALONEMONTH": [
+      "Genver",
+      "C\u02bchwevrer",
+      "Meurzh",
+      "Ebrel",
+      "Mae",
+      "Mezheven",
+      "Gouere",
+      "Eost",
+      "Gwengolo",
+      "Here",
+      "Du",
+      "Kerzu"
+>>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -105,6 +143,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "br",
+<<<<<<< HEAD
+=======
+  "localeID": "br",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n % 10 == 1 && n % 100 != 11 && n % 100 != 71 && n % 100 != 91) {    return PLURAL_CATEGORY.ONE;  }  if (n % 10 == 2 && n % 100 != 12 && n % 100 != 72 && n % 100 != 92) {    return PLURAL_CATEGORY.TWO;  }  if ((n % 10 >= 3 && n % 10 <= 4 || n % 10 == 9) && (n % 100 < 10 || n % 100 > 19) && (n % 100 < 70 || n % 100 > 79) && (n % 100 < 90 || n % 100 > 99)) {    return PLURAL_CATEGORY.FEW;  }  if (n != 0 && n % 1000000 == 0) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

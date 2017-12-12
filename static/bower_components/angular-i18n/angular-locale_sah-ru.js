@@ -26,6 +26,7 @@ $provide.value("$locale", {
       "\u042d\u041a"
     ],
     "DAY": [
+<<<<<<< HEAD
       "\u0411\u0430\u0441\u043a\u044b\u04bb\u044b\u0430\u043d\u043d\u044c\u0430",
       "\u0411\u044d\u043d\u0438\u0434\u0438\u044d\u043b\u0438\u043d\u043d\u044c\u0438\u043a",
       "\u041e\u043f\u0442\u0443\u043e\u0440\u0443\u043d\u043d\u044c\u0443\u043a",
@@ -33,6 +34,15 @@ $provide.value("$locale", {
       "\u0427\u044d\u043f\u043f\u0438\u044d\u0440",
       "\u0411\u044d\u044d\u0442\u0438\u04a5\u0441\u044d",
       "\u0421\u0443\u0431\u0443\u043e\u0442\u0430"
+=======
+      "\u0431\u0430\u0441\u043a\u044b\u04bb\u044b\u0430\u043d\u043d\u044c\u0430",
+      "\u0431\u044d\u043d\u0438\u0434\u0438\u044d\u043d\u043d\u044c\u0438\u043a",
+      "\u043e\u043f\u0442\u0443\u043e\u0440\u0443\u043d\u043d\u044c\u0443\u043a",
+      "\u0441\u044d\u0440\u044d\u0434\u044d",
+      "\u0447\u044d\u043f\u043f\u0438\u044d\u0440",
+      "\u0411\u044d\u044d\u0442\u0438\u04a5\u0441\u044d",
+      "\u0441\u0443\u0431\u0443\u043e\u0442\u0430"
+>>>>>>> develop
     ],
     "ERANAMES": [
       "\u0431. \u044d. \u0438.",
@@ -55,6 +65,7 @@ $provide.value("$locale", {
       "\u0411\u0430\u043b\u0430\u0495\u0430\u043d \u044b\u0439\u044b\u043d",
       "\u0410\u043b\u0442\u044b\u043d\u043d\u044c\u044b",
       "\u0421\u044d\u0442\u0438\u043d\u043d\u044c\u0438",
+<<<<<<< HEAD
       "\u0410\u0445\u0441\u044b\u043d\u043d\u044c\u044b"
     ],
     "SHORTDAY": [
@@ -65,10 +76,23 @@ $provide.value("$locale", {
       "\u0427\u043f",
       "\u0411\u044d",
       "\u0421\u0431"
+=======
+      "\u0430\u0445\u0441\u044b\u043d\u043d\u044c\u044b"
+    ],
+    "SHORTDAY": [
+      "\u0431\u0441",
+      "\u0431\u043d",
+      "\u043e\u043f",
+      "\u0441\u044d",
+      "\u0447\u043f",
+      "\u0431\u044d",
+      "\u0441\u0431"
+>>>>>>> develop
     ],
     "SHORTMONTH": [
       "\u0422\u043e\u0445\u0441",
       "\u041e\u043b\u0443\u043d",
+<<<<<<< HEAD
       "\u041a\u043b\u043d_\u0442\u0442\u0440",
       "\u041c\u0443\u0441_\u0443\u0441\u0442",
       "\u042b\u0430\u043c_\u0439\u043d",
@@ -76,10 +100,36 @@ $provide.value("$locale", {
       "\u041e\u0442_\u0439\u043d",
       "\u0410\u0442\u0440\u0434\u044c_\u0439\u043d",
       "\u0411\u043b\u0495\u043d_\u0439\u043d",
+=======
+      "\u041a\u043b\u043d",
+      "\u041c\u0441\u0443",
+      "\u042b\u0430\u043c",
+      "\u0411\u044d\u0441",
+      "\u041e\u0442\u0439",
+      "\u0410\u0442\u0440",
+      "\u0411\u043b\u0495",
+>>>>>>> develop
       "\u0410\u043b\u0442",
       "\u0421\u044d\u0442",
       "\u0410\u0445\u0441"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u0442\u043e\u0445\u0441\u0443\u043d\u043d\u044c\u0443",
+      "\u043e\u043b\u0443\u043d\u043d\u044c\u0443",
+      "\u043a\u0443\u043b\u0443\u043d \u0442\u0443\u0442\u0430\u0440",
+      "\u043c\u0443\u0443\u0441 \u0443\u0441\u0442\u0430\u0440",
+      "\u044b\u0430\u043c \u044b\u0439\u0430",
+      "\u0431\u044d\u0441 \u044b\u0439\u0430",
+      "\u043e\u0442 \u044b\u0439\u0430",
+      "\u0430\u0442\u044b\u0440\u0434\u044c\u044b\u0445 \u044b\u0439\u0430",
+      "\u0431\u0430\u043b\u0430\u0495\u0430\u043d \u044b\u0439\u0430",
+      "\u0430\u043b\u0442\u044b\u043d\u043d\u044c\u044b",
+      "\u0441\u044d\u0442\u0438\u043d\u043d\u044c\u0438",
+      "\u0430\u0445\u0441\u044b\u043d\u043d\u044c\u044b"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -94,9 +144,15 @@ $provide.value("$locale", {
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
+<<<<<<< HEAD
     "CURRENCY_SYM": "\u0440\u0443\u0431.",
     "DECIMAL_SEP": ".",
     "GROUP_SEP": ",",
+=======
+    "CURRENCY_SYM": "\u20bd",
+    "DECIMAL_SEP": ",",
+    "GROUP_SEP": "\u00a0",
+>>>>>>> develop
     "PATTERNS": [
       {
         "gSize": 3,
@@ -115,14 +171,25 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4\u00a0-",
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
+=======
+        "negPre": "-",
+        "negSuf": "\u00a0\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a0\u00a4"
+>>>>>>> develop
       }
     ]
   },
   "id": "sah-ru",
+<<<<<<< HEAD
+=======
+  "localeID": "sah_RU",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -42,7 +42,11 @@ $provide.value("$locale", {
       "da\u025b",
       "df\u025b"
     ],
+<<<<<<< HEAD
     "FIRSTDAYOFWEEK": 0,
+=======
+    "FIRSTDAYOFWEEK": 5,
+>>>>>>> develop
     "MONTH": [
       "innayr",
       "b\u1e5bay\u1e5b",
@@ -80,9 +84,29 @@ $provide.value("$locale", {
       "nuw",
       "duj"
     ],
+<<<<<<< HEAD
     "WEEKENDRANGE": [
       5,
       6
+=======
+    "STANDALONEMONTH": [
+      "innayr",
+      "b\u1e5bay\u1e5b",
+      "ma\u1e5b\u1e63",
+      "ibrir",
+      "mayyu",
+      "yunyu",
+      "yulyuz",
+      "\u0263uct",
+      "cutanbir",
+      "ktubr",
+      "nuwanbir",
+      "dujanbir"
+    ],
+    "WEEKENDRANGE": [
+      4,
+      5
+>>>>>>> develop
     ],
     "fullDate": "EEEE d MMMM y",
     "longDate": "d MMMM y",
@@ -94,7 +118,11 @@ $provide.value("$locale", {
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
+<<<<<<< HEAD
     "CURRENCY_SYM": "\u20ac",
+=======
+    "CURRENCY_SYM": "dh",
+>>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": "\u00a0",
     "PATTERNS": [
@@ -123,6 +151,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "shi-latn",
+<<<<<<< HEAD
+=======
+  "localeID": "shi_Latn",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -62,6 +62,23 @@ $provide.value("$locale", {
       "nvb",
       "dsb"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "s\u00e1nz\u00e1 ya yambo",
+      "s\u00e1nz\u00e1 ya m\u00edbal\u00e9",
+      "s\u00e1nz\u00e1 ya m\u00eds\u00e1to",
+      "s\u00e1nz\u00e1 ya m\u00ednei",
+      "s\u00e1nz\u00e1 ya m\u00edt\u00e1no",
+      "s\u00e1nz\u00e1 ya mot\u00f3b\u00e1",
+      "s\u00e1nz\u00e1 ya nsambo",
+      "s\u00e1nz\u00e1 ya mwambe",
+      "s\u00e1nz\u00e1 ya libwa",
+      "s\u00e1nz\u00e1 ya z\u00f3mi",
+      "s\u00e1nz\u00e1 ya z\u00f3mi na m\u0254\u030ck\u0254\u0301",
+      "s\u00e1nz\u00e1 ya z\u00f3mi na m\u00edbal\u00e9"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -94,8 +111,13 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+>>>>>>> develop
         "minInt": 1,
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
@@ -105,6 +127,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "ln-cg",
+<<<<<<< HEAD
+=======
+  "localeID": "ln_CG",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n >= 0 && n <= 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

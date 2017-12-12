@@ -22,8 +22,13 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "AM",
       "PM"
+=======
+      "ip.",
+      "ep."
+>>>>>>> develop
     ],
     "DAY": [
       "pasepeeivi",
@@ -35,6 +40,7 @@ $provide.value("$locale", {
       "l\u00e1vurduv"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "BCE",
       "CE"
     ],
@@ -79,11 +85,72 @@ $provide.value("$locale", {
       "M10",
       "M11",
       "M12"
+=======
+      "Ovdil Kristus \u0161odd\u00e2m",
+      "ma\u014ba Kristus \u0161odd\u00e2m"
+    ],
+    "ERAS": [
+      "oKr.",
+      "mKr."
+    ],
+    "FIRSTDAYOFWEEK": 0,
+    "MONTH": [
+      "u\u0111\u0111\u00e2ivem\u00e1\u00e1nu",
+      "kuov\u00e2m\u00e1\u00e1nu",
+      "njuh\u010d\u00e2m\u00e1\u00e1nu",
+      "cu\u00e1\u014buim\u00e1\u00e1nu",
+      "vyesim\u00e1\u00e1nu",
+      "kesim\u00e1\u00e1nu",
+      "syeinim\u00e1\u00e1nu",
+      "porgem\u00e1\u00e1nu",
+      "\u010doh\u010d\u00e2m\u00e1\u00e1nu",
+      "roovv\u00e2dm\u00e1\u00e1nu",
+      "skamm\u00e2m\u00e1\u00e1nu",
+      "juovl\u00e2m\u00e1\u00e1nu"
+    ],
+    "SHORTDAY": [
+      "pas",
+      "vuo",
+      "maj",
+      "kos",
+      "tuo",
+      "v\u00e1s",
+      "l\u00e1v"
+    ],
+    "SHORTMONTH": [
+      "u\u0111iv",
+      "kuov\u00e2",
+      "njuh\u010d\u00e2",
+      "cu\u00e1\u014bui",
+      "vyesi",
+      "kesi",
+      "syeini",
+      "porge",
+      "\u010doh\u010d\u00e2",
+      "roovv\u00e2d",
+      "skamm\u00e2",
+      "juovl\u00e2"
+    ],
+    "STANDALONEMONTH": [
+      "u\u0111\u0111\u00e2ivem\u00e1\u00e1nu",
+      "kuov\u00e2m\u00e1\u00e1nu",
+      "njuh\u010d\u00e2m\u00e1\u00e1nu",
+      "cu\u00e1\u014buim\u00e1\u00e1nu",
+      "vyesim\u00e1\u00e1nu",
+      "kesim\u00e1\u00e1nu",
+      "syeinim\u00e1\u00e1nu",
+      "porgem\u00e1\u00e1nu",
+      "\u010doh\u010d\u00e2m\u00e1\u00e1nu",
+      "roovv\u00e2dm\u00e1\u00e1nu",
+      "skamm\u00e2m\u00e1\u00e1nu",
+      "juovl\u00e2m\u00e1\u00e1nu"
+>>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "y MMMM d, EEEE",
     "longDate": "y MMMM d",
     "medium": "y MMM d HH:mm:ss",
@@ -97,6 +164,21 @@ $provide.value("$locale", {
     "CURRENCY_SYM": "\u20ac",
     "DECIMAL_SEP": ".",
     "GROUP_SEP": ",",
+=======
+    "fullDate": "cccc, MMMM d. y",
+    "longDate": "MMMM d. y",
+    "medium": "MMM d. y H.mm.ss",
+    "mediumDate": "MMM d. y",
+    "mediumTime": "H.mm.ss",
+    "short": "d.M.y H.mm",
+    "shortDate": "d.M.y",
+    "shortTime": "H.mm"
+  },
+  "NUMBER_FORMATS": {
+    "CURRENCY_SYM": "\u20ac",
+    "DECIMAL_SEP": ",",
+    "GROUP_SEP": "\u00a0",
+>>>>>>> develop
     "PATTERNS": [
       {
         "gSize": 3,
@@ -115,14 +197,25 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4\u00a0-",
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
+=======
+        "negPre": "-",
+        "negSuf": "\u00a0\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a0\u00a4"
+>>>>>>> develop
       }
     ]
   },
   "id": "smn-fi",
+<<<<<<< HEAD
+=======
+  "localeID": "smn_FI",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

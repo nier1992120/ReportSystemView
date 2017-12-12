@@ -1,5 +1,6 @@
 {
   "name": "angular-chosen-localytics",
+<<<<<<< HEAD
   "version": "1.0.7",
   "main": "chosen.js",
   "ignore": [
@@ -10,4 +11,22 @@
     "chosen": "https://github.com/harvesthq/chosen/releases/download/v1.1.0/chosen_v1.1.0.zip",
     "angular": ">=1.2.0"
   }
+=======
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leocaseiro/angular-chosen.git"
+  },
+  "main": "dist/angular-chosen.js",
+  "ignore": [
+    "gulpfile.js",
+    "src",
+    "test"
+  ],
+  "dependencies": {
+    "jquery": "^2.0.3",
+    "chosen": "^1.5.1",
+    "angular": "^1.4.9"
+  },
+  "license": "MIT"
+>>>>>>> develop
 }

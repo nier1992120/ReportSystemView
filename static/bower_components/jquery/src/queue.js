@@ -5,8 +5,11 @@ define( [
 	"./callbacks"
 ], function( jQuery, dataPriv ) {
 
+<<<<<<< HEAD
 "use strict";
 
+=======
+>>>>>>> develop
 jQuery.extend( {
 	queue: function( elem, type, data ) {
 		var queue;

@@ -22,8 +22,13 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "posz.",
       "b\u00fcz."
+=======
+      "AM",
+      "PM"
+>>>>>>> develop
     ],
     "DAY": [
       "sudel",
@@ -44,9 +49,15 @@ $provide.value("$locale", {
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
+<<<<<<< HEAD
       "janul",
       "febul",
       "m\u00e4zil",
+=======
+      "yanul",
+      "febul",
+      "m\u00e4zul",
+>>>>>>> develop
       "prilul",
       "mayul",
       "yunul",
@@ -67,7 +78,11 @@ $provide.value("$locale", {
       "z\u00e4."
     ],
     "SHORTMONTH": [
+<<<<<<< HEAD
       "jan",
+=======
+      "yan",
+>>>>>>> develop
       "feb",
       "m\u00e4z",
       "prl",
@@ -80,11 +95,32 @@ $provide.value("$locale", {
       "nov",
       "dek"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "yanul",
+      "febul",
+      "m\u00e4zul",
+      "prilul",
+      "mayul",
+      "yunul",
+      "yulul",
+      "gustul",
+      "setul",
+      "tobul",
+      "novul",
+      "dekul"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "y MMMMa 'd'. d'id'",
+=======
+    "fullDate": "y MMMM'a' 'd'. d'id'",
+>>>>>>> develop
     "longDate": "y MMMM d",
     "medium": "y MMM. d HH:mm:ss",
     "mediumDate": "y MMM. d",
@@ -115,7 +151,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4\u00a0-",
+=======
+        "negPre": "-\u00a4\u00a0",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -123,6 +163,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "vo",
+<<<<<<< HEAD
+=======
+  "localeID": "vo",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

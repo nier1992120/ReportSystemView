@@ -18,7 +18,11 @@ $provide.value("$locale", {
     ],
     "ERANAMES": [
       "Sebelum Masehi",
+<<<<<<< HEAD
       "M"
+=======
+      "Masehi"
+>>>>>>> develop
     ],
     "ERAS": [
       "SM",
@@ -62,6 +66,23 @@ $provide.value("$locale", {
       "Nov",
       "Des"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -94,10 +115,17 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
         "negPre": "\u00a4-",
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+        "minInt": 1,
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -105,6 +133,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "id-id",
+<<<<<<< HEAD
+=======
+  "localeID": "id_ID",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

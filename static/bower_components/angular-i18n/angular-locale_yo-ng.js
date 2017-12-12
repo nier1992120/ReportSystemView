@@ -39,7 +39,11 @@ $provide.value("$locale", {
       "Lehin Kristi"
     ],
     "ERAS": [
+<<<<<<< HEAD
       "SK",
+=======
+      "BCE",
+>>>>>>> develop
       "LK"
     ],
     "FIRSTDAYOFWEEK": 0,
@@ -80,18 +84,44 @@ $provide.value("$locale", {
       "B\u00e9l\u00fa",
       "\u1ecc\u0300p\u1eb9\u0300"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "O\u1e63\u00f9 \u1e62\u1eb9\u0301r\u1eb9\u0301",
+      "O\u1e63\u00f9 \u00c8r\u00e8l\u00e8",
+      "O\u1e63\u00f9 \u1eb8r\u1eb9\u0300n\u00e0",
+      "O\u1e63\u00f9 \u00ccgb\u00e9",
+      "O\u1e63\u00f9 \u1eb8\u0300bibi",
+      "O\u1e63\u00f9 \u00d2k\u00fadu",
+      "O\u1e63\u00f9 Ag\u1eb9m\u1ecd",
+      "O\u1e63\u00f9 \u00d2g\u00fan",
+      "O\u1e63\u00f9 Owewe",
+      "O\u1e63\u00f9 \u1ecc\u0300w\u00e0r\u00e0",
+      "O\u1e63\u00f9 B\u00e9l\u00fa",
+      "O\u1e63\u00f9 \u1ecc\u0300p\u1eb9\u0300"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
+<<<<<<< HEAD
     "medium": "d MMM y h:mm:ss a",
     "mediumDate": "d MMM y",
     "mediumTime": "h:mm:ss a",
     "short": "dd/MM/y h:mm a",
     "shortDate": "dd/MM/y",
     "shortTime": "h:mm a"
+=======
+    "medium": "d MMM y HH:mm:ss",
+    "mediumDate": "d MMM y",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd/MM/y HH:mm",
+    "shortDate": "dd/MM/y",
+    "shortTime": "HH:mm"
+>>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20a6",
@@ -115,7 +145,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -123,6 +157,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "yo-ng",
+<<<<<<< HEAD
+=======
+  "localeID": "yo_NG",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

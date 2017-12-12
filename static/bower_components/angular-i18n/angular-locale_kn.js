@@ -62,6 +62,23 @@ $provide.value("$locale", {
       "\u0ca8\u0cb5\u0cc6\u0c82",
       "\u0ca1\u0cbf\u0cb8\u0cc6\u0c82"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u0c9c\u0ca8\u0cb5\u0cb0\u0cbf",
+      "\u0cab\u0cc6\u0cac\u0ccd\u0cb0\u0cb5\u0cb0\u0cbf",
+      "\u0cae\u0cbe\u0cb0\u0ccd\u0c9a\u0ccd",
+      "\u0c8f\u0caa\u0ccd\u0cb0\u0cbf\u0cb2\u0ccd",
+      "\u0cae\u0cc7",
+      "\u0c9c\u0cc2\u0ca8\u0ccd",
+      "\u0c9c\u0cc1\u0cb2\u0cc8",
+      "\u0c86\u0c97\u0cb8\u0ccd\u0c9f\u0ccd",
+      "\u0cb8\u0cc6\u0caa\u0ccd\u0c9f\u0cc6\u0c82\u0cac\u0cb0\u0ccd",
+      "\u0c85\u0c95\u0ccd\u0c9f\u0ccb\u0cac\u0cb0\u0ccd",
+      "\u0ca8\u0cb5\u0cc6\u0c82\u0cac\u0cb0\u0ccd",
+      "\u0ca1\u0cbf\u0cb8\u0cc6\u0c82\u0cac\u0cb0\u0ccd"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
@@ -71,8 +88,13 @@ $provide.value("$locale", {
     "medium": "MMM d, y hh:mm:ss a",
     "mediumDate": "MMM d, y",
     "mediumTime": "hh:mm:ss a",
+<<<<<<< HEAD
     "short": "M/d/yy hh:mm a",
     "shortDate": "M/d/yy",
+=======
+    "short": "d/M/yy hh:mm a",
+    "shortDate": "d/M/yy",
+>>>>>>> develop
     "shortTime": "hh:mm a"
   },
   "NUMBER_FORMATS": {
@@ -97,7 +119,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -105,6 +131,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "kn",
+<<<<<<< HEAD
+=======
+  "localeID": "kn",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

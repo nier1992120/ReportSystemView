@@ -4,8 +4,13 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "a.\u00a0m.",
       "p.\u00a0m."
+=======
+      "a. m.",
+      "p. m."
+>>>>>>> develop
     ],
     "DAY": [
       "domingo",
@@ -34,7 +39,11 @@ $provide.value("$locale", {
       "junio",
       "julio",
       "agosto",
+<<<<<<< HEAD
       "setiembre",
+=======
+      "septiembre",
+>>>>>>> develop
       "octubre",
       "noviembre",
       "diciembre"
@@ -57,11 +66,32 @@ $provide.value("$locale", {
       "jun.",
       "jul.",
       "ago.",
+<<<<<<< HEAD
       "set.",
+=======
+      "sep.",
+>>>>>>> develop
       "oct.",
       "nov.",
       "dic."
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -94,17 +124,30 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
+<<<<<<< HEAD
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
         "negPre": "\u00a4-",
         "negSuf": "",
         "posPre": "\u00a4",
+=======
+        "maxFrac": 0,
+        "minFrac": 0,
+        "minInt": 1,
+        "negPre": "-\u00a4\u00a0",
+        "negSuf": "",
+        "posPre": "\u00a4\u00a0",
+>>>>>>> develop
         "posSuf": ""
       }
     ]
   },
   "id": "es-co",
+<<<<<<< HEAD
+=======
+  "localeID": "es_CO",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -11,7 +11,11 @@
     "branch": "bower-validate",
     "commit": "e3994d4e80e1487f486c98a94c12d3b9ff7614a1"
   },
+<<<<<<< HEAD
   "_source": "git://github.com/angular-ui/ui-utils.git",
+=======
+  "_source": "https://github.com/angular-ui/ui-utils.git",
+>>>>>>> develop
   "_target": "bower-validate",
   "_originalSource": "angular-ui-utils"
 }

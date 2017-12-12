@@ -80,6 +80,23 @@ $provide.value("$locale", {
       "Samh",
       "D\u00f9bh"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Am Faoilleach",
+      "An Gearran",
+      "Am M\u00e0rt",
+      "An Giblean",
+      "An C\u00e8itean",
+      "An t-\u00d2gmhios",
+      "An t-Iuchar",
+      "An L\u00f9nastal",
+      "An t-Sultain",
+      "An D\u00e0mhair",
+      "An t-Samhain",
+      "An D\u00f9bhlachd"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -115,7 +132,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -123,6 +144,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "gd",
+<<<<<<< HEAD
+=======
+  "localeID": "gd",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

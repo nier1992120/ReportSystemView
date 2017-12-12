@@ -1,7 +1,10 @@
 define( function() {
 
+<<<<<<< HEAD
 "use strict";
 
+=======
+>>>>>>> develop
 return function( n, elem ) {
 	var matched = [];
 

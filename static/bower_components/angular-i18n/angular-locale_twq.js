@@ -80,6 +80,23 @@ $provide.value("$locale", {
       "Noo",
       "Dee"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u017danwiye",
+      "Feewiriye",
+      "Marsi",
+      "Awiril",
+      "Me",
+      "\u017duwe\u014b",
+      "\u017duyye",
+      "Ut",
+      "Sektanbur",
+      "Oktoobur",
+      "Noowanbur",
+      "Deesanbur"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -123,6 +140,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "twq",
+<<<<<<< HEAD
+=======
+  "localeID": "twq",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

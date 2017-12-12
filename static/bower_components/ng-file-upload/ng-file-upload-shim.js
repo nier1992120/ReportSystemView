@@ -1,8 +1,16 @@
 /**!
+<<<<<<< HEAD
  * AngularJS file upload/drop directive and service with progress and abort
  * FileAPI Flash shim for old browsers not supporting FormData
  * @author  Danial  <danial.farid@gmail.com>
  * @version 7.2.1
+=======
+ * AngularJS file upload directives and services. Supports: file upload/drop/paste, resume, cancel/abort,
+ * progress, resize, thumbnail, preview, validation and CORS
+ * FileAPI Flash shim for old browsers not supporting FormData
+ * @author  Danial  <danial.farid@gmail.com>
+ * @version 12.2.13
+>>>>>>> develop
  */
 
 (function () {
@@ -23,7 +31,15 @@
     window.FileAPI = {};
   }
 
+<<<<<<< HEAD
   FileAPI.shouldLoad = (window.XMLHttpRequest && !window.FormData) || FileAPI.forceLoad;
+=======
+  if (!window.XMLHttpRequest) {
+    throw 'AJAX is not supported. XMLHttpRequest is not defined.';
+  }
+
+  FileAPI.shouldLoad = !window.FormData || FileAPI.forceLoad;
+>>>>>>> develop
   if (FileAPI.shouldLoad) {
     var initializeUploadListener = function (xhr) {
       if (!xhr.__listeners) {
@@ -264,6 +280,10 @@
   }
 
   if (FileAPI.shouldLoad) {
+<<<<<<< HEAD
+=======
+    FileAPI.hasFlash = hasFlash();
+>>>>>>> develop
 
     //load FileAPI
     if (FileAPI.forceLoad) {
@@ -290,8 +310,11 @@
       if (FileAPI.staticPath == null) FileAPI.staticPath = basePath;
       script.setAttribute('src', jsUrl || basePath + 'FileAPI.min.js');
       document.getElementsByTagName('head')[0].appendChild(script);
+<<<<<<< HEAD
 
       FileAPI.hasFlash = hasFlash();
+=======
+>>>>>>> develop
     }
 
     FileAPI.ngfFixIE = function (elem, fileElem, changeFn) {
@@ -299,8 +322,14 @@
         throw 'Adode Flash Player need to be installed. To check ahead use "FileAPI.hasFlash"';
       }
       var fixInputStyle = function () {
+<<<<<<< HEAD
         if (elem.attr('disabled')) {
           if (fileElem) fileElem.removeClass('js-fileapi-wrapper');
+=======
+        var label = fileElem.parent();
+        if (elem.attr('disabled')) {
+          if (label) label.removeClass('js-fileapi-wrapper');
+>>>>>>> develop
         } else {
           if (!fileElem.attr('__ngf_flash_')) {
             fileElem.unbind('change');
@@ -311,14 +340,25 @@
             });
             fileElem.attr('__ngf_flash_', 'true');
           }
+<<<<<<< HEAD
           fileElem.addClass('js-fileapi-wrapper');
           if (!isInputTypeFile(elem)) {
             fileElem.css('position', 'absolute')
+=======
+          label.addClass('js-fileapi-wrapper');
+          if (!isInputTypeFile(elem)) {
+            label.css('position', 'absolute')
+>>>>>>> develop
               .css('top', getOffset(elem[0]).top + 'px').css('left', getOffset(elem[0]).left + 'px')
               .css('width', elem[0].offsetWidth + 'px').css('height', elem[0].offsetHeight + 'px')
               .css('filter', 'alpha(opacity=0)').css('display', elem.css('display'))
               .css('overflow', 'hidden').css('z-index', '900000')
               .css('visibility', 'visible');
+<<<<<<< HEAD
+=======
+            fileElem.css('width', elem[0].offsetWidth + 'px').css('height', elem[0].offsetHeight + 'px')
+              .css('position', 'absolute').css('top', '0px').css('left', '0px');
+>>>>>>> develop
           }
         }
       };
@@ -404,12 +444,15 @@ if (!window.FileReader) {
         _this.dispatchEvent(e);
       }
     };
+<<<<<<< HEAD
     this.readAsArrayBuffer = function (file) {
       FileAPI.readAsBinaryString(file, listener);
     };
     this.readAsBinaryString = function (file) {
       FileAPI.readAsBinaryString(file, listener);
     };
+=======
+>>>>>>> develop
     this.readAsDataURL = function (file) {
       FileAPI.readAsDataURL(file, listener);
     };

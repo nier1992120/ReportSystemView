@@ -1,4 +1,0 @@
-²Î¿¼£º
-https://github.com/angular-tools/ng-jsoneditor
-https://github.com/josdejong/jsoneditor/   
-https://github.com/odra/angular-file-input

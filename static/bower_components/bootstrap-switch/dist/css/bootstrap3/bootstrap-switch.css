@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ========================================================================
  * bootstrap-switch - v3.3.2
  * http://www.bootstrap-switch.org
@@ -18,6 +19,16 @@
  * limitations under the License.
  * ========================================================================
  */
+=======
+/**
+  * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
+  *
+  * @version v3.3.4
+  * @homepage https://bttstrp.github.io/bootstrap-switch
+  * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
+  * @license Apache-2.0
+  */
+>>>>>>> develop
 
 .bootstrap-switch {
   display: inline-block;
@@ -25,7 +36,11 @@
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid;
+<<<<<<< HEAD
   border-color: #cccccc;
+=======
+  border-color: #ccc;
+>>>>>>> develop
   position: relative;
   text-align: left;
   overflow: hidden;
@@ -37,6 +52,10 @@
   user-select: none;
   vertical-align: middle;
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+<<<<<<< HEAD
+=======
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+>>>>>>> develop
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .bootstrap-switch .bootstrap-switch-container {
@@ -53,8 +72,13 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
+<<<<<<< HEAD
   display: inline-block !important;
   height: 100%;
+=======
+  display: table-cell;
+  vertical-align: middle;
+>>>>>>> develop
   padding: 6px 12px;
   font-size: 14px;
   line-height: 20px;
@@ -67,7 +91,11 @@
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
   color: #fff;
+<<<<<<< HEAD
   background: #428bca;
+=======
+  background: #337ab7;
+>>>>>>> develop
 }
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info {
@@ -99,8 +127,16 @@
   margin-top: -1px;
   margin-bottom: -1px;
   z-index: 100;
+<<<<<<< HEAD
   color: #333333;
   background: #ffffff;
+=======
+  color: #333;
+  background: #fff;
+}
+.bootstrap-switch span::before {
+  content: "\200b";
+>>>>>>> develop
 }
 .bootstrap-switch .bootstrap-switch-handle-on {
   border-bottom-left-radius: 3px;
@@ -115,6 +151,7 @@
   position: absolute !important;
   top: 0;
   left: 0;
+<<<<<<< HEAD
   opacity: 0;
   filter: alpha(opacity=0);
   z-index: -1;
@@ -122,6 +159,13 @@
 .bootstrap-switch input[type='radio'].form-control,
 .bootstrap-switch input[type='checkbox'].form-control {
   height: auto;
+=======
+  margin: 0;
+  z-index: -1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  visibility: hidden;
+>>>>>>> develop
 }
 .bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-on,
 .bootstrap-switch.bootstrap-switch-mini .bootstrap-switch-handle-off,
@@ -142,7 +186,11 @@
 .bootstrap-switch.bootstrap-switch-large .bootstrap-switch-label {
   padding: 6px 16px;
   font-size: 18px;
+<<<<<<< HEAD
   line-height: 1.33;
+=======
+  line-height: 1.3333333;
+>>>>>>> develop
 }
 .bootstrap-switch.bootstrap-switch-disabled,
 .bootstrap-switch.bootstrap-switch-readonly,
@@ -164,6 +212,10 @@
 }
 .bootstrap-switch.bootstrap-switch-animate .bootstrap-switch-container {
   -webkit-transition: margin-left 0.5s;
+<<<<<<< HEAD
+=======
+  -o-transition: margin-left 0.5s;
+>>>>>>> develop
   transition: margin-left 0.5s;
 }
 .bootstrap-switch.bootstrap-switch-inverse .bootstrap-switch-handle-on {

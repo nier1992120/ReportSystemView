@@ -35,6 +35,7 @@ $provide.value("$locale", {
       "Sanbata"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "KD",
       "KB"
     ],
@@ -43,6 +44,16 @@ $provide.value("$locale", {
       "KB"
     ],
     "FIRSTDAYOFWEEK": 0,
+=======
+      "Dheengadda Jeesu",
+      "CE"
+    ],
+    "ERAS": [
+      "KD",
+      "CE"
+    ],
+    "FIRSTDAYOFWEEK": 6,
+>>>>>>> develop
     "MONTH": [
       "Amajjii",
       "Guraandhala",
@@ -80,18 +91,44 @@ $provide.value("$locale", {
       "Sad",
       "Mud"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Amajjii",
+      "Guraandhala",
+      "Bitooteessa",
+      "Elba",
+      "Caamsa",
+      "Waxabajjii",
+      "Adooleessa",
+      "Hagayya",
+      "Fuulbana",
+      "Onkololeessa",
+      "Sadaasa",
+      "Muddee"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, MMMM d, y",
     "longDate": "dd MMMM y",
+<<<<<<< HEAD
     "medium": "dd-MMM-y h:mm:ss a",
     "mediumDate": "dd-MMM-y",
     "mediumTime": "h:mm:ss a",
     "short": "dd/MM/yy h:mm a",
     "shortDate": "dd/MM/yy",
     "shortTime": "h:mm a"
+=======
+    "medium": "dd-MMM-y HH:mm:ss",
+    "mediumDate": "dd-MMM-y",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd/MM/yy HH:mm",
+    "shortDate": "dd/MM/yy",
+    "shortTime": "HH:mm"
+>>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "Ksh",
@@ -115,7 +152,11 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
+<<<<<<< HEAD
         "negPre": "\u00a4-",
+=======
+        "negPre": "-\u00a4",
+>>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -123,6 +164,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "om-ke",
+<<<<<<< HEAD
+=======
+  "localeID": "om_KE",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

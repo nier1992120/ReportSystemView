@@ -4,8 +4,13 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "\u056f\u0565\u057d\u0585\u0580\u056b\u0581 \u0561\u057c\u0561\u057b",
       "\u056f\u0565\u057d\u0585\u0580\u056b\u0581 \u0570\u0565\u057f\u0578"
+=======
+      "AM",
+      "PM"
+>>>>>>> develop
     ],
     "DAY": [
       "\u056f\u056b\u0580\u0561\u056f\u056b",
@@ -17,8 +22,13 @@ $provide.value("$locale", {
       "\u0577\u0561\u0562\u0561\u0569"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "\u0574.\u0569.\u0561.",
       "\u0574.\u0569."
+=======
+      "\u0554\u0580\u056b\u057d\u057f\u0578\u057d\u056b\u0581 \u0561\u057c\u0561\u057b",
+      "\u0554\u0580\u056b\u057d\u057f\u0578\u057d\u056b\u0581 \u0570\u0565\u057f\u0578"
+>>>>>>> develop
     ],
     "ERAS": [
       "\u0574.\u0569.\u0561.",
@@ -62,10 +72,28 @@ $provide.value("$locale", {
       "\u0576\u0578\u0575",
       "\u0564\u0565\u056f"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u0570\u0578\u0582\u0576\u057e\u0561\u0580",
+      "\u0583\u0565\u057f\u0580\u057e\u0561\u0580",
+      "\u0574\u0561\u0580\u057f",
+      "\u0561\u057a\u0580\u056b\u056c",
+      "\u0574\u0561\u0575\u056b\u057d",
+      "\u0570\u0578\u0582\u0576\u056b\u057d",
+      "\u0570\u0578\u0582\u056c\u056b\u057d",
+      "\u0585\u0563\u0578\u057d\u057f\u0578\u057d",
+      "\u057d\u0565\u057a\u057f\u0565\u0574\u0562\u0565\u0580",
+      "\u0570\u0578\u056f\u057f\u0565\u0574\u0562\u0565\u0580",
+      "\u0576\u0578\u0575\u0565\u0574\u0562\u0565\u0580",
+      "\u0564\u0565\u056f\u057f\u0565\u0574\u0562\u0565\u0580"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
+<<<<<<< HEAD
     "fullDate": "y\u0569. MMMM d, EEEE",
     "longDate": "dd MMMM, y\u0569.",
     "medium": "dd MMM, y\u0569. H:mm:ss",
@@ -74,15 +102,33 @@ $provide.value("$locale", {
     "short": "dd.MM.yy H:mm",
     "shortDate": "dd.MM.yy",
     "shortTime": "H:mm"
+=======
+    "fullDate": "y \u0569. MMMM d, EEEE",
+    "longDate": "dd MMMM, y \u0569.",
+    "medium": "dd MMM, y \u0569. HH:mm:ss",
+    "mediumDate": "dd MMM, y \u0569.",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd.MM.yy HH:mm",
+    "shortDate": "dd.MM.yy",
+    "shortTime": "HH:mm"
+>>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "Dram",
     "DECIMAL_SEP": ",",
+<<<<<<< HEAD
     "GROUP_SEP": ".",
     "PATTERNS": [
       {
         "gSize": 0,
         "lgSize": 0,
+=======
+    "GROUP_SEP": "\u00a0",
+    "PATTERNS": [
+      {
+        "gSize": 3,
+        "lgSize": 3,
+>>>>>>> develop
         "maxFrac": 3,
         "minFrac": 0,
         "minInt": 1,
@@ -92,6 +138,7 @@ $provide.value("$locale", {
         "posSuf": ""
       },
       {
+<<<<<<< HEAD
         "gSize": 0,
         "lgSize": 0,
         "maxFrac": 2,
@@ -101,10 +148,25 @@ $provide.value("$locale", {
         "negSuf": "\u00a0\u00a4",
         "posPre": "",
         "posSuf": "\u00a0\u00a4"
+=======
+        "gSize": 3,
+        "lgSize": 3,
+        "maxFrac": 0,
+        "minFrac": 0,
+        "minInt": 1,
+        "negPre": "-\u00a4\u00a0",
+        "negSuf": "",
+        "posPre": "\u00a4\u00a0",
+        "posSuf": ""
+>>>>>>> develop
       }
     ]
   },
   "id": "hy-am",
+<<<<<<< HEAD
+=======
+  "localeID": "hy_AM",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || i == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

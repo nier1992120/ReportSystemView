@@ -8,8 +8,11 @@ define( [
 	"../event"
 ], function( jQuery, document, dataPriv, acceptData, hasOwn ) {
 
+<<<<<<< HEAD
 "use strict";
 
+=======
+>>>>>>> develop
 var rfocusMorph = /^(?:focusinfocus|focusoutblur)$/;
 
 jQuery.extend( jQuery.event, {
@@ -123,7 +126,11 @@ jQuery.extend( jQuery.event, {
 				special._default.apply( eventPath.pop(), data ) === false ) &&
 				acceptData( elem ) ) {
 
+<<<<<<< HEAD
 				// Call a native DOM method on the target with the same name as the event.
+=======
+				// Call a native DOM method on the target with the same name name as the event.
+>>>>>>> develop
 				// Don't do default actions on window, that's where global variables be (#6170)
 				if ( ontype && jQuery.isFunction( elem[ type ] ) && !jQuery.isWindow( elem ) ) {
 

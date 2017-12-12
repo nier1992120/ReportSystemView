@@ -1,15 +1,24 @@
 /**
+<<<<<<< HEAD
  * @license AngularJS v1.4.3
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
  */
 (function(window, angular, undefined) {'use strict';
+=======
+ * @license AngularJS v1.6.7
+ * (c) 2010-2017 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular) {'use strict';
+>>>>>>> develop
 
 /**
  * @ngdoc module
  * @name ngCookies
  * @description
  *
+<<<<<<< HEAD
  * # ngCookies
  *
  * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
@@ -17,18 +26,30 @@
  *
  * <div doc-module-components="ngCookies"></div>
  *
+=======
+ * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
+ *
+>>>>>>> develop
  * See {@link ngCookies.$cookies `$cookies`} for usage.
  */
 
 
 angular.module('ngCookies', ['ng']).
+<<<<<<< HEAD
+=======
+  info({ angularVersion: '1.6.7' }).
+>>>>>>> develop
   /**
    * @ngdoc provider
    * @name $cookiesProvider
    * @description
    * Use `$cookiesProvider` to change the default behavior of the {@link ngCookies.$cookies $cookies} service.
    * */
+<<<<<<< HEAD
    provider('$cookies', [function $CookiesProvider() {
+=======
+   provider('$cookies', [/** @this */function $CookiesProvider() {
+>>>>>>> develop
     /**
      * @ngdoc property
      * @name $cookiesProvider#defaults
@@ -39,6 +60,7 @@ angular.module('ngCookies', ['ng']).
      * The object may have following properties:
      *
      * - **path** - `{string}` - The cookie will be available only for this path and its
+<<<<<<< HEAD
      *   sub-paths. By default, this would be the URL that appears in your base tag.
      * - **domain** - `{string}` - The cookie will be available only for this domain and
      *   its sub-domains. For obvious security reasons the user agent will not accept the
@@ -50,6 +72,30 @@ angular.module('ngCookies', ['ng']).
      * Note: by default the address that appears in your `<base>` tag will be used as path.
      * This is import so that cookies will be visible for all routes in case html5mode is enabled
      *
+=======
+     *   sub-paths. By default, this is the URL that appears in your `<base>` tag.
+     * - **domain** - `{string}` - The cookie will be available only for this domain and
+     *   its sub-domains. For security reasons the user agent will not accept the cookie
+     *   if the current domain is not a sub-domain of this domain or equal to it.
+     * - **expires** - `{string|Date}` - String of the form "Wdy, DD Mon YYYY HH:MM:SS GMT"
+     *   or a Date object indicating the exact date/time this cookie will expire.
+     * - **secure** - `{boolean}` - If `true`, then the cookie will only be available through a
+     *   secured connection.
+     *
+     * Note: By default, the address that appears in your `<base>` tag will be used as the path.
+     * This is important so that cookies will be visible for all routes when html5mode is enabled.
+     *
+     * @example
+     *
+     * ```js
+     * angular.module('cookiesProviderExample', ['ngCookies'])
+     *   .config(['$cookiesProvider', function($cookiesProvider) {
+     *     // Setting default options
+     *     $cookiesProvider.defaults.domain = 'foo.com';
+     *     $cookiesProvider.defaults.secure = true;
+     *   }]);
+     * ```
+>>>>>>> develop
      **/
     var defaults = this.defaults = {};
 
@@ -183,6 +229,12 @@ angular.module('ngCookies').
  * @ngdoc service
  * @name $cookieStore
  * @deprecated
+<<<<<<< HEAD
+=======
+ * sinceVersion="v1.4.0"
+ * Please use the {@link ngCookies.$cookies `$cookies`} service instead.
+ *
+>>>>>>> develop
  * @requires $cookies
  *
  * @description
@@ -192,11 +244,14 @@ angular.module('ngCookies').
  *
  * Requires the {@link ngCookies `ngCookies`} module to be installed.
  *
+<<<<<<< HEAD
  * <div class="alert alert-danger">
  * **Note:** The $cookieStore service is **deprecated**.
  * Please use the {@link ngCookies.$cookies `$cookies`} service instead.
  * </div>
  *
+=======
+>>>>>>> develop
  * @example
  *
  * ```js
@@ -278,7 +333,11 @@ function $$CookieWriter($document, $log, $browser) {
     options = options || {};
     expires = options.expires;
     path = angular.isDefined(options.path) ? options.path : cookiePath;
+<<<<<<< HEAD
     if (value === undefined) {
+=======
+    if (angular.isUndefined(value)) {
+>>>>>>> develop
       expires = 'Thu, 01 Jan 1970 00:00:00 GMT';
       value = '';
     }
@@ -298,9 +357,15 @@ function $$CookieWriter($document, $log, $browser) {
     // - 4096 bytes per cookie
     var cookieLength = str.length + 1;
     if (cookieLength > 4096) {
+<<<<<<< HEAD
       $log.warn("Cookie '" + name +
         "' possibly not set or overflowed because it was too large (" +
         cookieLength + " > 4096 bytes)!");
+=======
+      $log.warn('Cookie \'' + name +
+        '\' possibly not set or overflowed because it was too large (' +
+        cookieLength + ' > 4096 bytes)!');
+>>>>>>> develop
     }
 
     return str;
@@ -313,7 +378,11 @@ function $$CookieWriter($document, $log, $browser) {
 
 $$CookieWriter.$inject = ['$document', '$log', '$browser'];
 
+<<<<<<< HEAD
 angular.module('ngCookies').provider('$$cookieWriter', function $$CookieWriterProvider() {
+=======
+angular.module('ngCookies').provider('$$cookieWriter', /** @this */ function $$CookieWriterProvider() {
+>>>>>>> develop
   this.$get = $$CookieWriter;
 });
 

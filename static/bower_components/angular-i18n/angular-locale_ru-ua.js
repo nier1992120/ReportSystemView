@@ -35,8 +35,13 @@ $provide.value("$locale", {
       "\u0441\u0443\u0431\u0431\u043e\u0442\u0430"
     ],
     "ERANAMES": [
+<<<<<<< HEAD
       "\u0434\u043e \u043d. \u044d.",
       "\u043d. \u044d."
+=======
+      "\u0434\u043e \u0420\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0430 \u0425\u0440\u0438\u0441\u0442\u043e\u0432\u0430",
+      "\u043e\u0442 \u0420\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0430 \u0425\u0440\u0438\u0441\u0442\u043e\u0432\u0430"
+>>>>>>> develop
     ],
     "ERAS": [
       "\u0434\u043e \u043d. \u044d.",
@@ -69,22 +74,48 @@ $provide.value("$locale", {
     "SHORTMONTH": [
       "\u044f\u043d\u0432.",
       "\u0444\u0435\u0432\u0440.",
+<<<<<<< HEAD
       "\u043c\u0430\u0440\u0442\u0430",
       "\u0430\u043f\u0440.",
       "\u043c\u0430\u044f",
       "\u0438\u044e\u043d\u044f",
       "\u0438\u044e\u043b\u044f",
+=======
+      "\u043c\u0430\u0440.",
+      "\u0430\u043f\u0440.",
+      "\u043c\u0430\u044f",
+      "\u0438\u044e\u043d.",
+      "\u0438\u044e\u043b.",
+>>>>>>> develop
       "\u0430\u0432\u0433.",
       "\u0441\u0435\u043d\u0442.",
       "\u043e\u043a\u0442.",
       "\u043d\u043e\u044f\u0431.",
       "\u0434\u0435\u043a."
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "\u044f\u043d\u0432\u0430\u0440\u044c",
+      "\u0444\u0435\u0432\u0440\u0430\u043b\u044c",
+      "\u043c\u0430\u0440\u0442",
+      "\u0430\u043f\u0440\u0435\u043b\u044c",
+      "\u043c\u0430\u0439",
+      "\u0438\u044e\u043d\u044c",
+      "\u0438\u044e\u043b\u044c",
+      "\u0430\u0432\u0433\u0443\u0441\u0442",
+      "\u0441\u0435\u043d\u0442\u044f\u0431\u0440\u044c",
+      "\u043e\u043a\u0442\u044f\u0431\u0440\u044c",
+      "\u043d\u043e\u044f\u0431\u0440\u044c",
+      "\u0434\u0435\u043a\u0430\u0431\u0440\u044c"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d MMMM y '\u0433'.",
+<<<<<<< HEAD
     "longDate": "d MMMM y",
     "medium": "d MMM y HH:mm:ss",
     "mediumDate": "d MMM y",
@@ -95,6 +126,18 @@ $provide.value("$locale", {
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20b4",
+=======
+    "longDate": "d MMMM y '\u0433'.",
+    "medium": "d MMM y '\u0433'. HH:mm:ss",
+    "mediumDate": "d MMM y '\u0433'.",
+    "mediumTime": "HH:mm:ss",
+    "short": "dd.MM.y HH:mm",
+    "shortDate": "dd.MM.y",
+    "shortTime": "HH:mm"
+  },
+  "NUMBER_FORMATS": {
+    "CURRENCY_SYM": "\u0433\u0440\u043d.",
+>>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": "\u00a0",
     "PATTERNS": [
@@ -123,6 +166,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "ru-ua",
+<<<<<<< HEAD
+=======
+  "localeID": "ru_UA",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (vf.v == 0 && i % 10 == 1 && i % 100 != 11) {    return PLURAL_CATEGORY.ONE;  }  if (vf.v == 0 && i % 10 >= 2 && i % 10 <= 4 && (i % 100 < 12 || i % 100 > 14)) {    return PLURAL_CATEGORY.FEW;  }  if (vf.v == 0 && i % 10 == 0 || vf.v == 0 && i % 10 >= 5 && i % 10 <= 9 || vf.v == 0 && i % 100 >= 11 && i % 100 <= 14) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

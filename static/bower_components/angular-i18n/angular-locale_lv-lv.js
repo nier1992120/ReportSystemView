@@ -58,6 +58,7 @@ $provide.value("$locale", {
       "decembris"
     ],
     "SHORTDAY": [
+<<<<<<< HEAD
       "Sv",
       "Pr",
       "Ot",
@@ -65,6 +66,15 @@ $provide.value("$locale", {
       "Ce",
       "Pk",
       "Se"
+=======
+      "sv\u0113td.",
+      "pirmd.",
+      "otrd.",
+      "tre\u0161d.",
+      "ceturtd.",
+      "piektd.",
+      "sestd."
+>>>>>>> develop
     ],
     "SHORTMONTH": [
       "janv.",
@@ -80,6 +90,23 @@ $provide.value("$locale", {
       "nov.",
       "dec."
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "janv\u0101ris",
+      "febru\u0101ris",
+      "marts",
+      "apr\u012blis",
+      "maijs",
+      "j\u016bnijs",
+      "j\u016blijs",
+      "augusts",
+      "septembris",
+      "oktobris",
+      "novembris",
+      "decembris"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -110,6 +137,7 @@ $provide.value("$locale", {
         "posSuf": ""
       },
       {
+<<<<<<< HEAD
         "gSize": 0,
         "lgSize": 0,
         "maxFrac": 2,
@@ -119,10 +147,25 @@ $provide.value("$locale", {
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
+=======
+        "gSize": 3,
+        "lgSize": 3,
+        "maxFrac": 2,
+        "minFrac": 2,
+        "minInt": 1,
+        "negPre": "-",
+        "negSuf": "\u00a0\u00a4",
+        "posPre": "",
+        "posSuf": "\u00a0\u00a4"
+>>>>>>> develop
       }
     ]
   },
   "id": "lv-lv",
+<<<<<<< HEAD
+=======
+  "localeID": "lv_LV",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var vf = getVF(n, opt_precision);  if (n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19 || vf.v == 2 && vf.f % 100 >= 11 && vf.f % 100 <= 19) {    return PLURAL_CATEGORY.ZERO;  }  if (n % 10 == 1 && n % 100 != 11 || vf.v == 2 && vf.f % 10 == 1 && vf.f % 100 != 11 || vf.v != 2 && vf.f % 10 == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

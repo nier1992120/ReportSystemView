@@ -45,8 +45,14 @@
         Store: function(id, area, namespace) {
             var store = _.inherit(_.storeAPI, function(key, data, overwrite) {
                 if (arguments.length === 0){ return store.getAll(); }
+<<<<<<< HEAD
                 if (data !== undefined){ return store.set(key, data, overwrite); }
                 if (typeof key === "string"){ return store.get(key); }
+=======
+                if (typeof data === "function"){ return store.transact(key, data, overwrite); }// fn=data, alt=overwrite
+                if (data !== undefined){ return store.set(key, data, overwrite); }
+                if (typeof key === "string" || typeof key === "number"){ return store.get(key); }
+>>>>>>> develop
                 if (!key){ return store.clear(); }
                 return store.setAll(key, data);// overwrite=data, data=key
             });
@@ -104,17 +110,29 @@
                 return !!(this._in(key) in this._area);
             },
             size: function(){ return this.keys().length; },
+<<<<<<< HEAD
             each: function(fn, and) {
                 for (var i=0, m=_.length(this._area); i<m; i++) {
                     var key = this._out(_.key(this._area, i));
                     if (key !== undefined) {
                         if (fn.call(this, key, and || this.get(key)) === false) {
+=======
+            each: function(fn, _and) {// _and is purely for internal use (see keys())
+                for (var i=0, m=_.length(this._area); i<m; i++) {
+                    var key = this._out(_.key(this._area, i));
+                    if (key !== undefined) {
+                        if (fn.call(this, key, _and || this.get(key)) === false) {
+>>>>>>> develop
                             break;
                         }
                     }
                     if (m > _.length(this._area)) { m--; i--; }// in case of removeItem
                 }
+<<<<<<< HEAD
                 return and || this;
+=======
+                return _and || this;
+>>>>>>> develop
             },
             keys: function() {
                 return this.each(function(k, list){ list.push(k); }, []);
@@ -126,6 +144,15 @@
             getAll: function() {
                 return this.each(function(k, all){ all[k] = this.get(k); }, {});
             },
+<<<<<<< HEAD
+=======
+            transact: function(key, fn, alt) {
+                var val = this.get(key, alt),
+                    ret = fn(val);
+                this.set(key, ret === undefined ? val : ret);
+                return this;
+            },
+>>>>>>> develop
             set: function(key, data, overwrite) {
                 var d = this.get(key);
                 if (d != null && overwrite === false) {
@@ -205,13 +232,20 @@
                 }
             },
             getItem: function(k){ return this.has(k) ? this.items[k] : null; },
+<<<<<<< HEAD
             clear: function(){ for (var k in this.list){ this.removeItem(k); } },
+=======
+            clear: function(){ for (var k in this.items){ this.removeItem(k); } },
+>>>>>>> develop
             toString: function(){ return this.length+' items in '+this.name+'Storage'; }
         }// end _.storageAPI
     };
 
+<<<<<<< HEAD
     // setup the primary store fn
     if (window.store){ _.conflict = window.store; }
+=======
+>>>>>>> develop
     var store =
         // safely set this up (throws error in IE10/32bit mode for local files)
         _.Store("local", (function(){try{ return localStorage; }catch(e){}})());
@@ -220,15 +254,27 @@
     // safely setup store.session (throws exception in FF for file:/// urls)
     store.area("session", (function(){try{ return sessionStorage; }catch(e){}})());
 
+<<<<<<< HEAD
     //Expose store to the global object
     window.store = store;
 
     if (typeof define === 'function' && define.amd !== undefined) {
         define(function () {
+=======
+    if (typeof define === 'function' && define.amd !== undefined) {
+        define('store2', [], function () {
+>>>>>>> develop
             return store;
         });
     } else if (typeof module !== 'undefined' && module.exports) {
         module.exports = store;
+<<<<<<< HEAD
+=======
+    } else {
+        // expose the primary store fn to the global object and save conflicts
+        if (window.store){ _.conflict = window.store; }
+        window.store = store;
+>>>>>>> develop
     }
 
 })(this, this.define);

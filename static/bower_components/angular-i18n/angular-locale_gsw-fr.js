@@ -4,8 +4,13 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
+<<<<<<< HEAD
       "vorm.",
       "nam."
+=======
+      "am Vormittag",
+      "am Namittag"
+>>>>>>> develop
     ],
     "DAY": [
       "Sunntig",
@@ -62,6 +67,23 @@ $provide.value("$locale", {
       "Nov",
       "Dez"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Januar",
+      "Februar",
+      "M\u00e4rz",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "Auguscht",
+      "Sept\u00e4mber",
+      "Oktoober",
+      "Nov\u00e4mber",
+      "Dez\u00e4mber"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -105,6 +127,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "gsw-fr",
+<<<<<<< HEAD
+=======
+  "localeID": "gsw_FR",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

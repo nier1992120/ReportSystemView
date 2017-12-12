@@ -1,6 +1,10 @@
 {
   "name": "angular-cookies",
+<<<<<<< HEAD
   "version": "1.4.3",
+=======
+  "version": "1.6.7",
+>>>>>>> develop
   "description": "AngularJS module for cookies",
   "main": "index.js",
   "scripts": {
@@ -22,5 +26,16 @@
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
+<<<<<<< HEAD
   "homepage": "http://angularjs.org"
+=======
+  "homepage": "http://angularjs.org",
+  "jspm": {
+    "shim": {
+      "angular-cookies": {
+        "deps": ["angular"]
+      }
+    }
+  }
+>>>>>>> develop
 }

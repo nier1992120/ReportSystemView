@@ -80,6 +80,23 @@ $provide.value("$locale", {
       "Nuv",
       "Diz"
     ],
+<<<<<<< HEAD
+=======
+    "STANDALONEMONTH": [
+      "Janeru",
+      "Febreru",
+      "Marsu",
+      "Abril",
+      "Maiu",
+      "Junhu",
+      "Julhu",
+      "Agostu",
+      "Setenbru",
+      "Otubru",
+      "Nuvenbru",
+      "Dizenbru"
+    ],
+>>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -123,6 +140,10 @@ $provide.value("$locale", {
     ]
   },
   "id": "kea-cv",
+<<<<<<< HEAD
+=======
+  "localeID": "kea_CV",
+>>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);
