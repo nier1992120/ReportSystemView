@@ -80,7 +80,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             }
         }
     });
-}]).controller("dashBoardCtrl", ["$scope", "app", 'highchartsDashBoardOptions', 'Highcharts','GetDateStr',function ($scope, app,highchartsDashBoardOptions, Highcharts,GetDateStr) {
+}]).controller("dashBoardCtrl", ["$scope", "app", 'highchartsDashBoardOptions', 'Highcharts', 'GetDateStr', function ($scope, app, highchartsDashBoardOptions, Highcharts, GetDateStr) {
     if (!app.rootScope.global.isLogin) {
         app.$state.go('login');
         return;
@@ -124,13 +124,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         OP: app.store("platform")
     }, $scope.condition, function (data) {
         if (data.data) {
-            data.data.piclist.splice(5,data.data.piclist.length-5);
+            data.data.piclist.splice(5, data.data.piclist.length - 5);
             $scope.picStatisticsData = data.data.piclist;
         } else {
             $scope.picStatisticsData = [];
         }
     });
-
 
 
     $scope.toLog = function () {
@@ -1117,12 +1116,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
                 var weightArr = weightStr.split(":");
                 angular.forEach(weightArr, function (y) {
                     var weight = parseInt(y);
-                    if(weight < -1 || weight > 10000){
+                    if (weight < -1 || weight > 10000) {
                         failedCount++;
                     }
                 });
             });
-            if(failedCount > 0){
+            if (failedCount > 0) {
                 app.toast.error("请将权重weight设置在-1和10000之间！");
                 return;
             }
@@ -1131,8 +1130,8 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
 
         if (param["key"] == 'max_task_daily') {
             var value = param["value"];
-            var tt=/^\d+$/g;
-            if(!tt.test(value) || value == 0){
+            var tt = /^\d+$/g;
+            if (!tt.test(value) || value == 0) {
                 app.toast.error("请将参数max_task_daily设置为正整数！");
                 return;
             }
@@ -1867,18 +1866,18 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
 
         // 检测要更新策略的JSON格式
         var failedCount = 0;
-        angular.forEach($scope.ad.strategy,function(value,key){
-            if(angular.isArray(value)){
+        angular.forEach($scope.ad.strategy, function (value, key) {
+            if (angular.isArray(value)) {
                 failedCount++;
-            }else{
-                angular.forEach(value,function(value1,key1){
-                    if(!angular.isArray(value1)){
+            } else {
+                angular.forEach(value, function (value1, key1) {
+                    if (!angular.isArray(value1)) {
                         failedCount++;
                     }
                 });
             }
         });
-        if(failedCount != 0){
+        if (failedCount != 0) {
             app.toast.error("广告策略的JSON格式不符合要求，请检查或参考其他广告策略格式");
             return;
         }
@@ -2218,25 +2217,25 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     $scope.addProperty = function (task, index) {
         var property = angular.copy(task);
         _id = property._id.$oid;
-        delete property.tasks,delete property.linkids,delete property.utime,delete property.pubid,
-        delete property.platform,delete property.users,delete property._id
+        delete property.tasks, delete property.linkids, delete property.utime, delete property.pubid,
+            delete property.platform, delete property.users, delete property._id
         $scope.property = property;
     };
 
     $scope.updateProperty = function () {
-        if(!angular.isObject($scope.property)){
+        if (!angular.isObject($scope.property)) {
             app.toast.error("格式有误，请检查！");
             return;
         }
-        if(angular.isUndefined($scope.property.switch)){
+        if (angular.isUndefined($scope.property.switch)) {
             app.toast.error("请填写switch节点！");
             return;
         }
-        if ($scope.property.switch !== "1" && $scope.property.switch !== "0"){
+        if ($scope.property.switch !== "1" && $scope.property.switch !== "0") {
             app.toast.error("switch节点只能为'0'或者'1'！");
             return;
         }
-        if(angular.isUndefined($scope.property.describe)){
+        if (angular.isUndefined($scope.property.describe)) {
             app.toast.error("请填写describe节点！");
             return;
         }
@@ -2245,7 +2244,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             ID: "update",
             OP: _id,
             flag: "1"  //判断是修改属性还是任务
-        },$scope.property, function (data) {
+        }, $scope.property, function (data) {
             $("#addProperty").modal('hide');
             app.toast.info("更新成功！");
             app.timeout(function () {
@@ -2312,7 +2311,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             $scope.errors.push({"error": "请添加switch节点！"});
             return;
         }
-        if ($scope.data.switch !=="1" && $scope.data.switch !=="0"){
+        if ($scope.data.switch !== "1" && $scope.data.switch !== "0") {
             $scope.errors.push({"error": "switch节点只能为'0'或者'1'"});
             return;
         }
@@ -2329,15 +2328,15 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         var time_flag = true;
         angular.forEach(data, function (x) {
             var weight = x.weight;
-            if(!app.checkWeightData(weight,10000)){
+            if (!app.checkWeightData(weight, 10000)) {
                 weighFlag = false;
             }
             var id = x.id;
-            if(!angular.isString(id)){
+            if (!angular.isString(id)) {
                 id_flag = false;
             }
             var time = x.taskSaveTime;
-            if(!angular.isString(time)){
+            if (!angular.isString(time)) {
                 time_flag = false;
             }
         });
@@ -2346,11 +2345,11 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             return;
         }
 
-        if(!id_flag){
+        if (!id_flag) {
             app.toast.error("task节点id必须为字符串！");
             return;
         }
-        if(!time_flag){
+        if (!time_flag) {
             app.toast.error("task节点taskSaveTime必须为字符串！");
             return;
         }
@@ -2360,7 +2359,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             ID: "create",
             platform: app.store("platform"),
             describe: $scope.data.describe
-        }, property , function (data) {
+        }, property, function (data) {
             if (data.data !== null) {
                 $scope.errors = data.data;
             } else {
@@ -2395,7 +2394,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     $scope.errors = [];
 
 
-    var task=[];
+    var task = [];
 
     restAPI.task.get({
         ID: "queryById",
@@ -2425,12 +2424,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         }
     });
 
-    $scope.delTask = function(t,index){
+    $scope.delTask = function (t, index) {
         app.confirmDialog({
             message: "您确定要删除此条数据吗？",
             name: "任务名称:" + t.name
         }, function () {
-            task.splice(index,1);
+            task.splice(index, 1);
             var myLinkids = [];
             angular.forEach($scope.linkids, function (x) {
                 if (x.checked) {
@@ -2441,13 +2440,13 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
                 ID: "update",
                 OP: optgroupid,
                 linkids: myLinkids,
-                action:"0",   // action是编辑节点任务标志，1是新增，0是删除
-                taskId:t.id  // 增加taskID请求参数，区分是删除任务
-            },task, function (data) {
+                action: "0",   // action是编辑节点任务标志，1是新增，0是删除
+                taskId: t.id  // 增加taskID请求参数，区分是删除任务
+            }, task, function (data) {
                 if (data.data !== null) {
                     $scope.errors = data.data;
                 } else {
-                    $scope.task.splice(index,1);
+                    $scope.task.splice(index, 1);
                     app.toast.info("删除成功!");
                 }
             }, function () {
@@ -2458,16 +2457,16 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
 
     var taskIndex;
     var id;
-    $scope.modifyTask = function(data,index){
+    $scope.modifyTask = function (data, index) {
         $scope.subtask = data;
         taskIndex = index;
         id = data.id
     };
 
-    $scope.updateTask = function(){
-        if(angular.isArray($scope.subtask)){
+    $scope.updateTask = function () {
+        if (angular.isArray($scope.subtask)) {
             app.toast.error("保存失败！请填写单个任务节点对象");
-        }else{
+        } else {
             var myLinkids = [];
             angular.forEach($scope.linkids, function (x) {
                 if (x.checked) {
@@ -2476,19 +2475,19 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             });
             // 校验权重大小
             var weight = $scope.subtask.weight;
-            if(!app.checkWeightData(weight,10000)){
+            if (!app.checkWeightData(weight, 10000)) {
                 app.toast.error("请将权重weight设置在-1和10000之间！");
                 return;
             }
-            if(id !== $scope.subtask.id){
+            if (id !== $scope.subtask.id) {
                 app.toast.error("任务ID不能更改！");
                 return;
             }
-            if(!angular.isString($scope.subtask.id)){
+            if (!angular.isString($scope.subtask.id)) {
                 app.toast.error("task节点id必须为字符串！");
                 return;
             }
-            if(!angular.isString($scope.subtask.taskSaveTime)){
+            if (!angular.isString($scope.subtask.taskSaveTime)) {
                 app.toast.error("task节点taskSaveTime必须为字符串！");
                 return;
             }
@@ -2497,7 +2496,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
                 ID: "update",
                 OP: optgroupid,
                 linkids: myLinkids
-            },task, function (data) {
+            }, task, function (data) {
                 if (data.data !== null) {
                     $scope.errors = data.data;
                 } else {
@@ -2510,11 +2509,11 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         $("#taskModify").modal('hide');
     };
 
-    $scope.addTask = function(){
+    $scope.addTask = function () {
         var subTaskData = angular.copy($scope.subtaskdata);
-        if(angular.isArray(subTaskData)){
+        if (angular.isArray(subTaskData)) {
             app.toast.error("保存失败！请填写单个任务节点对象");
-        }else{
+        } else {
             var myLinkids = [];
             angular.forEach($scope.linkids, function (x) {
                 if (x.checked) {
@@ -2523,21 +2522,21 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             });
             // 校验权重大小
             var weight = subTaskData.weight;
-            if(!app.checkWeightData(weight,10000)){
+            if (!app.checkWeightData(weight, 10000)) {
                 //$scope.errors.push({"error": "请将权重weight设置在-1和10000之间！"});
                 app.toast.error("请将权重weight设置在-1和10000之间！");
                 return;
             }
 
-            if(angular.isUndefined(subTaskData.id)){
+            if (angular.isUndefined(subTaskData.id)) {
                 app.toast.error("请增加task节点id！");
                 return;
             }
-            if(!angular.isString(subTaskData.id)){
+            if (!angular.isString(subTaskData.id)) {
                 app.toast.error("task节点id必须为字符串！");
                 return;
             }
-            if(!angular.isString(subTaskData.taskSaveTime)){
+            if (!angular.isString(subTaskData.taskSaveTime)) {
                 app.toast.error("task节点taskSaveTime必须为字符串！");
                 return;
             }
@@ -2546,16 +2545,16 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
                 ID: "update",
                 OP: optgroupid,
                 linkids: myLinkids,
-                action:"1",   // action是编辑节点任务标志，1是新增，0是删除
-                taskId:subTaskData.id  // 增加taskID请求参数，区分是新增任务，以便后端判断任务ID重复性
-            },task, function (data) {
+                action: "1",   // action是编辑节点任务标志，1是新增，0是删除
+                taskId: subTaskData.id  // 增加taskID请求参数，区分是新增任务，以便后端判断任务ID重复性
+            }, task, function (data) {
                 if (data.data !== null) {
                     task.pop();
                     app.toast.error("新增任务的图片不存在，请检查!");
                 } else {
                     $scope.task.push(subTaskData);
                     app.toast.info("新增成功!");
-                    $scope.subtaskdata={};
+                    $scope.subtaskdata = {};
                 }
                 $("#addTask").modal('hide');
             }, function () {
@@ -2591,7 +2590,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         var weighFlag = true;
         angular.forEach(task, function (x) {
             var weight = x.weight;
-            if(!app.checkWeightData(weight,10000)){
+            if (!app.checkWeightData(weight, 10000)) {
                 weighFlag = false;
             }
         });
@@ -2604,7 +2603,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             ID: "update",
             OP: optgroupid,
             linkids: myLinkids
-        },task, function (data) {
+        }, task, function (data) {
             if (data.data !== null) {
                 $scope.errors = data.data;
             } else {
@@ -2964,7 +2963,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         var weighFlag1 = true;
         angular.forEach(data, function (x) {
             var weight = x.weight;
-            if(!app.checkWeightData(weight,500)){
+            if (!app.checkWeightData(weight, 500)) {
                 weighFlag1 = false;
             }
         });
@@ -2981,7 +2980,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
                 var contents = z.contents;
                 angular.forEach(contents, function (y) {
                     var weight = y.weight;
-                    if(!app.checkWeightData(weight,5000)){
+                    if (!app.checkWeightData(weight, 5000)) {
                         weighFlag2 = false;
                     }
                 });
@@ -3068,7 +3067,6 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
                 x.campaignid = user.pubid;
             });
         }
-
 
 
         restAPI.campaign.save({
@@ -3205,7 +3203,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             var contents = x.contents;
             angular.forEach(contents, function (y) {
                 var weight = y.weight;
-                if(!app.checkWeightData(weight,5000)){
+                if (!app.checkWeightData(weight, 5000)) {
                     weighFlag = false;
                 }
             });
@@ -3217,7 +3215,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
 
         // 校验投放策略权重大小
         var weight = $scope.campaign.weight;
-        if(!app.checkWeightData(weight,500)){
+        if (!app.checkWeightData(weight, 500)) {
             app.toast.error("请将投放策略的权重weight设置在-1和500之间！");
             return;
         }
@@ -3450,12 +3448,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         $scope.pagination.pageSize = 15;
         $scope.pagination.totalRow = data.data.totalRow;
         $scope.pagination.pageNumber = 1;
-        finishedLog.splice(0,finishedLog.length);
-        notFinishedLog.splice(0,notFinishedLog.length);
+        finishedLog.splice(0, finishedLog.length);
+        notFinishedLog.splice(0, notFinishedLog.length);
         angular.forEach($scope.list, function (x) {
-            if (x.status ==="1") {
+            if (x.status === "1") {
                 finishedLog.push(x);
-            }else if(x.status ==="2"){
+            } else if (x.status === "2") {
                 notFinishedLog.push(x);
             }
         });
@@ -3494,12 +3492,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             $scope.list = data.data.logs || [];
             $scope.pagination.totalRow = data.data.totalRow;
             $scope.pagination.pageNumber = 1;
-            finishedLog.splice(0,finishedLog.length);
-            notFinishedLog.splice(0,notFinishedLog.length);
+            finishedLog.splice(0, finishedLog.length);
+            notFinishedLog.splice(0, notFinishedLog.length);
             angular.forEach($scope.list, function (x) {
-                if (x.status ==="1") {
+                if (x.status === "1") {
                     finishedLog.push(x);
-                }else if(x.status ==="2"){
+                } else if (x.status === "2") {
                     notFinishedLog.push(x);
                 }
             });
@@ -3511,13 +3509,16 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     $scope.$watch("searchh", function (newVal, oldVal) {
         if (newVal === oldVal) {
             return;
-        };
-        if($scope.searchh.mark === "1"){
+        }
+        ;
+        if ($scope.searchh.mark === "1") {
             $scope.list = notFinishedLog;
-        };
-        if($scope.searchh.mark === "2"){
+        }
+        ;
+        if ($scope.searchh.mark === "2") {
             $scope.list = finishedLog;
-        };
+        }
+        ;
     }, true);
 
     //分页纪录
@@ -6262,7 +6263,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             "state": $scope.user.state,
             "company_name": $scope.user.company_name,
             "domain_name": $scope.user.domain_name,
-            "interior":$scope.user.interior
+            "interior": $scope.user.interior
         };
 
         restAPI.sadmin.save({
@@ -6825,47 +6826,59 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
 
     $scope.loginSubmit = function () {
 
-        if (app.validate($scope)) {
+        // if (app.validate($scope)) {
 
-            var data = app.union($scope.login);
-            data.logtime = Date.now() - app.timeOffset;
-            data.logpwd = app.CryptoJS.SHA256(data.logpwd).toString();
-            data.logpwd = app.CryptoJS.HmacSHA256(data.logpwd, 'blueshocks').toString();
-            data.logpwd = app.CryptoJS.HmacSHA256(data.logpwd, data.logname + ':' + data.logtime).toString();
-            app.restAPI.user.save({
-                ID: 'login'
-            }, data, function (data) {
-                if (data.data.state === "1") {
-                    app.toast.error("此账号被冻结!无法使用.");
-                    return;
-                }
-                app.rootScope.global.user = data.data;
+        var data = app.union($scope.login);
+        data.logtime = Date.now() - app.timeOffset;
+        data.logpwd = app.CryptoJS.SHA256(data.logpwd).toString();
+        data.logpwd = app.CryptoJS.HmacSHA256(data.logpwd, 'blueshocks').toString();
+        data.logpwd = app.CryptoJS.HmacSHA256(data.logpwd, data.logname + ':' + data.logtime).toString();
 
-                if (!!$scope.login.remember) {
-                    $cookieStore.put("u", data.data.login_id);
-                } else {
-                    $cookieStore.remove("u");
-                }
+        app.rootScope.global.user = data.data;
 
-                app.store('user', data.data);
-                $scope.platform = "1";
-                app.store('platform', $scope.platform);
-                app.checkUser();
-                $scope.$destroy();
-                if (app.rootScope.global.user.pub_level === "0") {
-                    app.$state.go('sadminNotice.info');
-                } else {
-                    if (data.data.subpubid === null || data.data.subpubid === undefined) {
-                        app.$state.go('dashboard.index');
-                    } else {
-                        app.$state.go('index.showAppBascInfo');
-                    }
-                }
-            }, function (data) {
-                $scope.reset.type = data.msg.name;
-                $scope.reset.title = app.locale.RESET[data.msg.name];
-            });
+        if (!!$scope.login.remember) {
+            $cookieStore.put("u", data.data.login_id);
+        } else {
+            $cookieStore.remove("u");
         }
+
+        console.log(app.$state);
+        app.$state.go('index.showAppBascInfo');
+
+        // app.restAPI.user.save({
+        //     ID: 'login'
+        // }, data, function (data) {
+        //     if (data.data.state === "1") {
+        //         app.toast.error("此账号被冻结!无法使用.");
+        //         return;
+        //     }
+        //     app.rootScope.global.user = data.data;
+        //
+        //     if (!!$scope.login.remember) {
+        //         $cookieStore.put("u", data.data.login_id);
+        //     } else {
+        //         $cookieStore.remove("u");
+        //     }
+        //
+        //     app.store('user', data.data);
+        //     $scope.platform = "1";
+        //     app.store('platform', $scope.platform);
+        //     app.checkUser();
+        //     $scope.$destroy();
+        //     if (app.rootScope.global.user.pub_level === "0") {
+        //         app.$state.go('sadminNotice.info');
+        //     } else {
+        //         if (data.data.subpubid === null || data.data.subpubid === undefined) {
+        //             app.$state.go('dashboard.index');
+        //         } else {
+        //             app.$state.go('index.showAppBascInfo');
+        //         }
+        //     }
+        // }, function (data) {
+        //     $scope.reset.type = data.msg.name;
+        //     $scope.reset.title = app.locale.RESET[data.msg.name];
+        // });
+        // }
     };
 
     $scope.registerSubmit = function () {
@@ -7052,7 +7065,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             message: "",
             name: "确定导出吗?"
         }, function () {
-            if ($scope.search.accountType === undefined){
+            if ($scope.search.accountType === undefined) {
                 $scope.search.accountType = "";
             }
             var url = "/admin/api/log/exportExcel?platform="
@@ -7647,434 +7660,6 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             }, 100); // trigger download
         }
     }
-}]).controller('sadminAppTagCtrl', ['app', '$scope', function (app, $scope) {
-    if (!app.rootScope.global.isLogin) {
-        app.$state.go('login');
-        return;
-    }
-
-    //检测是否为超管
-    if (app.store("user").pub_level === "1") {
-        app.rootScope.goBack();
-        return;
-    }
-
-    $scope.options = {
-        mode: 'tree',
-        modes: ['code', 'form', 'text', 'tree', 'view']
-    };
-
-    var restAPI = app.restAPI;
-    $scope.newAppTag = {};
-    $scope.pagination = {};
-    $scope.condition = {};
-    $scope.myTags = [];
-    $scope.errors = [];
-    var data;
-    var _id;
-
-    //获取所有标签
-    restAPI.sadmin.get({
-        ID: "getTags",
-        OP: app.store("platform")
-    }, function (data) {
-        $scope.tags = data.data;
-    });
-
-    //获取所有应用标签
-    restAPI.sadmin.save({
-        ID: "getAppTags"
-    }, {
-        platform: app.store("platform")
-    }, function (data) {
-        $scope.appTags = data.data.appTags || [];
-        $scope.pagination.pageSize = 15;
-        $scope.pagination.totalRow = data.data.totalRow;
-        $scope.pagination.pageNumber = 1;
-    });
-
-    $scope.$watch(function () {
-        return $scope.condition;
-    }, function (newVal, oldVal) {
-        if (newVal === oldVal) {
-            return;
-        }
-
-        restAPI.sadmin.save({
-            ID: 'getAppTags'
-        }, {
-            query: $scope.condition,
-            platform: app.store("platform")
-        }, function (data) {
-            $scope.appTags = data.data.appTags;
-            $scope.pagination.totalRow = data.data.totalRow;
-            $scope.pagination.pageNumber = 1;
-        });
-    }, true);
-
-    $scope.$on('genPagination', function (event, p) {
-        if (event.stopPropagation)
-            event.stopPropagation();
-
-        restAPI.sadmin.save({
-            ID: 'getAppTags'
-        }, {
-            query: $scope.condition,
-            pageNumber: p,
-            platform: app.store("platform")
-        }, function (data) {
-            $scope.appTags = data.data.appTags;
-            $scope.pagination.totalRow = data.data.totalRow;
-            $scope.pagination.pageNumber = p;
-        });
-    });
-
-    //打开新增标签model
-    $scope.showAddAppTagModal = function () {
-        $scope.newAppTag = {};
-        $scope.isAddAppTag = true;
-    };
-
-    //打开更新标签model
-    $scope.showUpdateAppTagModal = function (appTag) {
-        $scope.newAppTag = angular.copy(appTag);
-        _id = $scope.newAppTag._id;
-        delete $scope.newAppTag._id;
-        delete $scope.newAppTag.ctime;
-        $scope.isAddAppTag = false;
-    };
-
-    //打开复制标签model，导入应用标签到新的平台
-    $scope.showCopyAppTagModal = function (appTag) {
-        $scope.newAppTag = angular.copy(appTag);
-        _id = $scope.newAppTag._id;
-        delete $scope.newAppTag._id;
-        delete $scope.newAppTag.ctime;
-        $scope.isAddAppTag = false;
-    };
-
-    $scope.callback = function (file) {
-        $scope.errors = [];
-        $scope.jsonfile = file;
-
-        $scope.isJson = ($scope.jsonfile.name.split('.')[1] === 'json');
-        if (!$scope.isJson) {
-            $scope.errors.push({"error": "上传的文件不是json!"});
-            return;
-        }
-        $scope.newAppTag = JSON.parse(file.content);
-        // data = JSON.parse(file.content);
-    };
-
-    //新增应用标签
-    $scope.addAppTag = function () {
-        data = [];
-        if ($scope.newAppTag instanceof Array) {
-            data = $scope.newAppTag;
-        } else if ($scope.newAppTag instanceof Object) {
-            data.push($scope.newAppTag);
-        }
-
-        var flag;
-        var newAppTag;
-        for (var i = 0; i < data.length; i++) {
-            flag = true;
-            newAppTag = data[i];
-            if (newAppTag.name === undefined || newAppTag.name === null || newAppTag.name === "") {
-                app.toast.error("应用名必须存在并且不能为空!");
-                return;
-            }
-            if (newAppTag.pkgName === undefined || newAppTag.pkgName === null || newAppTag.pkgName === "") {
-                app.toast.error("包名必须存在并且不能为空!");
-                return;
-            }
-            if (newAppTag.sex === undefined || newAppTag.sex === null) {
-                app.toast.error("性别必须存在!");
-                return;
-            }
-            if (newAppTag.geo === undefined || newAppTag.geo === null) {
-                app.toast.error("国家必须存在!");
-                return;
-            }
-            if (newAppTag.language === undefined || newAppTag.language === null) {
-                app.toast.error("语言必须存在!");
-                return;
-            }
-            if (newAppTag.age === undefined || newAppTag.age === null) {
-                app.toast.error("年龄必须存在!");
-                return;
-            }
-            if (newAppTag.tags !== undefined && (!newAppTag.tags instanceof Array)) {
-                app.toast.error("tags为字符串数组!");
-                return;
-                angular.forEach(newAppTag.tags, function (x, m) {
-                    if (!typeof x === String) {
-                        flag = false;
-                    }
-                });
-            }
-
-            if (!flag) {
-                app.toast.error("tags数组中有标签不是字符串，请检查！!");
-                return;
-            }
-        }
-
-
-        //检测是否有新的标签
-        var newTags = [];
-        var isExisted;
-        angular.forEach(data, function (m) {
-            angular.forEach(m.tags, function (x) {
-                isExisted = false;
-                angular.forEach($scope.tags, function (y) {
-                    angular.forEach(y.tags, function (z) {
-                        if (x === z.name) {
-                            isExisted = true;
-
-                        }
-                    });
-                });
-                if (!isExisted) {
-                    newTags.push(x);
-                }
-            });
-        });
-
-
-        if (newTags.length > 0) {
-            var temp = "";
-            angular.forEach(newTags, function (x) {
-                temp += x + ",";
-            });
-            app.confirmDialog({
-                message: temp + "等标签不在标签库里面，是否新增，是请按确定，不是请删除所列出的标签。"
-            }, function () {
-                restAPI.sadmin.save({
-                    ID: "setTags"
-                }, {
-                    tags: newTags,
-                    platform: app.store("platform")
-                }, function () {
-                    angular.forEach(newTags, function (x) {
-                        $scope.tags.push(x);
-                    });
-                    app.toast.info("新增标签成功!");
-
-                    restAPI.sadmin.save({
-                        ID: "addAppTag",
-                        OP: app.store("platform")
-                    }, data, function () {
-                        restAPI.sadmin.save({
-                            ID: "getAppTags"
-                        }, {
-                            platform: app.store("platform")
-                        }, function (data) {
-                            $scope.appTags = data.data.appTags || [];
-                            $scope.pagination.pageSize = 15;
-                            $scope.pagination.totalRow = data.data.totalRow;
-                            $scope.pagination.pageNumber = 1;
-                        });
-                        $("#appTagModal").modal('hide');
-                    }, function () {
-
-                    });
-                }, function () {
-
-                });
-            }, function () {
-
-            });
-        } else {
-            restAPI.sadmin.save({
-                ID: "addAppTag",
-                OP: app.store("platform")
-            }, data, function () {
-                restAPI.sadmin.save({
-                    ID: "getAppTags"
-                }, {
-                    platform: app.store("platform")
-                }, function (data) {
-                    $scope.appTags = data.data.appTags || [];
-                    $scope.pagination.pageSize = 15;
-                    $scope.pagination.totalRow = data.data.totalRow;
-                    $scope.pagination.pageNumber = 1;
-                });
-                $("#appTagModal").modal('hide');
-            }, function () {
-
-            });
-        }
-    };
-
-    //更新应用标签
-    $scope.updateAppTag = function () {
-        var flag = true;
-
-        if ($scope.newAppTag.name === undefined || $scope.newAppTag.name === null || $scope.newAppTag.name === "") {
-            app.toast.error("应用名必须存在并且不能为空!");
-            return;
-        }
-        if ($scope.newAppTag.pkgName === undefined || $scope.newAppTag.pkgName === null || $scope.newAppTag.pkgName === "") {
-            app.toast.error("包名必须存在并且不能为空!");
-            return;
-        }
-        if ($scope.newAppTag.sex === undefined || $scope.newAppTag.sex === null) {
-            app.toast.error("性别必须存在!");
-            return;
-        }
-        if ($scope.newAppTag.geo === undefined || $scope.newAppTag.geo === null) {
-            app.toast.error("国家必须存在!");
-            return;
-        }
-        if ($scope.newAppTag.language === undefined || $scope.newAppTag.language === null) {
-            app.toast.error("语言必须存在!");
-            return;
-        }
-        if ($scope.newAppTag.age === undefined || $scope.newAppTag.age === null) {
-            app.toast.error("年龄必须存在!");
-            return;
-        }
-        if ($scope.newAppTag.tags !== undefined && (!$scope.newAppTag.tags instanceof Array)) {
-            app.toast.error("tags为字符串数组!");
-            return;
-            if ($scope.newAppTag.tags instanceof Array) {
-                angular.forEach($scope.newAppTag.tags, function (x, m) {
-                    if (!typeof x === String) {
-                        flag = false;
-                    }
-                });
-            }
-        }
-
-        if (!flag) {
-            app.toast.error("tags数组中有标签不是字符串，请检查！!");
-            return;
-        }
-
-        //检测是否有新的标签
-        var newTags = [];
-        var isExisted;
-        angular.forEach($scope.newAppTag.tags, function (x) {
-            isExisted = false;
-            angular.forEach($scope.tags, function (y) {
-                angular.forEach(y.tags, function (z) {
-                    if (x === z.name) {
-                        isExisted = true;
-
-                    }
-                });
-            });
-            if (!isExisted) {
-                newTags.push(x);
-            }
-        });
-
-        if (newTags.length > 0) {
-            var temp = "";
-            angular.forEach(newTags, function (x) {
-                temp += x + ",";
-            });
-            app.confirmDialog({
-                message: temp + "等标签不在标签库里面，是否新增，是请按确定，不是请删除所列出的标签。"
-            }, function () {
-                restAPI.sadmin.save({
-                    ID: "setTags"
-                }, {
-                    tags: newTags,
-                    platform: app.store("platform")
-                }, function () {
-                    angular.forEach(newTags, function (x) {
-                        $scope.tags.push(x);
-                    });
-                    app.toast.info("新增标签成功!");
-                    $scope.newAppTag._id = _id;
-                    restAPI.sadmin.save({
-                        ID: "updateAppTag"
-                    }, $scope.newAppTag, function () {
-                        angular.forEach($scope.appTags, function (x, m) {
-                            if (x._id.$oid === $scope.newAppTag._id.$oid) {
-                                $scope.appTags[m] = angular.copy($scope.newAppTag);
-                            }
-                        });
-                        app.toast.info("更新成功!");
-                        $("#appTagModal").modal('hide');
-                    }, function () {
-                        delete $scope.newAppTag._id;
-                    });
-                }, function () {
-
-                });
-            }, function () {
-
-            });
-        } else {
-            $scope.newAppTag._id = _id;
-            restAPI.sadmin.save({
-                ID: "updateAppTag"
-            }, $scope.newAppTag, function () {
-                angular.forEach($scope.appTags, function (x, m) {
-                    if (x._id.$oid === $scope.newAppTag._id.$oid) {
-                        $scope.appTags[m] = angular.copy($scope.newAppTag);
-                    }
-                });
-                app.toast.info("更新成功!");
-                $("#appTagModal").modal('hide');
-            }, function () {
-                delete $scope.newAppTag._id;
-            });
-        }
-    };
-
-    //查看应用具体信息
-    $scope.viewAppInfo = function (url) {
-
-        if (url === undefined || url === null || url === "") {
-            app.toast.info("跳转到链接为空！");
-            return;
-        }
-
-        window.open(url);
-    };
-
-    //导入应用标签到新的平台
-    $scope.copyAppTag = function () {
-        if ($scope.newAppTag.platform === null || $scope.newAppTag.platform === undefined || $scope.newAppTag.platform === "") {
-            app.toast.info("请选择平台！");
-            return;
-        }
-
-        restAPI.sadmin.save({
-            ID: "copyAppTag"
-        }, {
-            id: _id,
-            platform: $scope.newAppTag.platform
-        }, function () {
-            $("#copyAppTagModal").modal('hide');
-            app.toast.info("导入成功！");
-        }, function () {
-            app.toast.info("导入失败！");
-        });
-    };
-
-
-    //删除应用标签
-    $scope.delAppTag = function (index) {
-
-        var apptag = $scope.appTags[index];
-        app.confirmDialog({
-            message: "确定删除标签:" + apptag.name + "?"
-        }, function () {
-            restAPI.sadmin.save({
-                ID: "delAppTag"
-            }, apptag._id.$oid, function () {
-                $scope.appTags.splice(index, 1);
-                app.toast.info("删除成功!");
-            });
-        }, function () {
-
-        });
-    };
 }]).controller('sadminNewTagCtrl', ['app', '$scope', function (app, $scope) {
     if (!app.rootScope.global.isLogin) {
         app.$state.go('login');

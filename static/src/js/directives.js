@@ -266,13 +266,13 @@ adBoost
 
                     function initTooltip() {
                         element.off('.tooltip').removeData('bs.tooltip');
-                        element.tooltip(option);
+                        // element.tooltip(option);
                     }
 
                     function showTooltip(show) {
                         if (element.hasClass('invalid-error') !== show) {
                             element[show ? 'addClass' : 'removeClass']('invalid-error');
-                            element.tooltip(show ? 'show' : 'hide');
+                            // element.tooltip(show ? 'show' : 'hide');
                         }
                     }
 
@@ -317,7 +317,7 @@ adBoost
                     } else if (option.click) {
                         // option.click will be 'show','hide','toggle', or 'destroy'
                         element.bind('click', function () {
-                            element.tooltip(option.click);
+                            // element.tooltip(option.click);
                         });
                     }
                     element.bind('hidden.bs.tooltip', initTooltip);
