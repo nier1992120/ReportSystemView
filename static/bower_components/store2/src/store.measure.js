@@ -15,8 +15,6 @@
  */
 ;(function(store, _) {
 
-<<<<<<< HEAD
-=======
     function put(area, s) {
         try {
             area.setItem("__test__", s);
@@ -24,7 +22,6 @@
         } catch (e) {}
     }
 
->>>>>>> develop
     _.fn('remainingSpace', function() {
         return this._area.remainingSpace;
     });
@@ -61,14 +58,4 @@
         return store.charsUsed() + store.charsLeft(test);
     });
 
-<<<<<<< HEAD
-    function put(area, s) {
-        try {
-            area.setItem("__test__", s);
-            return true;
-        } catch (e) {}
-    }
-
-=======
->>>>>>> develop
 })(window.store, window.store._);

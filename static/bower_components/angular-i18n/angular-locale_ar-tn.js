@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0641\u0645\u0628\u0631",
       "\u062f\u064a\u0633\u0645\u0628\u0631"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u062c\u0627\u0646\u0641\u064a",
       "\u0641\u064a\u0641\u0631\u064a",
@@ -78,26 +76,17 @@ $provide.value("$locale", {
       "\u0646\u0648\u0641\u0645\u0628\u0631",
       "\u062f\u064a\u0633\u0645\u0628\u0631"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       4,
       5
     ],
     "fullDate": "EEEE\u060c d MMMM\u060c y",
     "longDate": "d MMMM\u060c y",
-<<<<<<< HEAD
-    "medium": "y/MM/dd h:mm:ss a",
-    "mediumDate": "y/MM/dd",
-    "mediumTime": "h:mm:ss a",
-    "short": "y/M/d h:mm a",
-    "shortDate": "y/M/d",
-=======
     "medium": "dd\u200f/MM\u200f/y h:mm:ss a",
     "mediumDate": "dd\u200f/MM\u200f/y",
     "mediumTime": "h:mm:ss a",
     "short": "d\u200f/M\u200f/y h:mm a",
     "shortDate": "d\u200f/M\u200f/y",
->>>>>>> develop
     "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
@@ -117,16 +106,6 @@ $provide.value("$locale", {
         "posSuf": ""
       },
       {
-<<<<<<< HEAD
-        "gSize": 0,
-        "lgSize": 0,
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4-",
-        "negSuf": "",
-        "posPre": "\u00a4",
-=======
         "gSize": 3,
         "lgSize": 3,
         "maxFrac": 3,
@@ -135,16 +114,12 @@ $provide.value("$locale", {
         "negPre": "-\u00a4\u00a0",
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
->>>>>>> develop
         "posSuf": ""
       }
     ]
   },
   "id": "ar-tn",
-<<<<<<< HEAD
-=======
   "localeID": "ar_TN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 0) {    return PLURAL_CATEGORY.ZERO;  }  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  if (n == 2) {    return PLURAL_CATEGORY.TWO;  }  if (n % 100 >= 3 && n % 100 <= 10) {    return PLURAL_CATEGORY.FEW;  }  if (n % 100 >= 11 && n % 100 <= 99) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

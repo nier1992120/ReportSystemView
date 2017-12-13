@@ -1,0 +1,102 @@
+<div class="panel panel-default">
+    <div class="panel-heading cursor_p clearfix">
+        <span class="panel-title">
+            <button class="btn btn-default" data-toggle="modal" ng-click="showAddAppTagModal()" data-target="#appTagModal"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增应用标签</button>
+        </span>
+
+        <input type="search" ng-model="condition.category" placeholder="分类" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+        <input type="search" ng-model="condition.name" placeholder="应用名" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+        <input type="search" ng-model="condition.pkgName" placeholder="应用包名" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-bordered table-hover" >
+            <tr class="tableTitle">
+                <td class="td_width180">应用名</td>
+                <td class="td_width180">应用包名</td>
+                <td>性别</td>
+                <!--<td>国家</td>-->
+                <!--<td>语言</td>-->
+                <td>age</td>
+                <td>分类</td>
+                <td>标签</td>
+                <td class="td_width180">操作</td>
+            </tr>
+            <tr ng-repeat="appTag in appTags" ng-if="appTags.length !== 0">
+                <td class="td_width180">{{appTag.name}}</td>
+                <td class="td_width180">{{appTag.pkgName}}</td>
+                <td>{{appTag.sex}}</td>
+                <!--<td>{{appTag.geo}}</td>-->
+                <!--<td>{{appTag.language}}</td>-->
+                <td>{{appTag.age}}</td>
+                <td>{{appTag.category}}</td>
+                <td>{{appTag.tags}}</td>
+                <td class="td_width180">
+                    <a class="glyphicon glyphicon-edit cursor_p" ng-click="showUpdateAppTagModal(appTag)" data-toggle="modal" data-target="#appTagModal">编辑</a>&nbsp;
+                    <a class="glyphicon glyphicon-edit cursor_p" ng-click="showCopyAppTagModal(appTag)" data-toggle="modal" data-target="#copyAppTagModal">导出</a>&nbsp;
+                    <a class="glyphicon glyphicon-eye-open cursor_p" ng-click="viewAppInfo(appTag.url)">查看</a>
+                    <a class="glyphicon glyphicon-remove cursor_p" ng-click="delAppTag($index)">删除</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<p class="nothing" ng-if="appTags.length == 0">
+    暂无数据信息
+</p>
+
+<!--分页-->
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+
+<div class="modal fade height100" id="appTagModal">
+    <div class="modal-content height100">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body height100">
+            <div ng-jsoneditor ng-model="newAppTag" options="options" style="height: 85%;">
+
+            </div>
+            <div style="height: 10%;">
+                <ng-file-input ng-if="isAddAppTag" mode="text" callback="callback(file)" class="ng-file-input">上传json文件</ng-file-input>
+                <!--<button class="btn btn-info btn-s" style="position: absolute; top: -4px;" ng-click="submit()">保&nbsp;&nbsp;存</button>-->
+                <button class="btn btn-info" ng-if="isAddAppTag" ng-click="addAppTag()">确&nbsp;&nbsp;定</button>
+                <button class="btn btn-info" ng-if="!isAddAppTag" ng-click="updateAppTag()">更&nbsp;&nbsp;新</button>
+                <div class="bg-danger clearfix panel-body" ng-if="errors.length != 0">
+                    <p style="text-indent: 10px;" class="text-danger" ng-repeat="error in errors">error : {{error.error}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="copyAppTagModal">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body clearfix" >
+            <div class="form-group clearfix">
+                <label class="col-sm-2 control-label text-right">平台：</label>
+                <div class="col-sm-6">
+                    <select type="text" class="form-control" placeholder="选择平台" ng-model="newAppTag.platform">
+                        <option ng-if="platform !== '1'" value="1">android</option>
+                        <option ng-if="platform !== '2'" value="2">iOS</option>
+                        <option ng-if="platform !== '3'" value="3">WinPhone</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="copyAppTag()">确&nbsp;&nbsp;定</button>
+        </div>
+    </div>
+</div>

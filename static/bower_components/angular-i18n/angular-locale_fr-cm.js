@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "AM",
-      "PM"
-=======
       "matin",
       "soir"
->>>>>>> develop
     ],
     "DAY": [
       "dimanche",
@@ -67,8 +62,6 @@ $provide.value("$locale", {
       "nov.",
       "d\u00e9c."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "janvier",
       "f\u00e9vrier",
@@ -83,7 +76,6 @@ $provide.value("$locale", {
       "novembre",
       "d\u00e9cembre"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -116,13 +108,8 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-=======
         "maxFrac": 0,
         "minFrac": 0,
->>>>>>> develop
         "minInt": 1,
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
@@ -132,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "fr-cm",
-<<<<<<< HEAD
-=======
   "localeID": "fr_CM",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || i == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

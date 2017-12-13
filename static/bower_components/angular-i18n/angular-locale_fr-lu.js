@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "nov.",
       "d\u00e9c."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "janvier",
       "f\u00e9vrier",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "novembre",
       "d\u00e9cembre"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -122,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "fr-lu",
-<<<<<<< HEAD
-=======
   "localeID": "fr_LU",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || i == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

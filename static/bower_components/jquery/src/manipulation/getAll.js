@@ -1,8 +1,8 @@
 define( [
-	"../core"
-], function( jQuery ) {
+	"../core",
+	"../core/nodeName"
+], function( jQuery, nodeName ) {
 
-<<<<<<< HEAD
 "use strict";
 
 function getAll( context, tag ) {
@@ -21,26 +21,11 @@ function getAll( context, tag ) {
 		ret = [];
 	}
 
-	if ( tag === undefined || tag && jQuery.nodeName( context, tag ) ) {
+	if ( tag === undefined || tag && nodeName( context, tag ) ) {
 		return jQuery.merge( [ context ], ret );
 	}
 
 	return ret;
-=======
-function getAll( context, tag ) {
-
-	// Support: IE9-11+
-	// Use typeof to avoid zero-argument method invocation on host objects (#15151)
-	var ret = typeof context.getElementsByTagName !== "undefined" ?
-			context.getElementsByTagName( tag || "*" ) :
-			typeof context.querySelectorAll !== "undefined" ?
-				context.querySelectorAll( tag || "*" ) :
-			[];
-
-	return tag === undefined || tag && jQuery.nodeName( context, tag ) ?
-		jQuery.merge( [ context ], ret ) :
-		ret;
->>>>>>> develop
 }
 
 return getAll;

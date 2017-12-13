@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 ## 1.0.11 (2017-11-13)
 [Compare `@uirouter/angularjs` versions 1.0.10 and 1.0.11](https://github.com/angular-ui/ui-router/compare/1.0.10...1.0.11)
 
@@ -1379,7 +1377,6 @@ This is a maintenance release which fixes a few known bugs introduced in 0.2.16.
 * **$state:** Inject templateProvider with resolved values ([afa20f22](https://github.com/angular-ui/ui-router/commit/afa20f22373b7176b26daa7e1099750c4254a354))
 
 
->>>>>>> develop
 <a name="0.2.14"></a>
 ### 0.2.14 (2015-04-23)
 

@@ -22,13 +22,8 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "AM",
-      "PM"
-=======
       "ip.",
       "ep."
->>>>>>> develop
     ],
     "DAY": [
       "pasepeeivi",
@@ -40,52 +35,6 @@ $provide.value("$locale", {
       "l\u00e1vurduv"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "BCE",
-      "CE"
-    ],
-    "ERAS": [
-      "BCE",
-      "CE"
-    ],
-    "FIRSTDAYOFWEEK": 0,
-    "MONTH": [
-      "M01",
-      "M02",
-      "M03",
-      "M04",
-      "M05",
-      "M06",
-      "M07",
-      "M08",
-      "M09",
-      "M10",
-      "M11",
-      "M12"
-    ],
-    "SHORTDAY": [
-      "pa",
-      "vu",
-      "ma",
-      "ko",
-      "tu",
-      "v\u00e1",
-      "l\u00e1"
-    ],
-    "SHORTMONTH": [
-      "M01",
-      "M02",
-      "M03",
-      "M04",
-      "M05",
-      "M06",
-      "M07",
-      "M08",
-      "M09",
-      "M10",
-      "M11",
-      "M12"
-=======
       "Ovdil Kristus \u0161odd\u00e2m",
       "ma\u014ba Kristus \u0161odd\u00e2m"
     ],
@@ -144,27 +93,11 @@ $provide.value("$locale", {
       "roovv\u00e2dm\u00e1\u00e1nu",
       "skamm\u00e2m\u00e1\u00e1nu",
       "juovl\u00e2m\u00e1\u00e1nu"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "y MMMM d, EEEE",
-    "longDate": "y MMMM d",
-    "medium": "y MMM d HH:mm:ss",
-    "mediumDate": "y MMM d",
-    "mediumTime": "HH:mm:ss",
-    "short": "y-MM-dd HH:mm",
-    "shortDate": "y-MM-dd",
-    "shortTime": "HH:mm"
-  },
-  "NUMBER_FORMATS": {
-    "CURRENCY_SYM": "\u20ac",
-    "DECIMAL_SEP": ".",
-    "GROUP_SEP": ",",
-=======
     "fullDate": "cccc, MMMM d. y",
     "longDate": "MMMM d. y",
     "medium": "MMM d. y H.mm.ss",
@@ -178,7 +111,6 @@ $provide.value("$locale", {
     "CURRENCY_SYM": "\u20ac",
     "DECIMAL_SEP": ",",
     "GROUP_SEP": "\u00a0",
->>>>>>> develop
     "PATTERNS": [
       {
         "gSize": 3,
@@ -197,25 +129,15 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-        "negSuf": "",
-        "posPre": "\u00a4\u00a0",
-        "posSuf": ""
-=======
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
         "posPre": "",
         "posSuf": "\u00a0\u00a4"
->>>>>>> develop
       }
     ]
   },
   "id": "smn",
-<<<<<<< HEAD
-=======
   "localeID": "smn",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

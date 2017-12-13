@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0627\u0645\u0628\u0631",
       "\u062f\u0633\u0627\u0645\u0628\u0631"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0698\u0627\u0646\u0648\u06cc\u0647",
       "\u0641\u0648\u0631\u06cc\u0647",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0627\u0645\u0628\u0631",
       "\u062f\u0633\u0627\u0645\u0628\u0631"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       4,
       4
@@ -111,15 +108,6 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u200e\u00a4-",
-        "negSuf": "",
-        "posPre": "\u200e\u00a4",
-        "posSuf": ""
-=======
         "maxFrac": 0,
         "minFrac": 0,
         "minInt": 1,
@@ -127,15 +115,11 @@ $provide.value("$locale", {
         "negSuf": "\u00a0\u061c\u00a4",
         "posPre": "",
         "posSuf": "\u00a0\u061c\u00a4"
->>>>>>> develop
       }
     ]
   },
   "id": "fa-ir",
-<<<<<<< HEAD
-=======
   "localeID": "fa_IR",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

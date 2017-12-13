@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "am",
-      "pm"
-=======
       "AM",
       "PM"
->>>>>>> develop
     ],
     "DAY": [
       "\u09b0\u09ac\u09bf\u09ac\u09be\u09b0",
@@ -54,8 +49,6 @@ $provide.value("$locale", {
       "\u09b6\u09a8\u09bf"
     ],
     "SHORTMONTH": [
-<<<<<<< HEAD
-=======
       "\u099c\u09be\u09a8\u09c1",
       "\u09ab\u09c7\u09ac",
       "\u09ae\u09be\u09b0\u09cd\u099a",
@@ -70,7 +63,6 @@ $provide.value("$locale", {
       "\u09a1\u09bf\u09b8\u09c7\u09ae\u09cd\u09ac\u09b0"
     ],
     "STANDALONEMONTH": [
->>>>>>> develop
       "\u099c\u09be\u09a8\u09c1\u09af\u09bc\u09be\u09b0\u09c0",
       "\u09ab\u09c7\u09ac\u09cd\u09b0\u09c1\u09af\u09bc\u09be\u09b0\u09c0",
       "\u09ae\u09be\u09b0\u09cd\u099a",
@@ -127,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "bn-in",
-<<<<<<< HEAD
-=======
   "localeID": "bn_IN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

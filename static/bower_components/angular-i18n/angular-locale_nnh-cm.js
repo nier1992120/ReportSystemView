@@ -50,11 +50,7 @@ $provide.value("$locale", {
       "sa\u014b c\u00ff\u00f3",
       "sa\u014b ts\u025b\u0300\u025b c\u00ff\u00f3",
       "sa\u014b nj\u00ffol\u00e1\u02bc",
-<<<<<<< HEAD
-      "sa\u014b ty\u025b\u0300b ty\u025b\u0300b mb\u0289\u0300",
-=======
       "sa\u014b ty\u025b\u0300b ty\u025b\u0300b mb\u0289\u0300\u014b",
->>>>>>> develop
       "sa\u014b mb\u0289\u0300\u014b",
       "sa\u014b ngw\u0254\u0300\u02bc mb\u00ff\u025b",
       "sa\u014b t\u00e0\u014ba tsets\u00e1\u02bc",
@@ -77,9 +73,6 @@ $provide.value("$locale", {
       "sa\u014b c\u00ff\u00f3",
       "sa\u014b ts\u025b\u0300\u025b c\u00ff\u00f3",
       "sa\u014b nj\u00ffol\u00e1\u02bc",
-<<<<<<< HEAD
-      "sa\u014b ty\u025b\u0300b ty\u025b\u0300b mb\u0289\u0300",
-=======
       "sa\u014b ty\u025b\u0300b ty\u025b\u0300b mb\u0289\u0300\u014b",
       "sa\u014b mb\u0289\u0300\u014b",
       "sa\u014b ngw\u0254\u0300\u02bc mb\u00ff\u025b",
@@ -95,7 +88,6 @@ $provide.value("$locale", {
       "sa\u014b ts\u025b\u0300\u025b c\u00ff\u00f3",
       "sa\u014b nj\u00ffol\u00e1\u02bc",
       "sa\u014b ty\u025b\u0300b ty\u025b\u0300b mb\u0289\u0300\u014b",
->>>>>>> develop
       "sa\u014b mb\u0289\u0300\u014b",
       "sa\u014b ngw\u0254\u0300\u02bc mb\u00ff\u025b",
       "sa\u014b t\u00e0\u014ba tsets\u00e1\u02bc",
@@ -134,17 +126,10 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4\u00a0-",
-=======
         "maxFrac": 0,
         "minFrac": 0,
         "minInt": 1,
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -152,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "nnh-cm",
-<<<<<<< HEAD
-=======
   "localeID": "nnh_CM",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

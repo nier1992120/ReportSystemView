@@ -1,0 +1,80 @@
+<div class="panel panel-default form-group">
+    <div class="panel-heading">
+        <p class="panel-title">
+            <button class="btn btn-info" data-target="#editNoticeInfo" data-toggle="modal" ng-click="addNoticeInfoModal()"><span class=" glyphicon glyphicon-plus"></span>&nbsp;点击新增</button>
+        </p>
+    </div>
+    <div class="panel-body" ng-if="infos.length !== 0">
+        <table class="table table-bordered table-hover">
+
+            <tr class="tableTitle">
+                <td>序号</td>
+                <td class="td_width200">创建时间</td>
+                <td>主题</td>
+                <td class="td_width200">操作</td>
+            </tr>
+
+            <tr ng-repeat="info in infos">
+                <td>{{$index+1}}</td>
+                <td class="td_width200">{{info.ctime}}</td>
+                <td>{{info.title}}</td>
+                <td class="td_width200">
+                    <a href="" class="glyphicon glyphicon-eye-open" data-target="#editNoticeInfo" data-toggle="modal" ng-click="showNoticeInfoModal($index)">查看内容</a>&nbsp;&nbsp;
+                    <a href="" class="glyphicon glyphicon-remove cursor_p" ng-click="delNoticeInfo(info._id.$oid, $index)">删除</a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<p class="nothing" ng-if="infos.length == 0">
+    暂无数据信息
+</p>
+
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+<!--新增系统通知-->
+<div class="modal fade modalPosition" id="editNoticeInfo">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body clearfix" >
+            <div class="form-group">
+                <span class="modalSpan">主题：</span>
+                <input ng-if="isAddNewInfo" class="modalInput" ng-model="showInfo.title">
+                <input ng-if="!isAddNewInfo" class="modalInput" ng-model="showInfo.title" disabled>
+            </div>
+
+            <div class="form-group">
+                <span class="modalSpan">内容：</span>
+                <textarea ng-if="isAddNewInfo" ng-model="showInfo.content" class="paramTextarea"></textarea>
+                <textarea ng-if="!isAddNewInfo" ng-model="showInfo.content" class="paramTextarea" disabled></textarea>
+            </div>
+
+            <div class="bg-danger clearfix panel-body" ng-if="errors.length != 0">
+                <p style="text-indent: 10px;" class="text-danger"  ng-repeat="error in errors">error : {{error.error}}</p>
+            </div>
+
+            <!--<div class="form-group clearfix">-->
+                <!--发送邮件给：&nbsp;&nbsp;-->
+                <!--<input type="checkbox" class="cursor_p" ng-checked="selectAllFlag" ng-click="selectAll()">&nbsp;全选-->
+            <!--</div>-->
+            <!--<div class="geoPanel">-->
+                <!--<label class="btn btn-default label135" ng-class="{selected: user.checked}" ng-repeat="user in users" ng-click="addToMe(user)">-->
+                    <!--{{user.company_name}}-->
+                <!--</label>-->
+            <!--</div>-->
+        </div>
+
+        <div class="modal-footer">
+            <button ng-if="isAddNewInfo" class="btn btn-info" ng-click="addNoticeInfo()"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;保存</button>
+            <!--<button ng-if="!isAddNewInfo" class="btn btn-info" ng-click="sendMail()"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;发送邮件</button>-->
+        </div>
+    </div>
+</div>
+
+

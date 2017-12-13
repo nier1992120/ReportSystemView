@@ -13,10 +13,6 @@
 	}
 }(this, function (CryptoJS) {
 
-<<<<<<< HEAD
-	return CryptoJSHmacSHA3;
-=======
 	return CryptoJS.HmacSHA3;
->>>>>>> develop
 
 }));

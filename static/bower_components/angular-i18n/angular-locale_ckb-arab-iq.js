@@ -39,11 +39,7 @@ $provide.value("$locale", {
       "\u0632\u0627\u06cc\u06cc\u0646\u06cc"
     ],
     "ERAS": [
-<<<<<<< HEAD
-      "\u067e\u06ce\u0634 \u0632\u0627\u06cc\u06cc\u06cc\u0646",
-=======
       "\u067e.\u0646",
->>>>>>> develop
       "\u0632"
     ],
     "FIRSTDAYOFWEEK": 5,
@@ -84,8 +80,6 @@ $provide.value("$locale", {
       "\u062a\u0634\u0631\u06cc\u0646\u06cc \u062f\u0648\u0648\u06d5\u0645",
       "\u06a9\u0627\u0646\u0648\u0646\u06cc \u06cc\u06d5\u06a9\u06d5\u0645"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u06a9\u0627\u0646\u0648\u0648\u0646\u06cc \u062f\u0648\u0648\u06d5\u0645",
       "\u0634\u0648\u0628\u0627\u062a",
@@ -100,28 +94,18 @@ $provide.value("$locale", {
       "\u062a\u0634\u0631\u06cc\u0646\u06cc \u062f\u0648\u0648\u06d5\u0645",
       "\u06a9\u0627\u0646\u0648\u0646\u06cc \u06cc\u06d5\u06a9\u06d5\u0645"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       4,
       5
     ],
     "fullDate": "y MMMM d, EEEE",
     "longDate": "d\u06cc MMMM\u06cc y",
-<<<<<<< HEAD
-    "medium": "y MMM d HH:mm:ss",
-    "mediumDate": "y MMM d",
-    "mediumTime": "HH:mm:ss",
-    "short": "y-MM-dd HH:mm",
-    "shortDate": "y-MM-dd",
-    "shortTime": "HH:mm"
-=======
     "medium": "y MMM d h:mm:ss a",
     "mediumDate": "y MMM d",
     "mediumTime": "h:mm:ss a",
     "short": "y-MM-dd h:mm a",
     "shortDate": "y-MM-dd",
     "shortTime": "h:mm a"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "din",
@@ -145,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -157,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ckb-arab-iq",
-<<<<<<< HEAD
-=======
   "localeID": "ckb_Arab_IQ",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

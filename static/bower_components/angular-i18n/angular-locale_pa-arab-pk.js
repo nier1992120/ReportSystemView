@@ -21,17 +21,10 @@ $provide.value("$locale", {
       "\u0633\u06ba"
     ],
     "ERAS": [
-<<<<<<< HEAD
-      "BCE",
-      "CE"
-    ],
-    "FIRSTDAYOFWEEK": 0,
-=======
       "\u0627\u064a\u0633\u0627\u067e\u0648\u0631\u0648",
       "\u0633\u06ba"
     ],
     "FIRSTDAYOFWEEK": 6,
->>>>>>> develop
     "MONTH": [
       "\u062c\u0646\u0648\u0631\u06cc",
       "\u0641\u0631\u0648\u0631\u06cc",
@@ -69,8 +62,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0645\u0628\u0631",
       "\u062f\u0633\u0645\u0628\u0631"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u062c\u0646\u0648\u0631\u06cc",
       "\u0641\u0631\u0648\u0631\u06cc",
@@ -85,7 +76,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0645\u0628\u0631",
       "\u062f\u0633\u0645\u0628\u0631"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -118,17 +108,10 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4\u00a0-",
-=======
         "maxFrac": 0,
         "minFrac": 0,
         "minInt": 1,
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -136,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "pa-arab-pk",
-<<<<<<< HEAD
-=======
   "localeID": "pa_Arab_PK",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n >= 0 && n <= 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

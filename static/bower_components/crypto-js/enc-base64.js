@@ -88,8 +88,6 @@
 	            // Shortcuts
 	            var base64StrLength = base64Str.length;
 	            var map = this._map;
-<<<<<<< HEAD
-=======
 	            var reverseMap = this._reverseMap;
 
 	            if (!reverseMap) {
@@ -98,45 +96,23 @@
 	                        reverseMap[map.charCodeAt(j)] = j;
 	                    }
 	            }
->>>>>>> develop
 
 	            // Ignore padding
 	            var paddingChar = map.charAt(64);
 	            if (paddingChar) {
 	                var paddingIndex = base64Str.indexOf(paddingChar);
-<<<<<<< HEAD
-	                if (paddingIndex != -1) {
-=======
 	                if (paddingIndex !== -1) {
->>>>>>> develop
 	                    base64StrLength = paddingIndex;
 	                }
 	            }
 
 	            // Convert
-<<<<<<< HEAD
-	            var words = [];
-	            var nBytes = 0;
-	            for (var i = 0; i < base64StrLength; i++) {
-	                if (i % 4) {
-	                    var bits1 = map.indexOf(base64Str.charAt(i - 1)) << ((i % 4) * 2);
-	                    var bits2 = map.indexOf(base64Str.charAt(i)) >>> (6 - (i % 4) * 2);
-	                    words[nBytes >>> 2] |= (bits1 | bits2) << (24 - (nBytes % 4) * 8);
-	                    nBytes++;
-	                }
-	            }
-
-	            return WordArray.create(words, nBytes);
-=======
 	            return parseLoop(base64Str, base64StrLength, reverseMap);
 
->>>>>>> develop
 	        },
 
 	        _map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='
 	    };
-<<<<<<< HEAD
-=======
 
 	    function parseLoop(base64Str, base64StrLength, reverseMap) {
 	      var words = [];
@@ -151,7 +127,6 @@
 	      }
 	      return WordArray.create(words, nBytes);
 	    }
->>>>>>> develop
 	}());
 
 

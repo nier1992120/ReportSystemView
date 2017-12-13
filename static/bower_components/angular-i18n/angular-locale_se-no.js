@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "sk\u00e1b",
       "juov"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "o\u0111\u0111ajagem\u00e1nnu",
       "guovvam\u00e1nnu",
@@ -96,7 +94,6 @@ $provide.value("$locale", {
       "sk\u00e1bmam\u00e1nnu",
       "juovlam\u00e1nnu"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -140,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "se-no",
-<<<<<<< HEAD
-=======
   "localeID": "se_NO",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

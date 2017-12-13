@@ -2,15 +2,9 @@
 <html>
 <head>
   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-  <script type="text/javascript" src="angular.js"></script>
-  <script type="text/javascript" src="ZeroClipboard.js"></script>
-  <script type="text/javascript" src="ngClip.js"></script>
-=======
   <script src="../bower_components/angular/angular.min.js"></script>
   <script src="../bower_components/zeroclipboard/dist/ZeroClipboard.min.js"></script>
   <script src="../src/ngClip.js"></script>
->>>>>>> develop
 </head>
 <body>
 
@@ -23,13 +17,8 @@
 
     <form>
       <div class="form-group" ng-repeat="option in copyOptions">
-<<<<<<< HEAD
-        <label clip-copy="option">Copy {{option}}</label>
-        <!--<button class="btn btn-default" clip-copy="option">Copy!</button>-->
-=======
         <label >Copy {{option}}</label>
         <button class="btn btn-default" clip-copy="option">Copy!</button>
->>>>>>> develop
 
         <br/><br/><br/>
       </div>
@@ -39,19 +28,11 @@
   </div>
 </div>
 
-<<<<<<< HEAD
-<script type="text/javascript">
-  var myapp = angular.module('myapp', ["ngClipboard"]);
-
-  myapp.config(['ngClipProvider', function(ngClipProvider) {
-    ngClipProvider.setPath("ZeroClipboard.swf");
-=======
 <script>
   var myapp = angular.module('myapp', ["ngClipboard"]);
 
   myapp.config(['ngClipProvider', function(ngClipProvider) {
     ngClipProvider.setPath("../bower_components/zeroclipboard/ZeroClipboard.swf");
->>>>>>> develop
   }]);
 
   myapp.controller('myctrl', function ($scope) {
@@ -60,8 +41,4 @@
 </script>
 
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> develop

@@ -42,11 +42,7 @@ $provide.value("$locale", {
       "\ua0c5\ua2ca\ua0bf",
       "\ua0c5\ua2ca\ua282"
     ],
-<<<<<<< HEAD
-    "FIRSTDAYOFWEEK": 0,
-=======
     "FIRSTDAYOFWEEK": 6,
->>>>>>> develop
     "MONTH": [
       "\ua2cd\ua1aa",
       "\ua44d\ua1aa",
@@ -71,20 +67,6 @@ $provide.value("$locale", {
       "\ua18f\ua0d8"
     ],
     "SHORTMONTH": [
-<<<<<<< HEAD
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12"
-=======
       "\ua2cd\ua1aa",
       "\ua44d\ua1aa",
       "\ua315\ua1aa",
@@ -111,7 +93,6 @@ $provide.value("$locale", {
       "\ua2b0\ua1aa",
       "\ua2b0\ua2aa\ua1aa",
       "\ua2b0\ua44b\ua1aa"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -119,21 +100,12 @@ $provide.value("$locale", {
     ],
     "fullDate": "y MMMM d, EEEE",
     "longDate": "y MMMM d",
-<<<<<<< HEAD
-    "medium": "y MMM d HH:mm:ss",
-    "mediumDate": "y MMM d",
-    "mediumTime": "HH:mm:ss",
-    "short": "y-MM-dd HH:mm",
-    "shortDate": "y-MM-dd",
-    "shortTime": "HH:mm"
-=======
     "medium": "y MMM d h:mm:ss a",
     "mediumDate": "y MMM d",
     "mediumTime": "h:mm:ss a",
     "short": "y-MM-dd h:mm a",
     "shortDate": "y-MM-dd",
     "shortTime": "h:mm a"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u00a5",
@@ -157,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -169,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ii",
-<<<<<<< HEAD
-=======
   "localeID": "ii",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -91,10 +91,6 @@
 	     */
 	    var AES = C_algo.AES = BlockCipher.extend({
 	        _doReset: function () {
-<<<<<<< HEAD
-	            // Shortcuts
-	            var key = this._key;
-=======
 	            // Skip reset of nRounds has been set before and key did not change
 	            if (this._nRounds && this._keyPriorReset === this._key) {
 	                return;
@@ -102,16 +98,11 @@
 
 	            // Shortcuts
 	            var key = this._keyPriorReset = this._key;
->>>>>>> develop
 	            var keyWords = key.words;
 	            var keySize = key.sigBytes / 4;
 
 	            // Compute number of rounds
-<<<<<<< HEAD
-	            var nRounds = this._nRounds = keySize + 6
-=======
 	            var nRounds = this._nRounds = keySize + 6;
->>>>>>> develop
 
 	            // Compute number of key schedule rows
 	            var ksRows = (nRounds + 1) * 4;

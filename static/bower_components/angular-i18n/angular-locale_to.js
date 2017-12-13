@@ -22,13 +22,8 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "AM",
-      "PM"
-=======
       "hengihengi",
       "efiafi"
->>>>>>> develop
     ],
     "DAY": [
       "S\u0101pate",
@@ -85,8 +80,6 @@ $provide.value("$locale", {
       "N\u014dv",
       "T\u012bs"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "S\u0101nuali",
       "F\u0113pueli",
@@ -101,7 +94,6 @@ $provide.value("$locale", {
       "N\u014dvema",
       "T\u012bsema"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -137,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -149,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "to",
-<<<<<<< HEAD
-=======
   "localeID": "to",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

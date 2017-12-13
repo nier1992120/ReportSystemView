@@ -21,13 +21,8 @@ $provide.value("$locale", {
       "\u516c\u5143"
     ],
     "ERAS": [
-<<<<<<< HEAD
-      "BC",
-      "AD"
-=======
       "\u516c\u5143\u524d",
       "\u516c\u5143"
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 6,
     "MONTH": [
@@ -67,8 +62,6 @@ $provide.value("$locale", {
       "11\u6708",
       "12\u6708"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "1\u6708",
       "2\u6708",
@@ -83,7 +76,6 @@ $provide.value("$locale", {
       "11\u6708",
       "12\u6708"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -93,13 +85,8 @@ $provide.value("$locale", {
     "medium": "y\u5e74M\u6708d\u65e5 ah:mm:ss",
     "mediumDate": "y\u5e74M\u6708d\u65e5",
     "mediumTime": "ah:mm:ss",
-<<<<<<< HEAD
-    "short": "d/M/yy ah:mm",
-    "shortDate": "d/M/yy",
-=======
     "short": "d/M/y ah:mm",
     "shortDate": "d/M/y",
->>>>>>> develop
     "shortTime": "ah:mm"
   },
   "NUMBER_FORMATS": {
@@ -124,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -136,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "zh-hk",
-<<<<<<< HEAD
-=======
   "localeID": "zh_HK",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

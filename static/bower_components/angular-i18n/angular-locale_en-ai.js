@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "Nov",
       "Dec"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "January",
       "February",
@@ -96,21 +94,10 @@ $provide.value("$locale", {
       "November",
       "December"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE, MMMM d, y",
-    "longDate": "MMMM d, y",
-    "medium": "MMM d, y h:mm:ss a",
-    "mediumDate": "MMM d, y",
-    "mediumTime": "h:mm:ss a",
-    "short": "M/d/yy h:mm a",
-    "shortDate": "M/d/yy",
-    "shortTime": "h:mm a"
-=======
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
     "medium": "d MMM y HH:mm:ss",
@@ -119,7 +106,6 @@ $provide.value("$locale", {
     "short": "dd/MM/y HH:mm",
     "shortDate": "dd/MM/y",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "$",
@@ -143,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -155,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "en-ai",
-<<<<<<< HEAD
-=======
   "localeID": "en_AI",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

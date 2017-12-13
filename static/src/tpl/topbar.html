@@ -1,17 +1,8 @@
 
 <nav class="header form-group" role="navigation">
-    <span>
-        <span class="cursor_p" ng-if="user.mainPubid !== undefined" ng-click="backToMainAccount()">返回超管账户</span>&nbsp;&nbsp;
-        <span ng-if="!isSubAccount">[主账户]-{{user.company_name}}</span>&nbsp;&nbsp;
+    <div class="headerContent">
         <span ng-if="isSubAccount">[{{subAccountCompanyName}}]-{{user.company_name}}</span>&nbsp;&nbsp;
         <a ui-sref="userseting">用户设置</a>&nbsp;&nbsp;
-        <a href="" ng-click="logout()">退出</a>&nbsp;&nbsp;
-    </span>
-
-
-    <select class="cursor_p" ng-model="platform">
-        <option value="2">iOS</option>
-        <option value="1">Android</option>
-        <option disabled>windowsPhone</option>
-    </select>
+        <a href="" ng-click="logout()">退出</a>
+    </div>
 </nav>

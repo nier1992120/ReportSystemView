@@ -21,13 +21,8 @@ $provide.value("$locale", {
       "\u516c\u5143"
     ],
     "ERAS": [
-<<<<<<< HEAD
-      "BC",
-      "AD"
-=======
       "\u516c\u5143\u524d",
       "\u516c\u5143"
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 6,
     "MONTH": [
@@ -67,8 +62,6 @@ $provide.value("$locale", {
       "11\u6708",
       "12\u6708"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "1\u6708",
       "2\u6708",
@@ -83,20 +76,10 @@ $provide.value("$locale", {
       "11\u6708",
       "12\u6708"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "y\u5e74MM\u6708dd\u65e5EEEE",
-    "longDate": "y\u5e74MM\u6708dd\u65e5",
-    "medium": "y\u5e74M\u6708d\u65e5 ah:mm:ss",
-    "mediumDate": "y\u5e74M\u6708d\u65e5",
-    "mediumTime": "ah:mm:ss",
-    "short": "yy\u5e74M\u6708d\u65e5 ah:mm",
-    "shortDate": "yy\u5e74M\u6708d\u65e5",
-=======
     "fullDate": "y\u5e74M\u6708d\u65e5EEEE",
     "longDate": "y\u5e74M\u6708d\u65e5",
     "medium": "y\u5e74M\u6708d\u65e5 ah:mm:ss",
@@ -104,7 +87,6 @@ $provide.value("$locale", {
     "mediumTime": "ah:mm:ss",
     "short": "d/M/y ah:mm",
     "shortDate": "d/M/y",
->>>>>>> develop
     "shortTime": "ah:mm"
   },
   "NUMBER_FORMATS": {
@@ -129,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -141,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "zh-hant-mo",
-<<<<<<< HEAD
-=======
   "localeID": "zh_Hant_MO",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -1,24 +1,17 @@
 define( [
 	"./core",
 	"./var/document",
-<<<<<<< HEAD
 	"./var/documentElement",
 	"./var/rnothtmlwhite",
-=======
-	"./var/rnotwhite",
->>>>>>> develop
 	"./var/slice",
 	"./data/var/dataPriv",
+	"./core/nodeName",
 
 	"./core/init",
 	"./selector"
-<<<<<<< HEAD
-], function( jQuery, document, documentElement, rnothtmlwhite, slice, dataPriv ) {
+], function( jQuery, document, documentElement, rnothtmlwhite, slice, dataPriv, nodeName ) {
 
 "use strict";
-=======
-], function( jQuery, document, rnotwhite, slice, dataPriv ) {
->>>>>>> develop
 
 var
 	rkeyEvent = /^key/,
@@ -33,11 +26,7 @@ function returnFalse() {
 	return false;
 }
 
-<<<<<<< HEAD
 // Support: IE <=9 only
-=======
-// Support: IE9
->>>>>>> develop
 // See #13393 for more info
 function safeActiveElement() {
 	try {
@@ -133,15 +122,12 @@ jQuery.event = {
 			selector = handleObjIn.selector;
 		}
 
-<<<<<<< HEAD
 		// Ensure that invalid selectors throw exceptions at attach time
 		// Evaluate against documentElement in case elem is a non-element node (e.g., document)
 		if ( selector ) {
 			jQuery.find.matchesSelector( documentElement, selector );
 		}
 
-=======
->>>>>>> develop
 		// Make sure that the handler has a unique ID, used to find/remove it later
 		if ( !handler.guid ) {
 			handler.guid = jQuery.guid++;
@@ -162,11 +148,7 @@ jQuery.event = {
 		}
 
 		// Handle multiple events separated by a space
-<<<<<<< HEAD
 		types = ( types || "" ).match( rnothtmlwhite ) || [ "" ];
-=======
-		types = ( types || "" ).match( rnotwhite ) || [ "" ];
->>>>>>> develop
 		t = types.length;
 		while ( t-- ) {
 			tmp = rtypenamespace.exec( types[ t ] ) || [];
@@ -248,11 +230,7 @@ jQuery.event = {
 		}
 
 		// Once for each type.namespace in types; type may be omitted
-<<<<<<< HEAD
 		types = ( types || "" ).match( rnothtmlwhite ) || [ "" ];
-=======
-		types = ( types || "" ).match( rnotwhite ) || [ "" ];
->>>>>>> develop
 		t = types.length;
 		while ( t-- ) {
 			tmp = rtypenamespace.exec( types[ t ] ) || [];
@@ -313,7 +291,6 @@ jQuery.event = {
 		}
 	},
 
-<<<<<<< HEAD
 	dispatch: function( nativeEvent ) {
 
 		// Make a writable jQuery.Event from the native event object
@@ -321,29 +298,16 @@ jQuery.event = {
 
 		var i, j, ret, matched, handleObj, handlerQueue,
 			args = new Array( arguments.length ),
-=======
-	dispatch: function( event ) {
-
-		// Make a writable jQuery.Event from the native event object
-		event = jQuery.event.fix( event );
-
-		var i, j, ret, matched, handleObj,
-			handlerQueue = [],
-			args = slice.call( arguments ),
->>>>>>> develop
 			handlers = ( dataPriv.get( this, "events" ) || {} )[ event.type ] || [],
 			special = jQuery.event.special[ event.type ] || {};
 
 		// Use the fix-ed jQuery.Event rather than the (read-only) native event
 		args[ 0 ] = event;
-<<<<<<< HEAD
 
 		for ( i = 1; i < arguments.length; i++ ) {
 			args[ i ] = arguments[ i ];
 		}
 
-=======
->>>>>>> develop
 		event.delegateTarget = this;
 
 		// Call the preDispatch hook for the mapped type, and let it bail if desired
@@ -392,16 +356,11 @@ jQuery.event = {
 	},
 
 	handlers: function( event, handlers ) {
-<<<<<<< HEAD
 		var i, handleObj, sel, matchedHandlers, matchedSelectors,
-=======
-		var i, matches, sel, handleObj,
->>>>>>> develop
 			handlerQueue = [],
 			delegateCount = handlers.delegateCount,
 			cur = event.target;
 
-<<<<<<< HEAD
 		// Find delegate handlers
 		if ( delegateCount &&
 
@@ -415,36 +374,20 @@ jQuery.event = {
 			// Support: IE 11 only
 			// ...but not arrow key "clicks" of radio inputs, which can have `button` -1 (gh-2343)
 			!( event.type === "click" && event.button >= 1 ) ) {
-=======
-		// Support (at least): Chrome, IE9
-		// Find delegate handlers
-		// Black-hole SVG <use> instance trees (#13180)
-		//
-		// Support: Firefox<=42+
-		// Avoid non-left-click in FF but don't block IE radio events (#3861, gh-2343)
-		if ( delegateCount && cur.nodeType &&
-			( event.type !== "click" || isNaN( event.button ) || event.button < 1 ) ) {
->>>>>>> develop
 
 			for ( ; cur !== this; cur = cur.parentNode || this ) {
 
 				// Don't check non-elements (#13208)
 				// Don't process clicks on disabled elements (#6911, #8165, #11382, #11764)
-<<<<<<< HEAD
 				if ( cur.nodeType === 1 && !( event.type === "click" && cur.disabled === true ) ) {
 					matchedHandlers = [];
 					matchedSelectors = {};
-=======
-				if ( cur.nodeType === 1 && ( cur.disabled !== true || event.type !== "click" ) ) {
-					matches = [];
->>>>>>> develop
 					for ( i = 0; i < delegateCount; i++ ) {
 						handleObj = handlers[ i ];
 
 						// Don't conflict with Object.prototype properties (#13203)
 						sel = handleObj.selector + " ";
 
-<<<<<<< HEAD
 						if ( matchedSelectors[ sel ] === undefined ) {
 							matchedSelectors[ sel ] = handleObj.needsContext ?
 								jQuery( sel, this ).index( cur ) > -1 :
@@ -456,39 +399,20 @@ jQuery.event = {
 					}
 					if ( matchedHandlers.length ) {
 						handlerQueue.push( { elem: cur, handlers: matchedHandlers } );
-=======
-						if ( matches[ sel ] === undefined ) {
-							matches[ sel ] = handleObj.needsContext ?
-								jQuery( sel, this ).index( cur ) > -1 :
-								jQuery.find( sel, this, null, [ cur ] ).length;
-						}
-						if ( matches[ sel ] ) {
-							matches.push( handleObj );
-						}
-					}
-					if ( matches.length ) {
-						handlerQueue.push( { elem: cur, handlers: matches } );
->>>>>>> develop
 					}
 				}
 			}
 		}
 
 		// Add the remaining (directly-bound) handlers
-<<<<<<< HEAD
 		cur = this;
 		if ( delegateCount < handlers.length ) {
 			handlerQueue.push( { elem: cur, handlers: handlers.slice( delegateCount ) } );
-=======
-		if ( delegateCount < handlers.length ) {
-			handlerQueue.push( { elem: this, handlers: handlers.slice( delegateCount ) } );
->>>>>>> develop
 		}
 
 		return handlerQueue;
 	},
 
-<<<<<<< HEAD
 	addProp: function( name, hook ) {
 		Object.defineProperty( jQuery.Event.prototype, name, {
 			enumerable: true,
@@ -521,98 +445,6 @@ jQuery.event = {
 		return originalEvent[ jQuery.expando ] ?
 			originalEvent :
 			new jQuery.Event( originalEvent );
-=======
-	// Includes some event props shared by KeyEvent and MouseEvent
-	props: ( "altKey bubbles cancelable ctrlKey currentTarget detail eventPhase " +
-		"metaKey relatedTarget shiftKey target timeStamp view which" ).split( " " ),
-
-	fixHooks: {},
-
-	keyHooks: {
-		props: "char charCode key keyCode".split( " " ),
-		filter: function( event, original ) {
-
-			// Add which for key events
-			if ( event.which == null ) {
-				event.which = original.charCode != null ? original.charCode : original.keyCode;
-			}
-
-			return event;
-		}
-	},
-
-	mouseHooks: {
-		props: ( "button buttons clientX clientY offsetX offsetY pageX pageY " +
-			"screenX screenY toElement" ).split( " " ),
-		filter: function( event, original ) {
-			var eventDoc, doc, body,
-				button = original.button;
-
-			// Calculate pageX/Y if missing and clientX/Y available
-			if ( event.pageX == null && original.clientX != null ) {
-				eventDoc = event.target.ownerDocument || document;
-				doc = eventDoc.documentElement;
-				body = eventDoc.body;
-
-				event.pageX = original.clientX +
-					( doc && doc.scrollLeft || body && body.scrollLeft || 0 ) -
-					( doc && doc.clientLeft || body && body.clientLeft || 0 );
-				event.pageY = original.clientY +
-					( doc && doc.scrollTop  || body && body.scrollTop  || 0 ) -
-					( doc && doc.clientTop  || body && body.clientTop  || 0 );
-			}
-
-			// Add which for click: 1 === left; 2 === middle; 3 === right
-			// Note: button is not normalized, so don't use it
-			if ( !event.which && button !== undefined ) {
-				event.which = ( button & 1 ? 1 : ( button & 2 ? 3 : ( button & 4 ? 2 : 0 ) ) );
-			}
-
-			return event;
-		}
-	},
-
-	fix: function( event ) {
-		if ( event[ jQuery.expando ] ) {
-			return event;
-		}
-
-		// Create a writable copy of the event object and normalize some properties
-		var i, prop, copy,
-			type = event.type,
-			originalEvent = event,
-			fixHook = this.fixHooks[ type ];
-
-		if ( !fixHook ) {
-			this.fixHooks[ type ] = fixHook =
-				rmouseEvent.test( type ) ? this.mouseHooks :
-				rkeyEvent.test( type ) ? this.keyHooks :
-				{};
-		}
-		copy = fixHook.props ? this.props.concat( fixHook.props ) : this.props;
-
-		event = new jQuery.Event( originalEvent );
-
-		i = copy.length;
-		while ( i-- ) {
-			prop = copy[ i ];
-			event[ prop ] = originalEvent[ prop ];
-		}
-
-		// Support: Cordova 2.5 (WebKit) (#13255)
-		// All events should have a target; Cordova deviceready doesn't
-		if ( !event.target ) {
-			event.target = document;
-		}
-
-		// Support: Safari 6.0+, Chrome<28
-		// Target should not be a text node (#504, #13143)
-		if ( event.target.nodeType === 3 ) {
-			event.target = event.target.parentNode;
-		}
-
-		return fixHook.filter ? fixHook.filter( event, originalEvent ) : event;
->>>>>>> develop
 	},
 
 	special: {
@@ -645,7 +477,7 @@ jQuery.event = {
 
 			// For checkbox, fire native event so checked state will be right
 			trigger: function() {
-				if ( this.type === "checkbox" && this.click && jQuery.nodeName( this, "input" ) ) {
+				if ( this.type === "checkbox" && this.click && nodeName( this, "input" ) ) {
 					this.click();
 					return false;
 				}
@@ -653,7 +485,7 @@ jQuery.event = {
 
 			// For cross-browser consistency, don't fire native .click() on links
 			_default: function( event ) {
-				return jQuery.nodeName( event.target, "a" );
+				return nodeName( event.target, "a" );
 			}
 		},
 
@@ -695,16 +527,11 @@ jQuery.Event = function( src, props ) {
 		this.isDefaultPrevented = src.defaultPrevented ||
 				src.defaultPrevented === undefined &&
 
-<<<<<<< HEAD
 				// Support: Android <=2.3 only
-=======
-				// Support: Android<4.0
->>>>>>> develop
 				src.returnValue === false ?
 			returnTrue :
 			returnFalse;
 
-<<<<<<< HEAD
 		// Create target properties
 		// Support: Safari <=6 - 7 only
 		// Target should not be a text node (#504, #13143)
@@ -715,8 +542,6 @@ jQuery.Event = function( src, props ) {
 		this.currentTarget = src.currentTarget;
 		this.relatedTarget = src.relatedTarget;
 
-=======
->>>>>>> develop
 	// Event type
 	} else {
 		this.type = src;
@@ -735,11 +560,7 @@ jQuery.Event = function( src, props ) {
 };
 
 // jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
-<<<<<<< HEAD
 // https://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
-=======
-// http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
->>>>>>> develop
 jQuery.Event.prototype = {
 	constructor: jQuery.Event,
 	isDefaultPrevented: returnFalse,
@@ -778,7 +599,6 @@ jQuery.Event.prototype = {
 	}
 };
 
-<<<<<<< HEAD
 // Includes all common event props including KeyEvent and MouseEvent specific props
 jQuery.each( {
 	altKey: true,
@@ -840,19 +660,13 @@ jQuery.each( {
 	}
 }, jQuery.event.addProp );
 
-=======
->>>>>>> develop
 // Create mouseenter/leave events using mouseover/out and event-time checks
 // so that event delegation works in jQuery.
 // Do the same for pointerenter/pointerleave and pointerover/pointerout
 //
 // Support: Safari 7 only
 // Safari sends mouseenter too often; see:
-<<<<<<< HEAD
 // https://bugs.chromium.org/p/chromium/issues/detail?id=470258
-=======
-// https://code.google.com/p/chromium/issues/detail?id=470258
->>>>>>> develop
 // for the description of the bug (it existed in older Chrome versions as well).
 jQuery.each( {
 	mouseenter: "mouseover",
@@ -883,10 +697,7 @@ jQuery.each( {
 } );
 
 jQuery.fn.extend( {
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 	on: function( types, selector, data, fn ) {
 		return on( this, types, selector, data, fn );
 	},

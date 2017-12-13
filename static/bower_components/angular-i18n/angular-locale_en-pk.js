@@ -22,13 +22,8 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "am",
-      "pm"
-=======
       "AM",
       "PM"
->>>>>>> develop
     ],
     "DAY": [
       "Sunday",
@@ -85,8 +80,6 @@ $provide.value("$locale", {
       "Nov",
       "Dec"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "January",
       "February",
@@ -101,16 +94,11 @@ $provide.value("$locale", {
       "November",
       "December"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE d MMMM y",
-=======
     "fullDate": "EEEE, d MMMM y",
->>>>>>> develop
     "longDate": "d MMMM y",
     "medium": "dd-MMM-y h:mm:ss a",
     "mediumDate": "dd-MMM-y",
@@ -125,11 +113,7 @@ $provide.value("$locale", {
     "GROUP_SEP": ",",
     "PATTERNS": [
       {
-<<<<<<< HEAD
-        "gSize": 2,
-=======
         "gSize": 3,
->>>>>>> develop
         "lgSize": 3,
         "maxFrac": 3,
         "minFrac": 0,
@@ -140,16 +124,6 @@ $provide.value("$locale", {
         "posSuf": ""
       },
       {
-<<<<<<< HEAD
-        "gSize": 2,
-        "lgSize": 3,
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4\u00a0-",
-        "negSuf": "",
-        "posPre": "\u00a4\u00a0",
-=======
         "gSize": 3,
         "lgSize": 3,
         "maxFrac": 0,
@@ -158,16 +132,12 @@ $provide.value("$locale", {
         "negPre": "-\u00a4",
         "negSuf": "",
         "posPre": "\u00a4",
->>>>>>> develop
         "posSuf": ""
       }
     ]
   },
   "id": "en-pk",
-<<<<<<< HEAD
-=======
   "localeID": "en_PK",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

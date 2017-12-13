@@ -1,0 +1,64 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <p class="panel-title">
+            <button class="btn btn-default" ng-click="showAddAppTestIdModal()" data-toggle="modal" data-target="#testIdPanel"><span class="glyphicon glyphicon-plus"></span>&nbsp;新增id</button>
+        </p>
+
+    </div>
+    <table class="table table-bordered table-hover" ng-if="appTestIds.length !== 0">
+        <tr  class="tableTitle">
+            <td class="td_width200">测试id描述</td>
+            <td class="td_width80">switch</td>
+            <td>测试id</td>
+            <td class="td_width120">ctrl</td>
+        </tr>
+        <tr ng-repeat="apptest in appTestIds">
+            <td class="td_width200">{{apptest.desc}}</td>
+            <td class="td_width80">{{apptest.switch}}</td>
+            <td>{{apptest.id}}</td>
+            <td class="td_width120">
+                <a class="glyphicon glyphicon-edit cursor_p" ng-click="showEditAppTestIdModal(apptest)"  data-toggle="modal" data-target="#testIdPanel">编辑</a>&nbsp;&nbsp;
+                <a class="glyphicon glyphicon-edit cursor_p" ng-click="delAppTestId($index)">删除</a>&nbsp;&nbsp;
+            </td>
+        </tr>
+    </table>
+</div>
+
+<p class="nothing" ng-if="appTestIds.length === 0">
+    暂无数据信息
+</p>
+
+<div class="modal fade" id="testIdPanel">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body clearfix">
+            <div class="form-group clearfix">
+                <label class="col-sm-2 control-label text-right" style="padding:0;">id描述：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="appTest.desc">
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-sm-2 control-label text-right" style="padding:0;">开关项：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="0 or 1" ng-model="appTest.switch">
+                </div>
+            </div>
+            <div class="clearfix">
+                <label class="col-sm-2 control-label text-right" style="padding:0;">id：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="appTest.id">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button ng-if="isAddFalg" class="btn btn-info" ng-click="addAppTestId()">保&nbsp;&nbsp;存</button>
+            <button ng-if="!isAddFalg" class="btn btn-info" ng-click="changeAppTestId()">保&nbsp;&nbsp;存</button>
+        </div>
+    </div>
+
+</div>

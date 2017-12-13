@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u0928\u0935\u0970",
       "\u0926\u093f\u0938\u0970"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u091c\u0928\u0935\u0930\u0940",
       "\u092b\u093c\u0930\u0935\u0930\u0940",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u0928\u0935\u0902\u092c\u0930",
       "\u0926\u093f\u0938\u0902\u092c\u0930"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
@@ -114,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -126,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "hi-in",
-<<<<<<< HEAD
-=======
   "localeID": "hi_IN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

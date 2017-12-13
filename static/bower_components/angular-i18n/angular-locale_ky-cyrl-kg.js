@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u043d\u043e\u044f.",
       "\u0434\u0435\u043a."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u042f\u043d\u0432\u0430\u0440\u044c",
       "\u0424\u0435\u0432\u0440\u0430\u043b\u044c",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u041d\u043e\u044f\u0431\u0440\u044c",
       "\u0414\u0435\u043a\u0430\u0431\u0440\u044c"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -122,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ky-cyrl-kg",
-<<<<<<< HEAD
-=======
   "localeID": "ky_Cyrl_KG",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

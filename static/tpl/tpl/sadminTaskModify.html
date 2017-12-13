@@ -1,0 +1,35 @@
+<div class="form-group">
+    <div ng-jsoneditor ng-model="task" options="options"></div>
+
+    <div>
+        <p>已添加的用户:</p>
+        <div class="form-group overflow_y" ng-class="{wraps:myusers.length !== 0}">
+            <label ng-repeat="user in myusers" class="btn btn-default label142" ng-click="delUser($index)" title="{{user.showName}}">
+                {{user.showName}}
+            </label>
+        </div>
+        <p>未添加的用户:</p>
+        <div class="form-group overflow_y" ng-class="{wraps:users.length !== 0}">
+            <label ng-repeat="user in users" class="btn btn-default label142" ng-click="addUser($index)">
+                {{user.showName}}
+            </label>
+        </div>
+
+    </div>
+    <button class="btn btn-info"  ng-click="submit()">保&nbsp;&nbsp;存</button>
+    <button class="btn btn-info btn-s" data-toggle="modal" data-target="#fullpage">全&nbsp;&nbsp;屏</button>
+</div>
+
+
+<div class="modal fade height100" id="fullpage">
+    <div class="modal-content height100">
+        <div class="modal-body height100">
+            <div ng-jsoneditor ng-model="task" options="options" class="height100"></div>
+        </div>
+        <button class="btn btn-info returnJson" data-dismiss="modal">返&nbsp;&nbsp;回</button>
+    </div>
+</div>
+
+<div class="bg-danger clearfix panel-body" ng-if="errors.length != 0">
+    <p style="text-indent: 10px;" class="text-danger" ng-repeat="error in errors">error : {{error.error}}</p>
+</div>

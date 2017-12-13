@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "jol",
       "bow"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "siilo",
       "colte",
@@ -96,28 +94,18 @@ $provide.value("$locale", {
       "jolal",
       "bowte"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE d MMMM y",
     "longDate": "d MMMM y",
-<<<<<<< HEAD
-    "medium": "d MMM, y HH:mm:ss",
-    "mediumDate": "d MMM, y",
-    "mediumTime": "HH:mm:ss",
-    "short": "d/M/y HH:mm",
-    "shortDate": "d/M/y",
-    "shortTime": "HH:mm"
-=======
     "medium": "d MMM, y h:mm:ss a",
     "mediumDate": "d MMM, y",
     "mediumTime": "h:mm:ss a",
     "short": "d/M/y h:mm a",
     "shortDate": "d/M/y",
     "shortTime": "h:mm a"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "MRO",
@@ -138,13 +126,8 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-=======
         "maxFrac": 0,
         "minFrac": 0,
->>>>>>> develop
         "minInt": 1,
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
@@ -154,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ff-mr",
-<<<<<<< HEAD
-=======
   "localeID": "ff_MR",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

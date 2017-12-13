@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "11\u6708",
       "12\u6708"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u4e00\u6708",
       "\u4e8c\u6708",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u5341\u4e00\u6708",
       "\u5341\u4e8c\u6708"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -88,13 +85,8 @@ $provide.value("$locale", {
     "medium": "y\u5e74M\u6708d\u65e5 ah:mm:ss",
     "mediumDate": "y\u5e74M\u6708d\u65e5",
     "mediumTime": "ah:mm:ss",
-<<<<<<< HEAD
-    "short": "yy/M/d ah:mm",
-    "shortDate": "yy/M/d",
-=======
     "short": "y/M/d ah:mm",
     "shortDate": "y/M/d",
->>>>>>> develop
     "shortTime": "ah:mm"
   },
   "NUMBER_FORMATS": {
@@ -119,24 +111,15 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-        "negSuf": "",
-        "posPre": "\u00a4\u00a0",
-=======
         "negPre": "-\u00a4",
         "negSuf": "",
         "posPre": "\u00a4",
->>>>>>> develop
         "posSuf": ""
       }
     ]
   },
   "id": "zh-hans-cn",
-<<<<<<< HEAD
-=======
   "localeID": "zh_Hans_CN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

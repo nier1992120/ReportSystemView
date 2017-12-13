@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "[AM]",
-      "[PM]"
-=======
       "AM",
       "PM"
->>>>>>> develop
     ],
     "DAY": [
       "\u0c06\u0c26\u0c3f\u0c35\u0c3e\u0c30\u0c02",
@@ -67,8 +62,6 @@ $provide.value("$locale", {
       "\u0c28\u0c35\u0c02",
       "\u0c21\u0c3f\u0c38\u0c46\u0c02"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0c1c\u0c28\u0c35\u0c30\u0c3f",
       "\u0c2b\u0c3f\u0c2c\u0c4d\u0c30\u0c35\u0c30\u0c3f",
@@ -83,7 +76,6 @@ $provide.value("$locale", {
       "\u0c28\u0c35\u0c02\u0c2c\u0c30\u0c4d",
       "\u0c21\u0c3f\u0c38\u0c46\u0c02\u0c2c\u0c30\u0c4d"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
@@ -119,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -131,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "te",
-<<<<<<< HEAD
-=======
   "localeID": "te",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

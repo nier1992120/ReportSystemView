@@ -1,6 +1,5 @@
 define( [
 	"../core",
-<<<<<<< HEAD
 	"../core/stripAndCollapse",
 	"../var/rnothtmlwhite",
 	"../data/var/dataPriv",
@@ -8,14 +7,6 @@ define( [
 ], function( jQuery, stripAndCollapse, rnothtmlwhite, dataPriv ) {
 
 "use strict";
-=======
-	"../var/rnotwhite",
-	"../data/var/dataPriv",
-	"../core/init"
-], function( jQuery, rnotwhite, dataPriv ) {
-
-var rclass = /[\t\r\n\f]/g;
->>>>>>> develop
 
 function getClass( elem ) {
 	return elem.getAttribute && elem.getAttribute( "class" ) || "";
@@ -33,20 +24,11 @@ jQuery.fn.extend( {
 		}
 
 		if ( typeof value === "string" && value ) {
-<<<<<<< HEAD
 			classes = value.match( rnothtmlwhite ) || [];
 
 			while ( ( elem = this[ i++ ] ) ) {
 				curValue = getClass( elem );
 				cur = elem.nodeType === 1 && ( " " + stripAndCollapse( curValue ) + " " );
-=======
-			classes = value.match( rnotwhite ) || [];
-
-			while ( ( elem = this[ i++ ] ) ) {
-				curValue = getClass( elem );
-				cur = elem.nodeType === 1 &&
-					( " " + curValue + " " ).replace( rclass, " " );
->>>>>>> develop
 
 				if ( cur ) {
 					j = 0;
@@ -57,11 +39,7 @@ jQuery.fn.extend( {
 					}
 
 					// Only assign if different to avoid unneeded rendering.
-<<<<<<< HEAD
 					finalValue = stripAndCollapse( cur );
-=======
-					finalValue = jQuery.trim( cur );
->>>>>>> develop
 					if ( curValue !== finalValue ) {
 						elem.setAttribute( "class", finalValue );
 					}
@@ -87,22 +65,13 @@ jQuery.fn.extend( {
 		}
 
 		if ( typeof value === "string" && value ) {
-<<<<<<< HEAD
 			classes = value.match( rnothtmlwhite ) || [];
-=======
-			classes = value.match( rnotwhite ) || [];
->>>>>>> develop
 
 			while ( ( elem = this[ i++ ] ) ) {
 				curValue = getClass( elem );
 
 				// This expression is here for better compressibility (see addClass)
-<<<<<<< HEAD
 				cur = elem.nodeType === 1 && ( " " + stripAndCollapse( curValue ) + " " );
-=======
-				cur = elem.nodeType === 1 &&
-					( " " + curValue + " " ).replace( rclass, " " );
->>>>>>> develop
 
 				if ( cur ) {
 					j = 0;
@@ -115,11 +84,7 @@ jQuery.fn.extend( {
 					}
 
 					// Only assign if different to avoid unneeded rendering.
-<<<<<<< HEAD
 					finalValue = stripAndCollapse( cur );
-=======
-					finalValue = jQuery.trim( cur );
->>>>>>> develop
 					if ( curValue !== finalValue ) {
 						elem.setAttribute( "class", finalValue );
 					}
@@ -154,11 +119,7 @@ jQuery.fn.extend( {
 				// Toggle individual class names
 				i = 0;
 				self = jQuery( this );
-<<<<<<< HEAD
 				classNames = value.match( rnothtmlwhite ) || [];
-=======
-				classNames = value.match( rnotwhite ) || [];
->>>>>>> develop
 
 				while ( ( className = classNames[ i++ ] ) ) {
 
@@ -201,15 +162,8 @@ jQuery.fn.extend( {
 		className = " " + selector + " ";
 		while ( ( elem = this[ i++ ] ) ) {
 			if ( elem.nodeType === 1 &&
-<<<<<<< HEAD
 				( " " + stripAndCollapse( getClass( elem ) ) + " " ).indexOf( className ) > -1 ) {
 					return true;
-=======
-				( " " + getClass( elem ) + " " ).replace( rclass, " " )
-					.indexOf( className ) > -1
-			) {
-				return true;
->>>>>>> develop
 			}
 		}
 

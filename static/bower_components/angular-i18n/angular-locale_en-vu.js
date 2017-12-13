@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "Nov",
       "Dec"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "January",
       "February",
@@ -96,20 +94,10 @@ $provide.value("$locale", {
       "November",
       "December"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE, MMMM d, y",
-    "longDate": "MMMM d, y",
-    "medium": "MMM d, y h:mm:ss a",
-    "mediumDate": "MMM d, y",
-    "mediumTime": "h:mm:ss a",
-    "short": "M/d/yy h:mm a",
-    "shortDate": "M/d/yy",
-=======
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
     "medium": "d MMM y h:mm:ss a",
@@ -117,7 +105,6 @@ $provide.value("$locale", {
     "mediumTime": "h:mm:ss a",
     "short": "dd/MM/y h:mm a",
     "shortDate": "dd/MM/y",
->>>>>>> develop
     "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
@@ -139,17 +126,10 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4-",
-=======
         "maxFrac": 0,
         "minFrac": 0,
         "minInt": 1,
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -157,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "en-vu",
-<<<<<<< HEAD
-=======
   "localeID": "en_VU",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

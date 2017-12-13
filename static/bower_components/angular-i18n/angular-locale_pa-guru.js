@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u0a28\u0a35\u0a70",
       "\u0a26\u0a38\u0a70"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0a1c\u0a28\u0a35\u0a30\u0a40",
       "\u0a2b\u0a3c\u0a30\u0a35\u0a30\u0a40",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u0a28\u0a35\u0a70\u0a2c\u0a30",
       "\u0a26\u0a38\u0a70\u0a2c\u0a30"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
@@ -93,11 +90,7 @@ $provide.value("$locale", {
     "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
-<<<<<<< HEAD
-    "CURRENCY_SYM": "\u20ac",
-=======
     "CURRENCY_SYM": "\u20b9",
->>>>>>> develop
     "DECIMAL_SEP": ".",
     "GROUP_SEP": ",",
     "PATTERNS": [
@@ -118,24 +111,15 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-        "negSuf": "",
-        "posPre": "\u00a4",
-=======
         "negPre": "-\u00a4\u00a0",
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
->>>>>>> develop
         "posSuf": ""
       }
     ]
   },
   "id": "pa-guru",
-<<<<<<< HEAD
-=======
   "localeID": "pa_Guru",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n >= 0 && n <= 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

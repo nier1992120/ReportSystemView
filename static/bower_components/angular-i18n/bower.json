@@ -1,11 +1,7 @@
 {
   "name": "angular-i18n",
-<<<<<<< HEAD
-  "version": "1.4.3",
-=======
   "version": "1.6.7",
   "license": "MIT",
->>>>>>> develop
   "ignore": [
     "**/.*",
     "node_modules",

@@ -5,11 +5,8 @@ define( [
 	"./data/var/dataUser"
 ], function( jQuery, access, dataPriv, dataUser ) {
 
-<<<<<<< HEAD
 "use strict";
 
-=======
->>>>>>> develop
 //	Implementation Summary
 //
 //	1. Enforce API surface and semantic compatibility with 1.9.x branch
@@ -23,7 +20,6 @@ define( [
 var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
 	rmultiDash = /[A-Z]/g;
 
-<<<<<<< HEAD
 function getData( data ) {
 	if ( data === "true" ) {
 		return true;
@@ -49,8 +45,6 @@ function getData( data ) {
 	return data;
 }
 
-=======
->>>>>>> develop
 function dataAttr( elem, key, data ) {
 	var name;
 
@@ -62,18 +56,7 @@ function dataAttr( elem, key, data ) {
 
 		if ( typeof data === "string" ) {
 			try {
-<<<<<<< HEAD
 				data = getData( data );
-=======
-				data = data === "true" ? true :
-					data === "false" ? false :
-					data === "null" ? null :
-
-					// Only convert to a number if it doesn't change the string
-					+data + "" === data ? +data :
-					rbrace.test( data ) ? jQuery.parseJSON( data ) :
-					data;
->>>>>>> develop
 			} catch ( e ) {}
 
 			// Make sure we set the data so it isn't changed later
@@ -124,11 +107,7 @@ jQuery.fn.extend( {
 					i = attrs.length;
 					while ( i-- ) {
 
-<<<<<<< HEAD
 						// Support: IE 11 only
-=======
-						// Support: IE11+
->>>>>>> develop
 						// The attrs elements can be null (#14894)
 						if ( attrs[ i ] ) {
 							name = attrs[ i ].name;
@@ -153,11 +132,7 @@ jQuery.fn.extend( {
 		}
 
 		return access( this, function( value ) {
-<<<<<<< HEAD
 			var data;
-=======
-			var data, camelKey;
->>>>>>> develop
 
 			// The calling jQuery object (element matches) is not empty
 			// (and therefore has an element appears at this[ 0 ]) and the
@@ -167,38 +142,15 @@ jQuery.fn.extend( {
 			if ( elem && value === undefined ) {
 
 				// Attempt to get data from the cache
-<<<<<<< HEAD
 				// The key will always be camelCased in Data
 				data = dataUser.get( elem, key );
-=======
-				// with the key as-is
-				data = dataUser.get( elem, key ) ||
-
-					// Try to find dashed key if it exists (gh-2779)
-					// This is for 2.2.x only
-					dataUser.get( elem, key.replace( rmultiDash, "-$&" ).toLowerCase() );
-
-				if ( data !== undefined ) {
-					return data;
-				}
-
-				camelKey = jQuery.camelCase( key );
-
-				// Attempt to get data from the cache
-				// with the key camelized
-				data = dataUser.get( elem, camelKey );
->>>>>>> develop
 				if ( data !== undefined ) {
 					return data;
 				}
 
 				// Attempt to "discover" the data in
 				// HTML5 custom data-* attrs
-<<<<<<< HEAD
 				data = dataAttr( elem, key );
-=======
-				data = dataAttr( elem, camelKey, undefined );
->>>>>>> develop
 				if ( data !== undefined ) {
 					return data;
 				}
@@ -208,31 +160,10 @@ jQuery.fn.extend( {
 			}
 
 			// Set the data...
-<<<<<<< HEAD
 			this.each( function() {
 
 				// We always store the camelCased key
 				dataUser.set( this, key, value );
-=======
-			camelKey = jQuery.camelCase( key );
-			this.each( function() {
-
-				// First, attempt to store a copy or reference of any
-				// data that might've been store with a camelCased key.
-				var data = dataUser.get( this, camelKey );
-
-				// For HTML5 data-* attribute interop, we have to
-				// store property names with dashes in a camelCase form.
-				// This might not apply to all properties...*
-				dataUser.set( this, camelKey, value );
-
-				// *... In the case of properties that might _actually_
-				// have dashes, we need to also store a copy of that
-				// unchanged property.
-				if ( key.indexOf( "-" ) > -1 && data !== undefined ) {
-					dataUser.set( this, key, value );
-				}
->>>>>>> develop
 			} );
 		}, null, value, arguments.length > 1, null, true );
 	},

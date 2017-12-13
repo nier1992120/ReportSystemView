@@ -17,13 +17,8 @@ $provide.value("$locale", {
       "l\u00f8rdag"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "f.Kr.",
-      "e.Kr."
-=======
       "f\u00f8r Kristus",
       "etter Kristus"
->>>>>>> develop
     ],
     "ERAS": [
       "f.Kr.",
@@ -67,8 +62,6 @@ $provide.value("$locale", {
       "nov.",
       "des."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "januar",
       "februar",
@@ -83,28 +76,18 @@ $provide.value("$locale", {
       "november",
       "desember"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE d. MMMM y",
     "longDate": "d. MMMM y",
-<<<<<<< HEAD
-    "medium": "d. MMM y HH.mm.ss",
-    "mediumDate": "d. MMM y",
-    "mediumTime": "HH.mm.ss",
-    "short": "dd.MM.y HH.mm",
-    "shortDate": "dd.MM.y",
-    "shortTime": "HH.mm"
-=======
     "medium": "d. MMM y HH:mm:ss",
     "mediumDate": "d. MMM y",
     "mediumTime": "HH:mm:ss",
     "short": "dd.MM.y HH:mm",
     "shortDate": "dd.MM.y",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "kr",
@@ -128,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -140,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "no",
-<<<<<<< HEAD
-=======
   "localeID": "no",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -2,11 +2,8 @@ define( [
 	"../../core"
 ], function( jQuery ) {
 
-<<<<<<< HEAD
 "use strict";
 
-=======
->>>>>>> develop
 return function( elem, dir, until ) {
 	var matched = [],
 		truncate = until !== undefined;

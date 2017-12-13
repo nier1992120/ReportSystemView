@@ -18,11 +18,7 @@ $provide.value("$locale", {
     ],
     "ERANAMES": [
       "K.a.",
-<<<<<<< HEAD
-      "K.o."
-=======
       "Kristo ondoren"
->>>>>>> develop
     ],
     "ERAS": [
       "K.a.",
@@ -30,20 +26,6 @@ $provide.value("$locale", {
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
-<<<<<<< HEAD
-      "urtarrilak",
-      "otsailak",
-      "martxoak",
-      "apirilak",
-      "maiatzak",
-      "ekainak",
-      "uztailak",
-      "abuztuak",
-      "irailak",
-      "urriak",
-      "azaroak",
-      "abenduak"
-=======
       "urtarrila",
       "otsaila",
       "martxoa",
@@ -56,7 +38,6 @@ $provide.value("$locale", {
       "urria",
       "azaroa",
       "abendua"
->>>>>>> develop
     ],
     "SHORTDAY": [
       "ig.",
@@ -81,8 +62,6 @@ $provide.value("$locale", {
       "aza.",
       "abe."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "urtarrila",
       "Otsaila",
@@ -97,7 +76,6 @@ $provide.value("$locale", {
       "Azaroa",
       "Abendua"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -107,13 +85,8 @@ $provide.value("$locale", {
     "medium": "y MMM d HH:mm:ss",
     "mediumDate": "y MMM d",
     "mediumTime": "HH:mm:ss",
-<<<<<<< HEAD
-    "short": "y/MM/dd HH:mm",
-    "shortDate": "y/MM/dd",
-=======
     "short": "yy/M/d HH:mm",
     "shortDate": "yy/M/d",
->>>>>>> develop
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
@@ -146,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "eu",
-<<<<<<< HEAD
-=======
   "localeID": "eu",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -1,15 +1,6 @@
 language: node_js
 
 node_js:
-<<<<<<< HEAD
-  - '0.10'
-  
-before_script:
-  - export DISPLAY=:99.0
-  - export PHANTOMJS_BIN=/usr/local/phantomjs/bin/phantomjs
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3 # give xvfb some time to start
-=======
   - "4.1"
   
 env:
@@ -23,7 +14,6 @@ addons:
       - g++-4.8
 
 before_script:
->>>>>>> develop
   - 'npm install -g bower grunt-cli'
   - 'npm install'
   - 'bower install'

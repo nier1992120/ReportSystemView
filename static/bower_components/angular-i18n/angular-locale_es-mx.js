@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "a.m.",
-      "p.m."
-=======
       "a. m.",
       "p. m."
->>>>>>> develop
     ],
     "DAY": [
       "domingo",
@@ -23,19 +18,11 @@ $provide.value("$locale", {
     ],
     "ERANAMES": [
       "antes de Cristo",
-<<<<<<< HEAD
-      "Anno Domini"
-    ],
-    "ERAS": [
-      "a.C.",
-      "d.C."
-=======
       "despu\u00e9s de Cristo"
     ],
     "ERAS": [
       "a. C.",
       "d. C."
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 6,
     "MONTH": [
@@ -53,15 +40,6 @@ $provide.value("$locale", {
       "diciembre"
     ],
     "SHORTDAY": [
-<<<<<<< HEAD
-      "dom",
-      "lun",
-      "mar",
-      "mi\u00e9",
-      "jue",
-      "vie",
-      "s\u00e1b"
-=======
       "dom.",
       "lun.",
       "mar.",
@@ -69,7 +47,6 @@ $provide.value("$locale", {
       "jue.",
       "vie.",
       "s\u00e1b."
->>>>>>> develop
     ],
     "SHORTMONTH": [
       "ene",
@@ -85,8 +62,6 @@ $provide.value("$locale", {
       "nov",
       "dic"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "enero",
       "febrero",
@@ -101,28 +76,18 @@ $provide.value("$locale", {
       "noviembre",
       "diciembre"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d 'de' MMMM 'de' y",
     "longDate": "d 'de' MMMM 'de' y",
-<<<<<<< HEAD
-    "medium": "dd/MM/y H:mm:ss",
-    "mediumDate": "dd/MM/y",
-    "mediumTime": "H:mm:ss",
-    "short": "dd/MM/yy H:mm",
-    "shortDate": "dd/MM/yy",
-    "shortTime": "H:mm"
-=======
     "medium": "dd/MM/y HH:mm:ss",
     "mediumDate": "dd/MM/y",
     "mediumTime": "HH:mm:ss",
     "short": "dd/MM/yy HH:mm",
     "shortDate": "dd/MM/yy",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "$",
@@ -146,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -158,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "es-mx",
-<<<<<<< HEAD
-=======
   "localeID": "es_MX",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

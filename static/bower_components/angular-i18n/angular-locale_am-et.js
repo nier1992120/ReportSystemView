@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u1296\u126c\u121d",
       "\u12f2\u1234\u121d"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u1303\u1295\u12e9\u12c8\u122a",
       "\u134c\u1265\u1229\u12c8\u122a",
@@ -78,16 +76,11 @@ $provide.value("$locale", {
       "\u1296\u126c\u121d\u1260\u122d",
       "\u12f2\u1234\u121d\u1260\u122d"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE, d MMMM y",
-=======
     "fullDate": "EEEE \u1363d MMMM y",
->>>>>>> develop
     "longDate": "d MMMM y",
     "medium": "d MMM y h:mm:ss a",
     "mediumDate": "d MMM y",
@@ -118,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -130,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "am-et",
-<<<<<<< HEAD
-=======
   "localeID": "am_ET",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

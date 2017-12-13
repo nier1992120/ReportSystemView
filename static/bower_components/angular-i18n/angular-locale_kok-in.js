@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "\u0928\u094b\u0935\u094d\u0939\u0947\u0902\u092c\u0930",
       "\u0921\u093f\u0938\u0947\u0902\u092c\u0930"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u091c\u093e\u0928\u0947\u0935\u093e\u0930\u0940",
       "\u092b\u0947\u092c\u094d\u0930\u0941\u0935\u093e\u0930\u0940",
@@ -96,21 +94,10 @@ $provide.value("$locale", {
       "\u0928\u094b\u0935\u094d\u0939\u0947\u0902\u092c\u0930",
       "\u0921\u093f\u0938\u0947\u0902\u092c\u0930"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE d MMMM y",
-    "longDate": "d MMMM y",
-    "medium": "dd-MM-y h:mm:ss a",
-    "mediumDate": "dd-MM-y",
-    "mediumTime": "h:mm:ss a",
-    "short": "d-M-yy h:mm a",
-    "shortDate": "d-M-yy",
-    "shortTime": "h:mm a"
-=======
     "fullDate": "y MMMM d, EEEE",
     "longDate": "y MMMM d",
     "medium": "y MMM d HH:mm:ss",
@@ -119,7 +106,6 @@ $provide.value("$locale", {
     "short": "y-MM-dd HH:mm",
     "shortDate": "y-MM-dd",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20b9",
@@ -143,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -155,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "kok-in",
-<<<<<<< HEAD
-=======
   "localeID": "kok_IN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

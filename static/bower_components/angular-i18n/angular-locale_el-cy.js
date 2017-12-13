@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u039d\u03bf\u03b5",
       "\u0394\u03b5\u03ba"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0399\u03b1\u03bd\u03bf\u03c5\u03ac\u03c1\u03b9\u03bf\u03c2",
       "\u03a6\u03b5\u03b2\u03c1\u03bf\u03c5\u03ac\u03c1\u03b9\u03bf\u03c2",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u039d\u03bf\u03ad\u03bc\u03b2\u03c1\u03b9\u03bf\u03c2",
       "\u0394\u03b5\u03ba\u03ad\u03bc\u03b2\u03c1\u03b9\u03bf\u03c2"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -114,25 +111,15 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-        "negSuf": "",
-        "posPre": "\u00a4",
-        "posSuf": ""
-=======
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
         "posPre": "",
         "posSuf": "\u00a0\u00a4"
->>>>>>> develop
       }
     ]
   },
   "id": "el-cy",
-<<<<<<< HEAD
-=======
   "localeID": "el_CY",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

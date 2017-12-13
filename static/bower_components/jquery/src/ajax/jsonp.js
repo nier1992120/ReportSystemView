@@ -5,11 +5,8 @@ define( [
 	"../ajax"
 ], function( jQuery, nonce, rquery ) {
 
-<<<<<<< HEAD
 "use strict";
 
-=======
->>>>>>> develop
 var oldCallbacks = [],
 	rjsonp = /(=)\?(?=&|$)|\?\?/;
 

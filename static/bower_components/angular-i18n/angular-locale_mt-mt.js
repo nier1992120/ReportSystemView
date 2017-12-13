@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "Nov",
       "Di\u010b"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Jannar",
       "Frar",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "Novembru",
       "Di\u010bembru"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -114,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -126,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "mt-mt",
-<<<<<<< HEAD
-=======
   "localeID": "mt_MT",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  if (n == 0 || n % 100 >= 2 && n % 100 <= 10) {    return PLURAL_CATEGORY.FEW;  }  if (n % 100 >= 11 && n % 100 <= 19) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

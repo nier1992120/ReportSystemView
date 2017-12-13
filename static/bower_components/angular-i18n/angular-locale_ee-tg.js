@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "ade",
       "dzm"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "dzove",
       "dzodze",
@@ -96,28 +94,18 @@ $provide.value("$locale", {
       "ade\u025bmekp\u0254xe",
       "dzome"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, MMMM d 'lia' y",
     "longDate": "MMMM d 'lia' y",
-<<<<<<< HEAD
-    "medium": "MMM d 'lia', y a 'ga' h:mm:ss",
-    "mediumDate": "MMM d 'lia', y",
-    "mediumTime": "a 'ga' h:mm:ss",
-    "short": "M/d/yy a 'ga' h:mm",
-    "shortDate": "M/d/yy",
-    "shortTime": "a 'ga' h:mm"
-=======
     "medium": "MMM d 'lia', y HH:mm:ss",
     "mediumDate": "MMM d 'lia', y",
     "mediumTime": "HH:mm:ss",
     "short": "M/d/yy HH:mm",
     "shortDate": "M/d/yy",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "CFA",
@@ -138,17 +126,10 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4-",
-=======
         "maxFrac": 0,
         "minFrac": 0,
         "minInt": 1,
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -156,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ee-tg",
-<<<<<<< HEAD
-=======
   "localeID": "ee_TG",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

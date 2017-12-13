@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "ng11",
       "kris"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "ngw\u025bn mat\u00e1hra",
       "ngw\u025bn \u0144mba",
@@ -96,7 +94,6 @@ $provide.value("$locale", {
       "ngw\u025bn wum nav\u01d4r",
       "kr\u00edsimin"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -129,13 +126,8 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-=======
         "maxFrac": 0,
         "minFrac": 0,
->>>>>>> develop
         "minInt": 1,
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
@@ -145,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "nmg-cm",
-<<<<<<< HEAD
-=======
   "localeID": "nmg_CM",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

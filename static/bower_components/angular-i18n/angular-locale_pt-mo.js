@@ -40,15 +40,6 @@ $provide.value("$locale", {
       "dezembro"
     ],
     "SHORTDAY": [
-<<<<<<< HEAD
-      "dom",
-      "seg",
-      "ter",
-      "qua",
-      "qui",
-      "sex",
-      "s\u00e1b"
-=======
       "domingo",
       "segunda",
       "ter\u00e7a",
@@ -56,7 +47,6 @@ $provide.value("$locale", {
       "quinta",
       "sexta",
       "s\u00e1bado"
->>>>>>> develop
     ],
     "SHORTMONTH": [
       "jan",
@@ -72,8 +62,6 @@ $provide.value("$locale", {
       "nov",
       "dez"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "janeiro",
       "fevereiro",
@@ -88,28 +76,18 @@ $provide.value("$locale", {
       "novembro",
       "dezembro"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d 'de' MMMM 'de' y",
     "longDate": "d 'de' MMMM 'de' y",
-<<<<<<< HEAD
-    "medium": "dd/MM/y HH:mm:ss",
-    "mediumDate": "dd/MM/y",
-    "mediumTime": "HH:mm:ss",
-    "short": "dd/MM/yy HH:mm",
-    "shortDate": "dd/MM/yy",
-    "shortTime": "HH:mm"
-=======
     "medium": "dd/MM/y h:mm:ss a",
     "mediumDate": "dd/MM/y",
     "mediumTime": "h:mm:ss a",
     "short": "dd/MM/yy h:mm a",
     "shortDate": "dd/MM/yy",
     "shortTime": "h:mm a"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "MOP",
@@ -141,11 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "pt-mo",
-<<<<<<< HEAD
-  "pluralCat": function(n, opt_precision) {  if (n >= 0 && n <= 2 && n != 2) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
-=======
   "localeID": "pt_MO",
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i >= 0 && i <= 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
->>>>>>> develop
 });
 }]);

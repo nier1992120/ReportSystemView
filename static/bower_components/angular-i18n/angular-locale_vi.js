@@ -17,19 +17,11 @@ $provide.value("$locale", {
       "Th\u1ee9 B\u1ea3y"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "tr. CN",
-      "sau CN"
-    ],
-    "ERAS": [
-      "tr. CN",
-=======
       "Tr\u01b0\u1edbc CN",
       "sau CN"
     ],
     "ERAS": [
       "Tr\u01b0\u1edbc CN",
->>>>>>> develop
       "sau CN"
     ],
     "FIRSTDAYOFWEEK": 0,
@@ -70,8 +62,6 @@ $provide.value("$locale", {
       "thg 11",
       "thg 12"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Th\u00e1ng 1",
       "Th\u00e1ng 2",
@@ -86,22 +76,14 @@ $provide.value("$locale", {
       "Th\u00e1ng 11",
       "Th\u00e1ng 12"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE, 'ng\u00e0y' dd MMMM 'n\u0103m' y",
-    "longDate": "'Ng\u00e0y' dd 'th\u00e1ng' MM 'n\u0103m' y",
-    "medium": "dd-MM-y HH:mm:ss",
-    "mediumDate": "dd-MM-y",
-=======
     "fullDate": "EEEE, d MMMM, y",
     "longDate": "d MMMM, y",
     "medium": "d MMM, y HH:mm:ss",
     "mediumDate": "d MMM, y",
->>>>>>> develop
     "mediumTime": "HH:mm:ss",
     "short": "dd/MM/y HH:mm",
     "shortDate": "dd/MM/y",
@@ -129,25 +111,15 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "-",
-        "negSuf": "\u00a0\u00a4",
-        "posPre": "",
-        "posSuf": "\u00a0\u00a4"
-=======
         "negPre": "-\u00a4\u00a0",
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
->>>>>>> develop
       }
     ]
   },
   "id": "vi",
-<<<<<<< HEAD
-=======
   "localeID": "vi",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -4,11 +4,8 @@ define( [
 	"../ajax"
 ], function( jQuery, support ) {
 
-<<<<<<< HEAD
 "use strict";
 
-=======
->>>>>>> develop
 jQuery.ajaxSettings.xhr = function() {
 	try {
 		return new window.XMLHttpRequest();
@@ -20,11 +17,7 @@ var xhrSuccessStatus = {
 		// File protocol always yields status code 0, assume 200
 		0: 200,
 
-<<<<<<< HEAD
 		// Support: IE <=9 only
-=======
-		// Support: IE9
->>>>>>> develop
 		// #1450: sometimes IE returns 1223 when it should be 204
 		1223: 204
 	},
@@ -88,11 +81,7 @@ jQuery.ajaxTransport( function( options ) {
 								xhr.abort();
 							} else if ( type === "error" ) {
 
-<<<<<<< HEAD
 								// Support: IE <=9 only
-=======
-								// Support: IE9
->>>>>>> develop
 								// On a manual native abort, IE9 throws
 								// errors on any property access that is not readyState
 								if ( typeof xhr.status !== "number" ) {
@@ -110,11 +99,7 @@ jQuery.ajaxTransport( function( options ) {
 									xhrSuccessStatus[ xhr.status ] || xhr.status,
 									xhr.statusText,
 
-<<<<<<< HEAD
 									// Support: IE <=9 only
-=======
-									// Support: IE9 only
->>>>>>> develop
 									// IE9 has no XHR2 but throws on binary (trac-11426)
 									// For XHR2 non-text, let the caller handle it (gh-2498)
 									( xhr.responseType || "text" ) !== "text"  ||
@@ -132,11 +117,7 @@ jQuery.ajaxTransport( function( options ) {
 				xhr.onload = callback();
 				errorCallback = xhr.onerror = callback( "error" );
 
-<<<<<<< HEAD
 				// Support: IE 9 only
-=======
-				// Support: IE9
->>>>>>> develop
 				// Use onreadystatechange to replace onabort
 				// to handle uncaught aborts
 				if ( xhr.onabort !== undefined ) {

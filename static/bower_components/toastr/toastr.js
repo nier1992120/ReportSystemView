@@ -11,11 +11,7 @@
  * Project: https://github.com/CodeSeven/toastr
  */
 /* global define */
-<<<<<<< HEAD
-; (function (define) {
-=======
 (function (define) {
->>>>>>> develop
     define(['jquery'], function ($) {
         return (function () {
             var $container;
@@ -37,11 +33,7 @@
                 options: {},
                 subscribe: subscribe,
                 success: success,
-<<<<<<< HEAD
-                version: '2.1.1',
-=======
                 version: '2.1.3',
->>>>>>> develop
                 warning: warning
             };
 
@@ -152,13 +144,7 @@
             function createContainer(options) {
                 $container = $('<div/>')
                     .attr('id', options.containerId)
-<<<<<<< HEAD
-                    .addClass(options.positionClass)
-                    .attr('aria-live', 'polite')
-                    .attr('role', 'alert');
-=======
                     .addClass(options.positionClass);
->>>>>>> develop
 
                 $container.appendTo($(options.target));
                 return $container;
@@ -179,17 +165,12 @@
                     hideDuration: 1000,
                     hideEasing: 'swing',
                     onHidden: undefined,
-<<<<<<< HEAD
-
-                    extendedTimeOut: 100,
-=======
                     closeMethod: false,
                     closeDuration: false,
                     closeEasing: false,
                     closeOnHover: true,
 
                     extendedTimeOut: 1000,
->>>>>>> develop
                     iconClasses: {
                         error: 'toast-error',
                         info: 'toast-info',
@@ -197,17 +178,6 @@
                         warning: 'toast-warning'
                     },
                     iconClass: 'toast-info',
-<<<<<<< HEAD
-                    positionClass: 'toast-top-left',
-                    timeOut: 500, // Set timeOut and extendedTimeOut to 0 to make it sticky
-                    titleClass: 'toast-title',
-                    messageClass: 'toast-message',
-                    target: 'body',
-                    closeHtml: '<button type="button">&times;</button>',
-                    newestOnTop: true,
-                    preventDuplicates: false,
-                    progressBar: false
-=======
                     positionClass: 'toast-top-right',
                     timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
                     titleClass: 'toast-title',
@@ -221,7 +191,6 @@
                     progressBar: false,
                     progressClass: 'toast-progress',
                     rtl: false
->>>>>>> develop
                 };
             }
 
@@ -278,8 +247,6 @@
 
                 return $toastElement;
 
-<<<<<<< HEAD
-=======
                 function escapeHtml(source) {
                     if (source == null) {
                         source = '';
@@ -293,20 +260,12 @@
                         .replace(/>/g, '&gt;');
                 }
 
->>>>>>> develop
                 function personalizeToast() {
                     setIcon();
                     setTitle();
                     setMessage();
                     setCloseButton();
                     setProgressBar();
-<<<<<<< HEAD
-                    setSequence();
-                }
-
-                function handleEvents() {
-                    $toastElement.hover(stickAround, delayedHideToast);
-=======
                     setRTL();
                     setSequence();
                     setAria();
@@ -330,7 +289,6 @@
                         $toastElement.hover(stickAround, delayedHideToast);
                     }
 
->>>>>>> develop
                     if (!options.onclick && options.tapToDismiss) {
                         $toastElement.click(hideToast);
                     }
@@ -342,26 +300,18 @@
                             } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
                                 event.cancelBubble = true;
                             }
-<<<<<<< HEAD
-=======
 
                             if (options.onCloseClick) {
                                 options.onCloseClick(event);
                             }
 
->>>>>>> develop
                             hideToast(true);
                         });
                     }
 
                     if (options.onclick) {
-<<<<<<< HEAD
-                        $toastElement.click(function () {
-                            options.onclick();
-=======
                         $toastElement.click(function (event) {
                             options.onclick(event);
->>>>>>> develop
                             hideToast();
                         });
                     }
@@ -400,65 +350,46 @@
 
                 function setTitle() {
                     if (map.title) {
-<<<<<<< HEAD
-                        $titleElement.append(map.title).addClass(options.titleClass);
-=======
                         var suffix = map.title;
                         if (options.escapeHtml) {
                             suffix = escapeHtml(map.title);
                         }
                         $titleElement.append(suffix).addClass(options.titleClass);
->>>>>>> develop
                         $toastElement.append($titleElement);
                     }
                 }
 
                 function setMessage() {
                     if (map.message) {
-<<<<<<< HEAD
-                        $messageElement.append(map.message).addClass(options.messageClass);
-=======
                         var suffix = map.message;
                         if (options.escapeHtml) {
                             suffix = escapeHtml(map.message);
                         }
                         $messageElement.append(suffix).addClass(options.messageClass);
->>>>>>> develop
                         $toastElement.append($messageElement);
                     }
                 }
 
                 function setCloseButton() {
                     if (options.closeButton) {
-<<<<<<< HEAD
-                        $closeElement.addClass('toast-close-button').attr('role', 'button');
-=======
                         $closeElement.addClass(options.closeClass).attr('role', 'button');
->>>>>>> develop
                         $toastElement.prepend($closeElement);
                     }
                 }
 
                 function setProgressBar() {
                     if (options.progressBar) {
-<<<<<<< HEAD
-                        $progressElement.addClass('toast-progress');
-=======
                         $progressElement.addClass(options.progressClass);
->>>>>>> develop
                         $toastElement.prepend($progressElement);
                     }
                 }
 
-<<<<<<< HEAD
-=======
                 function setRTL() {
                     if (options.rtl) {
                         $toastElement.addClass('rtl');
                     }
                 }
 
->>>>>>> develop
                 function shouldExit(options, map) {
                     if (options.preventDuplicates) {
                         if (map.message === previousToast) {
@@ -471,31 +402,20 @@
                 }
 
                 function hideToast(override) {
-<<<<<<< HEAD
-=======
                     var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
                     var duration = override && options.closeDuration !== false ?
                         options.closeDuration : options.hideDuration;
                     var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
->>>>>>> develop
                     if ($(':focus', $toastElement).length && !override) {
                         return;
                     }
                     clearTimeout(progressBar.intervalId);
-<<<<<<< HEAD
-                    return $toastElement[options.hideMethod]({
-                        duration: options.hideDuration,
-                        easing: options.hideEasing,
-                        complete: function () {
-                            removeToast($toastElement);
-=======
                     return $toastElement[method]({
                         duration: duration,
                         easing: easing,
                         complete: function () {
                             removeToast($toastElement);
                             clearTimeout(intervalId);
->>>>>>> develop
                             if (options.onHidden && response.state !== 'hidden') {
                                 options.onHidden();
                             }
@@ -551,10 +471,6 @@
     if (typeof module !== 'undefined' && module.exports) { //Node
         module.exports = factory(require('jquery'));
     } else {
-<<<<<<< HEAD
-        window['toastr'] = factory(window['jQuery']);
-=======
         window.toastr = factory(window.jQuery);
->>>>>>> develop
     }
 }));

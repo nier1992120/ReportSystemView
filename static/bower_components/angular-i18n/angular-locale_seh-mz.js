@@ -42,11 +42,7 @@ $provide.value("$locale", {
       "AC",
       "AD"
     ],
-<<<<<<< HEAD
-    "FIRSTDAYOFWEEK": 0,
-=======
     "FIRSTDAYOFWEEK": 6,
->>>>>>> develop
     "MONTH": [
       "Janeiro",
       "Fevreiro",
@@ -84,8 +80,6 @@ $provide.value("$locale", {
       "Nov",
       "Dec"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Janeiro",
       "Fevreiro",
@@ -100,7 +94,6 @@ $provide.value("$locale", {
       "Novembro",
       "Decembro"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -144,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "seh-mz",
-<<<<<<< HEAD
-=======
   "localeID": "seh_MZ",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -42,11 +42,7 @@ $provide.value("$locale", {
       "snd. T.\u0190",
       "sld. T.\u0190"
     ],
-<<<<<<< HEAD
-    "FIRSTDAYOFWEEK": 0,
-=======
     "FIRSTDAYOFWEEK": 5,
->>>>>>> develop
     "MONTH": [
       "Yennayer",
       "Fu\u1e5bar",
@@ -84,20 +80,6 @@ $provide.value("$locale", {
       "Nun",
       "Du\u01e7"
     ],
-<<<<<<< HEAD
-    "WEEKENDRANGE": [
-      5,
-      6
-    ],
-    "fullDate": "EEEE d MMMM y",
-    "longDate": "d MMMM y",
-    "medium": "d MMM, y HH:mm:ss",
-    "mediumDate": "d MMM, y",
-    "mediumTime": "HH:mm:ss",
-    "short": "d/M/y HH:mm",
-    "shortDate": "d/M/y",
-    "shortTime": "HH:mm"
-=======
     "STANDALONEMONTH": [
       "Yennayer",
       "Fu\u1e5bar",
@@ -124,7 +106,6 @@ $provide.value("$locale", {
     "short": "d/M/y h:mm a",
     "shortDate": "d/M/y",
     "shortTime": "h:mm a"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "din",
@@ -156,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "kab",
-<<<<<<< HEAD
-=======
   "localeID": "kab",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

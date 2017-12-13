@@ -3,26 +3,20 @@ define( [
 	"../core",
 	"../var/document",
 	"./var/rsingleTag",
+
 	"../traversing/findFilter"
 ], function( jQuery, document, rsingleTag ) {
 
-<<<<<<< HEAD
 "use strict";
 
-=======
->>>>>>> develop
 // A central reference to the root jQuery(document)
 var rootjQuery,
 
 	// A simple way to check for HTML strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
 	// Strict HTML recognition (#11290: must start with <)
-<<<<<<< HEAD
 	// Shortcut simple #id case for speed
 	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
-=======
-	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,
->>>>>>> develop
 
 	init = jQuery.fn.init = function( selector, context, root ) {
 		var match, elem;
@@ -85,26 +79,12 @@ var rootjQuery,
 				} else {
 					elem = document.getElementById( match[ 2 ] );
 
-<<<<<<< HEAD
 					if ( elem ) {
 
 						// Inject the element directly into the jQuery object
 						this[ 0 ] = elem;
 						this.length = 1;
 					}
-=======
-					// Support: Blackberry 4.6
-					// gEBID returns nodes no longer in the document (#6963)
-					if ( elem && elem.parentNode ) {
-
-						// Inject the element directly into the jQuery object
-						this.length = 1;
-						this[ 0 ] = elem;
-					}
-
-					this.context = document;
-					this.selector = selector;
->>>>>>> develop
 					return this;
 				}
 
@@ -120,11 +100,7 @@ var rootjQuery,
 
 		// HANDLE: $(DOMElement)
 		} else if ( selector.nodeType ) {
-<<<<<<< HEAD
 			this[ 0 ] = selector;
-=======
-			this.context = this[ 0 ] = selector;
->>>>>>> develop
 			this.length = 1;
 			return this;
 
@@ -138,14 +114,6 @@ var rootjQuery,
 				selector( jQuery );
 		}
 
-<<<<<<< HEAD
-=======
-		if ( selector.selector !== undefined ) {
-			this.selector = selector.selector;
-			this.context = selector.context;
-		}
-
->>>>>>> develop
 		return jQuery.makeArray( selector, this );
 	};
 

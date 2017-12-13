@@ -35,21 +35,12 @@ $provide.value("$locale", {
       "sabato"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "a.C.",
-      "d.C."
-    ],
-    "ERAS": [
-      "aC",
-      "dC"
-=======
       "avanti Cristo",
       "dopo Cristo"
     ],
     "ERAS": [
       "a.C.",
       "d.C."
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -89,8 +80,6 @@ $provide.value("$locale", {
       "nov",
       "dic"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "gennaio",
       "febbraio",
@@ -105,7 +94,6 @@ $provide.value("$locale", {
       "novembre",
       "dicembre"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -149,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "it-it",
-<<<<<<< HEAD
-=======
   "localeID": "it_IT",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

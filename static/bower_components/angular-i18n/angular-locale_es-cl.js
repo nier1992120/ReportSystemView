@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "a.\u00a0m.",
-      "p.\u00a0m."
-=======
       "a. m.",
       "p. m."
->>>>>>> develop
     ],
     "DAY": [
       "domingo",
@@ -39,11 +34,7 @@ $provide.value("$locale", {
       "junio",
       "julio",
       "agosto",
-<<<<<<< HEAD
-      "setiembre",
-=======
       "septiembre",
->>>>>>> develop
       "octubre",
       "noviembre",
       "diciembre"
@@ -66,17 +57,11 @@ $provide.value("$locale", {
       "jun.",
       "jul.",
       "ago.",
-<<<<<<< HEAD
-      "set.",
-=======
       "sep.",
->>>>>>> develop
       "oct.",
       "nov.",
       "dic."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "enero",
       "febrero",
@@ -91,28 +76,18 @@ $provide.value("$locale", {
       "noviembre",
       "diciembre"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d 'de' MMMM 'de' y",
     "longDate": "d 'de' MMMM 'de' y",
-<<<<<<< HEAD
-    "medium": "dd-MM-y h:mm:ss a",
-    "mediumDate": "dd-MM-y",
-    "mediumTime": "h:mm:ss a",
-    "short": "dd-MM-yy h:mm a",
-    "shortDate": "dd-MM-yy",
-    "shortTime": "h:mm a"
-=======
     "medium": "dd-MM-y HH:mm:ss",
     "mediumDate": "dd-MM-y",
     "mediumTime": "HH:mm:ss",
     "short": "dd-MM-yy HH:mm",
     "shortDate": "dd-MM-yy",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "$",
@@ -133,13 +108,8 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-=======
         "maxFrac": 0,
         "minFrac": 0,
->>>>>>> develop
         "minInt": 1,
         "negPre": "\u00a4-",
         "negSuf": "",
@@ -149,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "es-cl",
-<<<<<<< HEAD
-=======
   "localeID": "es_CL",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

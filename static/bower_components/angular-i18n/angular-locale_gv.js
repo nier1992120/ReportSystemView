@@ -77,10 +77,6 @@ $provide.value("$locale", {
       "Luanistyn",
       "M-fouyir",
       "J-fouyir",
-<<<<<<< HEAD
-      "M.Houney",
-      "M.Nollick"
-=======
       "M-Houney",
       "M-Nollick"
     ],
@@ -97,21 +93,11 @@ $provide.value("$locale", {
       "Jerrey-fouyir",
       "Mee Houney",
       "Mee ny Nollick"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE dd MMMM y",
-    "longDate": "dd MMMM y",
-    "medium": "MMM dd, y HH:mm:ss",
-    "mediumDate": "MMM dd, y",
-    "mediumTime": "HH:mm:ss",
-    "short": "dd/MM/yy HH:mm",
-    "shortDate": "dd/MM/yy",
-=======
     "fullDate": "y MMMM d, EEEE",
     "longDate": "y MMMM d",
     "medium": "y MMM d HH:mm:ss",
@@ -119,7 +105,6 @@ $provide.value("$locale", {
     "mediumTime": "HH:mm:ss",
     "short": "y-MM-dd HH:mm",
     "shortDate": "y-MM-dd",
->>>>>>> develop
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
@@ -144,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -156,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "gv",
-<<<<<<< HEAD
-=======
   "localeID": "gv",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

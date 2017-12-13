@@ -1,0 +1,43 @@
+<div class="panel panel-default form-group">
+    <div class="panel-heading">
+        <p class="panel-title">
+            应用分组管理
+        </p>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover table-bordered">
+            <tr class="tableTitle">
+                <td class="td_width120">序号</td>
+                <td>应用组名称</td>
+                <td class="text-center">操作</td>
+            </tr>
+            <tr ng-repeat="linkid in linkids">
+                <td class="td_width120">{{$index + 1}}</td>
+                <td>{{linkid.linkid}}</td>
+                <td class="text-center" data-toggle="modal" ng-click="showUpdateModal(linkid.linkid)" data-target="#editAppLinkid" style="width:80px;"><a href="">编&nbsp;辑</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editAppLinkid">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix">
+                <span>应用组名称：</span>
+                <input  ng-model="desclinkid" class="searchInput" style="width:480px;">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" data-dismiss="modal" ng-click="changeLinkid()">确&nbsp;&nbsp;定</button>
+        </div>
+    </div>
+</div>
+
+

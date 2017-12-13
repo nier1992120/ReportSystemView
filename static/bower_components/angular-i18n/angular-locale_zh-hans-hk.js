@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "11\u6708",
       "12\u6708"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u4e00\u6708",
       "\u4e8c\u6708",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u5341\u4e00\u6708",
       "\u5341\u4e8c\u6708"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -114,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -126,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "zh-hans-hk",
-<<<<<<< HEAD
-=======
   "localeID": "zh_Hans_HK",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "\u0442\u0430\u04a3\u0435\u0440\u0442\u0435\u04a3\u0433\u0456",
-      "\u0442\u04af\u0441\u0442\u0435\u043d \u043a\u0435\u0439\u0456\u043d\u0433\u0456"
-=======
       "AM",
       "PM"
->>>>>>> develop
     ],
     "DAY": [
       "\u0436\u0435\u043a\u0441\u0435\u043d\u0431\u0456",
@@ -45,15 +40,6 @@ $provide.value("$locale", {
       "\u0436\u0435\u043b\u0442\u043e\u049b\u0441\u0430\u043d"
     ],
     "SHORTDAY": [
-<<<<<<< HEAD
-      "\u0436\u0435\u043a",
-      "\u0434\u04af\u0439",
-      "\u0441\u0435\u0439",
-      "\u0441\u04d9\u0440",
-      "\u0431\u0435\u0439",
-      "\u0436\u04b1\u043c\u0430",
-      "\u0441\u0435\u043d"
-=======
       "\u0416\u0441",
       "\u0414\u0441",
       "\u0421\u0441",
@@ -61,7 +47,6 @@ $provide.value("$locale", {
       "\u0411\u0441",
       "\u0416\u043c",
       "\u0421\u0431"
->>>>>>> develop
     ],
     "SHORTMONTH": [
       "\u049b\u0430\u04a3.",
@@ -75,9 +60,6 @@ $provide.value("$locale", {
       "\u049b\u044b\u0440.",
       "\u049b\u0430\u0437.",
       "\u049b\u0430\u0440.",
-<<<<<<< HEAD
-      "\u0436\u0435\u043b\u0442."
-=======
       "\u0436\u0435\u043b."
     ],
     "STANDALONEMONTH": [
@@ -93,21 +75,11 @@ $provide.value("$locale", {
       "\u049a\u0430\u0437\u0430\u043d",
       "\u049a\u0430\u0440\u0430\u0448\u0430",
       "\u0416\u0435\u043b\u0442\u043e\u049b\u0441\u0430\u043d"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE, d MMMM y",
-    "longDate": "d MMMM y",
-    "medium": "y, dd-MMM HH:mm:ss",
-    "mediumDate": "y, dd-MMM",
-    "mediumTime": "HH:mm:ss",
-    "short": "dd/MM/yy HH:mm",
-    "shortDate": "dd/MM/yy",
-=======
     "fullDate": "y '\u0436'. d MMMM, EEEE",
     "longDate": "y '\u0436'. d MMMM",
     "medium": "y '\u0436'. dd MMM HH:mm:ss",
@@ -115,7 +87,6 @@ $provide.value("$locale", {
     "mediumTime": "HH:mm:ss",
     "short": "dd.MM.yy HH:mm",
     "shortDate": "dd.MM.yy",
->>>>>>> develop
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
@@ -148,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "kk",
-<<<<<<< HEAD
-=======
   "localeID": "kk",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

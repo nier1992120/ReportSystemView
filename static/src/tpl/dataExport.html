@@ -1,1 +1,43 @@
-<div>数据查询</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <button class="btn btn-primary" ng-click="dataExport()">导出数据</button>&nbsp;&nbsp;
+            <select class="selectContainer">
+                <option>筛选条件</option>
+                <option>产品名称</option>
+                <option>包名</option>
+                <option>平台</option>
+                <option>CP名称</option>
+                <option>归属项目组</option>
+                <option>时间区间</option>
+            </select>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover text-center">
+                <tr>
+                    <td class="width180">项目编号</td>
+                    <td>产品名称</td>
+                    <td>包名</td>
+                    <td>平台</td>
+                    <td>CP名称</td>
+                    <td>归属项目组</td>
+                    <td>操作</td>
+                </tr>
+                <tr ng-repeat="product in products">
+                    <td class="width180">{{index+1}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.pkgName}}</td>
+                    <td>{{product.platform}}</td>
+                    <td>{{product.CPName}}</td>
+                    <td>{{product.groupName}}</td>
+                    <td><a>添加</a>&nbsp;<a>修改</a>&nbsp;<a>删除</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+

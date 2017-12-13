@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "Samh",
       "Noll"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Ean\u00e1ir",
       "Feabhra",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "Samhain",
       "Nollaig"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -114,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -126,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ga-ie",
-<<<<<<< HEAD
-=======
   "localeID": "ga_IE",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  if (n == 2) {    return PLURAL_CATEGORY.TWO;  }  if (n >= 3 && n <= 6) {    return PLURAL_CATEGORY.FEW;  }  if (n >= 7 && n <= 10) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

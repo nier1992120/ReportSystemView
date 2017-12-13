@@ -5,7 +5,7 @@ var adBoost = angular.module('adBoost', [
     'ngAnimate',
     'ngResource',
     'ngCookies',
-    'ui.validate',
+    //'ui.validate',
     'genTemplates',
     'ng.jsoneditor',
     'ngFileUpload',

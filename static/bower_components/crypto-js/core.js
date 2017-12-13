@@ -17,8 +17,6 @@
 	 * CryptoJS core components.
 	 */
 	var CryptoJS = CryptoJS || (function (Math, undefined) {
-<<<<<<< HEAD
-=======
 	    /*
 	     * Local polyfil of Object.create
 	     */
@@ -38,7 +36,6 @@
 	        };
 	    }())
 
->>>>>>> develop
 	    /**
 	     * CryptoJS namespace.
 	     */
@@ -53,11 +50,7 @@
 	     * Base object for prototypal inheritance.
 	     */
 	    var Base = C_lib.Base = (function () {
-<<<<<<< HEAD
-	        function F() {}
-=======
 
->>>>>>> develop
 
 	        return {
 	            /**
@@ -80,12 +73,7 @@
 	             */
 	            extend: function (overrides) {
 	                // Spawn
-<<<<<<< HEAD
-	                F.prototype = this;
-	                var subtype = new F();
-=======
 	                var subtype = create(this);
->>>>>>> develop
 
 	                // Augment
 	                if (overrides) {
@@ -93,11 +81,7 @@
 	                }
 
 	                // Create default initializer
-<<<<<<< HEAD
-	                if (!subtype.hasOwnProperty('init')) {
-=======
 	                if (!subtype.hasOwnProperty('init') || this.init === subtype.init) {
->>>>>>> develop
 	                    subtype.init = function () {
 	                        subtype.$super.init.apply(this, arguments);
 	                    };
@@ -259,21 +243,11 @@
 	                    var thatByte = (thatWords[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
 	                    thisWords[(thisSigBytes + i) >>> 2] |= thatByte << (24 - ((thisSigBytes + i) % 4) * 8);
 	                }
-<<<<<<< HEAD
-	            } else if (thatWords.length > 0xffff) {
-=======
 	            } else {
->>>>>>> develop
 	                // Copy one word at a time
 	                for (var i = 0; i < thatSigBytes; i += 4) {
 	                    thisWords[(thisSigBytes + i) >>> 2] = thatWords[i >>> 2];
 	                }
-<<<<<<< HEAD
-	            } else {
-	                // Copy all words at once
-	                thisWords.push.apply(thisWords, thatWords);
-=======
->>>>>>> develop
 	            }
 	            this.sigBytes += thatSigBytes;
 

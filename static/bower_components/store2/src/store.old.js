@@ -13,8 +13,6 @@
  */
 ;(function(window, document, store, _) {
 
-<<<<<<< HEAD
-=======
     function addUpdateFn(area, name, update) {
         var old = area[name];
         area[name] = function() {
@@ -23,7 +21,6 @@
             return ret;
         };
     }
->>>>>>> develop
     function create(name, items, update) {
         var length = 0;
         for (var k in items) {
@@ -38,17 +35,6 @@
         }
         return area;
     }
-<<<<<<< HEAD
-    function addUpdateFn(area, name, update) {
-        var old = area[name];
-        area[name] = function() {
-            var ret = old.apply(this, arguments);
-            update.apply(this, arguments);
-            return ret;
-        };
-    }
-=======
->>>>>>> develop
 
     if (store.isFake()) {
         var area;

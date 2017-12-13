@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u049b\u0430\u0440.",
       "\u0436\u0435\u043b\u0442."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u049b\u0430\u04a3\u0442\u0430\u0440",
       "\u0430\u049b\u043f\u0430\u043d",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u049b\u0430\u0440\u0430\u0448\u0430",
       "\u0436\u0435\u043b\u0442\u043e\u049b\u0441\u0430\u043d"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -93,11 +90,7 @@ $provide.value("$locale", {
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
-<<<<<<< HEAD
-    "CURRENCY_SYM": "\u20ac",
-=======
     "CURRENCY_SYM": "\u20b8",
->>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": "\u00a0",
     "PATTERNS": [
@@ -126,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "kk-cyrl",
-<<<<<<< HEAD
-=======
   "localeID": "kk_Cyrl",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

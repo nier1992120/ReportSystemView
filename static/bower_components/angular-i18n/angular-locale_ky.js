@@ -5,11 +5,7 @@ $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
       "\u0442\u0430\u04a3\u043a\u044b",
-<<<<<<< HEAD
-      "\u0442\u04af\u0448\u0442\u04e9\u043d \u043a\u0438\u0439\u0438\u043d"
-=======
       "\u0442\u04af\u0448\u0442\u04e9\u043d \u043a\u0438\u0439\u0438\u043d\u043a\u0438"
->>>>>>> develop
     ],
     "DAY": [
       "\u0436\u0435\u043a\u0448\u0435\u043c\u0431\u0438",
@@ -66,8 +62,6 @@ $provide.value("$locale", {
       "\u043d\u043e\u044f.",
       "\u0434\u0435\u043a."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u042f\u043d\u0432\u0430\u0440\u044c",
       "\u0424\u0435\u0432\u0440\u0430\u043b\u044c",
@@ -82,20 +76,10 @@ $provide.value("$locale", {
       "\u041d\u043e\u044f\u0431\u0440\u044c",
       "\u0414\u0435\u043a\u0430\u0431\u0440\u044c"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE, d-MMMM, y-'\u0436'.",
-    "longDate": "y MMMM d",
-    "medium": "y MMM d HH:mm:ss",
-    "mediumDate": "y MMM d",
-    "mediumTime": "HH:mm:ss",
-    "short": "dd.MM.yy HH:mm",
-    "shortDate": "dd.MM.yy",
-=======
     "fullDate": "y-'\u0436'., d-MMMM, EEEE",
     "longDate": "y-'\u0436'., d-MMMM",
     "medium": "y-'\u0436'., d-MMM HH:mm:ss",
@@ -103,7 +87,6 @@ $provide.value("$locale", {
     "mediumTime": "HH:mm:ss",
     "short": "d/M/yy HH:mm",
     "shortDate": "d/M/yy",
->>>>>>> develop
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
@@ -136,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ky",
-<<<<<<< HEAD
-=======
   "localeID": "ky",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

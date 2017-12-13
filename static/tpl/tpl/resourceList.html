@@ -1,0 +1,81 @@
+
+<div class="panel panel-default form-group">
+    <div class="panel-heading">
+        <p class="panel-title">
+            <input type="search" ng-model="search.name" placeholder="按资源名称搜索" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+        </p>
+    </div>
+    <div class="panel-body" ng-if="list.length !==0">
+        <table class="table table-bordered table-hover">
+            <tr class="tableTitle text-center">
+                <td>资源类型</td>
+                <td class="text-left">资源名称</td>
+                <td>分辨率</td>
+                <td>语种</td>
+                <td>上传时间</td>
+                <td>操作</td>
+            </tr>
+
+            <tr ng-repeat="res in list | filter:search" class="text-center">
+                <td ng-if="res.type === 'l'">横图</td>
+                <td ng-if="res.type === 'o'">自定义</td>
+                <td ng-if="res.type === 'p'">竖图</td>
+                <td ng-if="res.type === 's'">方图</td>
+                <td ng-if="res.type === 'ic'">icon</td>
+                <td class="cursor_p text-left" style="position: relative;">
+                    {{res.name}}
+                </td>
+                <td>{{res.resolution}}</td>
+                <td>{{res.language}}</td>
+                <td>{{res.ctime}}</td>
+                <td>
+                    <a href="" data-target="#paramTmplBatch" data-toggle="modal" ng-click="showImg(res.img)">查看图片</a>&nbsp;&nbsp;
+                    <a ng-click="selectTransferApp(res.name)" data-toggle="modal" data-target="#userselector" class="cursor_p">迁移&nbsp;&nbsp;</a>
+                    <a data-toggle="modal" class="cursor_p" ng-click="delImg(res.name,$index)">删除</a>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div class="modal fade modalPosition" id="paramTmplBatch">
+    <div class="modal-dialog"  style="width:300px;" style="position: relative;">
+        <a class="close" ng-click="closeModel()" data-dismiss="modal" style="position:absolute;top:-15px;right:-15px;"><span class=" glyphicon glyphicon-remove" style="font-color:#fff;"></span></a>
+        <img ng-src="{{myImg}}" style="width:100%;">
+    </div>
+</div>
+
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+<p class="nothing" ng-if="list.length == 0">
+    暂无资源信息
+</p>
+
+<!--迁移资源-->
+<div class="modal fade" id="userselector">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+            <p>被迁移的应用:{{imgName}}</p>
+        </div>
+        <div class="form-group clearfix">
+            <label class="control-label col-md-3 text-right">输入目标账号：</label>
+            <div class="col-md-8">
+                <input class="form-control" ng-model="login_id">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <label class="control-label col-md-3 text-right">当前账户密码：</label>
+            <div class="col-md-8">
+                <input class="form-control" ng-model="selfPassword">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="transferUserRes()">确&nbsp;&nbsp;定</button>
+        </div>
+    </div>
+</div>

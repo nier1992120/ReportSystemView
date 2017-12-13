@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "nov.",
       "d\u00e9c."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "janvier",
       "f\u00e9vrier",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "novembre",
       "d\u00e9cembre"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -95,11 +92,7 @@ $provide.value("$locale", {
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20ac",
     "DECIMAL_SEP": ",",
-<<<<<<< HEAD
-    "GROUP_SEP": ".",
-=======
     "GROUP_SEP": "\u00a0",
->>>>>>> develop
     "PATTERNS": [
       {
         "gSize": 3,
@@ -126,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "fr-be",
-<<<<<<< HEAD
-=======
   "localeID": "fr_BE",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  if (i == 0 || i == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

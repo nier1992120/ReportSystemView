@@ -36,55 +36,12 @@ $provide.value("$locale", {
     ],
     "ERANAMES": [
       "\u12d3/\u12d3",
-<<<<<<< HEAD
-      "\u12d3/\u121d"
-=======
       "\u12d3\u1218\u1270 \u121d\u1205\u1228\u1275"
->>>>>>> develop
     ],
     "ERAS": [
       "\u12d3/\u12d3",
       "\u12d3/\u121d"
     ],
-<<<<<<< HEAD
-    "FIRSTDAYOFWEEK": 0,
-    "MONTH": [
-      "\u1303\u1295\u12e9\u12c8\u122a",
-      "\u134c\u1265\u1229\u12c8\u122a",
-      "\u121b\u122d\u127d",
-      "\u12a4\u1355\u1228\u120d",
-      "\u121c\u12ed",
-      "\u1301\u1295",
-      "\u1301\u120b\u12ed",
-      "\u12a6\u1308\u1235\u1275",
-      "\u1234\u1355\u1274\u121d\u1260\u122d",
-      "\u12a6\u12ad\u1270\u12cd\u1260\u122d",
-      "\u1296\u126c\u121d\u1260\u122d",
-      "\u12f2\u1234\u121d\u1260\u122d"
-    ],
-    "SHORTDAY": [
-      "\u1230\u1295\u1260\u1275",
-      "\u1230\u1291\u12ed",
-      "\u1220\u1209\u1235",
-      "\u1228\u1261\u12d5",
-      "\u1283\u1219\u1235",
-      "\u12d3\u122d\u1262",
-      "\u1240\u12f3\u121d"
-    ],
-    "SHORTMONTH": [
-      "\u1303\u1295\u12e9",
-      "\u134c\u1265\u1229",
-      "\u121b\u122d\u127d",
-      "\u12a4\u1355\u1228",
-      "\u121c\u12ed",
-      "\u1301\u1295",
-      "\u1301\u120b\u12ed",
-      "\u12a6\u1308\u1235",
-      "\u1234\u1355\u1274",
-      "\u12a6\u12ad\u1270",
-      "\u1296\u126c\u121d",
-      "\u12f2\u1234\u121d"
-=======
     "FIRSTDAYOFWEEK": 6,
     "MONTH": [
       "\u1325\u122a",
@@ -136,7 +93,6 @@ $provide.value("$locale", {
       "\u1325\u1245\u121d\u1272",
       "\u1215\u12f3\u122d",
       "\u1273\u1215\u1233\u1235"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -173,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -185,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ti-et",
-<<<<<<< HEAD
-=======
   "localeID": "ti_ET",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

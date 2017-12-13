@@ -22,13 +22,8 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "ulloqeqqata-tungaa",
-      "ulloqeqqata-kingorna"
-=======
       "AM",
       "PM"
->>>>>>> develop
     ],
     "DAY": [
       "sabaat",
@@ -40,21 +35,12 @@ $provide.value("$locale", {
       "arfininngorneq"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "Kristusip inunngornerata siornagut",
-      "Kristusip inunngornerata kingornagut"
-    ],
-    "ERAS": [
-      "Kr.in.si.",
-      "Kr.in.king."
-=======
       "BCE",
       "CE"
     ],
     "ERAS": [
       "BCE",
       "CE"
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -94,8 +80,6 @@ $provide.value("$locale", {
       "nov",
       "dec"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "januari",
       "februari",
@@ -110,24 +94,10 @@ $provide.value("$locale", {
       "novemberi",
       "decemberi"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
-<<<<<<< HEAD
-    "fullDate": "EEEE dd MMMM y",
-    "longDate": "dd MMMM y",
-    "medium": "MMM dd, y h:mm:ss a",
-    "mediumDate": "MMM dd, y",
-    "mediumTime": "h:mm:ss a",
-    "short": "y-MM-dd h:mm a",
-    "shortDate": "y-MM-dd",
-    "shortTime": "h:mm a"
-  },
-  "NUMBER_FORMATS": {
-    "CURRENCY_SYM": "kr",
-=======
     "fullDate": "y MMMM d, EEEE",
     "longDate": "y MMMM d",
     "medium": "y MMM d HH:mm:ss",
@@ -139,7 +109,6 @@ $provide.value("$locale", {
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "kr.",
->>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": ".",
     "PATTERNS": [
@@ -168,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "kl-gl",
-<<<<<<< HEAD
-=======
   "localeID": "kl_GL",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -1,0 +1,68 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <p class="panel-title">
+           上传资源面板
+        </p>
+    </div>
+    <div class="panel-body clearfix">
+        <div class="form-group clearfix">
+
+            <div class="col-sm-offset-2 res-type-container">
+                <select class="form-control cursor_p" ng-model="res.type" required>
+                    <option value="">--资源类型--</option>
+                    <option value="l">横图</option>
+                    <option value="p">竖图</option>
+                    <option value="s">方图</option>
+                    <option value="ic">icon</option>
+                    <option value="o">其他</option>
+                </select>
+            </div>
+            <div class="res-resolution-container" ng-if="res.type !== 'ic' && res.type !== 'o'">
+                <select class="form-control cursor_p" required ng-model="res.resolution">
+                    <option value="">--资源分辨率--</option>
+                    <option>480x854</option>
+                    <option>720x1280</option>
+                    <option>1024x500</option>
+                    <option>480x480</option>
+                    <option>720x720</option>
+                    <option>1200x628</option>
+                </select>
+            </div>
+            <div style="float: left;" ng-if="res.type === 'o'">
+                <span>自定义分辨率:</span>
+                <input style="width: 200px" class="modalInput" ng-model="res.resolution" placeholder="例如:96x96(中间是字母x)">
+            </div>
+            <div class="lang-container" ng-if="res.type !== 'ic'">
+                <select class="form-control" ng-model="res.language" required ng-options="lang.code as lang.name for lang in languageInfos">
+                    <option value="">默认语言</option>
+                </select>
+            </div>
+        </div>
+
+        <!--upload the resource area-->
+        <div class="form-group clearfix">
+            <div class="col-sm-5 col-sm-push-2 clearfix" >
+                <div class="form-group">
+                    <img ngf-src="showImage" class="imgDropWrap" ngf-select ngf-drop ng-model="iconImg">
+                </div>
+                <p class="text-danger">图片命名规则：(非icon)appname_en_p_480x854_1.png (icon)appname_ic_1.png icon的规格:96x96</p>
+                <p class="text-danger">(应用名_语言_类型_分辨率_序号 注：应用名不能有空格和下划线，如有请去掉！l代表横图  p代表竖图  s方图  o代表其他类型  ic代表icon)</p>
+                <p class="text-danger">icon的大小请不要超过10K,其他类型的请不要超过180K,请上传jpg,png格式图片</p>
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <div class="col-sm-2 col-sm-push-2">
+                <button class="btn btn-info" ng-click="upload()">提&nbsp;&nbsp;交</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-danger clearfix panel-body" ng-if="errors.length != 0">
+    <p style="text-indent: 10px;" class="text-danger"  ng-repeat="error in errors">error : {{error.error}}</p>
+</div>
+
+

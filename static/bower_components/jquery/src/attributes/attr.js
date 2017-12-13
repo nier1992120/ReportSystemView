@@ -1,18 +1,13 @@
 define( [
 	"../core",
 	"../core/access",
+	"../core/nodeName",
 	"./support",
-<<<<<<< HEAD
 	"../var/rnothtmlwhite",
 	"../selector"
-], function( jQuery, access, support, rnothtmlwhite ) {
+], function( jQuery, access, nodeName, support, rnothtmlwhite ) {
 
 "use strict";
-=======
-	"../var/rnotwhite",
-	"../selector"
-], function( jQuery, access, support, rnotwhite ) {
->>>>>>> develop
 
 var boolHook,
 	attrHandle = jQuery.expr.attrHandle;
@@ -44,18 +39,10 @@ jQuery.extend( {
 			return jQuery.prop( elem, name, value );
 		}
 
-<<<<<<< HEAD
 		// Attribute hooks are determined by the lowercase version
 		// Grab necessary hook if one is defined
 		if ( nType !== 1 || !jQuery.isXMLDoc( elem ) ) {
 			hooks = jQuery.attrHooks[ name.toLowerCase() ] ||
-=======
-		// All attributes are lowercase
-		// Grab necessary hook if one is defined
-		if ( nType !== 1 || !jQuery.isXMLDoc( elem ) ) {
-			name = name.toLowerCase();
-			hooks = jQuery.attrHooks[ name ] ||
->>>>>>> develop
 				( jQuery.expr.match.bool.test( name ) ? boolHook : undefined );
 		}
 
@@ -88,7 +75,7 @@ jQuery.extend( {
 		type: {
 			set: function( elem, value ) {
 				if ( !support.radioValue && value === "radio" &&
-					jQuery.nodeName( elem, "input" ) ) {
+					nodeName( elem, "input" ) ) {
 					var val = elem.value;
 					elem.setAttribute( "type", value );
 					if ( val ) {
@@ -101,7 +88,6 @@ jQuery.extend( {
 	},
 
 	removeAttr: function( elem, value ) {
-<<<<<<< HEAD
 		var name,
 			i = 0,
 
@@ -111,23 +97,6 @@ jQuery.extend( {
 
 		if ( attrNames && elem.nodeType === 1 ) {
 			while ( ( name = attrNames[ i++ ] ) ) {
-=======
-		var name, propName,
-			i = 0,
-			attrNames = value && value.match( rnotwhite );
-
-		if ( attrNames && elem.nodeType === 1 ) {
-			while ( ( name = attrNames[ i++ ] ) ) {
-				propName = jQuery.propFix[ name ] || name;
-
-				// Boolean attributes get special treatment (#10870)
-				if ( jQuery.expr.match.bool.test( name ) ) {
-
-					// Set corresponding property to false
-					elem[ propName ] = false;
-				}
-
->>>>>>> develop
 				elem.removeAttribute( name );
 			}
 		}
@@ -147,15 +116,11 @@ boolHook = {
 		return name;
 	}
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) {
 	var getter = attrHandle[ name ] || jQuery.find.attr;
 
 	attrHandle[ name ] = function( elem, name, isXML ) {
-<<<<<<< HEAD
 		var ret, handle,
 			lowercaseName = name.toLowerCase();
 
@@ -168,18 +133,6 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 				lowercaseName :
 				null;
 			attrHandle[ lowercaseName ] = handle;
-=======
-		var ret, handle;
-		if ( !isXML ) {
-
-			// Avoid an infinite loop by temporarily removing this function from the getter
-			handle = attrHandle[ name ];
-			attrHandle[ name ] = ret;
-			ret = getter( elem, name, isXML ) != null ?
-				name.toLowerCase() :
-				null;
-			attrHandle[ name ] = handle;
->>>>>>> develop
 		}
 		return ret;
 	};

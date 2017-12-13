@@ -35,13 +35,8 @@ $provide.value("$locale", {
       "\u0dc3\u0dd9\u0db1\u0dc3\u0dd4\u0dbb\u0dcf\u0daf\u0dcf"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "\u0d9a\u0dca\u200d\u0dbb\u0dd2\u0dc3\u0dca\u0dad\u0dd4 \u0db4\u0dd6\u0dbb\u0dca\u200d\u0dc0",
-      "\u0d9a\u0dca\u200d\u0dbb\u0dd2\u0dc3\u0dca\u0dad\u0dd4 \u0dc0\u0dbb\u0dca\u200d\u0dc2"
-=======
       "\u0d9a\u0dca\u200d\u0dbb\u0dd2\u0dc3\u0dca\u0dad\u0dd4 \u0db4\u0dd6\u0dbb\u0dca\u0dc0",
       "\u0d9a\u0dca\u200d\u0dbb\u0dd2\u0dc3\u0dca\u0dad\u0dd4 \u0dc0\u0dbb\u0dca\u0dc2"
->>>>>>> develop
     ],
     "ERAS": [
       "\u0d9a\u0dca\u200d\u0dbb\u0dd2.\u0db4\u0dd6.",
@@ -85,8 +80,6 @@ $provide.value("$locale", {
       "\u0db1\u0ddc\u0dc0\u0dd0",
       "\u0daf\u0dd9\u0dc3\u0dd0"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0da2\u0db1\u0dc0\u0dcf\u0dbb\u0dd2",
       "\u0db4\u0dd9\u0db6\u0dbb\u0dc0\u0dcf\u0dbb\u0dd2",
@@ -101,28 +94,18 @@ $provide.value("$locale", {
       "\u0db1\u0ddc\u0dc0\u0dd0\u0db8\u0dca\u0db6\u0dbb\u0dca",
       "\u0daf\u0dd9\u0dc3\u0dd0\u0db8\u0dca\u0db6\u0dbb\u0dca"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "y MMMM d, EEEE",
     "longDate": "y MMMM d",
-<<<<<<< HEAD
-    "medium": "y MMM d a h.mm.ss",
-    "mediumDate": "y MMM d",
-    "mediumTime": "a h.mm.ss",
-    "short": "y-MM-dd a h.mm",
-    "shortDate": "y-MM-dd",
-    "shortTime": "a h.mm"
-=======
     "medium": "y MMM d HH.mm.ss",
     "mediumDate": "y MMM d",
     "mediumTime": "HH.mm.ss",
     "short": "y-MM-dd HH.mm",
     "shortDate": "y-MM-dd",
     "shortTime": "HH.mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "Rs",
@@ -146,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -158,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "si",
-<<<<<<< HEAD
-=======
   "localeID": "si",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if ((n == 0 || n == 1) || i == 0 && vf.f == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

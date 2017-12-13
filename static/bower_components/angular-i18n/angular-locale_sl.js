@@ -35,19 +35,11 @@ $provide.value("$locale", {
       "sobota"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "pred na\u0161im \u0161tetjem",
-      "na\u0161e \u0161tetje"
-    ],
-    "ERAS": [
-      "pr. n. \u0161t.",
-=======
       "pred Kristusom",
       "po Kristusu"
     ],
     "ERAS": [
       "pr. Kr.",
->>>>>>> develop
       "po Kr."
     ],
     "FIRSTDAYOFWEEK": 0,
@@ -88,8 +80,6 @@ $provide.value("$locale", {
       "nov.",
       "dec."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "januar",
       "februar",
@@ -104,28 +94,18 @@ $provide.value("$locale", {
       "november",
       "december"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, dd. MMMM y",
     "longDate": "dd. MMMM y",
-<<<<<<< HEAD
-    "medium": "d. MMM y HH.mm.ss",
-    "mediumDate": "d. MMM y",
-    "mediumTime": "HH.mm.ss",
-    "short": "d. MM. yy HH.mm",
-    "shortDate": "d. MM. yy",
-    "shortTime": "HH.mm"
-=======
     "medium": "d. MMM y HH:mm:ss",
     "mediumDate": "d. MMM y",
     "mediumTime": "HH:mm:ss",
     "short": "d. MM. yy HH:mm",
     "shortDate": "d. MM. yy",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20ac",
@@ -157,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "sl",
-<<<<<<< HEAD
-=======
   "localeID": "sl",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (vf.v == 0 && i % 100 == 1) {    return PLURAL_CATEGORY.ONE;  }  if (vf.v == 0 && i % 100 == 2) {    return PLURAL_CATEGORY.TWO;  }  if (vf.v == 0 && i % 100 >= 3 && i % 100 <= 4 || vf.v != 0) {    return PLURAL_CATEGORY.FEW;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

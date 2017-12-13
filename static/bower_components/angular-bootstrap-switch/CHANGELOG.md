@@ -1,8 +1,6 @@
 CHANGELOG
 =========
 
-<<<<<<< HEAD
-=======
 ## 0.5.2 (2017-04-19)
 
 - Update `bootstrap-switch` to `~3.3.4`
@@ -31,7 +29,6 @@ CHANGELOG
   may break if they consider `null` a falsy value. `null` is now an
   indeterminate value.
 
->>>>>>> develop
 ## 0.4.1 (2015-06-15)
 
 - Update to `angular` 1.4.0

@@ -22,13 +22,8 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "AM",
-      "PM"
-=======
       "dop.",
       "odp."
->>>>>>> develop
     ],
     "DAY": [
       "ned\u011ble",
@@ -85,8 +80,6 @@ $provide.value("$locale", {
       "lis",
       "pro"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "leden",
       "\u00fanor",
@@ -101,7 +94,6 @@ $provide.value("$locale", {
       "listopad",
       "prosinec"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -145,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "cs",
-<<<<<<< HEAD
-=======
   "localeID": "cs",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  if (i >= 2 && i <= 4 && vf.v == 0) {    return PLURAL_CATEGORY.FEW;  }  if (vf.v != 0) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

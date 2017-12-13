@@ -1,7 +1,6 @@
 define( [
 	"../core",
 	"../var/document",
-<<<<<<< HEAD
 	"../core/readyException",
 	"../deferred"
 ], function( jQuery, document ) {
@@ -22,19 +21,6 @@ jQuery.fn.ready = function( fn ) {
 		.catch( function( error ) {
 			jQuery.readyException( error );
 		} );
-=======
-	"../core/init",
-	"../deferred"
-], function( jQuery, document ) {
-
-// The deferred used on DOM ready
-var readyList;
-
-jQuery.fn.ready = function( fn ) {
-
-	// Add the callback
-	jQuery.ready.promise().done( fn );
->>>>>>> develop
 
 	return this;
 };
@@ -47,15 +33,6 @@ jQuery.extend( {
 	// A counter to track how many items to wait for before
 	// the ready event fires. See #6781
 	readyWait: 1,
-
-	// Hold (or release) the ready event
-	holdReady: function( hold ) {
-		if ( hold ) {
-			jQuery.readyWait++;
-		} else {
-			jQuery.ready( true );
-		}
-	},
 
 	// Handle when the DOM is ready
 	ready: function( wait ) {
@@ -75,34 +52,18 @@ jQuery.extend( {
 
 		// If there are functions bound, to execute
 		readyList.resolveWith( document, [ jQuery ] );
-<<<<<<< HEAD
 	}
 } );
 
 jQuery.ready.then = readyList.then;
 
 // The ready event handler and self cleanup method
-=======
-
-		// Trigger any bound ready events
-		if ( jQuery.fn.triggerHandler ) {
-			jQuery( document ).triggerHandler( "ready" );
-			jQuery( document ).off( "ready" );
-		}
-	}
-} );
-
-/**
- * The ready event handler and self cleanup method
- */
->>>>>>> develop
 function completed() {
 	document.removeEventListener( "DOMContentLoaded", completed );
 	window.removeEventListener( "load", completed );
 	jQuery.ready();
 }
 
-<<<<<<< HEAD
 // Catch cases where $(document).ready() is called
 // after the browser event has already occurred.
 // Support: IE <=9 - 10 only
@@ -121,36 +82,5 @@ if ( document.readyState === "complete" ||
 	// A fallback to window.onload, that will always work
 	window.addEventListener( "load", completed );
 }
-=======
-jQuery.ready.promise = function( obj ) {
-	if ( !readyList ) {
-
-		readyList = jQuery.Deferred();
-
-		// Catch cases where $(document).ready() is called
-		// after the browser event has already occurred.
-		// Support: IE9-10 only
-		// Older IE sometimes signals "interactive" too soon
-		if ( document.readyState === "complete" ||
-			( document.readyState !== "loading" && !document.documentElement.doScroll ) ) {
-
-			// Handle it asynchronously to allow scripts the opportunity to delay ready
-			window.setTimeout( jQuery.ready );
-
-		} else {
-
-			// Use the handy event callback
-			document.addEventListener( "DOMContentLoaded", completed );
-
-			// A fallback to window.onload, that will always work
-			window.addEventListener( "load", completed );
-		}
-	}
-	return readyList.promise( obj );
-};
-
-// Kick off the DOM ready check even if the user does not
-jQuery.ready.promise();
->>>>>>> develop
 
 } );

@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "ngad",
       "ngab"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "ng\u0254n os\u00fa",
       "ng\u0254n b\u025b\u030c",
@@ -96,7 +94,6 @@ $provide.value("$locale", {
       "ng\u0254n aw\u00f3m ai dzi\u00e1",
       "ng\u0254n aw\u00f3m ai b\u025b\u030c"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -140,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ewo",
-<<<<<<< HEAD
-=======
   "localeID": "ewo",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

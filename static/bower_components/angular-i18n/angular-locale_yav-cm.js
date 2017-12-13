@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "o.11",
       "o.12"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "pik\u00edt\u00edk\u00edtie, o\u00f3l\u00ed \u00fa kut\u00faan",
       "si\u025by\u025b\u0301, o\u00f3li \u00fa k\u00e1nd\u00ed\u025b",
@@ -96,7 +94,6 @@ $provide.value("$locale", {
       "makandik\u025b",
       "pil\u0254nd\u0254\u0301"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -129,13 +126,8 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-=======
         "maxFrac": 0,
         "minFrac": 0,
->>>>>>> develop
         "minInt": 1,
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
@@ -145,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "yav-cm",
-<<<<<<< HEAD
-=======
   "localeID": "yav_CM",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

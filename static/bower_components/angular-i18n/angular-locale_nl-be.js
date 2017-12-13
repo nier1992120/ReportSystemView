@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "nov.",
       "dec."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "januari",
       "februari",
@@ -96,20 +94,14 @@ $provide.value("$locale", {
       "november",
       "december"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE d MMMM y",
     "longDate": "d MMMM y",
-<<<<<<< HEAD
-    "medium": "d-MMM-y HH:mm:ss",
-    "mediumDate": "d-MMM-y",
-=======
     "medium": "d MMM y HH:mm:ss",
     "mediumDate": "d MMM y",
->>>>>>> develop
     "mediumTime": "HH:mm:ss",
     "short": "d/MM/yy HH:mm",
     "shortDate": "d/MM/yy",
@@ -145,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "nl-be",
-<<<<<<< HEAD
-=======
   "localeID": "nl_BE",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

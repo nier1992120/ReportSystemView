@@ -1,13 +1,15 @@
 {
   "name": "utf8",
-  "homepage": "https://github.com/arahaya/utf8.js",
-  "_release": "1b109d359f",
+  "homepage": "https://github.com/mathiasbynens/utf8.js",
+  "version": "3.0.0",
+  "_release": "3.0.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "1b109d359f161263c781ab9182f4646cc9856bca"
+    "type": "version",
+    "tag": "v3.0.0",
+    "commit": "2ce09544b62f2a274dbcd249473c0986e3660849"
   },
-  "_source": "https://github.com/arahaya/utf8.js.git",
-  "_target": "*",
-  "_originalSource": "https://github.com/arahaya/utf8.js.git"
+  "_source": "https://github.com/mathiasbynens/utf8.js.git",
+  "_target": "^3.0.0",
+  "_originalSource": "utf8",
+  "_direct": true
 }

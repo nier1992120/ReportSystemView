@@ -22,13 +22,8 @@ function getVF(n, opt_precision) {
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "\u0642\u0628\u0644 \u062f\u0648\u067e\u06c1\u0631",
-      "\u0628\u0639\u062f \u062f\u0648\u067e\u06c1\u0631"
-=======
       "AM",
       "PM"
->>>>>>> develop
     ],
     "DAY": [
       "\u0627\u062a\u0648\u0627\u0631",
@@ -85,8 +80,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0645\u0628\u0631",
       "\u062f\u0633\u0645\u0628\u0631"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u062c\u0646\u0648\u0631\u06cc",
       "\u0641\u0631\u0648\u0631\u06cc",
@@ -101,20 +94,14 @@ $provide.value("$locale", {
       "\u0646\u0648\u0645\u0628\u0631",
       "\u062f\u0633\u0645\u0628\u0631"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
     ],
     "fullDate": "EEEE\u060c d MMMM\u060c y",
     "longDate": "d MMMM\u060c y",
-<<<<<<< HEAD
-    "medium": "d MMM\u060c y h:mm:ss a",
-    "mediumDate": "d MMM\u060c y",
-=======
     "medium": "y MMM d h:mm:ss a",
     "mediumDate": "y MMM d",
->>>>>>> develop
     "mediumTime": "h:mm:ss a",
     "short": "d/M/yy h:mm a",
     "shortDate": "d/M/yy",
@@ -126,11 +113,7 @@ $provide.value("$locale", {
     "GROUP_SEP": ",",
     "PATTERNS": [
       {
-<<<<<<< HEAD
-        "gSize": 2,
-=======
         "gSize": 3,
->>>>>>> develop
         "lgSize": 3,
         "maxFrac": 3,
         "minFrac": 0,
@@ -146,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -158,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ur-in",
-<<<<<<< HEAD
-=======
   "localeID": "ur_IN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

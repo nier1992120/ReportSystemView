@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0645\u0628\u0631",
       "\u062f\u0633\u0645\u0628\u0631"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u062c\u0646\u0624\u0631\u06cc",
       "\u0641\u0631\u0624\u0631\u06cc",
@@ -96,7 +94,6 @@ $provide.value("$locale", {
       "\u0646\u0648\u0645\u0628\u0631",
       "\u062f\u0633\u0645\u0628\u0631"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
@@ -111,11 +108,7 @@ $provide.value("$locale", {
     "shortTime": "h:mm a"
   },
   "NUMBER_FORMATS": {
-<<<<<<< HEAD
-    "CURRENCY_SYM": "\u20ac",
-=======
     "CURRENCY_SYM": "\u20b9",
->>>>>>> develop
     "DECIMAL_SEP": "\u066b",
     "GROUP_SEP": "\u066c",
     "PATTERNS": [
@@ -136,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -148,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ks-arab",
-<<<<<<< HEAD
-=======
   "localeID": "ks_Arab",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

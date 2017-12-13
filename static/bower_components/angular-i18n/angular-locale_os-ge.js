@@ -71,11 +71,7 @@ $provide.value("$locale", {
       "\u0444\u0435\u0432.",
       "\u043c\u0430\u0440.",
       "\u0430\u043f\u0440.",
-<<<<<<< HEAD
-      "\u043c\u0430\u044f",
-=======
       "\u043c\u0430\u0439\u044b",
->>>>>>> develop
       "\u0438\u044e\u043d\u044b",
       "\u0438\u044e\u043b\u044b",
       "\u0430\u0432\u0433.",
@@ -84,8 +80,6 @@ $provide.value("$locale", {
       "\u043d\u043e\u044f.",
       "\u0434\u0435\u043a."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u042f\u043d\u0432\u0430\u0440\u044c",
       "\u0424\u0435\u0432\u0440\u0430\u043b\u044c",
@@ -100,7 +94,6 @@ $provide.value("$locale", {
       "\u041d\u043e\u044f\u0431\u0440\u044c",
       "\u0414\u0435\u043a\u0430\u0431\u0440\u044c"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -136,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -148,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "os-ge",
-<<<<<<< HEAD
-=======
   "localeID": "os_GE",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

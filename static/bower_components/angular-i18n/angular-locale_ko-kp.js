@@ -21,13 +21,8 @@ $provide.value("$locale", {
       "\uc11c\uae30"
     ],
     "ERAS": [
-<<<<<<< HEAD
-      "\uae30\uc6d0\uc804",
-      "\uc11c\uae30"
-=======
       "BC",
       "AD"
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -67,8 +62,6 @@ $provide.value("$locale", {
       "11\uc6d4",
       "12\uc6d4"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "1\uc6d4",
       "2\uc6d4",
@@ -83,7 +76,6 @@ $provide.value("$locale", {
       "11\uc6d4",
       "12\uc6d4"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -116,17 +108,10 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4-",
-=======
         "maxFrac": 0,
         "minFrac": 0,
         "minInt": 1,
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -134,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ko-kp",
-<<<<<<< HEAD
-=======
   "localeID": "ko_KP",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

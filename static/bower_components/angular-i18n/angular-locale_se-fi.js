@@ -26,15 +26,6 @@ $provide.value("$locale", {
       "eahketbeaivet"
     ],
     "DAY": [
-<<<<<<< HEAD
-      "aejlege",
-      "m\u00e5anta",
-      "d\u00e4jsta",
-      "gaskevahkoe",
-      "d\u00e5arsta",
-      "bearjadahke",
-      "laavadahke"
-=======
       "sotnabeaivi",
       "vuoss\u00e1rgga",
       "ma\u014b\u014beb\u00e1rgga",
@@ -42,7 +33,6 @@ $provide.value("$locale", {
       "duorastaga",
       "bearjadaga",
       "l\u00e1vvardaga"
->>>>>>> develop
     ],
     "ERANAMES": [
       "ovdal Kristtusa",
@@ -77,20 +67,6 @@ $provide.value("$locale", {
       "l\u00e1v"
     ],
     "SHORTMONTH": [
-<<<<<<< HEAD
-      "o\u0111\u0111ajage",
-      "guovva",
-      "njuk\u010da",
-      "cuo\u014bo",
-      "miesse",
-      "geasse",
-      "suoidne",
-      "borge",
-      "\u010dak\u010da",
-      "golggot",
-      "sk\u00e1bma",
-      "juovla"
-=======
       "o\u0111\u0111j",
       "guov",
       "njuk",
@@ -117,7 +93,6 @@ $provide.value("$locale", {
       "golggotm\u00e1nnu",
       "sk\u00e1bmam\u00e1nnu",
       "juovlam\u00e1nnu"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -162,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "se-fi",
-<<<<<<< HEAD
-=======
   "localeID": "se_FI",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -1,9 +1,9 @@
-    <h2>productManagement</h2>
-
+<div class="panel panel-default">
+    <div class="panel-heading"></div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover text-center">
             <tr>
-                <td>项目编号</td>
+                <td class="width180">项目编号</td>
                 <td>产品名称</td>
                 <td>包名</td>
                 <td>平台</td>
@@ -12,7 +12,7 @@
                 <td>操作</td>
             </tr>
             <tr ng-repeat="product in products">
-                <td>{{index+1}}</td>
+                <td class="width180">{{index+1}}</td>
                 <td>{{product.name}}</td>
                 <td>{{product.pkgName}}</td>
                 <td>{{product.platform}}</td>
@@ -22,4 +22,5 @@
             </tr>
         </table>
     </div>
+</div>
 

@@ -1,0 +1,52 @@
+<div class="panel panel-default form-group">
+    <div class="panel-heading cursor_p clearfix">
+        <p class="panel-title">
+            <input type="search" ng-model="condition.search" placeholder="按app名称搜索" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+            <select class="cursor_p searchInput " ng-model="searchh.mark" style="width: 150px;color: #686868">
+                <option value="">--状态查询--</option>
+                <option value="1" style="color: red;">--正在发布--</option>
+                <option value="2" style="color: green">--发布完成--</option>
+            </select>
+            <span class="pull-right">
+                <span class="glyphicon glyphicon-calendar" style="font-size: 24px;color:#787878;position: relative;top:7px;"></span><input class="searchInput cursor_p" type="text" readonly  name="reservation" id="reservation" placeholder="根据时间搜索"/>
+            </span>
+        </p>
+    </div>
+    <div class="panel-body" ng-if="list.length !==0">
+        <table class="table table-bordered table-hover">
+            <tr class="tableTitle">
+                <td class="td_width80">序列</td>
+                <td>ICON</td>
+                <td>名称</td>
+                <td>appkey</td>
+                <td>info</td>
+                <td>应用组</td>
+                <td>平台</td>
+                <td>状态</td>
+                <td>更新时间</td>
+            </tr>
+
+            <tr ng-repeat="res in list | filter:search" class="text-center">
+                <td class="td_width80">{{$index + 1}}</td>
+                <td><img ngf-src="res.icon||'img/1.png'" height="32" width="32"></td>
+                <td ng-if="res.status === '2'" style="color: red;">{{res.name}}</td>
+                <td ng-if="res.status === '1'" style="color: green;">{{res.name}}</td>
+                <td>{{res.appkey}}</td>
+                <td>{{res.info}}</td>
+                <td>{{res.linkid}}</td>
+                <td ng-if="res.platform === '1'">Android</td>
+                <td ng-if="res.platform === '2'">IOS</td>
+                <td class="td_width180" ng-if="res.status === '1'" style="color: green;">发布完成!</td>
+                <td class="td_width180" ng-if="res.status === '2'" style="color: red;">正在发布...</td>
+                <td>{{res.utime}}</td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+<nav class="text-left">注：默认显示近2小时数据</nav>
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+<p class="nothing" ng-if="list.length == 0">
+    暂无资源信息
+</p>

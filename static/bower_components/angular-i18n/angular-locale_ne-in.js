@@ -8,15 +8,6 @@ $provide.value("$locale", {
       "\u0905\u092a\u0930\u093e\u0939\u094d\u0928"
     ],
     "DAY": [
-<<<<<<< HEAD
-      "\u0906\u0907\u0924\u0935\u093e\u0930",
-      "\u0938\u094b\u092e\u0935\u093e\u0930",
-      "\u092e\u0919\u094d\u0917\u0932\u0935\u093e\u0930",
-      "\u092c\u0941\u0927\u0935\u093e\u0930",
-      "\u092c\u093f\u0939\u0940\u0935\u093e\u0930",
-      "\u0936\u0941\u0915\u094d\u0930\u0935\u093e\u0930",
-      "\u0936\u0928\u093f\u0935\u093e\u0930"
-=======
       "\u0906\u0907\u0924\u092c\u093e\u0930",
       "\u0938\u094b\u092e\u092c\u093e\u0930",
       "\u092e\u0919\u094d\u0917\u0932\u092c\u093e\u0930",
@@ -24,7 +15,6 @@ $provide.value("$locale", {
       "\u092c\u093f\u0939\u093f\u092c\u093e\u0930",
       "\u0936\u0941\u0915\u094d\u0930\u092c\u093e\u0930",
       "\u0936\u0928\u093f\u092c\u093e\u0930"
->>>>>>> develop
     ],
     "ERANAMES": [
       "\u0908\u0938\u093e \u092a\u0942\u0930\u094d\u0935",
@@ -37,19 +27,6 @@ $provide.value("$locale", {
     "FIRSTDAYOFWEEK": 6,
     "MONTH": [
       "\u091c\u0928\u0935\u0930\u0940",
-<<<<<<< HEAD
-      "\u092b\u0930\u0935\u0930\u0940",
-      "\u092e\u093e\u0930\u094d\u091a",
-      "\u0905\u092a\u094d\u0930\u0947\u0932",
-      "\u092e\u0908",
-      "\u091c\u0941\u0928",
-      "\u091c\u0941\u0932\u093e\u0908",
-      "\u0905\u0917\u0938\u094d\u0924",
-      "\u0938\u0947\u092a\u094d\u091f\u0947\u092e\u094d\u092c\u0930",
-      "\u0905\u0915\u094d\u091f\u094b\u092c\u0930",
-      "\u0928\u094b\u092d\u0947\u092e\u094d\u092c\u0930",
-      "\u0926\u093f\u0938\u092e\u094d\u092c\u0930"
-=======
       "\u092b\u0947\u092c\u094d\u0930\u0941\u0905\u0930\u0940",
       "\u092e\u093e\u0930\u094d\u091a",
       "\u0905\u092a\u094d\u0930\u093f\u0932",
@@ -61,18 +38,13 @@ $provide.value("$locale", {
       "\u0905\u0915\u094d\u091f\u094b\u092c\u0930",
       "\u0928\u094b\u092d\u0947\u092e\u094d\u092c\u0930",
       "\u0921\u093f\u0938\u0947\u092e\u094d\u092c\u0930"
->>>>>>> develop
     ],
     "SHORTDAY": [
       "\u0906\u0907\u0924",
       "\u0938\u094b\u092e",
       "\u092e\u0919\u094d\u0917\u0932",
       "\u092c\u0941\u0927",
-<<<<<<< HEAD
-      "\u092c\u093f\u0939\u0940",
-=======
       "\u092c\u093f\u0939\u093f",
->>>>>>> develop
       "\u0936\u0941\u0915\u094d\u0930",
       "\u0936\u0928\u093f"
     ],
@@ -90,8 +62,6 @@ $provide.value("$locale", {
       "\u0928\u094b\u092d\u0947\u092e\u094d\u092c\u0930",
       "\u0921\u093f\u0938\u0947\u092e\u094d\u092c\u0930"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u091c\u0928\u0935\u0930\u0940",
       "\u092b\u0947\u092c\u094d\u0930\u0941\u0905\u0930\u0940",
@@ -106,28 +76,18 @@ $provide.value("$locale", {
       "\u0928\u094b\u092d\u0947\u092e\u094d\u092c\u0930",
       "\u0921\u093f\u0938\u0947\u092e\u094d\u092c\u0930"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
     ],
     "fullDate": "y MMMM d, EEEE",
     "longDate": "y MMMM d",
-<<<<<<< HEAD
-    "medium": "y MMM d HH:mm:ss",
-    "mediumDate": "y MMM d",
-    "mediumTime": "HH:mm:ss",
-    "short": "y-MM-dd HH:mm",
-    "shortDate": "y-MM-dd",
-    "shortTime": "HH:mm"
-=======
     "medium": "y MMM d h:mm:ss a",
     "mediumDate": "y MMM d",
     "mediumTime": "h:mm:ss a",
     "short": "y-MM-dd h:mm a",
     "shortDate": "y-MM-dd",
     "shortTime": "h:mm a"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20b9",
@@ -151,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -163,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ne-in",
-<<<<<<< HEAD
-=======
   "localeID": "ne_IN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

@@ -44,20 +44,6 @@ $provide.value("$locale", {
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
-<<<<<<< HEAD
-      "gener",
-      "febrer",
-      "mar\u00e7",
-      "abril",
-      "maig",
-      "juny",
-      "juliol",
-      "agost",
-      "setembre",
-      "octubre",
-      "novembre",
-      "desembre"
-=======
       "de gener",
       "de febrer",
       "de mar\u00e7",
@@ -70,7 +56,6 @@ $provide.value("$locale", {
       "d\u2019octubre",
       "de novembre",
       "de desembre"
->>>>>>> develop
     ],
     "SHORTDAY": [
       "dg.",
@@ -82,20 +67,6 @@ $provide.value("$locale", {
       "ds."
     ],
     "SHORTMONTH": [
-<<<<<<< HEAD
-      "gen.",
-      "febr.",
-      "mar\u00e7",
-      "abr.",
-      "maig",
-      "juny",
-      "jul.",
-      "ag.",
-      "set.",
-      "oct.",
-      "nov.",
-      "des."
-=======
       "de gen.",
       "de febr.",
       "de mar\u00e7",
@@ -122,7 +93,6 @@ $provide.value("$locale", {
       "octubre",
       "novembre",
       "desembre"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -167,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ca",
-<<<<<<< HEAD
-=======
   "localeID": "ca",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

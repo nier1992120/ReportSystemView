@@ -1,0 +1,57 @@
+<div class="panel panel-default form-group">
+    <!--<div class="panel-heading">
+        <input type="search" ng-model="query" placeholder="按运营组名称搜索" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+    </div>-->
+    <div class="panel-body" ng-if="tasks.length !== 0">
+        <table class="table table-bordered table-hover">
+
+            <tr class="tableTitle">
+                <td class="td_width200">任务组描述</td>
+                <td>应用组</td>
+                <td>开关switch</td>
+                <td>更新时间</td>
+                <td class="td_width200">操作</td>
+            </tr>
+
+            <tr ng-repeat="task in tasks">
+                <td class="td_width200">{{task.describe}}</td>
+                <td>{{task.linkids}}</td>
+                <td ng-if="task.switch === '1'">开启</td>
+                <td ng-if="task.switch === '0'">关闭</td>
+                <td ng-if="task.switch === undefined"></td>
+                <td>{{task.utime}}</td>
+                <td class="td_width200">
+                    <a ui-sref="task.taskModify({optgroupid : task._id.$oid})" class="glyphicon glyphicon-edit">编辑任务</a>&nbsp;&nbsp;
+                    <a href="" class="glyphicon glyphicon-remove" ng-click="delTask(task._id.$oid, $index)">删除</a>&nbsp;&nbsp;
+                    <a href="" data-target="#addProperty" data-toggle="modal" ng-click="addProperty(task,$index)" class="glyphicon glyphicon-edit">编辑属性</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="addProperty">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>增加属性
+        </div>
+        <div class="modal-body clearfix">
+            <div ng-jsoneditor ng-model="property" options="options"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="updateProperty()">保&nbsp;&nbsp;存</button>
+        </div>
+    </div>
+</div>
+
+<p class="nothing" ng-if="tasks.length == 0">
+    暂无数据信息
+</p>
+
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+
+
+

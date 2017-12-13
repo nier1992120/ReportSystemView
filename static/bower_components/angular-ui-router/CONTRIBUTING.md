@@ -22,21 +22,12 @@ Issues only! |
 -------------|
 Please keep in mind that the issue tracker is for *issues*. Please do *not* post an issue if you need help or support. Instead, see one of the above-mentioned forums or [IRC](irc://irc.freenode.net/#angularjs). |
 
-<<<<<<< HEAD
-####Purple Labels
-A purple label means that **you** need to take some further action.  
- - ![Not Actionable - Need Info](http://angular-ui.github.io/ui-router/images/notactionable.png): Your issue is not specific enough, or there is no clear action that we can take. Please clarify and refine your issue.
- - ![Plunkr Please](http://angular-ui.github.io/ui-router/images/plunkrplease.png): Please [create a plunkr](http://bit.ly/UIR-Plunk)
- - ![StackOverflow](http://angular-ui.github.io/ui-router/images/stackoverflow.png): We suspect your issue is really a help request, or could be answered by the community.  Please ask your question on [StackOverflow](http://stackoverflow.com/questions/ask?tags=angularjs,angular-ui-router).  If you determine that is an actual issue, please explain why.
- 
-=======
 #### Purple Labels
 A purple label means that **you** need to take some further action.
  - ![Not Actionable - Need Info](https://angular-ui.github.io/ui-router/ngdoc_assets/incomplete.png): Your issue is not specific enough, or there is no clear action that we can take. Please clarify and refine your issue.
  - ![Plunkr Please](https://angular-ui.github.io/ui-router/ngdoc_assets/example.png): Please [create a plunkr](http://bit.ly/UIR-Plunk)
  - ![StackOverflow](https://angular-ui.github.io/ui-router/ngdoc_assets/so.png): We suspect your issue is really a help request, or could be answered by the community.  Please ask your question on [StackOverflow](http://stackoverflow.com/questions/ask?tags=angularjs,angular-ui-router).  If you determine that is an actual issue, please explain why.
 
->>>>>>> develop
 If your issue gets labeled with purple label, no further action will be taken until you respond to the label appropriately.
 
 # Contribute
@@ -58,22 +49,6 @@ If your issue gets labeled with purple label, no further action will be taken un
 
 # Developing
 
-<<<<<<< HEAD
-UI-Router uses <code>grunt >= 0.4.x</code>. Make sure to upgrade your environment and read the
-[Migration Guide](http://gruntjs.com/upgrading-from-0.3-to-0.4).
-
-Dependencies for building from source and running tests:
-
-* [grunt-cli](https://github.com/gruntjs/grunt-cli) - run: `$ npm install -g grunt-cli`
-* Then, install the development dependencies by running `$ npm install` from the project directory
-
-There are a number of targets in the gruntfile that are used to generating different builds:
-
-* `grunt`: Perform a normal build, runs jshint and karma tests
-* `grunt build`: Perform a normal build
-* `grunt dist`: Perform a clean build and generate documentation
-* `grunt dev`: Run dev server (sample app) and watch for changes, builds and runs karma tests on changes.
-=======
 UI-Router uses <code>npm</code> and <code>Rollup</code>.
 
 ## Fetch the source code
@@ -136,4 +111,3 @@ Scripts of the same name (in the `core` directory) can be used.
 If you've followed the [linking instructions](#link-the-directories), it's useful to run both
 `npm run watch` tasks (each task from `@uirouter/core` *and* `@uirouter/angularjs`).
 This ensures that changes to either `@uirouter/core` and `@uirouter/angularjs` compile successfully and are run against their test suites.
->>>>>>> develop

@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "AM",
-      "PM"
-=======
       "yb",
       "yh"
->>>>>>> develop
     ],
     "DAY": [
       "Dydd Sul",
@@ -56,11 +51,7 @@ $provide.value("$locale", {
     "SHORTMONTH": [
       "Ion",
       "Chwef",
-<<<<<<< HEAD
-      "Mawrth",
-=======
       "Maw",
->>>>>>> develop
       "Ebrill",
       "Mai",
       "Meh",
@@ -71,8 +62,6 @@ $provide.value("$locale", {
       "Tach",
       "Rhag"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Ionawr",
       "Chwefror",
@@ -87,7 +76,6 @@ $provide.value("$locale", {
       "Tachwedd",
       "Rhagfyr"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -123,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4-",
-=======
         "negPre": "-\u00a4",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
@@ -135,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "cy-gb",
-<<<<<<< HEAD
-=======
   "localeID": "cy_GB",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 0) {    return PLURAL_CATEGORY.ZERO;  }  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  if (n == 2) {    return PLURAL_CATEGORY.TWO;  }  if (n == 3) {    return PLURAL_CATEGORY.FEW;  }  if (n == 6) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

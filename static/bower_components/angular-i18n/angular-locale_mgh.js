@@ -42,11 +42,7 @@ $provide.value("$locale", {
       "HY",
       "YY"
     ],
-<<<<<<< HEAD
-    "FIRSTDAYOFWEEK": 0,
-=======
     "FIRSTDAYOFWEEK": 6,
->>>>>>> develop
     "MONTH": [
       "Mweri wo kwanza",
       "Mweri wo unayeli",
@@ -84,8 +80,6 @@ $provide.value("$locale", {
       "Moj",
       "Yel"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Mweri wo kwanza",
       "Mweri wo unayeli",
@@ -100,28 +94,18 @@ $provide.value("$locale", {
       "Mweri wo kumi na moja",
       "Mweri wo kumi na yel\u2019li"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
-<<<<<<< HEAD
-    "medium": "d MMM y h:mm:ss a",
-    "mediumDate": "d MMM y",
-    "mediumTime": "h:mm:ss a",
-    "short": "dd/MM/y h:mm a",
-    "shortDate": "dd/MM/y",
-    "shortTime": "h:mm a"
-=======
     "medium": "d MMM y HH:mm:ss",
     "mediumDate": "d MMM y",
     "mediumTime": "HH:mm:ss",
     "short": "dd/MM/y HH:mm",
     "shortDate": "dd/MM/y",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "MTn",
@@ -145,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -157,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "mgh",
-<<<<<<< HEAD
-=======
   "localeID": "mgh",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

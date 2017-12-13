@@ -42,11 +42,7 @@ $provide.value("$locale", {
       "\u0908\u0938\u093e.\u092a\u0942\u0930\u094d\u0935",
       "\u0938\u0928"
     ],
-<<<<<<< HEAD
-    "FIRSTDAYOFWEEK": 0,
-=======
     "FIRSTDAYOFWEEK": 6,
->>>>>>> develop
     "MONTH": [
       "\u091c\u093e\u0928\u0941\u0935\u093e\u0930\u0940",
       "\u092b\u0947\u092c\u094d\u0930\u0941\u0935\u093e\u0930\u0940",
@@ -84,10 +80,6 @@ $provide.value("$locale", {
       "\u0928\u092c\u0947\u091c\u094d\u092c\u093c\u0930",
       "\u0926\u093f\u0938\u0947\u091c\u094d\u092c\u093c\u0930"
     ],
-<<<<<<< HEAD
-    "WEEKENDRANGE": [
-      5,
-=======
     "STANDALONEMONTH": [
       "\u091c\u093e\u0928\u0941\u0935\u093e\u0930\u0940",
       "\u092b\u0947\u092c\u094d\u0930\u0941\u0935\u093e\u0930\u0940",
@@ -104,7 +96,6 @@ $provide.value("$locale", {
     ],
     "WEEKENDRANGE": [
       6,
->>>>>>> develop
       6
     ],
     "fullDate": "EEEE, MMMM d, y",
@@ -138,11 +129,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -150,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "brx",
-<<<<<<< HEAD
-=======
   "localeID": "brx",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

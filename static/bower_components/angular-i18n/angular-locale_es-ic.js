@@ -18,11 +18,7 @@ $provide.value("$locale", {
     ],
     "ERANAMES": [
       "antes de Cristo",
-<<<<<<< HEAD
-      "anno D\u00f3mini"
-=======
       "despu\u00e9s de Cristo"
->>>>>>> develop
     ],
     "ERAS": [
       "a. C.",
@@ -66,8 +62,6 @@ $provide.value("$locale", {
       "nov.",
       "dic."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "enero",
       "febrero",
@@ -82,20 +76,14 @@ $provide.value("$locale", {
       "noviembre",
       "diciembre"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d 'de' MMMM 'de' y",
     "longDate": "d 'de' MMMM 'de' y",
-<<<<<<< HEAD
-    "medium": "d 'de' MMM 'de' y H:mm:ss",
-    "mediumDate": "d 'de' MMM 'de' y",
-=======
     "medium": "d MMM y H:mm:ss",
     "mediumDate": "d MMM y",
->>>>>>> develop
     "mediumTime": "H:mm:ss",
     "short": "d/M/yy H:mm",
     "shortDate": "d/M/yy",
@@ -131,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "es-ic",
-<<<<<<< HEAD
-=======
   "localeID": "es_IC",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

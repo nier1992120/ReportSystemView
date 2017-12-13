@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "\u043d\u043e\u0435\u043c.",
       "\u0434\u0435\u043a."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0458\u0430\u043d\u0443\u0430\u0440\u0438",
       "\u0444\u0435\u0432\u0440\u0443\u0430\u0440\u0438",
@@ -96,7 +94,6 @@ $provide.value("$locale", {
       "\u043d\u043e\u0435\u043c\u0432\u0440\u0438",
       "\u0434\u0435\u043a\u0435\u043c\u0432\u0440\u0438"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -132,25 +129,15 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-        "negSuf": "",
-        "posPre": "\u00a4\u00a0",
-        "posSuf": ""
-=======
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
         "posPre": "",
         "posSuf": "\u00a0\u00a4"
->>>>>>> develop
       }
     ]
   },
   "id": "mk",
-<<<<<<< HEAD
-=======
   "localeID": "mk",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (vf.v == 0 && i % 10 == 1 || vf.f % 10 == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

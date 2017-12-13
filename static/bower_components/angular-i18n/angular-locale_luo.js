@@ -42,11 +42,7 @@ $provide.value("$locale", {
       "BC",
       "AD"
     ],
-<<<<<<< HEAD
-    "FIRSTDAYOFWEEK": 0,
-=======
     "FIRSTDAYOFWEEK": 6,
->>>>>>> develop
     "MONTH": [
       "Dwe mar Achiel",
       "Dwe mar Ariyo",
@@ -84,8 +80,6 @@ $provide.value("$locale", {
       "DGI",
       "DAG"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Dwe mar Achiel",
       "Dwe mar Ariyo",
@@ -100,28 +94,18 @@ $provide.value("$locale", {
       "Dwe mar gi achiel",
       "Dwe mar Apar gi ariyo"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "EEEE, d MMMM y",
     "longDate": "d MMMM y",
-<<<<<<< HEAD
-    "medium": "d MMM y h:mm:ss a",
-    "mediumDate": "d MMM y",
-    "mediumTime": "h:mm:ss a",
-    "short": "dd/MM/y h:mm a",
-    "shortDate": "dd/MM/y",
-    "shortTime": "h:mm a"
-=======
     "medium": "d MMM y HH:mm:ss",
     "mediumDate": "d MMM y",
     "mediumTime": "HH:mm:ss",
     "short": "dd/MM/y HH:mm",
     "shortDate": "dd/MM/y",
     "shortTime": "HH:mm"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "Ksh",
@@ -153,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "luo",
-<<<<<<< HEAD
-=======
   "localeID": "luo",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

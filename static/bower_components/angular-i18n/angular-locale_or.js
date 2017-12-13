@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u0b28\u0b2d\u0b47\u0b2e\u0b4d\u0b2c\u0b30",
       "\u0b21\u0b3f\u0b38\u0b47\u0b2e\u0b4d\u0b2c\u0b30"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0b1c\u0b3e\u0b28\u0b41\u0b06\u0b30\u0b40",
       "\u0b2b\u0b47\u0b2c\u0b43\u0b06\u0b30\u0b40",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u0b28\u0b2d\u0b47\u0b2e\u0b4d\u0b2c\u0b30",
       "\u0b21\u0b3f\u0b38\u0b47\u0b2e\u0b4d\u0b2c\u0b30"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       6,
       6
@@ -114,11 +111,7 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "\u00a4\u00a0-",
-=======
         "negPre": "-\u00a4\u00a0",
->>>>>>> develop
         "negSuf": "",
         "posPre": "\u00a4\u00a0",
         "posSuf": ""
@@ -126,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "or",
-<<<<<<< HEAD
-=======
   "localeID": "or",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

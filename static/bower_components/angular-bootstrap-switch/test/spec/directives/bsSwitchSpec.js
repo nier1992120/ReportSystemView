@@ -91,8 +91,6 @@ describe('Directive: bsSwitch', function () {
     'getterSetter': {
       scope: {},
       element: 'ng-model="modelGetterSetter" ng-model-options="{getterSetter: true}" type="checkbox"'
-<<<<<<< HEAD
-=======
     },
     'change': {
       scope: {},
@@ -101,7 +99,6 @@ describe('Directive: bsSwitch', function () {
     'ngChange': {
       scope: {},
       element: 'ng-model="model" type="checkbox" ng-change="ngChange()"'
->>>>>>> develop
     }
   };
 
@@ -224,10 +221,7 @@ describe('Directive: bsSwitch', function () {
       expect(element.hasClass(CONST.SWITCH_OFF_CLASS)).toBeFalsy();
       expect(element.hasClass(CONST.SWITCH_ON_CLASS)).toBeTruthy();
       scope.radioOff = true;
-<<<<<<< HEAD
-=======
       scope.$apply();
->>>>>>> develop
       scope.model = false;
       scope.$apply();
       expect(element.hasClass(CONST.SWITCH_OFF_CLASS)).toBeTruthy();
@@ -309,11 +303,7 @@ describe('Directive: bsSwitch', function () {
   it('should move the switch when the model changes (input)', inject(makeTestChangeModel(true)));
 
   // Test the undefined model (the on/off class is untouched when the indeterminate class is added)
-<<<<<<< HEAD
-  function makeTestIndeterminateModel(input) {
-=======
   function makeTestIndeterminateUndefinedModel(input) {
->>>>>>> develop
     return function () {
       var element = compileDirective(undefined, input);
       expect(element.hasClass(CONST.SWITCH_OFF_CLASS)).toBeFalsy();
@@ -325,10 +315,6 @@ describe('Directive: bsSwitch', function () {
       expect(element.hasClass(CONST.SWITCH_ON_CLASS)).toBeTruthy();
     };
   }
-<<<<<<< HEAD
-  it('should set the indeterminate state when the model is undefined', inject(makeTestIndeterminateModel()));
-  it('should set the indeterminate state when the model is undefined (input)', inject(makeTestIndeterminateModel(true)));
-=======
   it('should set the indeterminate state when the model is undefined', inject(makeTestIndeterminateUndefinedModel()));
   it('should set the indeterminate state when the model is undefined (input)', inject(makeTestIndeterminateUndefinedModel(true)));
 
@@ -347,7 +333,6 @@ describe('Directive: bsSwitch', function () {
   }
   it('should set the indeterminate state when the model is null', inject(makeTestIndeterminateNullModel()));
   it('should set the indeterminate state when the model is null (input)', inject(makeTestIndeterminateNullModel(true)));
->>>>>>> develop
 
   // Test the view change
   function makeTestChangeView(input) {
@@ -692,8 +677,6 @@ describe('Directive: bsSwitch', function () {
   it('should watch updates in getterSetter', inject(makeTestGetterSetter()));
   it('should watch updates in getterSetter', inject(makeTestGetterSetter(true)));
 
-<<<<<<< HEAD
-=======
   function makeTestViewNgChange(input) {
     return function () {
       var element = compileDirective('ngChange', input);
@@ -740,5 +723,4 @@ describe('Directive: bsSwitch', function () {
   }
   it('should evaluate change expression when model changes', inject(makeTestModelSwitchChange()));
   it('should evaluate change expression when model changes', inject(makeTestModelSwitchChange(true)));
->>>>>>> develop
 });

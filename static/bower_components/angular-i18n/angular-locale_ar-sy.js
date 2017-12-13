@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "\u062a\u0634\u0631\u064a\u0646 \u0627\u0644\u062b\u0627\u0646\u064a",
       "\u0643\u0627\u0646\u0648\u0646 \u0627\u0644\u0623\u0648\u0644"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0643\u0627\u0646\u0648\u0646 \u0627\u0644\u062b\u0627\u0646\u064a",
       "\u0634\u0628\u0627\u0637",
@@ -78,7 +76,6 @@ $provide.value("$locale", {
       "\u062a\u0634\u0631\u064a\u0646 \u0627\u0644\u062b\u0627\u0646\u064a",
       "\u0643\u0627\u0646\u0648\u0646 \u0627\u0644\u0623\u0648\u0644"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       4,
       5
@@ -109,17 +106,6 @@ $provide.value("$locale", {
         "posSuf": ""
       },
       {
-<<<<<<< HEAD
-        "gSize": 0,
-        "lgSize": 0,
-        "maxFrac": 2,
-        "minFrac": 2,
-        "minInt": 1,
-        "negPre": "\u00a4-",
-        "negSuf": "",
-        "posPre": "\u00a4",
-        "posSuf": ""
-=======
         "gSize": 3,
         "lgSize": 3,
         "maxFrac": 0,
@@ -129,15 +115,11 @@ $provide.value("$locale", {
         "negSuf": "\u00a0\u00a4",
         "posPre": "",
         "posSuf": "\u00a0\u00a4"
->>>>>>> develop
       }
     ]
   },
   "id": "ar-sy",
-<<<<<<< HEAD
-=======
   "localeID": "ar_SY",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 0) {    return PLURAL_CATEGORY.ZERO;  }  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  if (n == 2) {    return PLURAL_CATEGORY.TWO;  }  if (n % 100 >= 3 && n % 100 <= 10) {    return PLURAL_CATEGORY.FEW;  }  if (n % 100 >= 11 && n % 100 <= 99) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

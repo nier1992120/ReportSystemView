@@ -4,13 +4,8 @@ var PLURAL_CATEGORY = {ZERO: "zero", ONE: "one", TWO: "two", FEW: "few", MANY: "
 $provide.value("$locale", {
   "DATETIME_FORMATS": {
     "AMPMS": [
-<<<<<<< HEAD
-      "paradite",
-      "pasdite"
-=======
       "e paradites",
       "e pasdites"
->>>>>>> develop
     ],
     "DAY": [
       "e diel",
@@ -22,21 +17,12 @@ $provide.value("$locale", {
       "e shtun\u00eb"
     ],
     "ERANAMES": [
-<<<<<<< HEAD
-      "para er\u00ebs s\u00eb re",
-      "er\u00ebs s\u00eb re"
-    ],
-    "ERAS": [
-      "p.e.r.",
-      "e.r."
-=======
       "para Krishtit",
       "mbas Krishtit"
     ],
     "ERAS": [
       "p.K.",
       "mb.K."
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -63,20 +49,6 @@ $provide.value("$locale", {
       "Sht"
     ],
     "SHORTMONTH": [
-<<<<<<< HEAD
-      "Jan",
-      "Shk",
-      "Mar",
-      "Pri",
-      "Maj",
-      "Qer",
-      "Kor",
-      "Gsh",
-      "Sht",
-      "Tet",
-      "N\u00ebn",
-      "Dhj"
-=======
       "jan",
       "shk",
       "mar",
@@ -103,7 +75,6 @@ $provide.value("$locale", {
       "Tetor",
       "N\u00ebntor",
       "Dhjetor"
->>>>>>> develop
     ],
     "WEEKENDRANGE": [
       5,
@@ -148,10 +119,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "sq-xk",
-<<<<<<< HEAD
-=======
   "localeID": "sq_XK",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

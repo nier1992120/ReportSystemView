@@ -62,8 +62,6 @@ $provide.value("$locale", {
       "Kas",
       "Ara"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "Ocak",
       "\u015eubat",
@@ -78,28 +76,18 @@ $provide.value("$locale", {
       "Kas\u0131m",
       "Aral\u0131k"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
     ],
     "fullDate": "d MMMM y EEEE",
     "longDate": "d MMMM y",
-<<<<<<< HEAD
-    "medium": "d MMM y HH:mm:ss",
-    "mediumDate": "d MMM y",
-    "mediumTime": "HH:mm:ss",
-    "short": "d MM y HH:mm",
-    "shortDate": "d MM y",
-    "shortTime": "HH:mm"
-=======
     "medium": "d MMM y h:mm:ss a",
     "mediumDate": "d MMM y",
     "mediumTime": "h:mm:ss a",
     "short": "d.MM.y h:mm a",
     "shortDate": "d.MM.y",
     "shortTime": "h:mm a"
->>>>>>> develop
   },
   "NUMBER_FORMATS": {
     "CURRENCY_SYM": "\u20ac",
@@ -123,25 +111,15 @@ $provide.value("$locale", {
         "maxFrac": 2,
         "minFrac": 2,
         "minInt": 1,
-<<<<<<< HEAD
-        "negPre": "-",
-        "negSuf": "\u00a0\u00a4",
-        "posPre": "",
-        "posSuf": "\u00a0\u00a4"
-=======
         "negPre": "-\u00a4",
         "negSuf": "",
         "posPre": "\u00a4",
         "posSuf": ""
->>>>>>> develop
       }
     ]
   },
   "id": "tr-cy",
-<<<<<<< HEAD
-=======
   "localeID": "tr_CY",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  if (n == 1) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

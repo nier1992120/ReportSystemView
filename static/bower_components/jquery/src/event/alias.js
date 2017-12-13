@@ -5,17 +5,11 @@ define( [
 	"./trigger"
 ], function( jQuery ) {
 
-<<<<<<< HEAD
 "use strict";
 
 jQuery.each( ( "blur focus focusin focusout resize scroll click dblclick " +
 	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
 	"change select submit keydown keypress keyup contextmenu" ).split( " " ),
-=======
-jQuery.each( ( "blur focus focusin focusout load resize scroll unload click dblclick " +
-	"mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave " +
-	"change select submit keydown keypress keyup error contextmenu" ).split( " " ),
->>>>>>> develop
 	function( i, name ) {
 
 	// Handle event binding

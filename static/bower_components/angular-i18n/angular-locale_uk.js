@@ -39,13 +39,8 @@ $provide.value("$locale", {
       "\u043d\u0430\u0448\u043e\u0457 \u0435\u0440\u0438"
     ],
     "ERAS": [
-<<<<<<< HEAD
-      "\u0434\u043e \u043d.\u0435.",
-      "\u043d.\u0435."
-=======
       "\u0434\u043e \u043d. \u0435.",
       "\u043d. \u0435."
->>>>>>> develop
     ],
     "FIRSTDAYOFWEEK": 0,
     "MONTH": [
@@ -63,15 +58,6 @@ $provide.value("$locale", {
       "\u0433\u0440\u0443\u0434\u043d\u044f"
     ],
     "SHORTDAY": [
-<<<<<<< HEAD
-      "\u041d\u0434",
-      "\u041f\u043d",
-      "\u0412\u0442",
-      "\u0421\u0440",
-      "\u0427\u0442",
-      "\u041f\u0442",
-      "\u0421\u0431"
-=======
       "\u043d\u0434",
       "\u043f\u043d",
       "\u0432\u0442",
@@ -79,7 +65,6 @@ $provide.value("$locale", {
       "\u0447\u0442",
       "\u043f\u0442",
       "\u0441\u0431"
->>>>>>> develop
     ],
     "SHORTMONTH": [
       "\u0441\u0456\u0447.",
@@ -95,8 +80,6 @@ $provide.value("$locale", {
       "\u043b\u0438\u0441\u0442.",
       "\u0433\u0440\u0443\u0434."
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "\u0441\u0456\u0447\u0435\u043d\u044c",
       "\u043b\u044e\u0442\u0438\u0439",
@@ -111,7 +94,6 @@ $provide.value("$locale", {
       "\u043b\u0438\u0441\u0442\u043e\u043f\u0430\u0434",
       "\u0433\u0440\u0443\u0434\u0435\u043d\u044c"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -126,11 +108,7 @@ $provide.value("$locale", {
     "shortTime": "HH:mm"
   },
   "NUMBER_FORMATS": {
-<<<<<<< HEAD
-    "CURRENCY_SYM": "\u20b4",
-=======
     "CURRENCY_SYM": "\u0433\u0440\u043d.",
->>>>>>> develop
     "DECIMAL_SEP": ",",
     "GROUP_SEP": "\u00a0",
     "PATTERNS": [
@@ -159,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "uk",
-<<<<<<< HEAD
-=======
   "localeID": "uk",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (vf.v == 0 && i % 10 == 1 && i % 100 != 11) {    return PLURAL_CATEGORY.ONE;  }  if (vf.v == 0 && i % 10 >= 2 && i % 10 <= 4 && (i % 100 < 12 || i % 100 > 14)) {    return PLURAL_CATEGORY.FEW;  }  if (vf.v == 0 && i % 10 == 0 || vf.v == 0 && i % 10 >= 5 && i % 10 <= 9 || vf.v == 0 && i % 100 >= 11 && i % 100 <= 14) {    return PLURAL_CATEGORY.MANY;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);

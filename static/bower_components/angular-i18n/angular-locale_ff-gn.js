@@ -80,8 +80,6 @@ $provide.value("$locale", {
       "jol",
       "bow"
     ],
-<<<<<<< HEAD
-=======
     "STANDALONEMONTH": [
       "siilo",
       "colte",
@@ -96,7 +94,6 @@ $provide.value("$locale", {
       "jolal",
       "bowte"
     ],
->>>>>>> develop
     "WEEKENDRANGE": [
       5,
       6
@@ -129,13 +126,8 @@ $provide.value("$locale", {
       {
         "gSize": 3,
         "lgSize": 3,
-<<<<<<< HEAD
-        "maxFrac": 2,
-        "minFrac": 2,
-=======
         "maxFrac": 0,
         "minFrac": 0,
->>>>>>> develop
         "minInt": 1,
         "negPre": "-",
         "negSuf": "\u00a0\u00a4",
@@ -145,10 +137,7 @@ $provide.value("$locale", {
     ]
   },
   "id": "ff-gn",
-<<<<<<< HEAD
-=======
   "localeID": "ff_GN",
->>>>>>> develop
   "pluralCat": function(n, opt_precision) {  var i = n | 0;  var vf = getVF(n, opt_precision);  if (i == 1 && vf.v == 0) {    return PLURAL_CATEGORY.ONE;  }  return PLURAL_CATEGORY.OTHER;}
 });
 }]);
