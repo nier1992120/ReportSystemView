@@ -7327,12 +7327,13 @@ button{
     color:#fff!important;
 }
 
-.selectContainer {
+.selectContainer,.inputContainer  {
      width: 200px;
      height: 34px;
      border: 1px solid #ccc;
      text-indent: 10px;
 }
+
 .header{
     height:35px;
     line-height: 35px;
@@ -7340,6 +7341,7 @@ button{
     width:100%;
     text-align: right;
 }
+/*ҳ��ͷ������*/
 .headerContent {
     width: 97.5%;
     margin: 0 auto;
@@ -7348,6 +7350,10 @@ button{
 .headerContent span,.headerContent a {
     color: #fff;
 }
+/*�������Ƚ�С����*/
 .width180 {
     width: 180px;
+}
+.width300 {
+    width: 300px;
 }

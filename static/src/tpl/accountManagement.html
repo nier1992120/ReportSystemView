@@ -6,16 +6,36 @@
                 <td class="width180">序号</td>
                 <td>账号ID</td>
                 <td>姓名</td>
-                <td>项目列表</td>
-                <td>操作</td>
+                <td>所属项目组</td>
+                <td class="width180">操作</td>
             </tr>
-            <tr ng-repeat="account in accounts">
-                <td class="width180">{{index+1}}</td>
-                <td>{{account.id}}</td>
-                <td>{{account.name}}</td>
-                <td>{{account.projectList}}</td>
-                <td><a>重置密码</a></td>
+            <!-- ng-repeat="user in users"-->
+            <tr>
+                <td class="width180">{{$index+1}}</td>
+                <td>{{user.userId}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.projectGroupName}}</td>
+                <td class="width180"><a href="" data-toggle="modal" data-target="#resetAccountPwd">重置密码</a></td>
             </tr>
         </table>
+    </div>
+</div>
+
+<div class="modal modal-dialog fade in" id="resetAccountPwd">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">重置密码  <a class="close" data-dismiss="modal">&times;</a></h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="输入原始密码" ng-model="password">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="resetAccountPwd()" data-dismiss="modal">密码重置</button>
+        </div>
     </div>
 </div>

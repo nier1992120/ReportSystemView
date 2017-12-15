@@ -380,88 +380,173 @@ adBoost.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFil
 })(window.angular);
 
 'use strict';
-adBoost.controller('userLoginCtrl', ["app", "$scope", "$state", function (app, $scope, $state) {
-        $scope.loginSubmit = function(){
-             app.$state.go('config.productManagement');
-        }
-}]).controller('indexCtrl',["app","$scope","$state",function(app,$scope,$state){
-        $scope.$state = $state;
-}]).controller('productManagementCtrl',["app","$scope","$state",function(app,$scope,$state){
-        var restAPI = app.restAPI;
-        $scope.condition = {};
-        $scope.pagination = {};
-        $scope.condition.query = "";
-        $scope.condition.linkid = "";
-        //获取产品基本信息
-        restAPI.app.save({
-            ID:''
-        },{
-          "platform":app.store('platform')
+adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scope, $state) {
+    $scope.$state = $state;
+}]).controller('userLoginCtrl', ["$scope", "$state", "restAPI", "app", function ($scope, $state, restAPI, app) {
+    //用户注册
+    $scope.register = function () {
+        restAPI.index.get({
+            ID: 'register',
+            username: '$scope.username',
+            password: '$scope.password',
+            rememberMe: '$scope.rememberMe'
         }, function (data) {
-            $scope.products = data.data.products || [];
-            $scope.pagination.pageSize = 15;
-            $scope.pagination.totalRow = data.data.totalRow;
-            $scope.pagination.pageNumber = 1;
-        })
-}]).controller('projectGroupManagementCtrl',["app","$scope","$state",function(app,$scope,$state){
-        var restAPI = app.restAPI;
-        $scope.condition = {};
-        $scope.pagination = {};
-        $scope.condition.query = "";
-        $scope.condition.linkid = "";
-        //获取项目组基本信息
-        restAPI.app.save({
-            ID:''
-        },{
-            "platform":app.store('platform')
-        }, function (data) {
-            $scope.projectGroups = data.data.projectGroups || [];
-            $scope.pagination.pageSize = 15;
-            $scope.pagination.totalRow = data.data.totalRow;
-            $scope.pagination.pageNumber = 1;
-        })
-}]).controller('accountManagementCtrl',["app","$scope","$state",function(app,$scope,$state){
-        var restAPI = app.restAPI;
-        $scope.condition = {};
-        $scope.pagination = {};
-        $scope.condition.query = "";
-        $scope.condition.linkid = "";
-        //获取账户基本信息
-        restAPI.app.save({
-            ID:''
-        }, function (data) {
-            $scope.accounts = data.data.accounts || [];
-            $scope.pagination.pageSize = 15;
-            $scope.pagination.totalRow = data.data.totalRow;
-            $scope.pagination.pageNumber = 1;
-        })
-
-}]).controller('dataImportCtrl',["app","$scope","$state",function(app,$scope,$state){
-        $scope.dataImport = function(){
-
-
-        }
-}]).controller('dataExportCtrl',["app","$scope","$state",function(app,$scope,$state){
-        var restAPI = app.restAPI;
-        $scope.condition = {};
-        $scope.pagination = {};
-        $scope.condition.query = "";
-        $scope.condition.linkid = "";
-        //获取产品基本信息
-        restAPI.app.save({
-            ID:''
-        },{
-            "platform":app.store('platform')
-        }, function (data) {
-            $scope.products = data.data.products || [];
-            $scope.pagination.pageSize = 15;
-            $scope.pagination.totalRow = data.data.totalRow;
-            $scope.pagination.pageNumber = 1;
+            app.toast.info("恭喜您，注册成功");
+            app.$state.go('login');
         });
-        $scope.dataExport = function(){
+    };
+    //用户登录
+    $scope.login = function () {
+        restAPI.index.get({
+            ID: 'login',
+            username: 'zhaojn@game7.cc',
+            password: 'zhaojn@game7.cc',
+            rememberMe: 'false'
+        }, function (data) {
+            app.$state.go('config.projectGroupManagement');
+        });
+    };
+    //用户登出
+    $scope.logOut = function () {
+        restAPI.index.get({
+            ID: 'logOut'
+        }, function (data) {
+            app.$state.go('login');
+        });
+    };
+}]).controller('projectGroupManagementCtrl', ["app", "$scope", "$state", "restAPI", "$window", function (app, $scope, $state, restAPI, $window) {
+    $scope.projectGroups = [];
+    //创建项目组
+    $scope.createProjectGroup = function () {
 
+        restAPI.group.get({
+            ID: 'create',
+            name: $scope.projectGroup
+        }, function (data) {
+            if (data['resultCode'] == 0) {
+                $window.location.reload();
+                app.toast.info("创建成功");
+            } else {
+                app.toast.error("请正确填写您的项目组名称");
+            }
+        })
+    };
+    //获取项目组基本信息
+    restAPI.group.get({
+        ID: 'listAll'
+    }, function (data) {
+        $scope.projectGroups = data.data.reverse();
+    });
 
-        }
+    $scope.users = [];
+    //获取用户
+    restAPI.index.get({
+        ID: 'allUsers'
+    }, function (data) {
+        $scope.users = data.data;
+    });
+    //选择用户
+    $scope.setUser = function(u){
+        console.log(u);
+        $scope.user = u;
+    };
+    //把用户添加到组里
+    $scope.authorize = function (g) {
+        console.log($scope.user);
+        restAPI.group.get({
+            ID: 'authorize',
+            userId:  $scope.user.id,
+            groupId: g.id
+        }, function (data) {
+            app.toast.info("授权成功");
+        });
+    }
+
+}]).controller('productManagementCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
+    $scope.products = [];
+    //创建产品
+    $scope.confirmCreateProducts = function () {
+        console.log("a");
+        $scope.name = "";
+        restAPI.product.save({
+            ID: 'create'
+        }, {
+            name: $scope.name,
+            projectGroupId: parseInt($scope.projectGroupId),
+            projectGroupName: $scope.projectGroupName,
+            packageName: $scope.packageName,
+            platform: parseInt($scope.platform),
+            cp: $scope.cp
+        }, function (data) {
+            $("#createProductModal").modal('hide');
+        });
+    };
+    //获取产品基本信息
+    restAPI.product.get({
+        ID: 'list'
+    }, function (data) {
+        $scope.products = data.data.reverse();
+    });
+    //删除产品信息
+    $scope.remove = function (id) {
+        restAPI.product.save({
+            ID: 'remove'
+        }, id, function (data) {
+            $scope.products = data.data;
+        });
+        app.toast.info("删除成功!");
+    }
+
+}]).controller('accountManagementCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
+    $scope.users = [];
+    //获取账户基本信息
+    restAPI.index.get({
+        ID: 'allUsers'
+    }, {
+        userId: $scope.userId,
+        username: $scope.username,
+        projectGroupName: $scope.projectGroupName
+    }, function (data) {
+        $scope.users = data.data
+    });
+    //重置用户密码
+    $scope.resetAccountPwd = function (userId) {
+        restAPI.index.get({
+            ID: 'alterUserPwd'
+        }, {
+            password: $scope.password,
+            newPassword: $scope.newPassword
+        }, function (data) {
+            app.toast.info("密码重置成功!");
+        });
+    }
+
+}]).controller('dataImportCtrl', ["app", "$scope", "$state", function (app, $scope, $state) {
+    $scope.dataImport = function () {
+        restAPI.product.get({
+            ID: 'importData'
+        }, function (data) {
+
+        });
+        app.toast.info("数据导入成功!");
+
+    }
+}]).controller('dataExportCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
+    $scope.products = [];
+    //获取产品基本信息
+    restAPI.product.get({
+        ID: 'list'
+    }, function (data) {
+        $scope.products = data.data.reverse();
+    });
+    //导出数据
+    $scope.dataExport = function () {
+        restAPI.product.get({
+            ID: 'exportData'
+        }, function (data) {
+            app.toast.info("数据导出成功")
+        });
+    }
 }]);
 'use strict';
 /*global angular, $, adBoost*/
@@ -2168,19 +2253,10 @@ adBoost
 .factory('restAPI', ['$resource',
     function ($resource) {
         return {
-            heartbeat: $resource('/admin/api/hb/i'),
-            user: $resource('/admin/api/user/:ID/:OP'),
-            app: $resource('/admin/api/app/:ID/:OP'),
-            campaign: $resource('/admin/api/campaign/:ID/:OP'),
-            sys: $resource('/admin/api/sys/:ID/:OP'),
-            pub: $resource('/admin/api/pub/:ID/:OP'),
-            statistics: $resource('/admin/api/statistics/:ID/:OP'),
-            sadmin: $resource('/admin/api/sadmin/:ID/:OP'),
-            res: $resource('/admin/api/res/:ID/:OP'),
-            log: $resource('/admin/api/log/:ID/:OP'),
-            notice: $resource('/admin/api/notice/:ID/:OP'),
-            task:$resource('/admin/api/task/:ID/:OP'),
-            dashboard:$resource('/admin/api/dashboard/:ID/:OP')
+            index:$resource('/report/index/:ID/:OP'),
+            group:$resource('/report/group/:ID/:OP'),
+            product:$resource('/report/product/:ID/:OP'),
+            bomb:$resource('/report/bomb/:ID/:OP')
         };
     }
 ])
@@ -2605,7 +2681,7 @@ adBoost
 
 angular.module('genTemplates', []).run(['$templateCache', function($templateCache) {
 
-  $templateCache.put('accountManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>账号ID</td><td>姓名</td><td>项目列表</td><td>操作</td></tr><tr ng-repeat="account in accounts"><td class="width180">{{index+1}}</td><td>{{account.id}}</td><td>{{account.name}}</td><td>{{account.projectList}}</td><td><a>重置密码</a></td></tr></table></div></div>');
+  $templateCache.put('accountManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>账号ID</td><td>姓名</td><td>所属项目组</td><td class="width180">操作</td></tr><tr><td class="width180">{{$index+1}}</td><td>{{user.userId}}</td><td>{{user.username}}</td><td>{{user.projectGroupName}}</td><td class="width180"><a href data-toggle="modal" data-target="#resetAccountPwd">重置密码</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="resetAccountPwd"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">重置密码 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group"><input type="password" class="form-control" placeholder="输入原始密码" ng-model="password"></div><div class="form-group"><input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword"></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="resetAccountPwd()" data-dismiss="modal">密码重置</button></div></div></div>');
 
   $templateCache.put('dataExport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="dataExport()">导出数据</button>&nbsp;&nbsp;<select class="selectContainer"><option>筛选条件</option><option>产品名称</option><option>包名</option><option>平台</option><option>CP名称</option><option>归属项目组</option><option>时间区间</option></select></div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td class="width180">项目编号</td><td>产品名称</td><td>包名</td><td>平台</td><td>CP名称</td><td>归属项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td class="width180">{{index+1}}</td><td>{{product.name}}</td><td>{{product.pkgName}}</td><td>{{product.platform}}</td><td>{{product.CPName}}</td><td>{{product.groupName}}</td><td><a>添加</a>&nbsp;<a>修改</a>&nbsp;<a>删除</a></td></tr></table></div></div></div>');
 
@@ -2615,17 +2691,17 @@ angular.module('genTemplates', []).run(['$templateCache', function($templateCach
 
   $templateCache.put('index.html', '<div><div ui-view="topbar"></div><div ui-view="sidebar" class="lefter"></div><div ui-view="mainbody" class="righter"></div></div>');
 
-  $templateCache.put('login.html', '<form class="form-signin" novalidate><div class="loginBg"><div class="siginInPosition"><div class="panel-body signInWrap loginWrap" ng-if="!$state.includes(\'login1\')"><p class="text-center text-info" style="margin-bottom:30px;"><b>欢迎登录 ReportSystem</b></p><div class="form-group text-center"><input class="form-control" type="email" placeholder="邮箱ID" ng-model="login.logname" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip" id="username"></div><div class="form-group text-center"><input class="form-control" type="password" placeholder="账户密码" id="password" name="login.logpwd" ng-model="login.logpwd" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip" required></div><div class="row text-center"><div class="col-sm-offset-2 col-sm-8"><button class="btn btn-info form-control" type="submit" ng-click="loginSubmit()">登&nbsp;&nbsp;&nbsp;录</button></div></div><p class="text-center" style="font-size:12px;color:#666;margin-top:30px;">如果出现异常，可以清理一下缓存</p></div><div class="panel-body signInWrap registWrap" ng-if="$state.includes(\'login1\')"><p class="text-center text-info">欢迎注册</p><div class="form-group"><input class="form-control" type="email" placeholder="邮箱ID" name="loginId" ng-model="user.login_id" data-valid-name="邮箱" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip"></div><div class="form-group"><input class="form-control" type="password" placeholder="输入6-15位密码" data-valid-name="密码" ng-model="user.password" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="password" placeholder="确认密码" data-valid-name="密码" ng-model="user.password2" ui-validate="{repasswd:\'$value==user.password\'}" ui-validate-watch="\'user.password\'" gen-tooltip="validateTooltip"></div><div class="form-group"><input class="form-control" type="text" placeholder="用户昵称" data-valid-name="联系人" ng-model="user.contacts" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="text" placeholder="团队名称" data-valid-name="团队名称" ng-model="user.company_name" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="text" placeholder="输入有效电话" data-valid-name="电话" ui-validate="{pattern:checkTel}" ng-model="user.telephone" gen-tooltip="validateTooltip"></div><div class="row" ng-if="opRegDisable"><div class="col-sm-offset-2 col-sm-8"><button class="btn btn-info form-control" type="submit" ng-click="registerSubmit()">注&nbsp;&nbsp;&nbsp;册</button></div></div></div></div></div></form>');
+  $templateCache.put('login.html', '<form class="form-signin" novalidate><div class="loginBg"><div class="siginInPosition"><div class="panel-body signInWrap loginWrap" ng-if="!$state.includes(\'login1\')"><p class="text-center text-info" style="margin-bottom:30px;"><b>欢迎登录 ReportSystem</b></p><div class="form-group text-center"><input class="form-control" type="email" placeholder="邮箱ID" ng-model="login.logname" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip" id="username"></div><div class="form-group text-center"><input class="form-control" type="password" placeholder="账户密码" id="password" name="login.logpwd" ng-model="login.logpwd" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip" required></div><div class="row text-center"><div class="col-sm-offset-2 col-sm-8"><button class="btn btn-info form-control" type="submit" ng-click="login()">登&nbsp;&nbsp;&nbsp;录</button></div></div><p class="text-center" style="font-size:12px;color:#666;margin-top:30px;">如果出现异常，可以清理一下缓存</p></div><div class="panel-body signInWrap registWrap" ng-if="$state.includes(\'login1\')"><p class="text-center text-info">欢迎注册</p><div class="form-group"><input class="form-control" type="email" placeholder="邮箱ID" name="loginId" ng-model="user.login_id" data-valid-name="邮箱" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip"></div><div class="form-group"><input class="form-control" type="password" placeholder="输入6-15位密码" data-valid-name="密码" ng-model="user.password" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="password" placeholder="确认密码" data-valid-name="密码" ng-model="user.password2" ui-validate="{repasswd:\'$value==user.password\'}" ui-validate-watch="\'user.password\'" gen-tooltip="validateTooltip"></div><div class="form-group"><input class="form-control" type="text" placeholder="用户昵称" data-valid-name="联系人" ng-model="user.contacts" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="text" placeholder="团队名称" data-valid-name="团队名称" ng-model="user.company_name" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="text" placeholder="输入有效电话" data-valid-name="电话" ui-validate="{pattern:checkTel}" ng-model="user.telephone" gen-tooltip="validateTooltip"></div><div class="row" ng-if="opRegDisable"><div class="col-sm-offset-2 col-sm-8"><button class="btn btn-info form-control" type="submit" ng-click="register()">注&nbsp;&nbsp;&nbsp;册</button></div></div></div></div></div></form>');
 
   $templateCache.put('mainbody.html', '<p class="form-group"><span ng-show="$state.includes(\'config\')">配置管理> <span ng-if="$state.includes(\'config.productManagement\')">产品管理</span> <span ng-if="$state.includes(\'config.projectGroupManagement\')">项目组管理</span> <span ng-if="$state.includes(\'config.accountManagement\')">账户管理</span></span> <span ng-show="$state.includes(\'datas\')">数据管理> <span ng-if="$state.includes(\'datas.dataImport\')">数据导入</span> <span ng-if="$state.includes(\'datas.dataExport\')">数据导出</span></span></p><div ui-view></div>');
 
-  $templateCache.put('productManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td class="width180">项目编号</td><td>产品名称</td><td>包名</td><td>平台</td><td>CP名称</td><td>归属项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td class="width180">{{index+1}}</td><td>{{product.name}}</td><td>{{product.pkgName}}</td><td>{{product.platform}}</td><td>{{product.CPName}}</td><td>{{product.groupName}}</td><td><a>添加</a>&nbsp;<a>修改</a>&nbsp;<a>删除</a></td></tr></table></div></div>');
+  $templateCache.put('productManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProducts()" data-toggle="modal" data-target="#createProductModal"><span class="glyphicon glyphicon-plus"></span>添加新产品</button></div></div><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td>项目组编号</td><td>产品名称</td><td>包&nbsp;&nbsp;&nbsp;&nbsp;名</td><td>平台</td><td>CP</td><td>项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td>{{product.projectGroupId}}</td><td>{{product.name}}</td><td>{{product.packageName}}</td><td>{{product.platform}}</td><td>{{product.cp}}</td><td>{{product.projectGroupName}}</td><td><a ng-click="removeProduct(id)">删除</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="createProductModal"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">新增产品信息 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group"><input class="form-control" placeholder="项目组编号" ng-model="projectGroupId"></div><div class="form-group"><input class="form-control" placeholder="产品名称" ng-model="name"></div><div class="form-group"><input class="form-control" placeholder="包名" ng-model="packageName"></div><div class="form-group"><input class="form-control" placeholder="平台" ng-model="platform"></div><div class="form-group"><input class="form-control" placeholder="CP名称" ng-model="cp"></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="confirmCreateProducts()" data-dismiss="modal">确&nbsp;定</button></div></div></div>');
 
-  $templateCache.put('projectGroupManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">项目组编号</td><td>项目组名称</td></tr><tr ng-repeat="projectGroup in projectGroups"><td class="width180">{{index+1}}</td><td>{{projectGroup.name}}</td></tr></table></div></div>');
+  $templateCache.put('projectGroupManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProjectGroup()"><span class="glyphicon glyphicon-plus"></span>创建项目组</button>&nbsp;&nbsp; <input class="inputContainer" ng-model="projectGroup"> <span style="font-size: 12px">（可输入数字、字母、下划线）</span></div></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">项目组编号</td><td>项目组名称</td><td class="width300">用户授权</td></tr><tr ng-repeat="projectGroup in projectGroups"><td class="width180" style="line-height: 30px;">{{projectGroup.id}}</td><td style="line-height: 30px;">{{projectGroup.name}}</td><td class="width300"><select class="selectContainer"><option>选择要授权的用户</option><option ng-repeat="u in users" ng-click="setUser(u)">{{ u.username }}</option></select>&nbsp;&nbsp; <button class="btn btn-primary" ng-click="authorize(projectGroup)">授权</button></td></tr></table></div></div>');
 
   $templateCache.put('showAppBascInfo.html', '<div class="panel panel-default form-group"><div class="panel-heading cursor_p clearfix"><input type="search" ng-model="condition.query" placeholder="按app名称搜索" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}"><select class="cursor_p searchInput pull-right" ng-model="condition.linkid" ng-options="linkid.linkid as linkid.linkid for linkid in linkids"><option value>--全部分组--</option></select><select class="cursor_p searchInput pull-right" ng-model="condition.mark" style="width: 150px;color: #686868"><option value>--全部标记--</option><option value="1" style="background: red;">--红色--</option><option value="2" style="background: orange">--橙色--</option><option value="3" style="background: yellow">--黄色--</option><option value="4" style="background: green">--绿色--</option><option value="5" style="background: cyan">--青色--</option><option value="6" style="background: blue">--蓝色--</option><option value="7" style="background: purple">--紫色--</option></select></div><div class="panel-body" ng-if="apps.length !== 0"><table class="table table-bordered table-hover"><tr class="tableTitle listCont"><td>ICON</td><td>应用名称</td><td>应用包名/iTunesid</td><td>APPKEY</td><td>应用组</td></tr><tr ng-repeat="app in apps" class="listCont"><td class="cursor_p"><img ngf-src="app.icon||\'img/1.png\'"></td><td ng-if="app.mark === undefined || app.mark === null || app.mark === \'0\'">{{app.name}}</td><td ng-if="app.mark !== undefined && app.mark !== null && app.mark !== \'0\'" class="mark-{{app.mark}}">{{app.name}}</td><td>{{app.pkgname}}</td><td>{{app.appkey}}</td><td>{{app.linkid}}</td></tr></table></div></div><nav class="text-right" gen-pagination="pagination"></nav><p class="nothing" ng-if="apps.length == 0">暂无数据信息</p>');
 
-  $templateCache.put('sidebar.html', '<nav role="sidebar" class="col-sm-12"><div class="panel-group sidebar"><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#userCentrl"><p class="panel-title"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;配置管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'config\')}" id="userCentrl"><div class="panel-body"><p ui-sref="config.productManagement" ng-class="{sidebarBcg : $state.includes(\'config.productManagement\')}"><span class="glyphicon glyphicon-inbox"></span>&nbsp;&nbsp;产品管理</p><p ui-sref="config.projectGroupManagement" ng-class="{sidebarBcg : $state.includes(\'config.projectGroupManagement\')}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;项目组管理</p><p ui-sref="config.accountManagement" ng-class="{sidebarBcg : $state.includes(\'config.accountManagement\')}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户管理</p></div></div></div><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dcCentrl"><p class="panel-title"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;数据管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'datas\')}" id="dcCentrl"><div class="panel-body"><p ui-sref="datas.dataImport" ng-class="{sidebarBcg : $state.includes(\'datas.dataImport\')}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;数据导入</p><p ui-sref="datas.dataExport" ng-class="{sidebarBcg : $state.includes(\'datas.dataExport\')}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;数据导出</p></div></div></div></div></nav>');
+  $templateCache.put('sidebar.html', '<nav role="sidebar" class="col-sm-12"><div class="panel-group sidebar"><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#userCentrl"><p class="panel-title"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;配置管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'config\')}" id="userCentrl"><div class="panel-body"><p ui-sref="config.projectGroupManagement" ng-class="{sidebarBcg : $state.includes(\'config.projectGroupManagement\')}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;项目组管理</p><p ui-sref="config.productManagement" ng-class="{sidebarBcg : $state.includes(\'config.productManagement\')}"><span class="glyphicon glyphicon-inbox"></span>&nbsp;&nbsp;产品管理</p><p ui-sref="config.accountManagement" ng-class="{sidebarBcg : $state.includes(\'config.accountManagement\')}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户管理</p></div></div></div><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dcCentrl"><p class="panel-title"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;数据管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'datas\')}" id="dcCentrl"><div class="panel-body"><p ui-sref="datas.dataImport" ng-class="{sidebarBcg : $state.includes(\'datas.dataImport\')}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;数据导入</p><p ui-sref="datas.dataExport" ng-class="{sidebarBcg : $state.includes(\'datas.dataExport\')}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;数据导出</p></div></div></div></div></nav>');
 
   $templateCache.put('topbar.html', '<nav class="header form-group" role="navigation"><div class="headerContent"><span ng-if="isSubAccount">[{{subAccountCompanyName}}]-{{user.company_name}}</span>&nbsp;&nbsp; <a ui-sref="userseting">用户设置</a>&nbsp;&nbsp; <a href ng-click="logout()">退出</a></div></nav>');
 

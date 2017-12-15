@@ -1,14 +1,28 @@
 <div class="panel panel-default">
-    <div class="panel-heading"></div>
+    <div class="panel-heading">
+        <div class="panel-title">
+            <button class="btn btn-primary" ng-click="createProjectGroup()"><span class="glyphicon glyphicon-plus"></span>创建项目组</button>&nbsp;&nbsp;
+            <input class="inputContainer" ng-model="projectGroup">
+            <span style="font-size: 12px">（可输入数字、字母、下划线）</span>
+        </div>
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <tr>
                 <td class="width180">项目组编号</td>
                 <td>项目组名称</td>
+                <td class="width300">用户授权</td>
             </tr>
             <tr ng-repeat="projectGroup in projectGroups">
-                <td class="width180">{{index+1}}</td>
-                <td>{{projectGroup.name}}</td>
+                <td class="width180"   style="line-height: 30px;">{{projectGroup.id}}</td>
+                <td   style="line-height: 30px;">{{projectGroup.name}}</td>
+                <td  class="width300">
+                    <select class="selectContainer">
+                        <option>选择要授权的用户</option>
+                        <option ng-repeat="u in users" ng-click="setUser(u)">{{ u.username }}</option>
+                    </select>&nbsp;&nbsp;
+                    <button class="btn btn-primary" ng-click="authorize(projectGroup)">授权</button>
+                </td>
             </tr>
         </table>
     </div>

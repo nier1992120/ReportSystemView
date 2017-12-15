@@ -155,7 +155,7 @@ gulp.task('live-reload', function () {
 });
 /********************** live reload end **********************/
 
-gulp.task('default', gulpSequence('clean', ['custom-css', 'custom-fonts', 'custom-lib', 'custom-app', 'custom-images', 'custom-mine'], "custom-index", 'web-server'));
+gulp.task('default', gulpSequence('clean', ['custom-css', 'custom-fonts', 'custom-lib', 'custom-app', 'custom-images', 'custom-mine'], "custom-index"));
 
 // 深海炸弹，一运行电脑就会爆炸
-// gulp.task('bomb', gulpSequence('default', 'web-server', 'live-reload', 'watch'));
+gulp.task('bomb', gulpSequence('default', 'web-server', 'live-reload', 'watch'));

@@ -5,19 +5,10 @@ adBoost
 .factory('restAPI', ['$resource',
     function ($resource) {
         return {
-            heartbeat: $resource('/admin/api/hb/i'),
-            user: $resource('/admin/api/user/:ID/:OP'),
-            app: $resource('/admin/api/app/:ID/:OP'),
-            campaign: $resource('/admin/api/campaign/:ID/:OP'),
-            sys: $resource('/admin/api/sys/:ID/:OP'),
-            pub: $resource('/admin/api/pub/:ID/:OP'),
-            statistics: $resource('/admin/api/statistics/:ID/:OP'),
-            sadmin: $resource('/admin/api/sadmin/:ID/:OP'),
-            res: $resource('/admin/api/res/:ID/:OP'),
-            log: $resource('/admin/api/log/:ID/:OP'),
-            notice: $resource('/admin/api/notice/:ID/:OP'),
-            task:$resource('/admin/api/task/:ID/:OP'),
-            dashboard:$resource('/admin/api/dashboard/:ID/:OP')
+            index:$resource('/report/index/:ID/:OP'),
+            group:$resource('/report/group/:ID/:OP'),
+            product:$resource('/report/product/:ID/:OP'),
+            bomb:$resource('/report/bomb/:ID/:OP')
         };
     }
 ])
