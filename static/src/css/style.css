@@ -67,13 +67,18 @@ button{
     color:#fff!important;
 }
 
-.selectContainer,.inputContainer  {
+.selectContainer,.inputContainer,.searchContainer {
      width: 200px;
      height: 34px;
      border: 1px solid #ccc;
      text-indent: 10px;
 }
-
+.fileUploadContainer {
+    text-indent: 5px;
+    vertical-align: middle;
+    height:34px;
+    padding-top: 5px;
+}
 .header{
     height:35px;
     line-height: 35px;
@@ -96,4 +101,7 @@ button{
 }
 .width300 {
     width: 300px;
+}
+.lineHeight35 {
+    line-height: 35px;
 }

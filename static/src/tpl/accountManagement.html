@@ -4,17 +4,14 @@
         <table class="table table-bordered table-hover">
             <tr>
                 <td class="width180">序号</td>
-                <td>账号ID</td>
                 <td>姓名</td>
                 <td>所属项目组</td>
                 <td class="width180">操作</td>
             </tr>
-            <!-- ng-repeat="user in users"-->
-            <tr>
+            <tr ng-repeat="user in users">
                 <td class="width180">{{$index+1}}</td>
-                <td>{{user.userId}}</td>
                 <td>{{user.username}}</td>
-                <td>{{user.projectGroupName}}</td>
+                <td><span ng-repeat="g in user.groups">{{g.name}}、</span></td>
                 <td class="width180"><a href="" data-toggle="modal" data-target="#resetAccountPwd">重置密码</a></td>
             </tr>
         </table>
@@ -27,11 +24,13 @@
             <h4 class="modal-title">重置密码  <a class="close" data-dismiss="modal">&times;</a></h4>
         </div>
         <div class="modal-body">
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="输入原始密码" ng-model="password">
+            <div class="form-group clearfix">
+                <label class="col-md-2 lineHeight35">原始密码:</label>
+                <div class="col-md-10"><input type="password" class="form-control" placeholder="输入原始密码" ng-model="password"></div>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword">
+            <div class="form-group clearfix">
+                <label class="col-md-2 lineHeight35" style="line-height: 35px;">重置密码:</label>
+                <div class="col-md-10"><input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword"></div>
             </div>
         </div>
         <div class="modal-footer">

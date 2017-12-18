@@ -59,25 +59,11 @@ gulp.task('custom-lib', function () {
         'static/bower_components/angular-resource/angular-resource.js',
         'static/bower_components/angular-ui-router/release/angular-ui-router.js',
         'static/bower_components/angular-i18n/angular-locale_zh-cn.js',
-        'static/bower_components/angular-ui-utils/validate.js',
         'static/bower_components/ng-file-upload/ng-file-upload.js',
         'static/bower_components/toastr/toastr.js',
-        'static/bower_components/crypto-js/crypto-js.js',
         'static/bower_components/utf8/utf8.js',
         'static/bower_components/store2/dist/store2.js',
-        "static/bower_components/ng-jsoneditor/ng-jsoneditor.js",
-        // 'static/bower_components/json-edit-module/ng-jsoneditor.js',
-        // 'static/bower_components/json-edit-module/jsoneditor.js',
-        // 'static/bower_components/json-edit-module/angular-file-input.js',
-
-        'static/bower_components/jsonkit/jsonkit.js',
         'static/bower_components/bootstrap-switch/dist/js/bootstrap-switch.js',
-        'static/bower_components/momentjs/moment.js',
-        // 'static/bower_components/bootstrap-daterangepicker/daterangepicker.js',
-        // 'static/bower_components/angular-modal-service/dst/angular-modal-servicse.js',
-        'static/src/js/lib/sanitize.js',
-        'static/src/js/lib/highcharts-ng.js',
-        'static/src/js/lib/highcharts.js'
     ])
         .pipe(concat('lib.js'))
         .pipe(gulp.dest(paths.scripts));

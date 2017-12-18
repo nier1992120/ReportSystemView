@@ -1,8 +1,7 @@
 
 <nav class="header form-group" role="navigation">
     <div class="headerContent">
-        <span ng-if="isSubAccount">[{{subAccountCompanyName}}]-{{user.company_name}}</span>&nbsp;&nbsp;
-        <a ui-sref="userseting">用户设置</a>&nbsp;&nbsp;
-        <a href="" ng-click="logout()">退出</a>
+        <span>{{user.username}}</span>&nbsp;&nbsp;
+        <a href="" ng-click="userLogOut()">退出</a>
     </div>
 </nav>

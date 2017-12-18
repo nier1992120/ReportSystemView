@@ -19,7 +19,7 @@
                 <td  class="width300">
                     <select class="selectContainer">
                         <option>选择要授权的用户</option>
-                        <option ng-repeat="u in users" ng-click="setUser(u)">{{ u.username }}</option>
+                        <option ng-repeat="u in users"  ng-click="setUser(u)">{{ u.username }}</option>
                     </select>&nbsp;&nbsp;
                     <button class="btn btn-primary" ng-click="authorize(projectGroup)">授权</button>
                 </td>

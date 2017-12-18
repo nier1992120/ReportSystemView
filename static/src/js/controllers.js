@@ -26,9 +26,10 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         });
     };
     //用户登出
-    $scope.logOut = function () {
-        restAPI.index.get({
-            ID: 'logOut'
+    $scope.userLogOut = function () {
+        console.log("我要登出");
+        restAPI.index.save({
+            ID: 'logout'
         }, function (data) {
             app.$state.go('login');
         });
@@ -64,14 +65,16 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     }, function (data) {
         $scope.users = data.data;
     });
+
     //选择用户
     $scope.setUser = function(u){
-        console.log(u);
+        console.log("aa");
         $scope.user = u;
     };
     //把用户添加到组里
     $scope.authorize = function (g) {
-        console.log($scope.user);
+        console.log(g.id);
+        console.log($scope.user.id);
         restAPI.group.get({
             ID: 'authorize',
             userId:  $scope.user.id,
@@ -85,7 +88,6 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     $scope.products = [];
     //创建产品
     $scope.confirmCreateProducts = function () {
-        console.log("a");
         $scope.name = "";
         restAPI.product.save({
             ID: 'create'
@@ -97,7 +99,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             platform: parseInt($scope.platform),
             cp: $scope.cp
         }, function (data) {
-            $("#createProductModal").modal('hide');
+
         });
     };
     //获取产品基本信息
@@ -107,13 +109,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         $scope.products = data.data.reverse();
     });
     //删除产品信息
-    $scope.remove = function (id) {
-        restAPI.product.save({
+    $scope.removeProduct = function (p) {
+        restAPI.product.get({
             ID: 'remove'
-        }, id, function (data) {
-            $scope.products = data.data;
+        },function (data) {
+            app.toast.info("删除成功!");
         });
-        app.toast.info("删除成功!");
     }
 
 }]).controller('accountManagementCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
@@ -124,12 +125,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     }, {
         userId: $scope.userId,
         username: $scope.username,
-        projectGroupName: $scope.projectGroupName
+        groups: $scope.groups
     }, function (data) {
         $scope.users = data.data
     });
     //重置用户密码
-    $scope.resetAccountPwd = function (userId) {
+    $scope.resetAccountPwd = function () {
         restAPI.index.get({
             ID: 'alterUserPwd'
         }, {
@@ -140,30 +141,31 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         });
     }
 
-}]).controller('dataImportCtrl', ["app", "$scope", "$state", function (app, $scope, $state) {
-    $scope.dataImport = function () {
-        restAPI.product.get({
-            ID: 'importData'
-        }, function (data) {
+}]).controller('dataImportCtrl', ["app", "$scope", "$state","restAPI", function (app, $scope, $state,restAPI) {
+    //$scope.dataImport = function () {
+    //    restAPI.product.get({
+    //        ID: 'importData'
+    //    }, function (data) {
+    //        app.toast.info("数据导入成功!");
+    //    });
+    //};
+    $scope.fileUploads = [];
+    //导入的数据信息列表
+    restAPI.product.get({
+        ID: 'listRecords'
+    }, function (data) {
+        $scope.fileUploads = data.data;
+    });
 
-        });
-        app.toast.info("数据导入成功!");
-
-    }
 }]).controller('dataExportCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
-    $scope.products = [];
+    $scope.exportDatas = [];
+   // $scope.dataDay = dateFormat('')
     //获取产品基本信息
     restAPI.product.get({
-        ID: 'list'
+        ID: 'exportDataByDay',
+        strData: $scope.dataDay
     }, function (data) {
-        $scope.products = data.data.reverse();
+        $scope.productDatas = data.data;
     });
-    //导出数据
-    $scope.dataExport = function () {
-        restAPI.product.get({
-            ID: 'exportData'
-        }, function (data) {
-            app.toast.info("数据导出成功")
-        });
-    }
+
 }]);

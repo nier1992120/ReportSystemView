@@ -407,9 +407,10 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         });
     };
     //用户登出
-    $scope.logOut = function () {
-        restAPI.index.get({
-            ID: 'logOut'
+    $scope.userLogOut = function () {
+        console.log("我要登出");
+        restAPI.index.save({
+            ID: 'logout'
         }, function (data) {
             app.$state.go('login');
         });
@@ -445,14 +446,16 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     }, function (data) {
         $scope.users = data.data;
     });
+
     //选择用户
     $scope.setUser = function(u){
-        console.log(u);
+        console.log("aa");
         $scope.user = u;
     };
     //把用户添加到组里
     $scope.authorize = function (g) {
-        console.log($scope.user);
+        console.log(g.id);
+        console.log($scope.user.id);
         restAPI.group.get({
             ID: 'authorize',
             userId:  $scope.user.id,
@@ -466,7 +469,6 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     $scope.products = [];
     //创建产品
     $scope.confirmCreateProducts = function () {
-        console.log("a");
         $scope.name = "";
         restAPI.product.save({
             ID: 'create'
@@ -478,7 +480,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
             platform: parseInt($scope.platform),
             cp: $scope.cp
         }, function (data) {
-            $("#createProductModal").modal('hide');
+
         });
     };
     //获取产品基本信息
@@ -488,13 +490,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         $scope.products = data.data.reverse();
     });
     //删除产品信息
-    $scope.remove = function (id) {
-        restAPI.product.save({
+    $scope.removeProduct = function (p) {
+        restAPI.product.get({
             ID: 'remove'
-        }, id, function (data) {
-            $scope.products = data.data;
+        },function (data) {
+            app.toast.info("删除成功!");
         });
-        app.toast.info("删除成功!");
     }
 
 }]).controller('accountManagementCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
@@ -505,12 +506,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     }, {
         userId: $scope.userId,
         username: $scope.username,
-        projectGroupName: $scope.projectGroupName
+        groups: $scope.groups
     }, function (data) {
         $scope.users = data.data
     });
     //重置用户密码
-    $scope.resetAccountPwd = function (userId) {
+    $scope.resetAccountPwd = function () {
         restAPI.index.get({
             ID: 'alterUserPwd'
         }, {
@@ -521,774 +522,34 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         });
     }
 
-}]).controller('dataImportCtrl', ["app", "$scope", "$state", function (app, $scope, $state) {
-    $scope.dataImport = function () {
-        restAPI.product.get({
-            ID: 'importData'
-        }, function (data) {
+}]).controller('dataImportCtrl', ["app", "$scope", "$state","restAPI", function (app, $scope, $state,restAPI) {
+    //$scope.dataImport = function () {
+    //    restAPI.product.get({
+    //        ID: 'importData'
+    //    }, function (data) {
+    //        app.toast.info("数据导入成功!");
+    //    });
+    //};
+    $scope.fileUploads = [];
+    //导入的数据信息列表
+    restAPI.product.get({
+        ID: 'listRecords'
+    }, function (data) {
+        $scope.fileUploads = data.data;
+    });
 
-        });
-        app.toast.info("数据导入成功!");
-
-    }
 }]).controller('dataExportCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
-    $scope.products = [];
+    $scope.exportDatas = [];
+   // $scope.dataDay = dateFormat('')
     //获取产品基本信息
     restAPI.product.get({
-        ID: 'list'
+        ID: 'exportDataByDay',
+        strData: $scope.dataDay
     }, function (data) {
-        $scope.products = data.data.reverse();
+        $scope.productDatas = data.data;
     });
-    //导出数据
-    $scope.dataExport = function () {
-        restAPI.product.get({
-            ID: 'exportData'
-        }, function (data) {
-            app.toast.info("数据导出成功")
-        });
-    }
+
 }]);
-'use strict';
-/*global angular, $, adBoost*/
-
-adBoost
-    .directive('genTabClick', function () {
-        return {
-            link: function (scope, element, attr) {
-                var className = attr.genTabClick;
-                element.bind('click', function () {
-                    element.parent().children().removeClass(className);
-                    element.addClass(className);
-                });
-            }
-        };
-    })
-    .directive('changeStyle', function () {
-        return {
-            scope: '=',
-            link: function (scope, element) {
-                element.bind('click', function () {
-                    element.addClass("border_b");
-                    element.siblings().removeClass('border_b');
-                });
-            }
-        };
-    })
-    .directive('genIconCheckbox', function (app) {
-        return {
-            scope: '=',
-            link: function (scope, element, attr) {
-                var type = attr.genIconCheckbox;
-                element.bind('click', function () {
-                    var imgSrc = element.attr('src');
-                    var pattern = new RegExp('_checked', 'g');
-                    if (!pattern.test(imgSrc)) {
-                        element.attr('src', imgSrc.replace(type + '.png', type + '_checked.png'));
-                        element.parent().addClass('bg_checked');
-                        element.parent().siblings().removeClass('bg_checked');
-                        var otherImgs = element.parent().siblings().children('img');
-
-                        angular.forEach(otherImgs, function (o) {
-                            $(o).attr('src', $(o).attr('src').replace(/\/(\w+)_checked/, '\/$1'));
-                        });
-                        element.next('input').attr('checked', 'true');
-                        scope.$apply(function () {
-                            if (scope.newApp) {
-                                scope.newApp.platform = type === 'android' ? 1 : (type === 'ios' ? 2 : (type === 'windows' ? 3 : (type === 'h5' ? 5 : 1)));
-                            } else if (scope.group) {
-                                scope.group.platform = type === 'android' ? 1 : (type === 'ios' ? 2 : (type === 'windows' ? 3 : (type === 'h5' ? 5 : 1)));
-                            } else if (scope.syn) {
-                                scope.syn.platform = type === 'android' ? 1 : (type === 'ios' ? 2 : (type === 'windows' ? 3 : (type === 'h5' ? 5 : 1)));
-                            }
-                        });
-                    }
-                });
-            }
-        };
-    })
-    .directive('genIconLayout', function () {
-        return {
-            scope: '=',
-            link: function (scope, element, attr) {
-                var type = attr.genIconLayout;
-
-                element.bind('click', function () {
-                    var imgSrc = element.attr('src');
-                    var pattern = new RegExp('_checked', 'g');
-                    if (!pattern.test(imgSrc)) {
-                        element.attr('src', imgSrc.replace(type + '.png', type + '_checked.png'));
-                        element.parent().addClass('bg_checked');
-                        element.parent().siblings().removeClass('bg_checked');
-                        var otherImgs = element.parent().siblings().children('img');
-                        angular.forEach(otherImgs, function (o) {
-                            $(o).attr('src', $(o).attr('src').replace(/\/(\w+)_checked/, '\/$1'));
-                        });
-                        element.next('input').attr('checked', 'true');
-                        scope.newApp.layout = type === 'pic_vartical' ? 1 : 2;
-                    }
-                });
-            }
-        };
-    })
-    .directive('genPagination', function () {
-        // <div gen-pagination="options"></div>
-        // HTML/CSS修改于Bootstrap框架
-        // options = {
-        //     path: 'pathUrl',
-        //     sizePerPage: [25, 50, 100],
-        //     pageSize: 25,
-        //     pageIndex: 1,
-        //     total: 10
-        // };
-        return {
-            scope: true,
-            templateUrl: 'gen-pagination.html',
-            link: function (scope, element, attr) {
-                scope.$watchCollection(attr.genPagination, function (value) {
-                    if (!angular.isObject(value)) {
-                        return;
-                    }
-                    var pageNumber = 1,
-                        showPages = [],
-                        lastPage = Math.ceil(value.totalRow / value.pageSize) || 1;
-
-                    pageNumber = value.pageNumber >= 1 ? value.pageNumber : 1;
-                    pageNumber = pageNumber <= lastPage ? pageNumber : lastPage;
-
-                    //从pageNumber开始往前排,直到1
-                    showPages[0] = pageNumber;
-                    if (pageNumber <= 6) {
-                        while (showPages[0] > 1) {
-                            showPages.unshift(showPages[0] - 1);
-                        }
-                    } else {
-                        showPages.unshift(showPages[0] - 1);//unshift向数组开头添加一个元素,并返回新的数组长度
-                        showPages.unshift(showPages[0] - 1);
-                        showPages.unshift('…');
-                        showPages.unshift(2);
-                        showPages.unshift(1);
-                    }
-
-                    if (lastPage - pageNumber <= 5) {
-                        while (showPages[showPages.length - 1] < lastPage) {
-                            showPages.push(showPages[showPages.length - 1] + 1);
-                        }
-                    } else {
-                        showPages.push(showPages[showPages.length - 1] + 1);
-                        showPages.push(showPages[showPages.length - 1] + 1);
-                        showPages.push('...');
-                        showPages.push(lastPage - 1);
-                        showPages.push(lastPage);
-                    }
-
-                    scope.prev = pageNumber > 1 ? pageNumber - 1 : 0;
-                    scope.next = pageNumber < lastPage ? pageNumber + 1 : 0;
-                    scope.total = value.totalRow;
-                    scope.pageNumber = pageNumber;
-                    scope.showPages = showPages;
-                    scope.pageSize = value.pageSize;
-                    scope.perPages = value.sizePerPage || [15, 30, 50];
-                    scope.path = value.path && value.path + '?p=';
-                });
-                scope.paginationTo = function (p, s) {
-                    if (!scope.path && p > 0) {
-                        s = s || scope.pageSize;
-                        scope.$emit('genPagination', p, s);
-                    }
-                };
-            }
-        };
-    })
-    .directive('genModal', ['$timeout',
-        function ($timeout) {
-            //<div gen-modal="msgModal">[body]</div>
-            // scope.msgModal = {
-            //     id: 'msg-modal',    [option]
-            //     title: 'message title',    [option]
-            //     width: 640,    [option]
-            //     confirmBtn: 'confirm button name',    [option]
-            //     confirmFn: function () {},    [option]
-            //     cancelBtn: 'cancel button name',    [option]
-            //     cancelFn: function () {}    [option]
-            //     nextBtn: 'next button name',    [option]
-            //     nextFn: function () {}    [option]
-            // };
-            var uniqueModalId = 0;
-            return {
-                scope: true,
-                transclude: true,
-                templateUrl: 'gen-modal.html',
-                link: function (scope, element, attr) {
-                    var modalStatus,
-                        modalElement = element.children(),
-                        list = ['Next', 'Confirm', 'Cancel'],
-                        options = scope.$eval(attr.genModal),
-                        isFunction = angular.isFunction;
-
-                    function wrap(fn) {
-                        return function () {
-                            var value = isFunction(fn) ? fn() : true;
-                            showModal(!value);
-                        };
-                    }
-
-                    function resize() {
-                        var jqWin = $(window),
-                            element = modalElement.children(),
-                            top = (jqWin.height() - element.outerHeight()) * 0.182,
-                            css = {};
-
-                        css.marginTop = top > 0 ? top : 0;
-                        element.css(css);
-                    }
-
-                    function showModal(value) {
-                        modalElement.modal(value ? 'show' : 'hide');
-                        if (value) {
-                            $timeout(resize);
-                        }
-                    }
-
-                    options.cancelFn = options.cancelFn || true;
-                    options.backdrop = options.backdrop || true;
-                    options.show = options.show || false;
-                    options.modal = showModal;
-
-                    scope.$watch(function () {
-                        return options;
-                    }, function (value) {
-                        angular.extend(scope, value);
-                    }, true);
-
-                    scope.id = scope.id || attr.genModal + '-' + (uniqueModalId++);
-                    angular.forEach(list, function (name) {
-                        var x = name.toLowerCase(),
-                            cb = x + 'Cb',
-                            fn = x + 'Fn',
-                            btn = x + 'Btn';
-                        scope[cb] = options[fn] && wrap(options[fn]);
-                        scope[btn] = options[btn] || (options[fn] && name);
-                    });
-
-                    modalElement.on('shown.bs.modal', function (event) {
-                        modalStatus = true;
-                    });
-                    modalElement.on('hidden.bs.modal', function (event) {
-                        options.cancelFn();
-                        modalStatus = false;
-                    });
-                    modalElement.modal(options);
-                }
-            };
-        }
-    ])
-    .directive('genTooltip', ['$timeout', 'isVisible',
-        function ($timeout, isVisible) {
-            return {
-                require: '?ngModel',
-                link: function (scope, element, attr, ctrl) {
-                    var enable = false,
-                        option = scope.$eval(attr.genTooltip) || {};
-
-                    function invalidMsg(invalid) {
-                        ctrl.validate = enable && option.validate && isVisible(element);
-                        if (ctrl.validate) {
-                            var title = (attr.validName && attr.validName + ' ') || '';
-                            if (invalid && option.validateMsg) {
-                                angular.forEach(ctrl.$error, function (value, key) {
-                                    title += (value && option.validateMsg[key] && option.validateMsg[key] + ', ') || '';
-                                });
-                            }
-                            title = title.slice(0, -2) || attr.originalTitle || attr.title;
-                            attr.$set('dataOriginalTitle', title ? title : '');
-                            showTooltip(!!invalid);
-                        } else {
-                            showTooltip(false);
-                        }
-                    }
-
-                    function validateFn(value) {
-                        $timeout(function () {
-                            invalidMsg(ctrl.$invalid);
-                        });
-                        return value;
-                    }
-
-                    function initTooltip() {
-                        element.off('.tooltip').removeData('bs.tooltip');
-                        // element.tooltip(option);
-                    }
-
-                    function showTooltip(show) {
-                        if (element.hasClass('invalid-error') !== show) {
-                            element[show ? 'addClass' : 'removeClass']('invalid-error');
-                            // element.tooltip(show ? 'show' : 'hide');
-                        }
-                    }
-
-                    if (option.container === 'inner') {
-                        option.container = element;
-                    } else if (option.container === 'ngView') {
-                        option.container = element.parents('.ng-view')[0] || element.parents('[ng-view]')[0];
-                    }
-                    // use for AngularJS validation
-                    if (option.validate) {
-                        option.template = '<div class="tooltip validate-tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>';
-                        option.trigger = 'manual';
-                        option.placement = option.placement || 'bottom';
-                        if (ctrl) {
-                            ctrl.$formatters.push(validateFn);
-                            ctrl.$parsers.push(validateFn);
-                            ctrl.singleValidate = function () {
-                                enable = true;
-                                if (this) {
-                                    invalidMsg(this.$invalid);
-                                }
-                                //enable = !enable;
-                            };
-                        } else {
-                            scope.$watch(function () {
-                                return attr.originalTitle || attr.dataOriginalTitle;
-                            }, showTooltip);
-                        }
-                        element.bind('focus', function () {
-                            element.trigger('input');
-                            element.trigger('change');
-                        });
-                        scope.$on('genTooltipValidate', function (event, collect, turnoff) {
-                            enable = !turnoff;
-                            if (ctrl) {
-                                if (angular.isArray(collect)) {
-                                    collect.push(ctrl);
-                                }
-                                invalidMsg(ctrl.$invalid);
-                            }
-                        });
-                    } else if (option.click) {
-                        // option.click will be 'show','hide','toggle', or 'destroy'
-                        element.bind('click', function () {
-                            // element.tooltip(option.click);
-                        });
-                    }
-                    element.bind('hidden.bs.tooltip', initTooltip);
-                    initTooltip();
-                }
-            };
-        }
-    ])
-    .directive('genMoving', ['anchorScroll',
-        function (anchorScroll) {
-            return {
-                link: function (scope, element, attr) {
-                    var option = scope.$eval(attr.genMoving);
-
-                    function resetTextarea() {
-                        var textarea = element.find('textarea');
-                        if (textarea.is(textarea)) {
-                            textarea.css({
-                                height: 'auto',
-                                width: '100%'
-                            });
-                        }
-                    }
-
-                    option.appendTo = function (selector) {
-                        element.appendTo($(selector));
-                        resetTextarea();
-                    };
-                    option.prependTo = function (selector) {
-                        element.prependTo($(selector));
-                        resetTextarea();
-                    };
-                    option.childrenOf = function (selector) {
-                        return $(selector).find(element).is(element);
-                    };
-                    option.scrollIntoView = function (top, height) {
-                        anchorScroll.toView(element, top, height);
-                    };
-                    option.inView = function () {
-                        return anchorScroll.inView(element);
-                    };
-                }
-            };
-        }
-    ])
-    .directive('genSrc', ['isVisible',
-        function (isVisible) {
-            return {
-                priority: 99,
-                link: function (scope, element, attr) {
-                    attr.$observe('genSrc', function (value) {
-                        if (value && isVisible(element)) {
-                            var img = new Image();
-                            img.onload = function () {
-                                attr.$set('src', value);
-                            };
-                            img.src = value;
-                        }
-                    });
-                }
-            };
-        }
-    ])
-    .directive('genUploader', ['$fileUploader', 'app',
-        function ($fileUploader, app) {
-            // <div gen-pagination="options"></div>
-            // HTML/CSS修改于Bootstrap框架
-            // options = {
-            //     path: 'pathUrl',
-            //     sizePerPage: [25, 50, 100],
-            //     pageSize: 25,
-            //     pageIndex: 1,
-            //     total: 10
-            // };
-            return {
-                scope: true,
-                templateUrl: 'gen-uploader.html',
-                link: function (scope, element, attr) {
-                    var options = scope.$eval(attr.genUploader);
-                    var fileType = options.fileType;
-                    scope.triggerUpload = function () {
-                        setTimeout(function () {
-                            element.find('.upload-input').click();
-                        });
-                    };
-                    scope.clickImage = options.clickImage || angular.noop;
-                    var uploaded = scope.uploaded = [];
-
-                    // create a uploader with options
-                    var uploader = scope.uploader = $fileUploader.create({
-                        scope: options.scope || scope,
-                        url: options.url,
-                        formData: [{
-                            policy: options.policy,
-                            signature: options.signature
-                        }],
-                        filters: [
-                            function (file) {
-                                var judge = true,
-                                    parts = file.name.split('.');
-                                parts = parts.length > 1 ? parts.slice(-1)[0] : '';
-                                if (!parts || options.allowFileType.indexOf(parts.toLowerCase()) < 0) {
-                                    judge = false;
-                                    app.toast.warning(app.locale.UPLOAD.fileType);
-                                }
-                                return judge;
-                            }
-                        ]
-                    });
-
-                    uploader.bind('complete', function (event, xhr, item) {
-                        var response = app.parseJSON(xhr.response) || {};
-                        if (~[200, 201].indexOf(xhr.status)) {
-                            var file = app.union(item.file, response);
-                            file.url = options.baseUrl + file.url;
-                            uploaded.push(file);
-                            item.remove();
-                        } else {
-                            item.progress = 0;
-                            app.toast.warning(response.message, response.code);
-                        }
-                    });
-                }
-            };
-        }
-    ]).directive('bsSwitch', function ($parse, $timeout) {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function link(scope, element, attrs, controller) {
-            var isInit = false;
-
-            /**
-             * Return the true value for this specific checkbox.
-             * @returns {Object} representing the true view value; if undefined, returns true.
-             */
-            var getTrueValue = function () {
-                if (attrs.type === 'radio') {
-                    return attrs.value || $parse(attrs.ngValue)(scope) || true;
-                }
-                var trueValue = ($parse(attrs.ngTrueValue)(scope));
-                if (angular.isUndefined(trueValue)) {
-                    trueValue = true;
-                }
-                return trueValue;
-            };
-
-            /**
-             * Get a boolean value from a boolean-like string, evaluating it on the current scope.
-             * @param value The input object
-             * @returns {boolean} A boolean value
-             */
-            var getBooleanFromString = function (value) {
-                return scope.$eval(value) === true;
-            };
-
-            /**
-             * Get a boolean value from a boolean-like string, defaulting to true if undefined.
-             * @param value The input object
-             * @returns {boolean} A boolean value
-             */
-            var getBooleanFromStringDefTrue = function (value) {
-                return (value === true || value === 'true' || !value);
-            };
-
-            /**
-             * Returns the value if it is truthy, or undefined.
-             *
-             * @param value The value to check.
-             * @returns the original value if it is truthy, {@link undefined} otherwise.
-             */
-            var getValueOrUndefined = function (value) {
-                return (value ? value : undefined);
-            };
-
-            /**
-             * Get the value of the angular-bound attribute, given its name.
-             * The returned value may or may not equal the attribute value, as it may be transformed by a function.
-             *
-             * @param attrName  The angular-bound attribute name to get the value for
-             * @returns {*}     The attribute value
-             */
-            var getSwitchAttrValue = function (attrName) {
-                var map = {
-                    'switchRadioOff': getBooleanFromStringDefTrue,
-                    'switchActive': function (value) {
-                        return !getBooleanFromStringDefTrue(value);
-                    },
-                    'switchAnimate': getBooleanFromStringDefTrue,
-                    'switchLabel': function (value) {
-                        return value ? value : '&nbsp;';
-                    },
-                    'switchIcon': function (value) {
-                        if (value) {
-                            return '<span class=\'' + value + '\'></span>';
-                        }
-                    },
-                    'switchWrapper': function (value) {
-                        return value || 'wrapper';
-                    },
-                    'switchInverse': getBooleanFromString,
-                    'switchReadonly': getBooleanFromString
-                };
-                var transFn = map[attrName] || getValueOrUndefined;
-                return transFn(attrs[attrName]);
-            };
-
-            /**
-             * Set a bootstrapSwitch parameter according to the angular-bound attribute.
-             * The parameter will be changed only if the switch has already been initialized
-             * (to avoid creating it before the model is ready).
-             *
-             * @param element   The switch to apply the parameter modification to
-             * @param attr      The name of the switch parameter
-             * @param modelAttr The name of the angular-bound parameter
-             */
-            var setSwitchParamMaybe = function (element, attr, modelAttr) {
-                if (!isInit) {
-                    return;
-                }
-                var newValue = getSwitchAttrValue(modelAttr);
-                element.bootstrapSwitch(attr, newValue);
-            };
-
-            var setActive = function () {
-                setSwitchParamMaybe(element, 'disabled', 'switchActive');
-            };
-
-            /**
-             * If the directive has not been initialized yet, do so.
-             */
-            var initMaybe = function () {
-                // if it's the first initialization
-                if (!isInit) {
-                    var viewValue = (controller.$modelValue === getTrueValue());
-                    isInit = !isInit;
-                    // Bootstrap the switch plugin
-                    element.bootstrapSwitch({
-                        radioAllOff: getSwitchAttrValue('switchRadioOff'),
-                        disabled: getSwitchAttrValue('switchActive'),
-                        state: viewValue,
-                        onText: getSwitchAttrValue('switchOnText'),
-                        offText: getSwitchAttrValue('switchOffText'),
-                        onColor: getSwitchAttrValue('switchOnColor'),
-                        offColor: getSwitchAttrValue('switchOffColor'),
-                        animate: getSwitchAttrValue('switchAnimate'),
-                        size: getSwitchAttrValue('switchSize'),
-                        labelText: attrs.switchLabel ? getSwitchAttrValue('switchLabel') : getSwitchAttrValue('switchIcon'),
-                        wrapperClass: getSwitchAttrValue('switchWrapper'),
-                        handleWidth: getSwitchAttrValue('switchHandleWidth'),
-                        labelWidth: getSwitchAttrValue('switchLabelWidth'),
-                        inverse: getSwitchAttrValue('switchInverse'),
-                        readonly: getSwitchAttrValue('switchReadonly')
-                    });
-                    if (attrs.type === 'radio') {
-                        controller.$setViewValue(controller.$modelValue);
-                    } else {
-                        controller.$setViewValue(viewValue);
-                    }
-                }
-            };
-
-            /**
-             * Listen to model changes.
-             */
-            var listenToModel = function () {
-
-                attrs.$observe('switchActive', function (newValue) {
-                    var active = getBooleanFromStringDefTrue(newValue);
-                    // if we are disabling the switch, delay the deactivation so that the toggle can be switched
-                    if (!active) {
-                        $timeout(function () {
-                            setActive(active);
-                        });
-                    } else {
-                        // if we are enabling the switch, set active right away
-                        setActive(active);
-                    }
-                });
-
-                function modelValue() {
-                    return controller.$modelValue;
-                }
-
-                // When the model changes
-                scope.$watch(modelValue, function (newValue) {
-                    initMaybe();
-                    if (newValue !== undefined) {
-                        element.bootstrapSwitch('state', newValue === getTrueValue(), false);
-                    } else {
-                        element.bootstrapSwitch('toggleIndeterminate', true, false);
-                    }
-                }, true);
-
-                // angular attribute to switch property bindings
-                var bindings = {
-                    'switchRadioOff': 'radioAllOff',
-                    'switchOnText': 'onText',
-                    'switchOffText': 'offText',
-                    'switchOnColor': 'onColor',
-                    'switchOffColor': 'offColor',
-                    'switchAnimate': 'animate',
-                    'switchSize': 'size',
-                    'switchLabel': 'labelText',
-                    'switchIcon': 'labelText',
-                    'switchWrapper': 'wrapperClass',
-                    'switchHandleWidth': 'handleWidth',
-                    'switchLabelWidth': 'labelWidth',
-                    'switchInverse': 'inverse',
-                    'switchReadonly': 'readonly'
-                };
-
-                var observeProp = function (prop, bindings) {
-                    return function () {
-                        attrs.$observe(prop, function () {
-                            setSwitchParamMaybe(element, bindings[prop], prop);
-                        });
-                    };
-                };
-
-                // for every angular-bound attribute, observe it and trigger the appropriate switch function
-                for (var prop in bindings) {
-                    attrs.$observe(prop, observeProp(prop, bindings));
-                }
-            };
-
-            /**
-             * Listen to view changes.
-             */
-            var listenToView = function () {
-                if (attrs.type === 'radio') {
-                    // when the switch is clicked
-                    element.on('change.bootstrapSwitch', function (e) {
-                        // discard not real change events
-                        if ((controller.$modelValue === controller.$viewValue) && (e.target.checked !== $(e.target).bootstrapSwitch('state'))) {
-                            // $setViewValue --> $viewValue --> $parsers --> $modelValue
-                            // if the switch is indeed selected
-                            if (e.target.checked) {
-                                // set its value into the view
-                                controller.$setViewValue(getTrueValue());
-                            } else if (getTrueValue() === controller.$viewValue) {
-                                // otherwise if it's been deselected, delete the view value
-                                controller.$setViewValue(undefined);
-                            }
-                        }
-                    });
-                } else {
-                    // When the checkbox switch is clicked, set its value into the ngModel
-                    element.on('switchChange.bootstrapSwitch', function (e) {
-                        // $setViewValue --> $viewValue --> $parsers --> $modelValue
-                        controller.$setViewValue(e.target.checked);
-                    });
-                }
-            };
-
-            // Listen and respond to view changes
-            listenToView();
-
-            // Listen and respond to model changes
-            listenToModel();
-
-            // On destroy, collect ya garbage
-            scope.$on('$destroy', function () {
-                element.bootstrapSwitch('destroy');
-            });
-        }
-    };
-})
-    .directive('bsSwitch', function () {
-        return {
-            restrict: 'E',
-            require: 'ngModel',
-            template: '<input bs-switch>',
-            replace: true
-        };
-    })
-    .directive('genMouseenter', function (app) {
-        return {
-            scope: "=",
-            link: function (scope, element, attr) {
-                var type = attr.genMouseenter;
-                element.bind('mouseover', function () {
-                    element.addClass('bg_checked');
-                    var currentImg = element.children('img').attr('src');
-                    var pattern = new RegExp('_checked', 'g');
-                    if (!pattern.test(currentImg)) {
-                        element.children('img').attr('src', currentImg.replace(type + '.png', type + '_checked.png'));
-                    }
-                });
-                element.bind('click', function () {
-                    app.rootScope.platform = type === 'android' ? 1 : (type === 'ios' ? 2 : (type === 'windows' ? 3 : (type === 'h5' ? 5 : 1)));
-                    app.$state.go('entrance.batch.g', {entId: 1});
-                });
-                element.bind('mouseout', function () {
-                    element.removeClass('bg_checked');
-                    var currentImg = element.children('img').attr('src');
-                    var pattern = new RegExp('_checked', 'g');
-                    if (pattern.test(currentImg)) {
-                        element.children('img').attr('src', currentImg.replace(type + '_checked.png', type + '.png'));
-                    }
-                });
-            }
-        };
-    })
-    .directive("ngFocus", [function () {
-        var FOCUS_CLASS = "ng-focused";
-        return {
-            restrict: "A",
-            require: "ngModel",
-            link: function (scope, element, attr, ctrl) {
-                ctrl.$isFocused = false;
-                element.bind("focus", function () {
-                    element.addClass(FOCUS_CLASS);
-                    ctrl.$isFocused = true;
-                }).bind("blur", function () {
-                    element.removeClass(FOCUS_CLASS);
-                    ctrl.$isFocused = false;
-                });
-            }
-        };
-    }]);
 'use strict';
 /*global angular, adBoost*/
 
@@ -2681,11 +1942,11 @@ adBoost
 
 angular.module('genTemplates', []).run(['$templateCache', function($templateCache) {
 
-  $templateCache.put('accountManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>账号ID</td><td>姓名</td><td>所属项目组</td><td class="width180">操作</td></tr><tr><td class="width180">{{$index+1}}</td><td>{{user.userId}}</td><td>{{user.username}}</td><td>{{user.projectGroupName}}</td><td class="width180"><a href data-toggle="modal" data-target="#resetAccountPwd">重置密码</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="resetAccountPwd"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">重置密码 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group"><input type="password" class="form-control" placeholder="输入原始密码" ng-model="password"></div><div class="form-group"><input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword"></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="resetAccountPwd()" data-dismiss="modal">密码重置</button></div></div></div>');
+  $templateCache.put('accountManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>姓名</td><td>所属项目组</td><td class="width180">操作</td></tr><tr ng-repeat="user in users"><td class="width180">{{$index+1}}</td><td>{{user.username}}</td><td><span ng-repeat="g in user.groups">{{g.name}}、</span></td><td class="width180"><a href data-toggle="modal" data-target="#resetAccountPwd">重置密码</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="resetAccountPwd"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">重置密码 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group clearfix"><label class="col-md-2 lineHeight35">原始密码:</label><div class="col-md-10"><input type="password" class="form-control" placeholder="输入原始密码" ng-model="password"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35" style="line-height: 35px;">重置密码:</label><div class="col-md-10"><input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword"></div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="resetAccountPwd()" data-dismiss="modal">密码重置</button></div></div></div>');
 
-  $templateCache.put('dataExport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="dataExport()">导出数据</button>&nbsp;&nbsp;<select class="selectContainer"><option>筛选条件</option><option>产品名称</option><option>包名</option><option>平台</option><option>CP名称</option><option>归属项目组</option><option>时间区间</option></select></div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td class="width180">项目编号</td><td>产品名称</td><td>包名</td><td>平台</td><td>CP名称</td><td>归属项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td class="width180">{{index+1}}</td><td>{{product.name}}</td><td>{{product.pkgName}}</td><td>{{product.platform}}</td><td>{{product.CPName}}</td><td>{{product.groupName}}</td><td><a>添加</a>&nbsp;<a>修改</a>&nbsp;<a>删除</a></td></tr></table></div></div></div>');
+  $templateCache.put('dataExport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="dataExport()">导出数据</button>&nbsp;&nbsp; <input class="searchContainer" type="search" placeholder="请输入筛选条件导出数据" style="width: 200px;height: 34px;"></div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td>产品名称</td><td>包名</td><td>渠道</td><td>广告名称</td><td>下载总数</td><td>总花费</td><td>平均价格</td></tr><tr ng-repeat="exportData in exportDatas"><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td></tr></table></div></div></div>');
 
-  $templateCache.put('dataImport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="dataImport()">导入数据</button></div></div><div class="panel-body"><p class="nothing" ng-if="apps.length == 0">暂无数据信息</p></div></div>');
+  $templateCache.put('dataImport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title clearfix"><form id="upload" action="report/product/importData" method="post" enctype="multipart/form-data"><div class="col-md-2"><input type="file" name="upload" class="fileUploadContainer"></div><div class="col-md-10"><button class="btn btn-primary" type="submit">导入数据</button></div></form></div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>文件名称</td><td>文件大小</td><td>创建时间</td><td class="width180">是否移除</td></tr><tr ng-repeat="fileUpload in fileUploads"><td class="width180">{{$index+1}}</td><td>{{fileUpload.name}}</td><td>{{fileUpload.size}}</td><td>{{fileUpload.createTime}}</td><td class="width180">{{fileUpload.hasRemoved}}</td></tr></table></div></div></div>');
 
   $templateCache.put('gen-pagination.html', '<ul class="pagination small" ng-show="total>perPages[0]"><li ng-class="{disabled: !prev}"><a ng-href="{{path&&prev?path+prev:\'\'}}" title="上一页" ng-click="paginationTo(prev)">&laquo;</a></li><li class="cursor_p" ng-class="{active: n === pageNumber, disabled: n === \'…\' || n === \'...\'}" ng-repeat="n in showPages"><a ng-href="{{path&&n!=\'…\'&&n!=pageNumber?path+n:\'\'}}" title="{{n!=\'…\'?\'第\'+n+\'页\':\'\'}}" ng-click="paginationTo(n)">{{n}}</a></li><li ng-class="{disabled: !next}"><a ng-href="{{path&&next?path+next:\'\'}}" title="下一页" ng-click="paginationTo(next)">&#187;</a></li></ul>');
 
@@ -2695,7 +1956,7 @@ angular.module('genTemplates', []).run(['$templateCache', function($templateCach
 
   $templateCache.put('mainbody.html', '<p class="form-group"><span ng-show="$state.includes(\'config\')">配置管理> <span ng-if="$state.includes(\'config.productManagement\')">产品管理</span> <span ng-if="$state.includes(\'config.projectGroupManagement\')">项目组管理</span> <span ng-if="$state.includes(\'config.accountManagement\')">账户管理</span></span> <span ng-show="$state.includes(\'datas\')">数据管理> <span ng-if="$state.includes(\'datas.dataImport\')">数据导入</span> <span ng-if="$state.includes(\'datas.dataExport\')">数据导出</span></span></p><div ui-view></div>');
 
-  $templateCache.put('productManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProducts()" data-toggle="modal" data-target="#createProductModal"><span class="glyphicon glyphicon-plus"></span>添加新产品</button></div></div><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td>项目组编号</td><td>产品名称</td><td>包&nbsp;&nbsp;&nbsp;&nbsp;名</td><td>平台</td><td>CP</td><td>项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td>{{product.projectGroupId}}</td><td>{{product.name}}</td><td>{{product.packageName}}</td><td>{{product.platform}}</td><td>{{product.cp}}</td><td>{{product.projectGroupName}}</td><td><a ng-click="removeProduct(id)">删除</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="createProductModal"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">新增产品信息 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group"><input class="form-control" placeholder="项目组编号" ng-model="projectGroupId"></div><div class="form-group"><input class="form-control" placeholder="产品名称" ng-model="name"></div><div class="form-group"><input class="form-control" placeholder="包名" ng-model="packageName"></div><div class="form-group"><input class="form-control" placeholder="平台" ng-model="platform"></div><div class="form-group"><input class="form-control" placeholder="CP名称" ng-model="cp"></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="confirmCreateProducts()" data-dismiss="modal">确&nbsp;定</button></div></div></div>');
+  $templateCache.put('productManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProducts()" data-toggle="modal" data-target="#createProductModal"><span class="glyphicon glyphicon-plus"></span>添加新产品</button></div></div><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td>项目组编号</td><td>产品名称</td><td>包&nbsp;&nbsp;&nbsp;&nbsp;名</td><td>平台</td><td>CP</td><td>项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td>{{product.projectGroupId}}</td><td>{{product.name}}</td><td>{{product.packageName}}</td><td>{{product.platform}}</td><td>{{product.cp}}</td><td>{{product.projectGroupName}}</td><td><a href ng-click="removeProduct($index)">删除</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="createProductModal"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">新增产品信息 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group clearfix"><label class="col-md-2 lineHeight35">项目组编号:</label><div class="col-md-10"><input class="form-control" placeholder="项目组编号" ng-model="projectGroupId"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">产品名称:</label><div class="col-md-10"><input class="form-control" placeholder="产品名称" ng-model="name"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">包名:</label><div class="col-md-10"><input class="form-control" placeholder="包名" ng-model="packageName"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">平台:</label><div class="col-md-10"><input class="form-control" placeholder="平台" ng-model="platform"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">CP名称:</label><div class="col-md-10"><input class="form-control" placeholder="CP名称" ng-model="cp"></div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="confirmCreateProducts()" data-dismiss="modal">确&nbsp;定</button></div></div></div>');
 
   $templateCache.put('projectGroupManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProjectGroup()"><span class="glyphicon glyphicon-plus"></span>创建项目组</button>&nbsp;&nbsp; <input class="inputContainer" ng-model="projectGroup"> <span style="font-size: 12px">（可输入数字、字母、下划线）</span></div></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">项目组编号</td><td>项目组名称</td><td class="width300">用户授权</td></tr><tr ng-repeat="projectGroup in projectGroups"><td class="width180" style="line-height: 30px;">{{projectGroup.id}}</td><td style="line-height: 30px;">{{projectGroup.name}}</td><td class="width300"><select class="selectContainer"><option>选择要授权的用户</option><option ng-repeat="u in users" ng-click="setUser(u)">{{ u.username }}</option></select>&nbsp;&nbsp; <button class="btn btn-primary" ng-click="authorize(projectGroup)">授权</button></td></tr></table></div></div>');
 
@@ -2703,6 +1964,6 @@ angular.module('genTemplates', []).run(['$templateCache', function($templateCach
 
   $templateCache.put('sidebar.html', '<nav role="sidebar" class="col-sm-12"><div class="panel-group sidebar"><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#userCentrl"><p class="panel-title"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;配置管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'config\')}" id="userCentrl"><div class="panel-body"><p ui-sref="config.projectGroupManagement" ng-class="{sidebarBcg : $state.includes(\'config.projectGroupManagement\')}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;项目组管理</p><p ui-sref="config.productManagement" ng-class="{sidebarBcg : $state.includes(\'config.productManagement\')}"><span class="glyphicon glyphicon-inbox"></span>&nbsp;&nbsp;产品管理</p><p ui-sref="config.accountManagement" ng-class="{sidebarBcg : $state.includes(\'config.accountManagement\')}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户管理</p></div></div></div><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dcCentrl"><p class="panel-title"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;数据管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'datas\')}" id="dcCentrl"><div class="panel-body"><p ui-sref="datas.dataImport" ng-class="{sidebarBcg : $state.includes(\'datas.dataImport\')}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;数据导入</p><p ui-sref="datas.dataExport" ng-class="{sidebarBcg : $state.includes(\'datas.dataExport\')}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;数据导出</p></div></div></div></div></nav>');
 
-  $templateCache.put('topbar.html', '<nav class="header form-group" role="navigation"><div class="headerContent"><span ng-if="isSubAccount">[{{subAccountCompanyName}}]-{{user.company_name}}</span>&nbsp;&nbsp; <a ui-sref="userseting">用户设置</a>&nbsp;&nbsp; <a href ng-click="logout()">退出</a></div></nav>');
+  $templateCache.put('topbar.html', '<nav class="header form-group" role="navigation"><div class="headerContent"><span>{{user.username}}</span>&nbsp;&nbsp; <a href ng-click="userLogOut()">退出</a></div></nav>');
 
 }]);
