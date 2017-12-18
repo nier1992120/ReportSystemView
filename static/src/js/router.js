@@ -1,8 +1,7 @@
 'use strict';
 /*global angular, adBoost*/
 
-adBoost
-    .constant('app', {
+adBoost.constant('app', {
         version: Date.now()
     })
     .provider('getFile', ['app',
@@ -66,6 +65,40 @@ adBoost
                         templateUrl: 'sidebar.html',
                         controller: "indexCtrl"
                     }, 'mainbody@strategy': {
+                        templateUrl: 'mainbody.html',
+                        controller: 'indexCtrl'
+                    }
+                }
+            }).state('config', {
+                url: '/config',
+                views: {
+                    '': {
+                        templateUrl: 'index.html'
+                    },
+                    'topbar@config': {
+                        templateUrl: 'topbar.html',
+                        controller: "indexCtrl"
+                    }, 'sidebar@config': {
+                        templateUrl: 'sidebar.html',
+                        controller: "indexCtrl"
+                    }, 'mainbody@config': {
+                        templateUrl: 'mainbody.html',
+                        controller: 'indexCtrl'
+                    }
+                }
+            }).state('datas', {
+                url: '/datas',
+                views: {
+                    '': {
+                        templateUrl: 'index.html'
+                    },
+                    'topbar@datas': {
+                        templateUrl: 'topbar.html',
+                        controller: "indexCtrl"
+                    }, 'sidebar@datas': {
+                        templateUrl: 'sidebar.html',
+                        controller: "indexCtrl"
+                    }, 'mainbody@datas': {
                         templateUrl: 'mainbody.html',
                         controller: 'indexCtrl'
                     }

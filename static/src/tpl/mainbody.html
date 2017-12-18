@@ -1,67 +1,12 @@
 <p class="form-group">
-    <span ng-show="$state.includes('index')">应用管理>
-        <span ng-if="$state.includes('index.appInsert')">新增应用</span>
-        <span ng-if="$state.includes('index.showAppBascInfo')">查看应用</span>
-        <span ng-if="$state.includes('index.appBascInfo')">管理应用</span>
-        <span ng-if="$state.includes('index.appModify')">编辑应用>{{rootAppName}}</span>
-        <span ng-if="$state.includes('index.appKey')">APPKEY</span>
-        <span ng-if="$state.includes('index.appSyn')">发布应用</span>
-        <span ng-if="$state.includes('index.paramCtrl')">控制参数>{{rootAppName}}</span>
-        <span ng-if="$state.includes('index.paramInject')">注入参数>{{rootAppName}}</span>
-        <span ng-if="$state.includes('index.paramCustom')">自定义参数>{{rootAppName}}</span>
-        <span ng-if="$state.includes('index.appAdPolymer')">聚合广告</span>
-        <span ng-if="$state.includes('index.appAdPolymerInsert')">新增聚合广告</span>
-        <span ng-if="$state.includes('index.appAdPolymerModify')">编辑聚合广告</span>
-        <span ng-if="$state.includes('index.appLink')">应用分组</span>
-        <span ng-if="$state.includes('index.appAdStrategy')">广告管理</span>
-        <span ng-if="$state.includes('index.appTimingTask')">广告管理>定时任务</span>
+    <span ng-show="$state.includes('config')">配置管理>
+        <span ng-if="$state.includes('config.productManagement')">产品管理</span>
+        <span ng-if="$state.includes('config.projectGroupManagement')">项目组管理</span>
+        <span ng-if="$state.includes('config.accountManagement')">账户管理</span>
     </span>
-    <span ng-show="$state.includes('strategy')">投放管理>
-        <span ng-if="$state.includes('strategy.strategyInsert')">新增策略</span>
-        <span ng-if="$state.includes('strategy.strategyInfo')">查看策略</span>
-        <span ng-if="$state.includes('strategy.strategyModify')">编辑策略</span>
-    </span>
-    <span ng-show="$state.includes('task')">任务管理>
-        <span ng-if="$state.includes('task.taskInsert')">新增任务组</span>
-        <span ng-if="$state.includes('task.taskInfo')">查看任务组</span>
-        <span ng-if="$state.includes('task.taskModify')">编辑任务组</span>
-    </span>
-    <span ng-show="$state.includes('document')">文档中心>
-        <span ng-if="$state.includes('document.geoCode')">地区代码</span>
-        <span ng-if="$state.includes('document.geoextCode')">区域代码</span>
-        <span ng-if="$state.includes('document.marketInfo')">市场信息</span>
-        <span ng-if="$state.includes('document.language')">语言代码</span>
-        <span ng-if="$state.includes('document.syscode')">系统编码</span>
-        <span ng-if="$state.includes('document.testid')">TESTID</span>
-    </span>
-    <span ng-show="$state.includes('data')">统计分析>
-        <span ng-if="$state.includes('data.statistics')">核心数据</span>
-        <span ng-if="$state.includes('data.bannerStatistics')">Banner</span>
-        <span ng-if="$state.includes('data.nativeStatistics')">Native</span>
-        <span ng-if="$state.includes('data.iconStatistics')">Icon</span>
-        <span ng-if="$state.includes('data.pushStatistics')">Push</span>
-        <span ng-if="$state.includes('data.interstitialStatistics')">Interstitial</span>
-        <span ng-if="$state.includes('data.moreStatistics')">More</span>
-        <span ng-if="$state.includes('data.offerStatistics')">Offer</span>
-        <span ng-if="$state.includes('data.picStatistics')">图片点击</span>
-    </span>
-    <span ng-show="$state.includes('resource')">资源管理>
-        <span ng-if="$state.includes('resource.resourceList')">查看资源</span>
-        <span ng-if="$state.includes('resource.resourceUpload')">上传资源</span>
-    </span>
-    <span ng-show="$state.includes('log')">操作日志>
-        <span ng-if="$state.includes('log.logSyn')">发布日志</span>
-    </span>
-    <span ng-show="$state.includes('test')">测试ID>
-        <span ng-if="$state.includes('test.testApp')">测试ID</span>
-        <span ng-if="$state.includes('test.testAppPub')">测试ID发布</span>
-    </span>
-    <span ng-show="$state.includes('account')">权限管理>
-        <span ng-if="$state.includes('account.subAccount')">子账户</span>
-    </span>
-    <span ng-show="$state.includes('timingTask')">定时任务>
-        <span ng-if="$state.includes('timingTask.taskAdStrategyInfo')">任务策略</span>
-        <span ng-if="$state.includes('timingTask.taskAdStrategyInsert')">新增策略</span>
+    <span ng-show="$state.includes('datas')">数据管理>
+        <span ng-if="$state.includes('datas.dataImport')">数据导入</span>
+        <span ng-if="$state.includes('datas.dataExport')">数据导出</span>
     </span>
 </p>
 

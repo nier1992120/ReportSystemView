@@ -1,0 +1,37 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <button class="btn btn-primary" ng-click="dataExport()">导出数据</button>&nbsp;&nbsp;
+            <input class="searchContainer" type="search" placeholder="请输入筛选条件导出数据" style="width: 200px;height: 34px;">
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover text-center">
+                <tr>
+    <!--                <td class="width180">序列号</td>-->
+                    <td>产品名称</td>
+                    <td>包名</td>
+                    <td>渠道</td>
+                    <td>广告名称</td>
+                    <td>下载总数</td>
+                    <td>总花费</td>
+                    <td>平均价格</td>
+                </tr>
+                <tr ng-repeat="exportData in exportDatas">
+                <!--    <td class="width180">{{$index+1}}</td>-->
+                    <td>{{exportData}}</td>
+                    <td>{{exportData}}</td>
+                    <td>{{exportData}}</td>
+                    <td>{{exportData}}</td>
+                    <td>{{exportData}}</td>
+                    <td>{{exportData}}</td>
+                    <td>{{exportData}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+

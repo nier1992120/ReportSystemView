@@ -30,7 +30,6 @@
     "commit": "37d95e77b174c4a1d7771152ea6a8d158fb085e6"
   },
   "_source": "https://github.com/angular-tools/ng-jsoneditor.git",
-  "_target": "^1.0.0",
-  "_originalSource": "angular-tools/ng-jsoneditor",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "ng-jsoneditor"
 }

@@ -1,143 +1,202 @@
-/**
- * Make sure the charset of the page using this script is
- * set to utf-8 or you will not get the correct results.
- */
-var utf8 = (function () {
-    var highSurrogateMin = 0xd800,
-        highSurrogateMax = 0xdbff,
-        lowSurrogateMin  = 0xdc00,
-        lowSurrogateMax  = 0xdfff,
-        surrogateBase    = 0x10000;
-    
-    function isHighSurrogate(charCode) {
-        return highSurrogateMin <= charCode && charCode <= highSurrogateMax;
-    }
-    
-    function isLowSurrogate(charCode) {
-        return lowSurrogateMin <= charCode && charCode <= lowSurrogateMax;
-    }
-    
-    function combineSurrogate(high, low) {
-        return ((high - highSurrogateMin) << 10) + (low - lowSurrogateMin) + surrogateBase;
-    }
-    
-    /**
-     * Convert charCode to JavaScript String
-     * handling UTF16 surrogate pair
-     */
-    function chr(charCode) {
-        var high, low;
-        
-        if (charCode < surrogateBase) {
-            return String.fromCharCode(charCode);
-        }
-        
-        // convert to UTF16 surrogate pair
-        high = ((charCode - surrogateBase) >> 10) + highSurrogateMin,
-        low  = (charCode & 0x3ff) + lowSurrogateMin;
-        
-        return String.fromCharCode(high, low);
-    }
-    
-    /**
-     * Convert JavaScript String to an Array of
-     * UTF8 bytes
-     * @export
-     */
-    function stringToBytes(str) {
-        var bytes = [],
-            strLength = str.length,
-            strIndex = 0,
-            charCode, charCode2;
-        
-        while (strIndex < strLength) {
-            charCode = str.charCodeAt(strIndex++);
-            
-            // handle surrogate pair
-            if (isHighSurrogate(charCode)) {
-                if (strIndex === strLength) {
-                    throw new Error('Invalid format');
-                }
-                
-                charCode2 = str.charCodeAt(strIndex++);
-                
-                if (!isLowSurrogate(charCode2)) {
-                    throw new Error('Invalid format');
-                }
-                
-                charCode = combineSurrogate(charCode, charCode2);
-            }
-            
-            // convert charCode to UTF8 bytes
-            if (charCode < 0x80) {
-                // one byte
-                bytes.push(charCode);
-            }
-            else if (charCode < 0x800) {
-                // two bytes
-                bytes.push(0xc0 | (charCode >> 6));
-                bytes.push(0x80 | (charCode & 0x3f));
-            }
-            else if (charCode < 0x10000) {
-                // three bytes
-                bytes.push(0xe0 | (charCode >> 12));
-                bytes.push(0x80 | ((charCode >> 6) & 0x3f));
-                bytes.push(0x80 | (charCode & 0x3f));
-            }
-            else {
-                // four bytes
-                bytes.push(0xf0 | (charCode >> 18));
-                bytes.push(0x80 | ((charCode >> 12) & 0x3f));
-                bytes.push(0x80 | ((charCode >> 6) & 0x3f));
-                bytes.push(0x80 | (charCode & 0x3f));
-            }
-        }
-        
-        return bytes;
-    }
+/*! https://mths.be/utf8js v3.0.0 by @mathias */
+;(function(root) {
 
-    /**
-     * Convert an Array of UTF8 bytes to
-     * a JavaScript String
-     * @export
-     */
-    function bytesToString(bytes) {
-        var str = '',
-            length = bytes.length,
-            index = 0,
-            byte,
-            charCode;
-        
-        while (index < length) {
-            // first byte
-            byte = bytes[index++];
-            
-            if (byte < 0x80) {
-                // one byte
-                charCode = byte;
-            }
-            else if ((byte >> 5) === 0x06) {
-                // two bytes
-                charCode = ((byte & 0x1f) << 6) | (bytes[index++] & 0x3f);
-            }
-            else if ((byte >> 4) === 0x0e) {
-                // three bytes
-                charCode = ((byte & 0x0f) << 12) | ((bytes[index++] & 0x3f) << 6) | (bytes[index++] & 0x3f);
-            }
-            else {
-                // four bytes
-                charCode = ((byte & 0x07) << 18) | ((bytes[index++] & 0x3f) << 12) | ((bytes[index++] & 0x3f) << 6) | (bytes[index++] & 0x3f);
-            }
-            
-            str += chr(charCode);
-        }
-        
-        return str;
-    }
-    
-    return {
-        stringToBytes: stringToBytes,
-        bytesToString: bytesToString
-    };
-}());
+	var stringFromCharCode = String.fromCharCode;
 
+	// Taken from https://mths.be/punycode
+	function ucs2decode(string) {
+		var output = [];
+		var counter = 0;
+		var length = string.length;
+		var value;
+		var extra;
+		while (counter < length) {
+			value = string.charCodeAt(counter++);
+			if (value >= 0xD800 && value <= 0xDBFF && counter < length) {
+				// high surrogate, and there is a next character
+				extra = string.charCodeAt(counter++);
+				if ((extra & 0xFC00) == 0xDC00) { // low surrogate
+					output.push(((value & 0x3FF) << 10) + (extra & 0x3FF) + 0x10000);
+				} else {
+					// unmatched surrogate; only append this code unit, in case the next
+					// code unit is the high surrogate of a surrogate pair
+					output.push(value);
+					counter--;
+				}
+			} else {
+				output.push(value);
+			}
+		}
+		return output;
+	}
+
+	// Taken from https://mths.be/punycode
+	function ucs2encode(array) {
+		var length = array.length;
+		var index = -1;
+		var value;
+		var output = '';
+		while (++index < length) {
+			value = array[index];
+			if (value > 0xFFFF) {
+				value -= 0x10000;
+				output += stringFromCharCode(value >>> 10 & 0x3FF | 0xD800);
+				value = 0xDC00 | value & 0x3FF;
+			}
+			output += stringFromCharCode(value);
+		}
+		return output;
+	}
+
+	function checkScalarValue(codePoint) {
+		if (codePoint >= 0xD800 && codePoint <= 0xDFFF) {
+			throw Error(
+				'Lone surrogate U+' + codePoint.toString(16).toUpperCase() +
+				' is not a scalar value'
+			);
+		}
+	}
+	/*--------------------------------------------------------------------------*/
+
+	function createByte(codePoint, shift) {
+		return stringFromCharCode(((codePoint >> shift) & 0x3F) | 0x80);
+	}
+
+	function encodeCodePoint(codePoint) {
+		if ((codePoint & 0xFFFFFF80) == 0) { // 1-byte sequence
+			return stringFromCharCode(codePoint);
+		}
+		var symbol = '';
+		if ((codePoint & 0xFFFFF800) == 0) { // 2-byte sequence
+			symbol = stringFromCharCode(((codePoint >> 6) & 0x1F) | 0xC0);
+		}
+		else if ((codePoint & 0xFFFF0000) == 0) { // 3-byte sequence
+			checkScalarValue(codePoint);
+			symbol = stringFromCharCode(((codePoint >> 12) & 0x0F) | 0xE0);
+			symbol += createByte(codePoint, 6);
+		}
+		else if ((codePoint & 0xFFE00000) == 0) { // 4-byte sequence
+			symbol = stringFromCharCode(((codePoint >> 18) & 0x07) | 0xF0);
+			symbol += createByte(codePoint, 12);
+			symbol += createByte(codePoint, 6);
+		}
+		symbol += stringFromCharCode((codePoint & 0x3F) | 0x80);
+		return symbol;
+	}
+
+	function utf8encode(string) {
+		var codePoints = ucs2decode(string);
+		var length = codePoints.length;
+		var index = -1;
+		var codePoint;
+		var byteString = '';
+		while (++index < length) {
+			codePoint = codePoints[index];
+			byteString += encodeCodePoint(codePoint);
+		}
+		return byteString;
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	function readContinuationByte() {
+		if (byteIndex >= byteCount) {
+			throw Error('Invalid byte index');
+		}
+
+		var continuationByte = byteArray[byteIndex] & 0xFF;
+		byteIndex++;
+
+		if ((continuationByte & 0xC0) == 0x80) {
+			return continuationByte & 0x3F;
+		}
+
+		// If we end up here, it’s not a continuation byte
+		throw Error('Invalid continuation byte');
+	}
+
+	function decodeSymbol() {
+		var byte1;
+		var byte2;
+		var byte3;
+		var byte4;
+		var codePoint;
+
+		if (byteIndex > byteCount) {
+			throw Error('Invalid byte index');
+		}
+
+		if (byteIndex == byteCount) {
+			return false;
+		}
+
+		// Read first byte
+		byte1 = byteArray[byteIndex] & 0xFF;
+		byteIndex++;
+
+		// 1-byte sequence (no continuation bytes)
+		if ((byte1 & 0x80) == 0) {
+			return byte1;
+		}
+
+		// 2-byte sequence
+		if ((byte1 & 0xE0) == 0xC0) {
+			byte2 = readContinuationByte();
+			codePoint = ((byte1 & 0x1F) << 6) | byte2;
+			if (codePoint >= 0x80) {
+				return codePoint;
+			} else {
+				throw Error('Invalid continuation byte');
+			}
+		}
+
+		// 3-byte sequence (may include unpaired surrogates)
+		if ((byte1 & 0xF0) == 0xE0) {
+			byte2 = readContinuationByte();
+			byte3 = readContinuationByte();
+			codePoint = ((byte1 & 0x0F) << 12) | (byte2 << 6) | byte3;
+			if (codePoint >= 0x0800) {
+				checkScalarValue(codePoint);
+				return codePoint;
+			} else {
+				throw Error('Invalid continuation byte');
+			}
+		}
+
+		// 4-byte sequence
+		if ((byte1 & 0xF8) == 0xF0) {
+			byte2 = readContinuationByte();
+			byte3 = readContinuationByte();
+			byte4 = readContinuationByte();
+			codePoint = ((byte1 & 0x07) << 0x12) | (byte2 << 0x0C) |
+				(byte3 << 0x06) | byte4;
+			if (codePoint >= 0x010000 && codePoint <= 0x10FFFF) {
+				return codePoint;
+			}
+		}
+
+		throw Error('Invalid UTF-8 detected');
+	}
+
+	var byteArray;
+	var byteCount;
+	var byteIndex;
+	function utf8decode(byteString) {
+		byteArray = ucs2decode(byteString);
+		byteCount = byteArray.length;
+		byteIndex = 0;
+		var codePoints = [];
+		var tmp;
+		while ((tmp = decodeSymbol()) !== false) {
+			codePoints.push(tmp);
+		}
+		return ucs2encode(codePoints);
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	root.version = '3.0.0';
+	root.encode = utf8encode;
+	root.decode = utf8decode;
+
+}(typeof exports === 'undefined' ? this.utf8 = {} : exports));

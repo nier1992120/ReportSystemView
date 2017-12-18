@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <button class="btn btn-primary" ng-click="createProducts()" data-toggle="modal" data-target="#createProductModal"><span class="glyphicon glyphicon-plus"></span>添加新产品</button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+            <tr>
+                <td>项目组编号</td>
+                <td>产品名称</td>
+                <td>包&nbsp;&nbsp;&nbsp;&nbsp;名</td>
+                <td>平台</td>
+                <td>CP</td>
+                <td>项目组</td>
+                <td>操作</td>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{product.projectGroupId}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.packageName}}</td>
+                <td>{{product.platform}}</td>
+                <td>{{product.cp}}</td>
+                <td>{{product.projectGroupName}}</td>
+                <td><a href="" ng-click="removeProduct($index)">删除</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="modal modal-dialog fade in" id="createProductModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">新增产品信息  <a class="close" data-dismiss="modal">&times;</a></h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group clearfix">
+                <label class="col-md-2 lineHeight35">项目组编号:</label>
+                <div class="col-md-10"><input class="form-control" placeholder="项目组编号" ng-model="projectGroupId"></div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-md-2 lineHeight35">产品名称:</label>
+                <div class="col-md-10"><input class="form-control" placeholder="产品名称" ng-model="name"></div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-md-2 lineHeight35">包名:</label>
+                <div class="col-md-10"><input class="form-control" placeholder="包名" ng-model="packageName"></div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-md-2 lineHeight35">平台:</label>
+                <div class="col-md-10"><input class="form-control" placeholder="平台" ng-model="platform"></div>
+            </div>
+            <div class="form-group clearfix">
+                <label class="col-md-2 lineHeight35">CP名称:</label>
+                <div class="col-md-10"><input class="form-control" placeholder="CP名称" ng-model="cp"></div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="confirmCreateProducts()" data-dismiss="modal">确&nbsp;定</button>
+        </div>
+    </div>
+</div>
+

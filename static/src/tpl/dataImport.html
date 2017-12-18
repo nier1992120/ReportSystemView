@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title clearfix">
+            <form id="upload" action="report/product/importData" method="post" ENCTYPE="multipart/form-data">
+                <div class="col-md-2">
+                    <input type="file" name="upload" class="fileUploadContainer">
+                </div>
+                <div class="col-md-10">
+                    <button class="btn btn-primary" type="submit">导入数据</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td class="width180">序号</td>
+                    <td>文件名称</td>
+                    <td>文件大小</td>
+                    <td>创建时间</td>
+                    <td  class="width180">是否移除</td>
+                </tr>
+                <tr ng-repeat="fileUpload in fileUploads">
+                    <td class="width180">{{$index+1}}</td>
+                    <td>{{fileUpload.name}}</td>
+                    <td>{{fileUpload.size}}</td>
+                    <td>{{fileUpload.createTime}}</td>
+                    <td  class="width180">{{fileUpload.hasRemoved}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
