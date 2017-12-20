@@ -2,16 +2,15 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="panel-title">
-            <button class="btn btn-primary" ng-click="dataExport()">导出数据</button>&nbsp;&nbsp;
-            <input class="searchContainer" type="search" placeholder="请输入筛选条件导出数据" style="width: 200px;height: 34px;">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#dataExportConditions">配置导出条件</button>&nbsp;&nbsp;
         </div>
     </div>
     <div class="panel-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover text-center">
+            <table class="table table-bordered table-hover">
                 <tr>
-    <!--                <td class="width180">序列号</td>-->
                     <td>产品名称</td>
+                    <td>项目组</td>
                     <td>包名</td>
                     <td>渠道</td>
                     <td>广告名称</td>
@@ -20,17 +19,43 @@
                     <td>平均价格</td>
                 </tr>
                 <tr ng-repeat="exportData in exportDatas">
-                <!--    <td class="width180">{{$index+1}}</td>-->
-                    <td>{{exportData}}</td>
-                    <td>{{exportData}}</td>
-                    <td>{{exportData}}</td>
-                    <td>{{exportData}}</td>
-                    <td>{{exportData}}</td>
-                    <td>{{exportData}}</td>
-                    <td>{{exportData}}</td>
+                    <td>{{exportData.name}}</td>
+                    <td>{{exportData.group}}</td>
+                    <td>{{exportData.package}}</td>
+                    <td>{{exportData.channel}}</td>
+                    <td>{{exportData.ad}}</td>
+                    <td>{{exportData.install}}</td>
+                    <td>{{exportData.expenditure}}</td>
+                    <td>{{exportData.price}}</td>
                 </tr>
             </table>
         </div>
+    </div>
+</div>
+
+<div class="modal modal-dialog fade in" id="dataExportConditions">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">导出条件设置 <a class="close" data-dismiss="modal">&times;</a></h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <p>时间选择：</p>
+                <input  type="date" value="2017-01-01" class="datePicker">
+                <input  type="date" value="2020-01-01" class="datePicker">
+            </div>
+            <div class="form-group">
+                <p>项目组：</p>
+                <label class="btn btn-default labelWidth"  title="{{p.projectGroupName}}" ng-repeat="p in products">{{p.projectGroupName}}</label>
+            </div>
+            <div class="form-group">
+                <p>产品名称:<input type="checkbox" style="vertical-align: top" checked>&nbsp;全选</p>
+                <label class="btn btn-default labelWidth" title="{{p.name}}" ng-repeat="p in products" ng-class="{selected: app.checked}">{{p.name}}</label>
+            </div>
+            <p>渠&nbsp;&nbsp;&nbsp;&nbsp;道：<input type="checkbox" style="vertical-align: top" checked>&nbsp;全选</p>
+            <label class="btn btn-default labelWidth" ng-class=""  title="{{channel.name}}" ng-repeat="channel in channels">{{channel.name}}</label>
+        </div>
+        <div class="modal-footer"><button class="btn btn-primary" ng-click="dataExport()" data-dismiss="modal">导出数据</button></div>
     </div>
 </div>
 

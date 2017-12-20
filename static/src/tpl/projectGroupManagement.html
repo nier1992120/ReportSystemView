@@ -9,17 +9,19 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <tr>
-                <td class="width180">项目组编号</td>
+                <td class="width180">序列号</td>
                 <td>项目组名称</td>
-                <td class="width300">用户授权</td>
+                <td>已授权用户</td>
+                <td class="width300">用户授权名称</td>
             </tr>
             <tr ng-repeat="projectGroup in projectGroups">
-                <td class="width180"   style="line-height: 30px;">{{projectGroup.id}}</td>
-                <td   style="line-height: 30px;">{{projectGroup.name}}</td>
+                <td class="width180 lineHeight30">{{$index+1}}</td>
+                <td class="lineHeight30">{{projectGroup.name}}</td>
+                <td  class="lineHeight30"><span ng-repeat="authorizedUser in projectGroup.authorizedUsers">{{authorizedUser.username}}</span></td>
                 <td  class="width300">
                     <select class="selectContainer">
                         <option>选择要授权的用户</option>
-                        <option ng-repeat="u in users"  ng-click="setUser(u)">{{ u.username }}</option>
+                        <option ng-repeat="u in projectGroup.unAuthorizedUsers" ng-click="setUser(u)">{{ u.username }}</option>
                     </select>&nbsp;&nbsp;
                     <button class="btn btn-primary" ng-click="authorize(projectGroup)">授权</button>
                 </td>

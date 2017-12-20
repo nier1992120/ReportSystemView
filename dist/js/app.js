@@ -5,108 +5,12 @@ var adBoost = angular.module('adBoost', [
     'ngAnimate',
     'ngResource',
     'ngCookies',
-    //'ui.validate',
     'genTemplates',
     'ng.jsoneditor',
     'ngFileUpload',
     'adBoost.app'
-    // 'angularModalService'
-    // 'highcharts-ng'
 ]);
 
-adBoost.config(['$httpProvider', 'app',
-    function ($httpProvider, app) {
-
-        // global loading status
-        var count = 0,
-            loading = false,
-            status = {
-                count: 0,
-                total: 0
-            };
-
-        status.cancel = function () {
-            count = 0;
-            loading = false;
-            this.count = 0;
-            this.total = 0;
-            app.loading(false, this); // end loading
-        };
-
-        // global loading start
-        $httpProvider.defaults.transformRequest.push(function (data) {
-            count += 1;
-            status.count = count;
-            status.total += 1;
-            if (!loading) {
-                window.setTimeout(function () {
-                    if (!loading && count > 0) {
-                        loading = true;
-                        app.loading(true, status);
-                    }
-                }, 1000); // if no response in 1000ms, begin loading
-            }
-
-            return data;
-        });
-        // global loading end
-        $httpProvider.defaults.transformResponse.push(function (data) {
-            count -= 1;
-            status.count = count;
-            if (loading && count === 0) {
-                status.cancel();
-            }
-            return data;
-        });
-        // global error handling
-        $httpProvider.interceptors.push(function () {
-            return {
-                request: function(req) {
-                    return req;
-                },
-                response: function (res) {
-                    var error, data = res.data;
-                    if (angular.isObject(data)) {
-                        app.timestamp = data.timestamp;
-                        error = data.code === '201' && data.msg;
-                        if(data.code === '301'){
-                            app.$state.go('login');
-                            return app.q.reject(data);
-                        }
-                    }
-
-                    if (error) {
-                        app.toast.error(error.message, "");
-                        return app.q.reject(data);
-                    } else {
-                        return res;
-                    }
-                },
-                responseError: function (res) {
-                    var data = res.data || res,
-                        status = res.status || '',
-                        message = data.message || (angular.isObject(data) ? 'Error!' : data);
-
-                    if(status === 500){
-                        message = "<html><head><title>500 Internal Server Error</title></head><body bgcolor='white'><center><h1>500 Internal Server Error</h1></center><hr></body></html>";
-                        app.toast.error(message, status);
-                        return app.q.reject(data);
-                    }else if (status === 404){
-                        message = "<html><head><title>404 File Not Found Error</title></head><body bgcolor='white'><center><h1>404 File Not Found Error</h1></center><hr></body></html>";
-                        app.toast.error(message, status);
-                        return app.q.reject(data);
-                    }
-
-                    app.toast.error(message, status);
-                    return app.q.reject(data);
-                }
-            };
-        });
-    }
-]);
-    // .config(['ngClipProvider', function (ngClipProvider) {
-    // ngClipProvider.setPath('static/bower_components/zeroclipboard/dist/ZeroClipboard.swf');
-    // }])
 adBoost.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFile', 'JSONKit', 'toast', 'timing', 'cache', 'restAPI', 'sanitize',
      'CryptoJS', 'promiseGet', 'myConf', 'anchorScroll', 'isVisible', 'applyFn', 'param', 'store', 'i18n-zh',
     function (app, $q, $rootScope, $state, $timeout, $filter, getFile, JSONKit, toast, timing, cache, restAPI, sanitize,
@@ -129,16 +33,7 @@ adBoost.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFil
             global.isTablet = !global.isPhone && viewWidth < 980;
             global.isDesktop = viewWidth >= 980;
         }
-
-        function init() {
-            // restAPI.heartbeat.get({}, function (data) {
-            //     app.timeOffset = Date.now() - data.timestamp;
-            //     data = data.data;
-            //     app.union(global, data);
-            //     app.version = global.info.version || '';
-            //     //app.checkUser();
-            // });
-        }
+        function init() {}
 
         app.q = $q;
         app.store = store;
@@ -164,130 +59,80 @@ adBoost.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFil
         angular.extend(app, JSONKit); //添加 JSONKit 系列工具函数
         // app.confirmDialog = confirmDialog;
 
-        app.loading = function (value, status) {
-            $rootScope.loading.show = value;
-            applyFn();
-        };
+        //app.loading = function (value, status) {
+        //    $rootScope.loading.show = value;
+        //    applyFn();
+        //};
 
-        app.validate = function (scope, turnoff) {
-            var collect = [],
-                error = [];
-            scope.$broadcast('genTooltipValidate', collect, turnoff);
-            app.each(collect, function (x) {
-                if (x.validate && x.$invalid) {
-                    error.push(x);
-                }
-            });
-            if (error.length === 0) {
-                app.validate.errorList = null;
-                scope.$broadcast('genTooltipValidate', collect, true);
-            } else {
-                app.validate.errorList = error;
-            }
-            return !app.validate.errorList;
-        };
-
-        app.checkDirty = function (tplObj, pristineObj, Obj) {
-            var data = app.union(tplObj);
-            if (data && pristineObj && Obj) {
-                app.intersect(data, Obj);
-                app.each(data, function (x, key, list) {
-                    if (angular.equals(x, pristineObj[key])) {
-                        delete list[key];
-                    }
-                });
-                app.removeItem(data, undefined);
-                unSave.stopUnload = !app.isEmpty(data);
-            } else {
-                unSave.stopUnload = false;
-            }
-            return unSave.stopUnload ? data : null;
-        };
+        //app.validate = function (scope, turnoff) {
+        //    var collect = [],
+        //        error = [];
+        //    scope.$broadcast('genTooltipValidate', collect, turnoff);
+        //    app.each(collect, function (x) {
+        //        if (x.validate && x.$invalid) {
+        //            error.push(x);
+        //        }
+        //    });
+        //    if (error.length === 0) {
+        //        app.validate.errorList = null;
+        //        scope.$broadcast('genTooltipValidate', collect, true);
+        //    } else {
+        //        app.validate.errorList = error;
+        //    }
+        //    return !app.validate.errorList;
+        //};
+        //
+        //app.checkDirty = function (tplObj, pristineObj, Obj) {
+        //    var data = app.union(tplObj);
+        //    if (data && pristineObj && Obj) {
+        //        app.intersect(data, Obj);
+        //        app.each(data, function (x, key, list) {
+        //            if (angular.equals(x, pristineObj[key])) {
+        //                delete list[key];
+        //            }
+        //        });
+        //        app.removeItem(data, undefined);
+        //        unSave.stopUnload = !app.isEmpty(data);
+        //    } else {
+        //        unSave.stopUnload = false;
+        //    }
+        //    return unSave.stopUnload ? data : null;
+        //};
         //校验用户是否登录
-        app.checkUser = function () {
-            return true;
-            // global.isLogin = !! global.user && !! global.user.pubid;
-        };
-        //校验用户账号是否被冻结
-        app.checkUserState = function () {
-            global.isBeFrozen = global.user.state;
-        };
-        //重置用户信息
-        app.clearUser = function () {
-            global.user = null;
-            app.checkUser();
-        };
+        //app.checkUser = function () {
+        //    return true;
+        //    // global.isLogin = !! global.user && !! global.user.pubid;
+        //};
+        ////校验用户账号是否被冻结
+        //app.checkUserState = function () {
+        //    global.isBeFrozen = global.user.state;
+        //};
+        ////重置用户信息
+        //app.clearUser = function () {
+        //    global.user = null;
+        //    app.checkUser();
+        //};
 
         //保存app的名称
-        app.saveAppName = function (appkey) {
-            restAPI.app.get({
-                ID: 'getAppNameByAppkey',
-                OP: appkey
-            }, function (data) {
-                $rootScope.rootAppName = data.data.name;
-            });
-        };
-        
-        app.checkFollow = function (user) {
-            var me = global.user || {};
-            user.isMe = user._id === me._id;
-            user.isFollow = !user.isMe && !!app.findItem(me.followList, function (x) {
-                return x === user._id;
-            });
-        };
-
-        // 检查每个权重值在-1和10000之间
-        app.checkWeightData = function(data,maxWeight){
-            var min = -1;
-            //var max = 10000;
-            if(angular.isNumber(data)){
-                if(data > maxWeight || data < min){
-                    return false;
-                }else {return true;}
-            }else if(angular.isString(data)){
-                var dataArr = data.split(",");
-                var failedCount = 0;
-                angular.forEach(dataArr,function (x) {
-                    var weightArr = x.split(":");
-                    var weight;
-                    if(weightArr.length < 2){
-                        weight = parseInt(weightArr[0]);
-                    }else{
-                        weight = parseInt(weightArr[1]);
-                    }
-                    if(weight > maxWeight || weight < min){
-                        failedCount++;
-                    }
-                });
-                if(failedCount === 0){return true;}else{return false;}
-            }else{
-                return false;
-            }
-        };
-
-        $rootScope.loading = {
-            show: false
-        };
-        $rootScope.validateTooltip = {
-            validate: true,
-            validateMsg: $locale.VALIDATE
-        };
-        $rootScope.unSaveModal = {
-            confirmBtn: $locale.BTN_TEXT.confirm,
-            confirmFn: function () {
-                if (unSave.stopUnload && unSave.nextUrl) {
-                    unSave.stopUnload = false;
-                    $timeout(function () {
-                        window.location.href = unSave.nextUrl;
-                    }, 100);
-                }
-                return true;
-            },
-            cancelBtn: $locale.BTN_TEXT.cancel,
-            cancelFn: true
-        };
-        $rootScope.isAsso = true;
-        $rootScope.existAsso = false;
+        //app.saveAppName = function (appkey) {
+        //    restAPI.app.get({
+        //        ID: 'getAppNameByAppkey',
+        //        OP: appkey
+        //    }, function (data) {
+        //        $rootScope.rootAppName = data.data.name;
+        //    });
+        //};
+        //
+        //$rootScope.loading = {
+        //    show: false
+        //};
+        //$rootScope.validateTooltip = {
+        //    validate: true,
+        //    validateMsg: $locale.VALIDATE
+        //};
+        //
+        //$rootScope.isAsso = true;
+        //$rootScope.existAsso = false;
         //$rootScope.checkChangedUser = function(){
         //    restAPI.user.get({
         //        ID: 'children'
@@ -319,33 +164,20 @@ adBoost.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFil
         //        }
         //    });
         //};
-
-
-        $rootScope.goBack = function () {
-            window.history.go(-1);
-        };
-
-        $rootScope.logout = function () {
-            restAPI.user.get({
-                ID: 'logout'
-            }, function () {
-                global.user = null;
-                store.clear();
-                app.checkUser();
-                app.$state.go("login");
-            });
-        };
-
-        jqWin.resize(applyFn.bind(null, resize()));
-
-        timing(function () { // 保证每360秒内与服务器存在连接，维持session
-            if (Date.now() - app.timestamp - app.timeOffset >= 240000) {
-                init();
-            }
-        }, 120000);
-        resize();
-        init();
-
+        //
+        //$rootScope.goBack = function () {
+        //    window.history.go(-1);
+        //};
+        //
+        //jqWin.resize(applyFn.bind(null, resize()));
+        //
+        //timing(function () { // 保证每360秒内与服务器存在连接，维持session
+        //    if (Date.now() - app.timestamp - app.timeOffset >= 240000) {
+        //        init();
+        //    }
+        //}, 120000);
+        //resize();
+        //init();
     }
 ]);
 
@@ -380,59 +212,67 @@ adBoost.run(['app', '$q', '$rootScope', '$state', '$timeout', '$filter', 'getFil
 })(window.angular);
 
 'use strict';
-adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scope, $state) {
+adBoost.controller('indexCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
     $scope.$state = $state;
-}]).controller('userLoginCtrl', ["$scope", "$state", "restAPI", "app", function ($scope, $state, restAPI, app) {
-    //用户注册
-    $scope.register = function () {
-        restAPI.index.get({
-            ID: 'register',
-            username: '$scope.username',
-            password: '$scope.password',
-            rememberMe: '$scope.rememberMe'
-        }, function (data) {
-            app.toast.info("恭喜您，注册成功");
-            app.$state.go('login');
-        });
-    };
-    //用户登录
-    $scope.login = function () {
-        restAPI.index.get({
-            ID: 'login',
-            username: 'zhaojn@game7.cc',
-            password: 'zhaojn@game7.cc',
-            rememberMe: 'false'
-        }, function (data) {
-            app.$state.go('config.projectGroupManagement');
-        });
-    };
+    $scope.user = app.user;
     //用户登出
     $scope.userLogOut = function () {
         console.log("我要登出");
-        restAPI.index.save({
+        restAPI.index.get({
             ID: 'logout'
         }, function (data) {
             app.$state.go('login');
         });
     };
+}]).controller('userLoginCtrl', ["$scope", "$state", "restAPI", "app", function ($scope, $state, restAPI, app) {
+    //用户登录
+    app.user = null;
+    $scope.loginIn = function () {
+        restAPI.index.get({
+            ID: 'login',
+            username: $scope.username,
+            password: $scope.password,
+            rememberMe: $scope.rememberMe
+        }, function (data) {
+            app.user = data.data;
+            if (data['resultCode'] == 0) {
+                app.$state.go('config.projectGroupManagement');
+            }
+        });
+    };
+
 }]).controller('projectGroupManagementCtrl', ["app", "$scope", "$state", "restAPI", "$window", function (app, $scope, $state, restAPI, $window) {
     $scope.projectGroups = [];
     //创建项目组
     $scope.createProjectGroup = function () {
-
         restAPI.group.get({
             ID: 'create',
             name: $scope.projectGroup
         }, function (data) {
             if (data['resultCode'] == 0) {
-                $window.location.reload();
                 app.toast.info("创建成功");
+                $window.location.reload();
             } else {
                 app.toast.error("请正确填写您的项目组名称");
             }
         })
     };
     //获取项目组基本信息
+    if (app.user.roles[0].roleType === 0) {
+        restAPI.group.get({
+            ID: 'listAll'
+        }, function (data) {
+            $scope.projectGroups = data.data.reverse();
+        });
+    } else {
+        restAPI.group.get({
+            ID: 'list',
+            username: app.user.username
+        }, function (data) {
+            $scope.projectGroups = data.data.reverse();
+        });
+    }
+
     restAPI.group.get({
         ID: 'listAll'
     }, function (data) {
@@ -440,6 +280,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     });
 
     $scope.users = [];
+    $scope.user = "";
     //获取用户
     restAPI.index.get({
         ID: 'allUsers'
@@ -448,39 +289,45 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     });
 
     //选择用户
-    $scope.setUser = function(u){
-        console.log("aa");
+    $scope.setUser = function (u) {
         $scope.user = u;
     };
+
     //把用户添加到组里
     $scope.authorize = function (g) {
         console.log(g.id);
         console.log($scope.user.id);
         restAPI.group.get({
             ID: 'authorize',
-            userId:  $scope.user.id,
+            userId: $scope.user.id,
             groupId: g.id
         }, function (data) {
-            app.toast.info("授权成功");
+            if (data['resultCode'] == 0) {
+                app.toast.info("授权成功");
+            }
         });
-    }
+    };
 
-}]).controller('productManagementCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
+}]).controller('productManagementCtrl', ["app", "$scope", "$state", "restAPI", "$window", function (app, $scope, $state, restAPI, $window) {
+    $scope.setProjectGroup = function (p) {
+        console.log("下拉触发");
+    };
     $scope.products = [];
     //创建产品
     $scope.confirmCreateProducts = function () {
-        $scope.name = "";
         restAPI.product.save({
             ID: 'create'
         }, {
             name: $scope.name,
             projectGroupId: parseInt($scope.projectGroupId),
-            projectGroupName: $scope.projectGroupName,
+            number: $scope.number,
+            //projectGroupName: $scope.projectGroupName,
             packageName: $scope.packageName,
             platform: parseInt($scope.platform),
             cp: $scope.cp
         }, function (data) {
-
+            app.toast.info("创建成功");
+            $window.location.reload();
         });
     };
     //获取产品基本信息
@@ -493,12 +340,12 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
     $scope.removeProduct = function (p) {
         restAPI.product.get({
             ID: 'remove'
-        },function (data) {
+        }, function (data) {
             app.toast.info("删除成功!");
         });
     }
 
-}]).controller('accountManagementCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
+}]).controller('accountManagementCtrl', ["app", "$scope", "$state", "restAPI", "$window", function (app, $scope, $state, restAPI, $window) {
     $scope.users = [];
     //获取账户基本信息
     restAPI.index.get({
@@ -508,8 +355,19 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         username: $scope.username,
         groups: $scope.groups
     }, function (data) {
-        $scope.users = data.data
+        $scope.users = data.data.reverse();
     });
+    //创建用户
+    $scope.createAccount = function () {
+        restAPI.index.get({
+            ID: 'register',
+            username: $scope.username,
+            password: $scope.password
+        }, function (data) {
+            $window.location.reload();
+        });
+        app.toast.info("用户创建成功");
+    };
     //重置用户密码
     $scope.resetAccountPwd = function () {
         restAPI.index.get({
@@ -522,14 +380,7 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         });
     }
 
-}]).controller('dataImportCtrl', ["app", "$scope", "$state","restAPI", function (app, $scope, $state,restAPI) {
-    //$scope.dataImport = function () {
-    //    restAPI.product.get({
-    //        ID: 'importData'
-    //    }, function (data) {
-    //        app.toast.info("数据导入成功!");
-    //    });
-    //};
+}]).controller('dataImportCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
     $scope.fileUploads = [];
     //导入的数据信息列表
     restAPI.product.get({
@@ -538,16 +389,53 @@ adBoost.controller('indexCtrl', ["app", "$scope", "$state", function (app, $scop
         $scope.fileUploads = data.data;
     });
 
+
 }]).controller('dataExportCtrl', ["app", "$scope", "$state", "restAPI", function (app, $scope, $state, restAPI) {
     $scope.exportDatas = [];
-   // $scope.dataDay = dateFormat('')
-    //获取产品基本信息
+    $scope.dateDay = "20171212";
+    $scope.pageSize = 15;
+    $scope.pageSequence = 1;
+    //罗列需要导出的数据信息
     restAPI.product.get({
         ID: 'exportDataByDay',
-        strData: $scope.dataDay
+        strDate: $scope.dateDay,
+        pageSize: $scope.pageSize,
+        pageSequence: $scope.pageSequence
     }, function (data) {
-        $scope.productDatas = data.data;
+        $scope.exportDatas = data.data;
     });
+    //获取产品基本信息
+    restAPI.product.get({
+        ID: 'list',
+        projectGroupName: $scope.projectGroupName,
+        username: $scope.username
+    }, function (data) {
+        $scope.products = data.data.reverse();
+    });
+    //获取项目组基本信息
+    restAPI.group.get({
+        ID: 'listAll'
+    }, function (data) {
+        $scope.projectGroups = data.data.reverse();
+    });
+    //导入的数据信息列表
+    restAPI.product.get({
+        ID: 'listRecords'
+    }, function (data) {
+        $scope.fileUploads = data.data;
+    });
+    //渠道
+    $scope.channels = [
+        {'id': 1, 'name': 'FB'},
+        {'id': 2, 'name': 'Ads'},
+        {'id': 3, 'name': 'Applovin'},
+        {'id': 4, 'name': 'Google'},
+        {'id': 5, 'name': 'Unity'},
+        {'id': 6, 'name': 'Vungle'}];
+    //定义选中样式
+    function changeClass() {
+        $scope.className = true / false;
+    }
 
 }]);
 'use strict';
@@ -968,8 +856,8 @@ adBoost
 /*global angular, adBoost*/
 
 adBoost.constant('app', {
-        version: Date.now()
-    })
+    version: Date.now()
+})
     .provider('getFile', ['app',
         function (app) {
             this.html = function (fileName) {
@@ -991,519 +879,60 @@ adBoost.constant('app', {
             $stateProvider
                 .state("login", {
                     url: '/login',
-                    controller: 'userLoginCtrl',
-                    templateUrl: 'login.html'
-                }).state("Login", {
-                url: '',
-                controller: 'userLoginCtrl',
-                templateUrl: 'login.html'
-            }).state("login1", {
-                url: '/login1',
-                controller: 'userLoginCtrl',
-                templateUrl: 'login.html'
-            }).state('index', {
-                url: '/index',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@index': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@index': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@index': {
-                        templateUrl: 'mainbody.html',
-                        controller: "indexCtrl"
-                    }
-                }
-            }).state('strategy', {
-                url: '/strategy',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@strategy': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@strategy': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@strategy': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('config', {
-                url: '/config',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@config': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@config': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@config': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('datas', {
-                url: '/datas',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@datas': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@datas': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@datas': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('adStrategy', {
-                url: '/adStrategy',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@adStrategy': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@adStrategy': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@adStrategy': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('task', {
-                url: '/task',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@task': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@task': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@task': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('resource', {
-                url: '/resource',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@resource': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@resource': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@resource': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('timingTask', {
-                url: '/timingTask',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@timingTask': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@timingTask': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@timingTask': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('document', {
-                url: '/document',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@document': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@document': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@document': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('data', {
-                url: '/data',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@data': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@data': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@data': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('log', {
-                url: '/log',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@log': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@log': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@log': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('test', {
-                url: '/test',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@test': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@test': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@test': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('appAndCampaignSyn', {
-                url: '/appAndCampaignSyn',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@appAndCampaignSyn': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@appAndCampaignSyn': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@appAndCampaignSyn': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('account', {
-                url: '/account',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@account': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@account': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@account': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('notice', {
-                url: '/notice',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@notice': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@notice': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@notice': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('dashboard', {
-                url: '/dashboard',
-                views: {
-                    '': {
-                        templateUrl: 'index.html'
-                    },
-                    'topbar@dashboard': {
-                        templateUrl: 'topbar.html',
-                        controller: "indexCtrl"
-                    }, 'sidebar@dashboard': {
-                        templateUrl: 'sidebar.html',
-                        controller: "indexCtrl"
-                    }, 'mainbody@dashboard': {
-                        templateUrl: 'mainbody.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state("userseting", {
-                url: '/userseting',
-                controller: 'userSetingCtrl',
-                templateUrl: 'sadminResetPwd.html'
-            }).state('sadmin', {
-                url: '/sadmin',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadmin': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadmin': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadmin': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminParam', {
-                url: '/sadminParam',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminParam': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminParam': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminParam': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminStrategy', {
-                url: '/sadminStrategy',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminStrategy': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminStrategy': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminStrategy': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminTask', {
-                url: '/sadminTask',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminTask': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminTask': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminTask': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminResource', {
-                url: '/sadminResource',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminResource': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: "indexCtrl"
-                    }, 'lefter@sadminResource': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: "indexCtrl"
-                    }, 'righter@sadminResource': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminAdStrategy', {
-                url: '/sadminAdStrategy',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminAdStrategy': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminAdStrategy': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminAdStrategy': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminPrivateAd', {
-                url: '/sadminPrivateAd',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminPrivateAd': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminPrivateAd': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminPrivateAd': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            })
-                .state('sadminUsers', {
-                    url: '/sadminUsers',
+                    templateUrl: 'login.html',
+                    controller: 'userLoginCtrl'
+                }).state('index', {
+                    url: '/index',
                     views: {
                         '': {
-                            templateUrl: 'sadminIndex.html'
+                            templateUrl: 'index.html'
                         },
-                        'header@sadminUsers': {
-                            templateUrl: 'sadminHeader.html',
-                            controller: 'indexCtrl'
-                        }, 'lefter@sadminUsers': {
-                            templateUrl: 'sadminLefter.html',
-                            controller: 'indexCtrl'
-                        }, 'righter@sadminUsers': {
-                            templateUrl: 'sadminRighter.html',
+                        'topbar@index': {
+                            templateUrl: 'topbar.html',
+                            controller: "indexCtrl"
+                        }, 'sidebar@index': {
+                            templateUrl: 'sidebar.html',
+                            controller: "indexCtrl"
+                        }, 'mainbody@index': {
+                            templateUrl: 'mainbody.html',
+                            controller: "indexCtrl"
+                        }
+                    }
+                }).state('config', {
+                    url: '/config',
+                    views: {
+                        '': {
+                            templateUrl: 'index.html'
+                        },
+                        'topbar@config': {
+                            templateUrl: 'topbar.html',
+                            controller: "indexCtrl"
+                        }, 'sidebar@config': {
+                            templateUrl: 'sidebar.html',
+                            controller: "indexCtrl"
+                        }, 'mainbody@config': {
+                            templateUrl: 'mainbody.html',
                             controller: 'indexCtrl'
                         }
                     }
-                }).state('sadminLog', {
-                url: '/sadminLog',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminLog': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminLog': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminLog': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
+                }).state('datas', {
+                    url: '/datas',
+                    views: {
+                        '': {
+                            templateUrl: 'index.html'
+                        },
+                        'topbar@datas': {
+                            templateUrl: 'topbar.html',
+                            controller: "indexCtrl"
+                        }, 'sidebar@datas': {
+                            templateUrl: 'sidebar.html',
+                            controller: "indexCtrl"
+                        }, 'mainbody@datas': {
+                            templateUrl: 'mainbody.html',
+                            controller: 'indexCtrl'
+                        }
                     }
-                }
-            }).state('sadminNotice', {
-                url: '/sadminNotice',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminNotice': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminNotice': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminNotice': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminTag', {
-                url: '/sadminTag',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminTag': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    }, 'lefter@sadminTag': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    }, 'righter@sadminTag': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('sadminStatistics', {
-                url: '/sadminStatistics',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@sadminStatistics': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    },
-                    'lefter@sadminStatistics': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    },
-                    'righter@sadminStatistics': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            }).state('superAccount', {
-                url: '/superAccount',
-                views: {
-                    '': {
-                        templateUrl: 'sadminIndex.html'
-                    },
-                    'header@superAccount': {
-                        templateUrl: 'sadminHeader.html',
-                        controller: 'indexCtrl'
-                    },
-                    'lefter@superAccount': {
-                        templateUrl: 'sadminLefter.html',
-                        controller: 'indexCtrl'
-                    },
-                    'righter@superAccount': {
-                        templateUrl: 'sadminRighter.html',
-                        controller: 'indexCtrl'
-                    }
-                }
-            });
+                })
         }
     ]);
 
@@ -1942,28 +1371,26 @@ adBoost
 
 angular.module('genTemplates', []).run(['$templateCache', function($templateCache) {
 
-  $templateCache.put('accountManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>姓名</td><td>所属项目组</td><td class="width180">操作</td></tr><tr ng-repeat="user in users"><td class="width180">{{$index+1}}</td><td>{{user.username}}</td><td><span ng-repeat="g in user.groups">{{g.name}}、</span></td><td class="width180"><a href data-toggle="modal" data-target="#resetAccountPwd">重置密码</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="resetAccountPwd"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">重置密码 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group clearfix"><label class="col-md-2 lineHeight35">原始密码:</label><div class="col-md-10"><input type="password" class="form-control" placeholder="输入原始密码" ng-model="password"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35" style="line-height: 35px;">重置密码:</label><div class="col-md-10"><input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword"></div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="resetAccountPwd()" data-dismiss="modal">密码重置</button></div></div></div>');
+  $templateCache.put('accountManagement.html', '<div class="panel panel-default"><div class="panel-heading"></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>姓名</td><td>所属项目组</td><td>用户角色</td><td class="width180">操作</td></tr><tr ng-repeat="user in users"><td class="width180">{{$index+1}}</td><td>{{user.username}}</td><td><span ng-repeat="g in user.groups">{{g.name}}、</span></td><td><span ng-repeat="role in user.roles">{{role.roleDescription}}</span></td><td class="width180"><a href data-toggle="modal" data-target="#createAccount">创建用户</a>&nbsp;&nbsp; <a href data-toggle="modal" data-target="#resetAccountPwd">重置密码</a></td></tr></table></div></div><div class="modal modal-dialog fade" id="resetAccountPwd"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">重置密码 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group clearfix"><label class="col-md-2 lineHeight35">原始密码:</label><div class="col-md-10"><input type="password" class="form-control" placeholder="输入原始密码" ng-model="password"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35" style="line-height: 35px;">重置密码:</label><div class="col-md-10"><input type="password" class="form-control" placeholder="设置新密码" ng-model="newPassword"></div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="resetAccountPwd()" data-dismiss="modal">密码重置</button></div></div></div><div class="modal modal-dialog fade" id="createAccount"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">创建用户<a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group clearfix"><label class="col-md-2 lineHeight35">设置邮箱:</label><div class="col-md-10"><input type="email" class="form-control" placeholder="输入邮箱账户" ng-model="username" required></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35" style="line-height: 35px;">设置密码:</label><div class="col-md-10"><input type="password" class="form-control" placeholder="设置密码" ng-model="password" required maxlength="20" minlength="6"></div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="createAccount()" data-dismiss="modal">创建用户</button></div></div></div>');
 
-  $templateCache.put('dataExport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="dataExport()">导出数据</button>&nbsp;&nbsp; <input class="searchContainer" type="search" placeholder="请输入筛选条件导出数据" style="width: 200px;height: 34px;"></div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td>产品名称</td><td>包名</td><td>渠道</td><td>广告名称</td><td>下载总数</td><td>总花费</td><td>平均价格</td></tr><tr ng-repeat="exportData in exportDatas"><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td><td>{{exportData}}</td></tr></table></div></div></div>');
+  $templateCache.put('dataExport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" data-toggle="modal" data-target="#dataExportConditions">配置导出条件</button>&nbsp;&nbsp;</div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td>产品名称</td><td>项目组</td><td>包名</td><td>渠道</td><td>广告名称</td><td>下载总数</td><td>总花费</td><td>平均价格</td></tr><tr ng-repeat="exportData in exportDatas"><td>{{exportData.name}}</td><td>{{exportData.group}}</td><td>{{exportData.package}}</td><td>{{exportData.channel}}</td><td>{{exportData.ad}}</td><td>{{exportData.install}}</td><td>{{exportData.expenditure}}</td><td>{{exportData.price}}</td></tr></table></div></div></div><div class="modal modal-dialog fade in" id="dataExportConditions"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">导出条件设置 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group"><p>时间选择：</p><input type="date" value="2017-01-01" class="datePicker"> <input type="date" value="2020-01-01" class="datePicker"></div><div class="form-group"><p>项目组：</p><label class="btn btn-default labelWidth" title="{{p.projectGroupName}}" ng-repeat="p in products">{{p.projectGroupName}}</label></div><div class="form-group"><p>产品名称:<input type="checkbox" style="vertical-align: top" checked>&nbsp;全选</p><label class="btn btn-default labelWidth" title="{{p.name}}" ng-repeat="p in products" ng-class="{selected: app.checked}">{{p.name}}</label></div><p>渠&nbsp;&nbsp;&nbsp;&nbsp;道：<input type="checkbox" style="vertical-align: top" checked>&nbsp;全选</p><label class="btn btn-default labelWidth" ng-class title="{{channel.name}}" ng-repeat="channel in channels">{{channel.name}}</label></div><div class="modal-footer"><button class="btn btn-primary" ng-click="dataExport()" data-dismiss="modal">导出数据</button></div></div></div>');
 
-  $templateCache.put('dataImport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title clearfix"><form id="upload" action="report/product/importData" method="post" enctype="multipart/form-data"><div class="col-md-2"><input type="file" name="upload" class="fileUploadContainer"></div><div class="col-md-10"><button class="btn btn-primary" type="submit">导入数据</button></div></form></div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>文件名称</td><td>文件大小</td><td>创建时间</td><td class="width180">是否移除</td></tr><tr ng-repeat="fileUpload in fileUploads"><td class="width180">{{$index+1}}</td><td>{{fileUpload.name}}</td><td>{{fileUpload.size}}</td><td>{{fileUpload.createTime}}</td><td class="width180">{{fileUpload.hasRemoved}}</td></tr></table></div></div></div>');
+  $templateCache.put('dataImport.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title clearfix"><form id="upload" action="report/product/importData" method="post" enctype="multipart/form-data"><div class="col-md-2"><input type="file" name="upload" class="fileUploadContainer"></div><div class="col-md-10"><button class="btn btn-primary" type="submit">导入数据</button></div></form></div></div><div class="panel-body"><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序号</td><td>文件名称</td><td>文件大小</td><td>创建时间</td><td class="width180">是否移除</td></tr><tr ng-repeat="fileUpload in fileUploads"><td class="width180">{{$index+1}}</td><td>{{fileUpload.name}}</td><td>{{fileUpload.size}}</td><td>{{fileUpload.createTime| date:\'dd-MM-yy\'}}</td><td class="width180">{{fileUpload.hasRemoved}}</td></tr></table></div></div></div>');
 
   $templateCache.put('gen-pagination.html', '<ul class="pagination small" ng-show="total>perPages[0]"><li ng-class="{disabled: !prev}"><a ng-href="{{path&&prev?path+prev:\'\'}}" title="上一页" ng-click="paginationTo(prev)">&laquo;</a></li><li class="cursor_p" ng-class="{active: n === pageNumber, disabled: n === \'…\' || n === \'...\'}" ng-repeat="n in showPages"><a ng-href="{{path&&n!=\'…\'&&n!=pageNumber?path+n:\'\'}}" title="{{n!=\'…\'?\'第\'+n+\'页\':\'\'}}" ng-click="paginationTo(n)">{{n}}</a></li><li ng-class="{disabled: !next}"><a ng-href="{{path&&next?path+next:\'\'}}" title="下一页" ng-click="paginationTo(next)">&#187;</a></li></ul>');
 
   $templateCache.put('index.html', '<div><div ui-view="topbar"></div><div ui-view="sidebar" class="lefter"></div><div ui-view="mainbody" class="righter"></div></div>');
 
-  $templateCache.put('login.html', '<form class="form-signin" novalidate><div class="loginBg"><div class="siginInPosition"><div class="panel-body signInWrap loginWrap" ng-if="!$state.includes(\'login1\')"><p class="text-center text-info" style="margin-bottom:30px;"><b>欢迎登录 ReportSystem</b></p><div class="form-group text-center"><input class="form-control" type="email" placeholder="邮箱ID" ng-model="login.logname" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip" id="username"></div><div class="form-group text-center"><input class="form-control" type="password" placeholder="账户密码" id="password" name="login.logpwd" ng-model="login.logpwd" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip" required></div><div class="row text-center"><div class="col-sm-offset-2 col-sm-8"><button class="btn btn-info form-control" type="submit" ng-click="login()">登&nbsp;&nbsp;&nbsp;录</button></div></div><p class="text-center" style="font-size:12px;color:#666;margin-top:30px;">如果出现异常，可以清理一下缓存</p></div><div class="panel-body signInWrap registWrap" ng-if="$state.includes(\'login1\')"><p class="text-center text-info">欢迎注册</p><div class="form-group"><input class="form-control" type="email" placeholder="邮箱ID" name="loginId" ng-model="user.login_id" data-valid-name="邮箱" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip"></div><div class="form-group"><input class="form-control" type="password" placeholder="输入6-15位密码" data-valid-name="密码" ng-model="user.password" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="password" placeholder="确认密码" data-valid-name="密码" ng-model="user.password2" ui-validate="{repasswd:\'$value==user.password\'}" ui-validate-watch="\'user.password\'" gen-tooltip="validateTooltip"></div><div class="form-group"><input class="form-control" type="text" placeholder="用户昵称" data-valid-name="联系人" ng-model="user.contacts" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="text" placeholder="团队名称" data-valid-name="团队名称" ng-model="user.company_name" gen-tooltip="validateTooltip" required></div><div class="form-group"><input class="form-control" type="text" placeholder="输入有效电话" data-valid-name="电话" ui-validate="{pattern:checkTel}" ng-model="user.telephone" gen-tooltip="validateTooltip"></div><div class="row" ng-if="opRegDisable"><div class="col-sm-offset-2 col-sm-8"><button class="btn btn-info form-control" type="submit" ng-click="register()">注&nbsp;&nbsp;&nbsp;册</button></div></div></div></div></div></form>');
+  $templateCache.put('login.html', '<form class="form-signin" novalidate><div class="loginBg"><div class="siginInPosition"><div class="panel-body signInWrap loginWrap"><p class="text-center text-info" style="margin-bottom:30px;"><b>欢迎登录 ReportSystem</b></p><div class="form-group text-center"><input class="form-control" type="email" placeholder="邮箱ID" ng-model="username" required></div><div class="form-group text-center"><input class="form-control" type="password" placeholder="账户密码" ng-model="password" ng-minlength="6" ng-maxlength="20" required></div><div class="row text-center"><div class="col-sm-offset-2 col-sm-8"><button class="btn btn-info form-control" type="submit" ng-click="loginIn()">登&nbsp;&nbsp;&nbsp;录</button></div></div><p class="clearMsg">如果出现异常，可以清理一下缓存</p></div></div></div></form>');
 
   $templateCache.put('mainbody.html', '<p class="form-group"><span ng-show="$state.includes(\'config\')">配置管理> <span ng-if="$state.includes(\'config.productManagement\')">产品管理</span> <span ng-if="$state.includes(\'config.projectGroupManagement\')">项目组管理</span> <span ng-if="$state.includes(\'config.accountManagement\')">账户管理</span></span> <span ng-show="$state.includes(\'datas\')">数据管理> <span ng-if="$state.includes(\'datas.dataImport\')">数据导入</span> <span ng-if="$state.includes(\'datas.dataExport\')">数据导出</span></span></p><div ui-view></div>');
 
-  $templateCache.put('productManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProducts()" data-toggle="modal" data-target="#createProductModal"><span class="glyphicon glyphicon-plus"></span>添加新产品</button></div></div><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td>项目组编号</td><td>产品名称</td><td>包&nbsp;&nbsp;&nbsp;&nbsp;名</td><td>平台</td><td>CP</td><td>项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td>{{product.projectGroupId}}</td><td>{{product.name}}</td><td>{{product.packageName}}</td><td>{{product.platform}}</td><td>{{product.cp}}</td><td>{{product.projectGroupName}}</td><td><a href ng-click="removeProduct($index)">删除</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="createProductModal"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">新增产品信息 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group clearfix"><label class="col-md-2 lineHeight35">项目组编号:</label><div class="col-md-10"><input class="form-control" placeholder="项目组编号" ng-model="projectGroupId"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">产品名称:</label><div class="col-md-10"><input class="form-control" placeholder="产品名称" ng-model="name"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">包名:</label><div class="col-md-10"><input class="form-control" placeholder="包名" ng-model="packageName"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">平台:</label><div class="col-md-10"><input class="form-control" placeholder="平台" ng-model="platform"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">CP名称:</label><div class="col-md-10"><input class="form-control" placeholder="CP名称" ng-model="cp"></div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="confirmCreateProducts()" data-dismiss="modal">确&nbsp;定</button></div></div></div>');
+  $templateCache.put('productManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProducts()" data-toggle="modal" data-target="#createProductModal"><span class="glyphicon glyphicon-plus"></span>添加新产品</button></div></div><div class="table-responsive"><table class="table table-bordered table-hover text-center"><tr><td>项目组编号</td><td>投放编号</td><td>产品名称</td><td>包&nbsp;&nbsp;&nbsp;&nbsp;名</td><td>平台</td><td>CP</td><td>项目组</td><td>操作</td></tr><tr ng-repeat="product in products"><td>{{product.projectGroupId}}</td><td>{{product.reportNumber}}</td><td>{{product.name}}</td><td>{{product.packageName}}</td><td>{{product.platform}}</td><td>{{product.cp}}</td><td>{{product.projectGroupName}}</td><td><a href ng-click="removeProduct($index)">删除</a></td></tr></table></div></div><div class="modal modal-dialog fade in" id="createProductModal"><div class="modal-content"><div class="modal-header"><h4 class="modal-title">新增产品信息 <a class="close" data-dismiss="modal">&times;</a></h4></div><div class="modal-body"><div class="form-group clearfix"><label class="col-md-2 lineHeight35">项目组名称:</label><div class="col-md-10"><select class="form-control"><option>选择项目组</option><option ng-repeat="p in products" ng-click="setProjectGroup(p)">{{p.projectGroupName}}</option></select></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">投放编号:</label><div class="col-md-10"><input class="form-control" placeholder="投放项目编号" ng-model="number"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">产品名称:</label><div class="col-md-10"><input class="form-control" placeholder="产品名称" ng-model="name"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">包名:</label><div class="col-md-10"><input class="form-control" placeholder="包名" ng-model="packageName"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">平台:</label><div class="col-md-10"><input class="form-control" placeholder="平台" ng-model="platform"></div></div><div class="form-group clearfix"><label class="col-md-2 lineHeight35">CP名称:</label><div class="col-md-10"><input class="form-control" placeholder="CP名称" ng-model="cp"></div></div></div><div class="modal-footer"><button class="btn btn-primary" ng-click="confirmCreateProducts()" data-dismiss="modal">确&nbsp;定</button></div></div></div>');
 
-  $templateCache.put('projectGroupManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProjectGroup()"><span class="glyphicon glyphicon-plus"></span>创建项目组</button>&nbsp;&nbsp; <input class="inputContainer" ng-model="projectGroup"> <span style="font-size: 12px">（可输入数字、字母、下划线）</span></div></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">项目组编号</td><td>项目组名称</td><td class="width300">用户授权</td></tr><tr ng-repeat="projectGroup in projectGroups"><td class="width180" style="line-height: 30px;">{{projectGroup.id}}</td><td style="line-height: 30px;">{{projectGroup.name}}</td><td class="width300"><select class="selectContainer"><option>选择要授权的用户</option><option ng-repeat="u in users" ng-click="setUser(u)">{{ u.username }}</option></select>&nbsp;&nbsp; <button class="btn btn-primary" ng-click="authorize(projectGroup)">授权</button></td></tr></table></div></div>');
+  $templateCache.put('projectGroupManagement.html', '<div class="panel panel-default"><div class="panel-heading"><div class="panel-title"><button class="btn btn-primary" ng-click="createProjectGroup()"><span class="glyphicon glyphicon-plus"></span>创建项目组</button>&nbsp;&nbsp; <input class="inputContainer" ng-model="projectGroup"> <span style="font-size: 12px">（可输入数字、字母、下划线）</span></div></div><div class="table-responsive"><table class="table table-bordered table-hover"><tr><td class="width180">序列号</td><td>项目组名称</td><td>已授权用户</td><td class="width300">用户授权名称</td></tr><tr ng-repeat="projectGroup in projectGroups"><td class="width180 lineHeight30">{{$index+1}}</td><td class="lineHeight30">{{projectGroup.name}}</td><td class="lineHeight30"><span ng-repeat="authorizedUser in projectGroup.authorizedUsers">{{authorizedUser.username}}</span></td><td class="width300"><select class="selectContainer"><option>选择要授权的用户</option><option ng-repeat="u in projectGroup.unAuthorizedUsers" ng-click="setUser(u)">{{ u.username }}</option></select>&nbsp;&nbsp; <button class="btn btn-primary" ng-click="authorize(projectGroup)">授权</button></td></tr></table></div></div>');
 
-  $templateCache.put('showAppBascInfo.html', '<div class="panel panel-default form-group"><div class="panel-heading cursor_p clearfix"><input type="search" ng-model="condition.query" placeholder="按app名称搜索" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}"><select class="cursor_p searchInput pull-right" ng-model="condition.linkid" ng-options="linkid.linkid as linkid.linkid for linkid in linkids"><option value>--全部分组--</option></select><select class="cursor_p searchInput pull-right" ng-model="condition.mark" style="width: 150px;color: #686868"><option value>--全部标记--</option><option value="1" style="background: red;">--红色--</option><option value="2" style="background: orange">--橙色--</option><option value="3" style="background: yellow">--黄色--</option><option value="4" style="background: green">--绿色--</option><option value="5" style="background: cyan">--青色--</option><option value="6" style="background: blue">--蓝色--</option><option value="7" style="background: purple">--紫色--</option></select></div><div class="panel-body" ng-if="apps.length !== 0"><table class="table table-bordered table-hover"><tr class="tableTitle listCont"><td>ICON</td><td>应用名称</td><td>应用包名/iTunesid</td><td>APPKEY</td><td>应用组</td></tr><tr ng-repeat="app in apps" class="listCont"><td class="cursor_p"><img ngf-src="app.icon||\'img/1.png\'"></td><td ng-if="app.mark === undefined || app.mark === null || app.mark === \'0\'">{{app.name}}</td><td ng-if="app.mark !== undefined && app.mark !== null && app.mark !== \'0\'" class="mark-{{app.mark}}">{{app.name}}</td><td>{{app.pkgname}}</td><td>{{app.appkey}}</td><td>{{app.linkid}}</td></tr></table></div></div><nav class="text-right" gen-pagination="pagination"></nav><p class="nothing" ng-if="apps.length == 0">暂无数据信息</p>');
+  $templateCache.put('sidebar.html', '<nav role="sidebar" class="col-sm-12"><div class="panel-group sidebar"><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#userCentrl"><p class="panel-title"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;配置管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'config\')}" id="userCentrl"><div class="panel-body"><p ui-sref="config.projectGroupManagement" ng-class="{sidebarBcg : $state.includes(\'config.projectGroupManagement\')}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;项目组管理</p><p ui-sref="config.productManagement" ng-class="{sidebarBcg : $state.includes(\'config.productManagement\')}"><span class="glyphicon glyphicon-inbox"></span>&nbsp;&nbsp;产品管理</p><p ng-if="user.roles[0].roleType == 0" ui-sref="config.accountManagement" ng-class="{sidebarBcg : $state.includes(\'config.accountManagement\')}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户管理</p></div></div></div><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dcCentrl"><p class="panel-title"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;数据管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'datas\')}" id="dcCentrl"><div class="panel-body"><p ui-sref="datas.dataImport" ng-class="{sidebarBcg : $state.includes(\'datas.dataImport\')}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;数据导入</p><p ui-sref="datas.dataExport" ng-class="{sidebarBcg : $state.includes(\'datas.dataExport\')}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;数据导出</p></div></div></div></div></nav>');
 
-  $templateCache.put('sidebar.html', '<nav role="sidebar" class="col-sm-12"><div class="panel-group sidebar"><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#userCentrl"><p class="panel-title"><span class="glyphicon glyphicon-globe"></span>&nbsp;&nbsp;配置管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'config\')}" id="userCentrl"><div class="panel-body"><p ui-sref="config.projectGroupManagement" ng-class="{sidebarBcg : $state.includes(\'config.projectGroupManagement\')}"><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;项目组管理</p><p ui-sref="config.productManagement" ng-class="{sidebarBcg : $state.includes(\'config.productManagement\')}"><span class="glyphicon glyphicon-inbox"></span>&nbsp;&nbsp;产品管理</p><p ui-sref="config.accountManagement" ng-class="{sidebarBcg : $state.includes(\'config.accountManagement\')}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;账户管理</p></div></div></div><div class="panel panel-default"><div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#dcCentrl"><p class="panel-title"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;数据管理</p></div><div class="secondMenu collapse" ng-class="{in:$state.includes(\'datas\')}" id="dcCentrl"><div class="panel-body"><p ui-sref="datas.dataImport" ng-class="{sidebarBcg : $state.includes(\'datas.dataImport\')}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;数据导入</p><p ui-sref="datas.dataExport" ng-class="{sidebarBcg : $state.includes(\'datas.dataExport\')}"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;数据导出</p></div></div></div></div></nav>');
-
-  $templateCache.put('topbar.html', '<nav class="header form-group" role="navigation"><div class="headerContent"><span>{{user.username}}</span>&nbsp;&nbsp; <a href ng-click="userLogOut()">退出</a></div></nav>');
+  $templateCache.put('topbar.html', '<nav class="header form-group" role="navigation"><div class="headerContent"><span>{{}}</span>&nbsp;&nbsp; <a href ng-click="userLogOut()">退出</a></div></nav>');
 
 }]);

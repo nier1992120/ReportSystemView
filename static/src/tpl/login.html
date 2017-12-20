@@ -1,77 +1,28 @@
 <form class="form-signin" novalidate>
     <div class="loginBg">
         <div class="siginInPosition">
-
-            <!--the part of login-->
-
-            <div class="panel-body signInWrap loginWrap" ng-if="!$state.includes('login1')">
+            <div class="panel-body signInWrap loginWrap">
                 <p class="text-center text-info" style="margin-bottom:30px;">
                     <b>欢迎登录 ReportSystem</b>
                 </p>
-
                 <div class="form-group text-center">
-                    <input class="form-control" type="email" placeholder="邮箱ID" ng-model="login.logname"
-                           ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip" id="username">
+                    <input class="form-control" type="email" placeholder="邮箱ID" ng-model="username"  required>
                 </div>
                 <div class="form-group text-center">
-                    <input class="form-control" type="password" placeholder="账户密码" id="password" name="login.logpwd"
-                           ng-model="login.logpwd" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip"
-                           required>
+                    <input class="form-control" type="password" placeholder="账户密码"  ng-model="password" ng-minlength="6" ng-maxlength="20"  required>
                 </div>
-                <!--<div class="form-group">-->
-                <!--&nbsp;<input type="checkbox" ng-model="login.remember" class="cursor_p">&nbsp;记住用户-->
-                <!--</div>-->
+          <!--      <div class="form-group">
+                    &nbsp;<input type="checkbox" ng-model="rememberMe" class="cursor_p">&nbsp;记住用户
+                </div>-->
                 <div class="row text-center">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <button class="btn btn-info form-control" type="submit" ng-click="login()">登&nbsp;&nbsp;&nbsp;录</button>
+                        <button class="btn btn-info form-control" type="submit" ng-click="loginIn()">登&nbsp;&nbsp;&nbsp;录</button>
                     </div>
                 </div>
-                <p class="text-center" style="font-size:12px;color:#666;margin-top:30px;">
+                <p class="clearMsg">
                     如果出现异常，可以清理一下缓存
                 </p>
             </div>
-
-            <!--the part of regist-->
-            <div class="panel-body signInWrap registWrap" ng-if="$state.includes('login1')">
-                <p class="text-center text-info">
-                    欢迎注册
-                </p>
-
-                <div class="form-group">
-                    <input class="form-control" type="email" placeholder="邮箱ID" name="loginId" ng-model="user.login_id"
-                           data-valid-name="邮箱" ui-validate="{pattern:checkEmail}" gen-tooltip="validateTooltip">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" placeholder="输入6-15位密码" data-valid-name="密码"
-                           ng-model="user.password" ng-minlength="6" ng-maxlength="20" gen-tooltip="validateTooltip"
-                           required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" placeholder="确认密码" data-valid-name="密码"
-                           ng-model="user.password2" ui-validate="{repasswd:'$value==user.password'}"
-                           ui-validate-watch="'user.password'" gen-tooltip="validateTooltip">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="用户昵称" data-valid-name="联系人"
-                           ng-model="user.contacts" gen-tooltip="validateTooltip" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="团队名称" data-valid-name="团队名称"
-                           ng-model="user.company_name" gen-tooltip="validateTooltip" required>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="输入有效电话" data-valid-name="电话"
-                           ui-validate="{pattern:checkTel}" ng-model="user.telephone" gen-tooltip="validateTooltip">
-                </div>
-                <div class="row" ng-if="opRegDisable">
-                    <div class="col-sm-offset-2 col-sm-8">
-                        <button class="btn btn-info form-control" type="submit" ng-click="register()">注&nbsp;&nbsp;&nbsp;册</button>
-                    </div>
-                </div>
-
-            </div>
-
-
         </div>
 
     </div>
