@@ -1,0 +1,144 @@
+html,body{
+    font-family: '微软雅黑', "Microsoft Yahei";
+    font-color:#333;
+    font-size: inherit;
+    font-size: 12px;
+    line-height: inherit;
+}
+html {
+    min-width: 1280px;
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+.btn,button,input,select,textarea{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border:1px solid #ccc;
+    font-size: 12px;
+}
+button{
+    border:none;
+}
+.lefter{
+    width:12%;
+    float:left;
+    margin-left:-10px;
+}
+.righter{
+    width:88%;
+    float: left;
+}
+.cursor_p{
+    cursor: pointer;
+}
+
+.sidebar .panel-heading{
+    cursor:pointer;
+}
+.sidebar .panel-body{
+    padding: 0;
+}
+.sidebar .panel-heading{
+    height:45px;
+    line-height: 25px;
+}
+.sidebar .panel-heading .panel-title {
+    font-size: inherit;
+}
+.panel-default > .panel-heading {
+    background-color: #eaeaea;
+}
+
+.sidebar .panel-body  p{
+    cursor: pointer;
+    padding:15px;
+    margin:0;
+}
+.sidebar .secondMenu p{
+    text-indent: 5px;
+}
+.sidebarBcg{
+    background:#46a3e1!important;
+    color:#fff!important;
+}
+
+.selectContainer,.inputContainer{
+     width: 200px;
+     height: 34px;
+     border: 1px solid #ccc;
+     text-indent: 10px;
+}
+.fileUploadContainer {
+    text-indent: 5px;
+    vertical-align: middle;
+    height:34px;
+    padding-top: 5px;
+}
+.header{
+    height:35px;
+    line-height: 35px;
+    background-color:#46a3e1;
+    width:100%;
+    text-align: right;
+}
+/*页面头部内容*/
+.headerContent {
+    width: 97.5%;
+    margin: 0 auto;
+    color: #fff;
+}
+.headerContent span,.headerContent a {
+    color: #fff;
+}
+/*表格宽度较小的列*/
+.width180 {
+    width: 180px;
+}
+.width300 {
+    width: 300px;
+}
+.lineHeight35 {
+    line-height: 35px;
+}
+.lineHeight30 {
+    line-height: 30px;
+}
+/*modal垂直居中*/
+.modal-dialog {
+    position: absolute !important;
+    top:50% !important;
+    left:50% !important;
+    transform:translate(-50%,-50%) !important;
+    -webkit-transform:translate(-50%,-50%) !important;
+    -moz-transform:translate(-50%,-50%) !important;
+    -ms-transform:translate(-50%,-50%) !important;
+    -o-transform:translate(-50%,-50%) !important;
+}
+.datePicker {
+    height: 34px;
+    width: 210px;
+    text-align: center;
+    padding-top: 2px;
+}
+/*modal超出部分不隐藏*/
+.modal-open .modal {
+    overflow-y: auto!important;
+}
+/*模态框绝对定位bottom不为0*/
+.modal {
+    bottom: inherit;
+}
+.labelWidth {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 5px 5px 0px;
+}
+.isChecked {
+    border: 2px solid #00b3ee;
+}

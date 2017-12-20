@@ -1,0 +1,89 @@
+<span ng-if="upload">预计发布所需时间:2分钟,请耐心等待后测试!</span>
+
+<div class="panel-group" id="accordions" >
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <select class="cursor_p searchInput  pull-right" ng-model="search.linkid" ng-options="linkid.linkid as linkid.linkid for linkid in linkids">
+                <option value="">--全部分组--</option>
+            </select>
+
+            <select class="cursor_p searchInput pull-right" ng-model="search.mark" style="width: 150px;color: #686868">
+                <option value="">--全部标记--</option>
+                <option value="1" style="background: red;">--红色--</option>
+                <option value="2" style="background: orange">--橙色--</option>
+                <option value="3" style="background: yellow">--黄色--</option>
+                <option value="4" style="background: green">--绿色--</option>
+                <option value="5" style="background: cyan">--青色--</option>
+                <option value="6" style="background: blue">--蓝色--</option>
+                <option value="7" style="background: purple">--紫色--</option>
+            </select>
+        </div>
+
+        <div class="panel-body" ng-if="apps.length !== 0">
+            <table class="table table-bordered table-hover">
+                <tr class="tableTitle">
+                    <td>ICON</td>
+                    <td>应用名称</td>
+                    <td>APPKEY</td>
+                    <td>应用分组</td>
+                    <td>操作</td>
+                </tr>
+                <tr ng-repeat="app in appList" class="listCont">
+                    <td><img ngf-src="app.icon||'img/100991_icon_01.png'"></td>
+
+                    <td ng-if="app.mark === undefined || app.mark === null || app.mark === '0'">{{app.name}}</td>
+                    <td ng-if="app.mark !== undefined && app.mark !== null && app.mark !== '0'" class="mark-{{app.mark}}">{{app.name}}</td>
+
+                    <td>{{app.appkey}}</td>
+                    <td>{{app.linkid}}</td>
+                    <td class="cursor_p">
+                        <input type="checkbox" ng-checked="app.isSelect" ng-click="selectApp($index)">&nbsp;&nbsp;勾选&nbsp;&nbsp;
+                    </td>
+                </tr>
+            </table>
+            <!--选择分组内所有app,若是所有分组,则选中所有app-->
+            <div class="form-group">
+                <input type="checkbox" ng-checked="isSelectLinkid" ng-click="selectLinkid()" class="cursor_p">&nbsp;&nbsp;发布当前的分组应用
+            </div>
+
+
+            <div class="clearfix">
+                <button class="btn btn-info" data-target="#appSyn" ng-click="showModal()" data-toggle="modal">发&nbsp;&nbsp;布</button>
+                <button class="btn btn-info" ng-if="upload" ng-click="newSynInfo()">刷新发布信息</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!--分页-->
+    <nav class="text-right" gen-pagination="pagination"></nav>
+
+    <p class="nothing" ng-if="apps.length == 0">
+        暂无数据信息
+    </p>
+
+    <!--the reason for syn-->
+    <div class="modal fade" id="appSyn">
+        <div class="modal-content modal-dialog">
+            <div class="modal-header">
+                <p>
+                    <a class="close" data-dismiss="modal">×</a>
+                </p>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix form-group">
+                    <label class="col-sm-3 control-label text-right">发布原因：</label>
+                    <div class="col-sm-8">
+                        <textarea rows="8" class="form-control" ng-model="reason"></textarea>
+                    </div>
+                </div>
+                <div ng-if="errorShow" ng-repeat="error in errors">
+                    <p class="text-center">{{error.error}}</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-info" ng-click="syn()">确&nbsp;&nbsp;定</button>
+            </div>
+        </div>
+    </div>
+

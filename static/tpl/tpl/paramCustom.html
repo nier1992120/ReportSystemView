@@ -1,0 +1,105 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <p class="panel-title">
+            <button class="btn btn-info" data-target="#paramTmplBatch" data-toggle="modal" ng-click="addParam()"><span class=" glyphicon glyphicon-plus"></span>&nbsp;点击新增</button>
+            <button class="btn btn-info" data-target="#copyParam" data-toggle="modal" >批量复制</button>
+        </p>
+    </div>
+    <div class="panel-body">
+
+        <div class="form-group" ng-repeat="param in myparams">
+            <div class="row">
+
+                <label class="col-sm-2 control-label text-right"><span class="cursor_p glyphicon glyphicon-question-sign" title="{{param.note}}"></span>&nbsp;{{param.key}}：</label>
+                <div class="col-sm-7">
+                    <input class="form-control" ng-model="param.value" disabled>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-info form-control" data-target="#paramTmplBatch" data-toggle="modal" ng-click="showModel(param)">编辑</button>
+                </div>
+                <div class="col-sm-1">
+                    <button class="btn btn-info form-control" ng-click="delParam($index)">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增和编辑参数模板-->
+<div class="modal fade modalPosition" id="paramTmplBatch">
+    <div class="modal-content  modal-dialog ">
+        <div class="modal-header">
+            <p>
+                <a class="close" ng-click="closeModel()" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body clearfix" >
+            <div class="form-group" ng-if="isAddNewParam">
+                <span class="modalSpan">参数名称：</span>
+                <input class="modalInput" ng-model="showParam.key">
+            </div>
+            <div class="form-group" ng-if="!isAddNewParam">
+                <span class="modalSpan">参数名称：</span>
+                <input class="modalInput" ng-model="showParam.key" disabled>
+            </div>
+            <div class="form-group">
+                <span class="modalSpan">备注：</span>
+                <input class="modalInput" ng-model="showParam.note">
+            </div>
+            <div class="form-group">
+                <span class="modalSpan">参数值：</span>
+                <textarea class="paramTextarea" ng-model="showParam.value"></textarea>
+            </div>
+            <div class="form-group clearfix">
+                将以上修改同时应用于&nbsp;&nbsp;<input type="checkbox" class="cursor_p" ng-checked="selectAllFlag" ng-click="selectAll()">&nbsp;全选
+                <input type="search" ng-model="condition.query" placeholder="按app名称搜索" class="searchInput pull-right" ng-model-options="{debounce:{default:1000,blur:0}}">
+            </div>
+            <div class="geoPanel">
+                <div ng-repeat="group in groups" class="form-group">
+                    <p ng-if="group.apps.length !== 0"><span class="badge">应用组</span>{{group.linkid}}</p>
+                    <label class="btn btn-default mark-{{app.mark}}" ng-class="{selected: app.checked}" ng-repeat="app in group.apps" ng-click="addToMyApp(app)">
+                        {{app.name}}
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer ">
+            <button class="btn btn-info" data-dismiss="modal" ng-click="addParamToOtherApp(showParam)">保&nbsp;&nbsp;存</button>
+        </div>
+    </div>
+</div>
+
+
+<!--批量复制参数模板-->
+<div class="modal fade modalPosition" id="copyParam">
+    <div class="modal-dialog modal-content">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+
+        <div class="modal-body clearfix">
+            <div class="form-group clearfix">
+                <label class="control-label col-sm-3">
+                    请选择参数来源：
+                </label>
+                <div class="col-sm-9">
+                    <select class="form-control" ng-model="otherAppkey" ng-options="app.appkey as app.name for app in appkeys">
+                        <option value="">--请选择app--</option>
+                    </select>
+                </div>
+            </div>
+            <p class="text-center">复制此应用的所有在线参数</p>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" data-dismiss="modal" ng-click="addOtherParamToOwn()">保&nbsp;&nbsp;存</button>
+        </div>
+
+    </div>
+
+</div>

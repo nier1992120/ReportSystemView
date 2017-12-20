@@ -1,0 +1,115 @@
+<div class="panel panel-default form-group">
+    <div class="panel-heading">
+        <input type="search" ng-model="query" placeholder="按运营组名称搜索" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+    </div>
+    <div class="panel-body" ng-if="campaigns.length !== 0">
+        <table class="table table-bordered table-hover">
+
+            <tr class="tableTitle">
+                <td class="td_width200">应用组投放策略</td>
+                <td>权重</td>
+                <td>应用组</td>
+                <td class="td_width200">操作</td>
+            </tr>
+
+            <tr ng-repeat="campaign in campaigns">
+                <td class="td_width200">{{campaign.subgroup}}</td>
+                <td>{{campaign.weight}}</td>
+                <td>{{campaign.linkids}}</td>
+                <td class="td_width200">
+                    <a ui-sref="strategy.strategyModify({optgroupid : campaign._id.$oid})" class="glyphicon glyphicon-edit">编辑</a>&nbsp;&nbsp;
+                    <a href="" class="glyphicon glyphicon-remove" ng-click="delCampaign(campaign._id.$oid, $index)">删除</a>&nbsp;&nbsp;
+                    <a href="" class="glyphicon glyphicon-eye-open" data-target="#pkgnames" data-toggle="modal" ng-click="showCampaignPkgname(campaign.apps, campaign.subgroup)">查看包名</a>
+                </td>
+            </tr>
+
+        </table>
+        <!--<div class="text-right">-->
+            <!--<button class="btn btn-info" data-toggle="modal" data-target="#strategySyn" ng-click="showModal()">发&nbsp;&nbsp;布</button>-->
+            <!--<button class="btn btn-info" ng-if="upload" ng-click="newSynInfo()">刷新发布信息</button>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<!--<div class="panel-body" ng-if="list.length !== 0">-->
+    <!--<p>发布状态信息：</p>-->
+    <!--<div class="spinner listCont" ng-repeat="syninfo in list">-->
+        <!--<p style="display: inline-block">{{syninfo.info}}</p>-->
+        <!--<div style="display: inline-block" ng-if="!syninfo.pubid">-->
+            <!--<div class="bounce1 bounce"></div>-->
+            <!--<div class="bounce2 bounce"></div>-->
+            <!--<div class="bounce3 bounce"></div>-->
+            <!--<div class="bounce4 bounce"></div>-->
+            <!--<div class="bounce5 bounce"></div>-->
+            <!--<div class="bounce6 bounce"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<p class="nothing" ng-if="campaigns.length == 0">
+    暂无数据信息
+</p>
+
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+
+<!--the reason for syn-->
+<!--<div class="modal fade" id="strategySyn">-->
+    <!--<div class="modal-content modal-dialog">-->
+        <!--<div class="modal-header">-->
+            <!--<p>-->
+                <!--<a class="close" data-dismiss="modal">×</a>-->
+            <!--</p>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+            <!--<div class="clearfix form-group">-->
+                <!--<label class="col-sm-3 control-label text-right">发布原因：</label>-->
+                <!--<div class="col-sm-8">-->
+                    <!--<textarea rows="8" class="form-control" ng-model="reason"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div ng-if="errorShow" ng-repeat="error in errors">-->
+                <!--<p class="text-center">{{error.error}}</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+            <!--<button class="btn btn-info" ng-click="syn()">确&nbsp;&nbsp;定</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--the modal about pkgname-->
+<div class="modal fade" id="pkgnames">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body" style="height: 500px">
+            <div class="clearfix">
+                <label>投放策略：{{showCampaign.subgroup}}</label>
+            </div>
+            <div class="panel-body">
+                <div class="geoPanel" style="max-height: 430px;">
+                    <table class="table table-bordered table-hover">
+                        <tr class="tableTitle listCont">
+                            <td>序号</td>
+                            <td>被推广应用名</td>
+                            <td>被推广应用包名/iTunesid</td>
+                        </tr>
+                        <tr ng-repeat="app in showCampaign.apps" class="listCont">
+                            <td>{{$index+1}}</td>
+                            <td>{{app.name}}</td>
+                            <td>{{app.pkgname}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>
+
+

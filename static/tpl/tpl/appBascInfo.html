@@ -1,0 +1,202 @@
+
+<div class="panel panel-default form-group">
+    <div class="panel-heading cursor_p clearfix">
+        <input type="search" ng-model="condition.query" placeholder="按app名称搜索" class="searchInput" ng-model-options="{debounce:{default:1000,blur:0}}">
+
+        <select class="cursor_p searchInput pull-right" ng-model="condition.linkid" ng-options="linkid.linkid as linkid.linkid for linkid in linkids">
+            <option value="">--全部分组--</option>
+        </select>
+
+        <select class="cursor_p searchInput pull-right" ng-model="condition.mark" style="width: 150px;color: #686868">
+            <option value="">--全部标记--</option>
+            <option value="1" style="background: red;">--红色--</option>
+            <option value="2" style="background: orange">--橙色--</option>
+            <option value="3" style="background: yellow">--黄色--</option>
+            <option value="4" style="background: green">--绿色--</option>
+            <option value="5" style="background: cyan">--青色--</option>
+            <option value="6" style="background: blue">--蓝色--</option>
+            <option value="7" style="background: purple">--紫色--</option>
+        </select>
+    </div>
+    <div class="panel-body" ng-if="apps.length !== 0">
+        <table class="table table-bordered table-hover">
+            <tr class="tableTitle listCont">
+                <td>ICON</td>
+                <td>应用名称</td>
+                <td>应用包名/iTunesid</td>
+                <td>最新SDK版本</td>
+                <td>APPKEY</td>
+                <td>应用组</td>
+                <!--<td>所投放的策略</td>-->
+                <td>控制项</td>
+                <td>操作</td>
+            </tr>
+            <tr ng-repeat="app in apps" class="listCont">
+                <td class="cursor_p"><img ngf-src="app.icon||'img/1.png'" ng-click="showColorTag(app.name, app.appkey, app.mark)" data-toggle="modal" data-target="#colorTag"/></td>
+
+                <td ng-if="app.mark === undefined || app.mark === null || app.mark === '0'" title="创建时间:{{app.ctime}}">{{app.name}}</td>
+                <td ng-if="app.mark !== undefined && app.mark !== null && app.mark !== '0'" class="mark-{{app.mark}}" title="创建时间:{{app.ctime}}">{{app.name}}</td>
+
+                <td ng-if="isSubAccount">
+                    <span>{{app.pkgname}}</span>
+                </td>
+                <td ng-if="!isSubAccount">
+                    <span>{{app.pkgname}}</span>&nbsp;&nbsp;
+                    <a href="" style="float:right;" class="cursor_p glyphicon glyphicon-copy" ng-click="selectTransferApp(app.appkey, app.name)" title="应用迁移" data-toggle="modal" data-target="#userselector"></a>
+                </td>
+                <td title="最新SDK版本:{{latestSDKV}},如果您的当前版本过低，建议升级SDK版本">{{app.sdkv}}</td>
+                <td>{{app.appkey}}</td>
+                <td>
+                    <a href="" data-toggle="modal" ng-click="showAppLinkidModal(app.linkid, $index)" data-target="#appLinkid">{{app.linkid}}</a>
+                </td>
+                <!--<td ng-if="app.campaigns.length > 0">{{app.campaigns}}</td>-->
+                <!--<td ng-if="app.campaigns == null || app.campaigns.length == 0"></td>-->
+                <td>
+                    <a ui-sref="index.paramCtrl({appkey: app.appkey})">控制参数</a>&nbsp;&nbsp;&nbsp;
+                    <a ui-sref="index.paramInject({appkey: app.appkey})">注入参数</a>&nbsp;&nbsp;&nbsp;
+                    <a ui-sref="index.paramCustom({appkey: app.appkey})">自定义参数</a>&nbsp;&nbsp;&nbsp;
+                    <!--<a href="" data-toggle="modal" ng-click="showAppCampaignModal(app.campaign, app.appkey, app.name)" data-target="#APPCampaign">自运营投放</a>-->
+                </td>
+                <td>
+                    <a ui-sref="index.appModify({appkey: app.appkey})" class="glyphicon glyphicon-edit">编辑</a>&nbsp;&nbsp;
+                    <a ng-click="selectDelApp(app.appkey, app.name, $index)" data-toggle="modal" data-target="#checkPassword" class="glyphicon glyphicon-remove cursor_p">删除</a>&nbsp;&nbsp;
+                    <a ng-if="platform === '1'" href="https://play.google.com/store/apps/details?id={{app.pkgname}}" target="_blank" class="glyphicon glyphicon-link">市场</a>
+                    <a ng-if="platform === '2'" href="https://itunes.apple.com/cn/app/id{{app.pkgname}}" target="_blank" class="glyphicon glyphicon-link">市场</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<!--分页-->
+<nav class="text-right" gen-pagination="pagination"></nav>
+
+<p class="nothing" ng-if="apps.length == 0">
+    暂无数据信息
+</p>
+
+
+<!--the modal about appLinkid-->
+<div class="modal fade" id="appLinkid">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <span>应用名:{{appName}}</span>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix">
+                <label class="col-sm-3 control-label text-right">应用组：</label>
+                <div class="col-sm-8">
+                    <select type="text" class="form-control cursor_p" ng-model="selectedApp.linkid" ng-change = "updateAppLinkid()" ng-options="linkid.linkid as linkid.linkid for linkid in linkids" style="border:none;width:100%;"></select></select>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+</div>
+
+<!--color picker-->
+<div class="modal fade" id="colorTag">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <span>应用名:{{appName}}</span>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+            <p> 选择一种您钟爱的颜色做标记</p>
+        </div>
+        <div class="modal-body">
+            <ul class="colorPicker">
+                <li ng-class="{colorChecked: tag.mark === '1'}" ng-click="selectFlag('1')"></li>
+                <li ng-class="{colorChecked: tag.mark === '2'}" ng-click="selectFlag('2')"></li>
+                <li ng-class="{colorChecked: tag.mark === '3'}" ng-click="selectFlag('3')"></li>
+                <li ng-class="{colorChecked: tag.mark === '4'}" ng-click="selectFlag('4')"></li>
+                <li ng-class="{colorChecked: tag.mark === '5'}" ng-click="selectFlag('5')"></li>
+                <li ng-class="{colorChecked: tag.mark === '6'}" ng-click="selectFlag('6')"></li>
+                <li ng-class="{colorChecked: tag.mark === '7'}" ng-click="selectFlag('7')"></li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" data-dismiss="modal" ng-click="setAppMarke()">保&nbsp;&nbsp;存</button>
+            <button class="btn btn-info" data-dismiss="modal" ng-click="delAppMarke()">清&nbsp;&nbsp;除</button>
+        </div>
+    </div>
+</div>
+
+<!--迁移应用-->
+<div class="modal fade" id="userselector">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+            <p>被迁移的应用:{{appName}}</p>
+        </div>
+        <div class="form-group clearfix">
+            <label class="control-label col-md-3 text-right">输入目标账号：</label>
+            <div class="col-md-8">
+                <input class="form-control" ng-model="login_id">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <label class="control-label col-md-3 text-right">当前账户密码：</label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" ng-model="selfPassword">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="transferApp()">确&nbsp;&nbsp;定</button>
+        </div>
+    </div>
+</div>
+
+<!--删除应用时验证密码-->
+<div class="modal fade" id="checkPassword">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+            <p>被删除的应用:{{appName}}</p>
+        </div>
+
+        <div class="form-group clearfix">
+            <label class="control-label col-md-3 text-right">当前账户密码：</label>
+            <div class="col-md-8">
+                <input type="password" class="form-control" ng-model="selfPassword">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="removeApp()">确&nbsp;&nbsp;定</button>
+        </div>
+    </div>
+</div>
+
+<!--the modal about APPCampaign-->
+<div class="modal fade" id="APPCampaign">
+    <div class="modal-content modal-dialog">
+        <div class="modal-header">
+            <p>
+                应用名:{{appName}}
+                <a class="close" data-dismiss="modal">×</a>
+            </p>
+        </div>
+        <div class="modal-body">
+            <div class="clearfix">
+                <div class="modal-body">
+                    <div ng-jsoneditor ng-model="campaign" options="options" class="height300"></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" ng-click="updateAppCampaign()">保&nbsp;&nbsp;存</button>
+        </div>
+    </div>
+</div>
+
+

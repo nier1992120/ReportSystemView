@@ -1,0 +1,13 @@
+<p class="form-group">
+    <span ng-show="$state.includes('config')">配置管理>
+        <span ng-if="$state.includes('config.productManagement')">产品管理</span>
+        <span ng-if="$state.includes('config.projectGroupManagement')">项目组管理</span>
+        <span ng-if="$state.includes('config.accountManagement')">账户管理</span>
+    </span>
+    <span ng-show="$state.includes('datas')">数据管理>
+        <span ng-if="$state.includes('datas.dataImport')">数据导入</span>
+        <span ng-if="$state.includes('datas.dataExport')">数据导出</span>
+    </span>
+</p>
+
+<div ui-view></div>
