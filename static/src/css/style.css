@@ -67,7 +67,7 @@ button{
     color:#fff!important;
 }
 
-.selectContainer,.inputContainer,.searchContainer {
+.selectContainer,.inputContainer{
      width: 200px;
      height: 34px;
      border: 1px solid #ccc;
@@ -104,4 +104,41 @@ button{
 }
 .lineHeight35 {
     line-height: 35px;
+}
+.lineHeight30 {
+    line-height: 30px;
+}
+/*modal垂直居中*/
+.modal-dialog {
+    position: absolute !important;
+    top:50% !important;
+    left:50% !important;
+    transform:translate(-50%,-50%) !important;
+    -webkit-transform:translate(-50%,-50%) !important;
+    -moz-transform:translate(-50%,-50%) !important;
+    -ms-transform:translate(-50%,-50%) !important;
+    -o-transform:translate(-50%,-50%) !important;
+}
+.datePicker {
+    height: 34px;
+    width: 210px;
+    text-align: center;
+    padding-top: 2px;
+}
+/*modal超出部分不隐藏*/
+.modal-open .modal {
+    overflow-y: auto!important;
+}
+/*模态框绝对定位bottom不为0*/
+.modal {
+    bottom: inherit;
+}
+.labelWidth {
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 5px 5px 0px;
+}
+.isChecked {
+    border: 2px solid #00b3ee;
 }

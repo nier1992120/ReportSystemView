@@ -25,7 +25,7 @@
                     <td class="width180">{{$index+1}}</td>
                     <td>{{fileUpload.name}}</td>
                     <td>{{fileUpload.size}}</td>
-                    <td>{{fileUpload.createTime}}</td>
+                    <td>{{fileUpload.createTime| date:'dd-MM-yy'}}</td>
                     <td  class="width180">{{fileUpload.hasRemoved}}</td>
                 </tr>
             </table>
